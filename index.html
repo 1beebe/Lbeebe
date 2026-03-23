@@ -602,6 +602,9 @@
     color: var(--ink-muted);
   }
 
+  .cta-nowrap { white-space: nowrap; }
+  @media (max-width: 900px) { .cta-nowrap { white-space: normal; } }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -926,7 +929,7 @@
 <section class="cta-section">
   <div class="cta-inner">
     <h2 class="cta-heading reveal">
-      <span style="white-space: nowrap;">Ready to stop worrying about AI</span><br>
+      <span class="cta-nowrap">Ready to stop worrying about AI</span><br>
       and start <em>using it?</em>
     </h2>
     <div class="cta-right reveal">
