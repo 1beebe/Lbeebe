@@ -144,6 +144,29 @@
   }
   nav.scrolled { border-color: var(--rule); }
 
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 101;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--ink);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.2rem;
@@ -624,7 +647,20 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     nav { padding: 1.25rem 1.5rem; }
-    .nav-links { gap: 1.5rem; }
+    .nav-hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--cream);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      z-index: 100;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 1.1rem; letter-spacing: 0.15em; }
 
     .hero {
       grid-template-columns: 1fr;
@@ -664,7 +700,10 @@
 <!-- NAV -->
 <nav id="nav">
   <a href="#" class="nav-logo">L. Beebe<span>.</span></a>
-  <ul class="nav-links">
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#about">About</a></li>
@@ -983,6 +1022,20 @@
   }, { threshold: 0.5 });
 
   if (counters.length) counterObserver.observe(counters[0]);
+
+  // Hamburger menu
+  const hamburger = document.getElementById('nav-hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
 
   // Nav scroll effect
   const nav = document.getElementById('nav');
