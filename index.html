@@ -442,9 +442,9 @@
 
   .portfolio-item {
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    gap: 2rem;
-    padding: 2rem 0;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    padding: 2.5rem 0;
     border-bottom: 1px solid var(--rule);
     align-items: center;
     text-decoration: none;
@@ -455,6 +455,11 @@
   .portfolio-item:first-child { border-top: 1px solid var(--rule); }
   .portfolio-item:hover .portfolio-arrow { transform: translateX(4px); color: var(--accent); }
   .portfolio-item:hover .portfolio-title { color: var(--accent); }
+
+  .portfolio-meta {
+    display: flex;
+    flex-direction: column;
+  }
 
   .portfolio-title {
     font-family: 'Cormorant Garamond', serif;
@@ -468,24 +473,46 @@
     font-size: 0.95rem;
     font-weight: 400;
     color: var(--ink-muted);
-  }
-  .portfolio-right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 1rem;
-  }
-  .portfolio-tag {
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
+    margin-bottom: 0.75rem;
   }
   .portfolio-arrow {
     font-size: 1.2rem;
     color: var(--ink-muted);
     transition: transform 0.2s, color 0.2s;
+  }
+
+  .portfolio-thumb {
+    position: relative;
+    width: 300px;
+    height: 188px;
+    overflow: hidden;
+    background: var(--cream-dark);
+    flex-shrink: 0;
+  }
+  .portfolio-thumb video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.85;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+  }
+  .portfolio-item:hover .portfolio-thumb video {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+  .portfolio-tag {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: rgba(26, 34, 32, 0.72);
+    padding: 0.25rem 0.6rem;
+    backdrop-filter: blur(4px);
   }
 
   /* ── ABOUT ── */
@@ -681,6 +708,10 @@
 
   .cta-nowrap { white-space: nowrap; }
   @media (max-width: 900px) { .cta-nowrap { white-space: normal; } }
+  @media (max-width: 560px) {
+    .portfolio-item { grid-template-columns: 1fr; }
+    .portfolio-thumb { width: 100%; height: 180px; }
+  }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
@@ -739,6 +770,9 @@
     .gap-stats-grid { grid-template-columns: repeat(2, 1fr); }
 
     .proof-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+    .portfolio-item { grid-template-columns: 1fr 200px; gap: 1.5rem; }
+    .portfolio-thumb { width: 200px; height: 125px; }
 
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .about-photo { position: static; max-width: 280px; }
@@ -938,57 +972,62 @@
   <div class="portfolio-list">
 
     <a href="https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html" target="_blank" class="portfolio-item reveal">
-      <div>
+      <div class="portfolio-meta">
         <p class="portfolio-title">AI Architect Program Report</p>
         <p class="portfolio-desc">Peer-led AI learning series: 91 registrants, 96% satisfaction, 4.8★ rating, zero paid marketing.</p>
-      </div>
-      <div class="portfolio-right">
-        <span class="portfolio-tag">Live Site</span>
         <span class="portfolio-arrow">→</span>
+      </div>
+      <div class="portfolio-thumb">
+        <video src="videos/AI Architect Program Scroll.mp4" muted loop playsinline></video>
+        <span class="portfolio-tag">Live Site</span>
       </div>
     </a>
 
     <a href="https://learning-concierge.lovable.app" target="_blank" class="portfolio-item reveal">
-      <div>
+      <div class="portfolio-meta">
         <p class="portfolio-title">Your Learning Concierge</p>
         <p class="portfolio-desc">An ode to the old internet, when you could find genuinely good free stuff if you knew where to look. Enter your learning goal, get a curated open educational resources kit built on my instructional design background, delivered by AI.</p>
-      </div>
-      <div class="portfolio-right">
-        <span class="portfolio-tag">Live App</span>
         <span class="portfolio-arrow">→</span>
+      </div>
+      <div class="portfolio-thumb">
+        <video src="videos/Learning Kit flow.mp4" muted loop playsinline style="object-position: top"></video>
+        <span class="portfolio-tag">Live App</span>
       </div>
     </a>
 
     <a href="https://app.mindstudio.ai/agents/compare-top-image-models-18755b63" target="_blank" class="portfolio-item reveal">
-      <div>
+      <div class="portfolio-meta">
         <p class="portfolio-title">Compare Top Image Models</p>
         <p class="portfolio-desc">Hackathon runner-up. A MindStudio agent that runs 6 image generation models in parallel against the same prompt and returns a side-by-side visual comparison, built to help teams evaluate AI tools based on their actual needs.</p>
-      </div>
-      <div class="portfolio-right">
-        <span class="portfolio-tag">Runner-Up</span>
         <span class="portfolio-arrow">→</span>
+      </div>
+      <div class="portfolio-thumb">
+        <video src="videos/top image models.mp4" muted loop playsinline></video>
+        <span class="portfolio-tag">Runner-Up</span>
       </div>
     </a>
 
     <a href="https://github.com/1beebe/document-archivist" target="_blank" class="portfolio-item reveal">
-      <div>
+      <div class="portfolio-meta">
         <p class="portfolio-title">Document Archivist</p>
         <p class="portfolio-desc">AI workflow that ingests PDFs, cleans OCR text, and generates structured metadata automatically, built for teams drowning in documents who need to find things fast.</p>
-      </div>
-      <div class="portfolio-right">
-        <span class="portfolio-tag">GitHub</span>
         <span class="portfolio-arrow">→</span>
+      </div>
+      <div class="portfolio-thumb">
+        <video src="videos/archivist promo.mp4" muted loop playsinline style="object-position: 50% 35%"></video>
+        <span class="portfolio-tag">GitHub</span>
       </div>
     </a>
 
     <a href="https://github.com/1beebe/lakoff-lens" target="_blank" class="portfolio-item reveal">
-      <div>
+      <div class="portfolio-meta">
         <p class="portfolio-title">Lakoff Lens</p>
         <p class="portfolio-desc">Analyzes political text for sentiment and metaphorical framing using George Lakoff's cognitive linguistics framework. A prototype at the intersection of AI and how language actually shapes thought.</p>
-      </div>
-      <div class="portfolio-right">
-        <span class="portfolio-tag">GitHub</span>
         <span class="portfolio-arrow">→</span>
+      </div>
+      <div class="portfolio-thumb">
+        <video src="videos/lakoff.mp4" muted loop playsinline></video>
+        <span class="portfolio-tag">GitHub</span>
       </div>
     </a>
 
@@ -1159,6 +1198,14 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
   reveals.forEach(el => observer.observe(el));
+
+  // Portfolio video thumbnails — play on hover, pause+reset on leave
+  document.querySelectorAll('.portfolio-item').forEach(item => {
+    const video = item.querySelector('video');
+    if (!video) return;
+    item.addEventListener('mouseenter', () => video.play());
+    item.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+  });
 </script>
 
 </body>
