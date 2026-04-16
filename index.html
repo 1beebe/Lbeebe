@@ -1290,7 +1290,7 @@
 
   // Carousel dots + mobile video autoplay
   const portfolioList = document.querySelector('.portfolio-list');
-  const dots = Array.from(document.querySelectorAll('.portfolio-dot'));
+  const portfolioDots = Array.from(document.querySelectorAll('.portfolio-dot'));
 
   function isMobileCarousel() {
     return window.matchMedia('(max-width: 768px)').matches;
@@ -1303,7 +1303,7 @@
     const activeIndex = Math.round(scrollLeft / cardWidth);
 
     // Update dots
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
+    portfolioDots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
 
     // Play visible video, pause others
     portfolioItems.forEach((item, i) => {
@@ -1321,7 +1321,7 @@
   portfolioList.addEventListener('scroll', updateCarousel, { passive: true });
 
   // Dot click — scroll to that card
-  dots.forEach(dot => {
+  portfolioDots.forEach(dot => {
     dot.addEventListener('click', () => {
       const index = parseInt(dot.dataset.index, 10);
       const cardWidth = portfolioList.offsetWidth;
