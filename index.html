@@ -709,9 +709,81 @@
 
   .cta-nowrap { white-space: nowrap; }
   @media (max-width: 900px) { .cta-nowrap { white-space: normal; } }
-  @media (max-width: 560px) {
-    .portfolio-item { grid-template-columns: 1fr; }
-    .portfolio-thumb { width: 100%; height: 180px; }
+
+  /* ── PORTFOLIO CAROUSEL (mobile) ── */
+  .portfolio-dots {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    /* Carousel track */
+    .portfolio-list {
+      flex-direction: row;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 0;
+      /* bleed to full viewport width even inside padded section */
+      margin-left: -1.5rem;
+      margin-right: -1.5rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .portfolio-list::-webkit-scrollbar { display: none; }
+
+    /* Each card fills the visible area */
+    .portfolio-item {
+      min-width: calc(100vw - 3rem);
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      grid-template-columns: unset;
+      gap: 0;
+      padding: 0 0 1.5rem 0;
+      border-bottom: 1px solid var(--rule);
+      border-top: none !important;
+      margin-right: 0;
+    }
+    .portfolio-item:not(:last-child) {
+      padding-right: 1.5rem;
+    }
+
+    /* Thumbnail stacks on top, full width, taller */
+    .portfolio-thumb {
+      width: 100%;
+      height: 200px;
+      flex-shrink: 0;
+      margin-bottom: 1rem;
+    }
+
+    /* Meta sits below */
+    .portfolio-meta {
+      padding: 0 0.25rem;
+    }
+    .portfolio-title { font-size: 1.25rem; }
+    .portfolio-desc  { font-size: 0.9rem; }
+
+    /* Dot indicators */
+    .portfolio-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+    .portfolio-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--rule);
+      transition: background 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .portfolio-dot.active {
+      background: var(--accent);
+      transform: scale(1.4);
+    }
   }
 
   /* ── ANIMATIONS ── */
@@ -771,9 +843,6 @@
     .gap-stats-grid { grid-template-columns: repeat(2, 1fr); }
 
     .proof-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-
-    .portfolio-item { grid-template-columns: 1fr 200px; gap: 1.5rem; }
-    .portfolio-thumb { width: 200px; height: 125px; }
 
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .about-photo { position: static; max-width: 280px; }
@@ -1035,6 +1104,15 @@
 
 
   </div>
+
+  <div class="portfolio-dots" id="portfolio-dots">
+    <span class="portfolio-dot active" data-index="0"></span>
+    <span class="portfolio-dot" data-index="1"></span>
+    <span class="portfolio-dot" data-index="2"></span>
+    <span class="portfolio-dot" data-index="3"></span>
+    <span class="portfolio-dot" data-index="4"></span>
+  </div>
+
 </section>
 
 <!-- ABOUT -->
@@ -1200,13 +1278,62 @@
 
   reveals.forEach(el => observer.observe(el));
 
-  // Portfolio video thumbnails — play on hover, pause+reset on leave
-  document.querySelectorAll('.portfolio-item').forEach(item => {
+  // Portfolio video thumbnails — hover on desktop, autoplay on mobile carousel
+  const portfolioItems = Array.from(document.querySelectorAll('.portfolio-item'));
+
+  portfolioItems.forEach(item => {
     const video = item.querySelector('video');
     if (!video) return;
     item.addEventListener('mouseenter', () => video.play());
     item.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
   });
+
+  // Carousel dots + mobile video autoplay
+  const portfolioList = document.querySelector('.portfolio-list');
+  const dots = Array.from(document.querySelectorAll('.portfolio-dot'));
+
+  function isMobileCarousel() {
+    return window.matchMedia('(max-width: 768px)').matches;
+  }
+
+  function updateCarousel() {
+    if (!isMobileCarousel()) return;
+    const scrollLeft = portfolioList.scrollLeft;
+    const cardWidth = portfolioList.offsetWidth;
+    const activeIndex = Math.round(scrollLeft / cardWidth);
+
+    // Update dots
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
+
+    // Play visible video, pause others
+    portfolioItems.forEach((item, i) => {
+      const video = item.querySelector('video');
+      if (!video) return;
+      if (i === activeIndex) {
+        video.play();
+      } else {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+  }
+
+  portfolioList.addEventListener('scroll', updateCarousel, { passive: true });
+
+  // Dot click — scroll to that card
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const index = parseInt(dot.dataset.index, 10);
+      const cardWidth = portfolioList.offsetWidth;
+      portfolioList.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+    });
+  });
+
+  // Play first video on mobile load
+  if (isMobileCarousel()) {
+    const firstVideo = portfolioItems[0]?.querySelector('video');
+    if (firstVideo) firstVideo.play();
+  }
 </script>
 
 </body>
