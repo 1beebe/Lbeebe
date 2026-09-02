@@ -709,9 +709,17 @@
     } catch(e){}
   });
   if (!reduce) {
+    // Fire only once a mark has risen into the reading zone (not at the bottom edge),
+    // so a fast draw doesn't finish before the reader's eyes get there.
     const mObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.style.strokeDashoffset = 0; mObs.unobserve(e.target); } });
-    }, { threshold: 0.55 });
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          // tiny stagger for marks that share a viewport so they don't all snap at once
+          setTimeout(() => { e.target.style.strokeDashoffset = 0; }, 90);
+          mObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -28% 0px' });
     marks.forEach(p => mObs.observe(p));
 
     // Highlighter swipe grows when hero enters
