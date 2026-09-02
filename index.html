@@ -90,1128 +90,650 @@
   ]
 }
 </script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,400..600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
 
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --cream: #F2F0EC;
-    --cream-dark: #E5E2DC;
-    --ink: #1A2220;
-    --ink-soft: #243028;
-    --ink-muted: #5E6E6A;
-    --accent: #3D7A72;
-    --accent-light: #C8E0DC;
-    --rule: #C4CFCC;
+    --paper:#E6E3DC;
+    --paper-2:#DEDACF;
+    --ink:#1A1917;
+    --soft:#48443C;
+    --red:#D5341F;
+    --blue:#1E3FB8;
+    --highlight:#F4E24A;
+    --graphite:#B7B2A7;
+    --rule:rgba(183,178,167,.6);
+
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --sans:'General Sans','Segoe UI',system-ui,-apple-system,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,'SFMono-Regular',monospace;
+    --hand:'Caveat','Segoe Script',cursive;
+
+    --maxw:1080px;
+    --gutter:clamp(22px,5vw,64px);
   }
 
   html { scroll-behavior: smooth; }
-
   body {
-    background: var(--cream);
+    background: var(--paper);
     color: var(--ink);
-    font-family: 'Jost', sans-serif;
-    font-weight: 400;
+    font-family: var(--sans);
     font-size: 17px;
-    line-height: 1.7;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
+  ::selection { background: var(--highlight); color: var(--ink); }
+  a { color: inherit; }
+  em { font-style: italic; }
 
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.025;
-    pointer-events: none;
-    z-index: 9999;
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+
+  /* ── shared type ── */
+  .kicker { font-family: var(--mono); font-size: 12px; letter-spacing:.22em; text-transform:uppercase; color: var(--soft); }
+  .display { font-family: var(--serif); font-optical-sizing:auto; font-weight:380; line-height:1.02; letter-spacing:-.01em; }
+  .note { font-family: var(--hand); color: var(--blue); line-height:1.15; }
+
+  /* ── hand-drawn marks ── */
+  .hmark { position:absolute; overflow:visible; pointer-events:none; }
+  .hmark path { fill:none; stroke:var(--red); stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
+  .hmark.blue path { stroke: var(--blue); }
+  .u-wrap { position:relative; display:inline-block; }
+  .u-wrap .hmark { left:-3%; right:-3%; bottom:-.14em; width:106%; height:.5em; }
+  .circle-wrap { position:relative; display:inline-block; white-space:nowrap; }
+  .circle-wrap .hmark { left:-12%; top:-30%; width:124%; height:160%; }
+
+  /* highlighter swipe */
+  .hl { position:relative; display:inline-block; z-index:0; }
+  .hl::before {
+    content:""; position:absolute; left:-.1em; right:-.1em; top:.16em; bottom:.14em;
+    background: var(--highlight); z-index:-1; transform: rotate(-1.6deg) scaleX(var(--hlx,1));
+    transform-origin:left center; transition: transform .5s cubic-bezier(.65,0,.35,1);
   }
 
   /* ── NAV ── */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: var(--cream);
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s ease;
+    position: sticky; top:0; z-index:50;
+    background: rgba(230,227,220,.86); backdrop-filter: blur(8px);
+    border-bottom: 1px solid transparent; transition: border-color .25s, background .25s;
   }
-  .nav-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 1.25rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  nav.scrolled { border-color: var(--rule); }
-
-  .nav-hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    z-index: 101;
-  }
-  .nav-hamburger span {
-    display: block;
-    width: 22px;
-    height: 1.5px;
-    background: var(--ink);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    transform-origin: center;
-  }
-  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-  .nav-logo {
-    display: inline-block;
-    text-decoration: none;
-    line-height: 0;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-  .nav-links a {
-    font-family: 'Jost', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 400;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--accent); }
+  nav.scrolled { border-bottom-color: var(--rule); }
+  .nav-inner { max-width: var(--maxw); margin:0 auto; padding: 16px var(--gutter); display:flex; align-items:center; justify-content:space-between; }
+  .nav-logo { font-family:var(--serif); font-weight:440; font-size:24px; letter-spacing:-.01em; text-decoration:none; color:var(--ink); }
+  .nav-links { list-style:none; display:flex; gap:30px; align-items:center; }
+  .nav-links a { font-family:var(--mono); font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; text-decoration:none; color:var(--soft); transition:color .18s; }
+  .nav-links a:hover { color:var(--ink); }
+  .nav-links a.book { color:var(--paper); background:var(--ink); padding:9px 15px; border-radius:3px; transition:background .18s; }
+  .nav-links a.book:hover { background:var(--red); color:var(--paper); }
+  .hamburger { display:none; background:none; border:none; cursor:pointer; width:30px; height:22px; position:relative; }
+  .hamburger span { position:absolute; left:0; height:2px; width:100%; background:var(--ink); transition:.25s; }
+  .hamburger span:nth-child(1){top:0} .hamburger span:nth-child(2){top:10px} .hamburger span:nth-child(3){top:20px}
+  .hamburger.open span:nth-child(1){top:10px;transform:rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){top:10px;transform:rotate(-45deg)}
 
   /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    padding: 10rem 3rem 6rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: end;
-    max-width: 960px;
-    margin: 0 auto;
+  .hero { padding: clamp(48px,8vw,104px) 0 clamp(40px,6vw,72px); }
+  .hero-grid { display:grid; grid-template-columns: 1fr 250px; gap: clamp(28px,5vw,64px); align-items:start; }
+  .hero h1 { font-family:var(--serif); font-optical-sizing:auto; font-weight:360; font-size:clamp(40px,7vw,82px); line-height:1.0; letter-spacing:-.02em; }
+  .hero h1 .em2 { font-style:italic; font-weight:420; }
+  .hero-sub { font-family:var(--sans); font-size:clamp(16.5px,2vw,19px); line-height:1.6; color:var(--soft); max-width:46ch; margin:26px 0 30px; }
+  .btn {
+    display:inline-block; font-family:var(--mono); font-size:13px; letter-spacing:.06em; text-transform:uppercase;
+    text-decoration:none; color:var(--paper); background:var(--ink); padding:15px 26px; border-radius:3px;
+    transition: background .18s, transform .18s cubic-bezier(.2,.8,.2,1);
+  }
+  .btn:hover { background:var(--red); transform: translateY(-2px); }
+  .btn .arw { display:inline-block; transition:transform .18s; }
+  .btn:hover .arw { transform: translateX(4px); }
+
+  /* hero margin annotation column */
+  .hero-margin { border-left:1px solid var(--rule); padding-left:24px; padding-top:8px; }
+  .hero-margin .note { font-size:23px; transform:rotate(-2deg); margin-bottom:26px; }
+  .hero-arrow { position:relative; height:34px; margin:-4px 0 6px; }
+  .hero-arrow svg { position:absolute; left:-6px; top:-6px; width:70px; height:44px; overflow:visible; }
+  .hero-arrow svg path { fill:none; stroke:var(--red); stroke-width:2.2; stroke-linecap:round; }
+  .mini-stat { margin-bottom:20px; }
+  .mini-stat b { display:block; font-family:var(--serif); font-weight:480; font-size:38px; line-height:1; color:var(--ink); }
+  .mini-stat span { font-family:var(--mono); font-size:11px; letter-spacing:.04em; color:var(--soft); text-transform:uppercase; }
+
+  /* ── SECTION HEADER (shared) ── */
+  .sec { padding: clamp(56px,9vw,104px) 0; }
+  .sec-top { margin-bottom: clamp(30px,5vw,48px); }
+  .sec-top h2 { font-family:var(--serif); font-optical-sizing:auto; font-weight:360; font-size:clamp(34px,5.5vw,60px); line-height:1.02; letter-spacing:-.015em; margin-top:8px; }
+  .sec-note { font-family:var(--hand); font-size:22px; color:var(--blue); transform:rotate(-1.6deg); display:inline-block; margin-top:14px; }
+
+  /* ── PROOF (dark) ── */
+  .dark { background: var(--ink); color: var(--paper); }
+  .dark .kicker { color: var(--highlight); }
+  .dark .sec-top h2 { color: var(--paper); }
+  .proof-grid { display:grid; grid-template-columns: repeat(4,1fr); gap: clamp(20px,3vw,34px); }
+  .proof-item { border-top:1px solid rgba(230,227,220,.22); padding-top:18px; }
+  .proof-num { font-family:var(--serif); font-optical-sizing:auto; font-weight:400; font-size:clamp(44px,5.5vw,68px); line-height:.92; letter-spacing:-.02em; color:var(--paper); position:relative; display:inline-block; }
+  .proof-num .unit { font-size:.42em; font-style:italic; color:var(--highlight); margin-left:2px; }
+  .proof-item p { font-family:var(--sans); font-size:14.5px; line-height:1.55; color:rgba(230,227,220,.82); margin-top:14px; }
+  .proof-item .src { font-family:var(--mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:rgba(230,227,220,.5); margin-top:12px; }
+  .proof-item .circle-wrap .hmark path { stroke: var(--red); stroke-width:2.6; }
+
+  @media (max-width:820px){ .proof-grid{ grid-template-columns:1fr 1fr; gap:30px 24px; } }
+  @media (max-width:480px){ .proof-grid{ grid-template-columns:1fr; } }
+
+  /* ── WORK ── */
+  .case { display:grid; grid-template-columns:1fr 1.12fr; gap:clamp(28px,5vw,56px); align-items:center; padding: clamp(40px,6vw,64px) 0; border-bottom:1px solid var(--rule); }
+  .case:nth-child(even){ grid-template-columns:1.12fr 1fr; }
+  .case:nth-child(even) .case-media{ order:-1; }
+  .case-num { font-family:var(--mono); font-size:12px; letter-spacing:.1em; color:var(--graphite); }
+  .case-title { font-family:var(--serif); font-optical-sizing:auto; font-weight:420; font-size:clamp(27px,3.6vw,40px); line-height:1.04; letter-spacing:-.01em; margin:8px 0 16px; }
+  .case-desc { font-family:var(--sans); font-size:16px; line-height:1.62; color:var(--soft); max-width:46ch; margin-bottom:20px; }
+  .meta { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px; }
+  .chip { font-family:var(--mono); font-size:11px; letter-spacing:.02em; color:var(--ink); border:1px solid var(--graphite); border-radius:2px; padding:4px 9px; background:rgba(255,255,255,.3); }
+  .chip b { color:var(--soft); font-weight:400; margin-right:6px; }
+  .case-link { font-family:var(--mono); font-size:12.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--blue); text-decoration:none; border-bottom:1.5px solid var(--blue); padding-bottom:2px; }
+  .case-link .arw{ display:inline-block; transition:transform .18s cubic-bezier(.2,.8,.2,1); }
+  .case-link:hover .arw{ transform:translateX(4px); }
+
+  .case-media { position:relative; }
+  .screen { position:relative; display:block; border:1.5px solid var(--ink); border-radius:4px; overflow:hidden; background:#111; box-shadow:10px 10px 0 rgba(26,25,23,.13); aspect-ratio:16/10; text-decoration:none; }
+  .screen img, .screen video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  .screen video { opacity:0; transition:opacity .3s; }
+  .screen.playing video { opacity:1; }
+  .tag { position:absolute; top:12px; left:12px; z-index:3; font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; background:var(--paper); color:var(--ink); border:1px solid var(--ink); padding:4px 8px; border-radius:2px; }
+  .playcue { position:absolute; z-index:3; right:12px; bottom:12px; font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); background:rgba(230,227,220,.9); border:1px solid var(--ink); border-radius:2px; padding:4px 8px; transition:opacity .25s; }
+  .screen.playing .playcue{ opacity:0; }
+  .media-cap { font-family:var(--mono); font-size:11px; color:var(--graphite); margin-top:10px; letter-spacing:.03em; }
+
+  @media (max-width:820px){
+    .case, .case:nth-child(even){ grid-template-columns:1fr; gap:22px; }
+    .case:nth-child(even) .case-media, .case-media{ order:-1; }
+    .case-desc{ max-width:none; }
   }
 
-  .hero-left { padding-bottom: 2rem; }
+  /* ── SERVICES ── */
+  .svc-grid { display:grid; grid-template-columns: 300px 1fr; gap: clamp(28px,5vw,64px); align-items:start; }
+  .svc-head { position:sticky; top:96px; font-family:var(--serif); font-optical-sizing:auto; font-weight:360; font-size:clamp(40px,6vw,68px); line-height:1.0; letter-spacing:-.02em; }
+  .svc-head em{ font-style:italic; font-weight:420; }
+  .svc-item { display:grid; grid-template-columns:44px 1fr; gap:18px; padding: 26px 0; border-top:1px solid var(--rule); }
+  .svc-item:first-child{ border-top:none; padding-top:0; }
+  .svc-n { font-family:var(--hand); font-size:34px; color:var(--red); line-height:1; transform:rotate(-6deg); }
+  .svc-title { font-family:var(--serif); font-weight:480; font-size:clamp(20px,2.6vw,26px); letter-spacing:-.01em; margin-bottom:10px; }
+  .svc-desc { font-family:var(--sans); font-size:15.5px; line-height:1.62; color:var(--soft); max-width:56ch; }
+  .tools { display:flex; flex-wrap:wrap; gap:7px; margin-top:16px; }
+  @media (max-width:760px){ .svc-grid{ grid-template-columns:1fr; } .svc-head{ position:static; } }
 
-  .hero-eyebrow {
-    font-family: 'Jost', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.2s;
-  }
-
-  .hero-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.2rem, 6vw, 5.5rem);
-    font-weight: 300;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.4s;
-  }
-  .hero-headline em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .hero-sub {
-    font-size: 1.1rem;
-    font-weight: 400;
-    line-height: 1.75;
-    color: var(--ink-soft);
-    max-width: 38ch;
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.6s;
-  }
-
-  .hero-cta {
-    display: inline-block;
-    padding: 0.85rem 2.25rem;
-    background: #1A2220;
-    color: var(--cream);
-    font-family: 'Jost', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: background 0.25s ease, transform 0.2s ease;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.8s;
-  }
-  .hero-cta:hover {
-    background: var(--accent);
-    transform: translateY(-2px);
-  }
-
-  .hero-right {
-    padding-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 1s;
-  }
-
-  .hero-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    border-left: 1px solid var(--rule);
-    padding-left: 3rem;
-  }
-
-  .stat-item {}
-  .stat-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    font-weight: 300;
-    line-height: 1;
-    color: var(--ink);
-  }
-  .stat-number span { color: var(--accent); font-style: italic; }
-  .stat-label {
-    font-size: 0.85rem;
-    font-weight: 400;
-    letter-spacing: 0.06em;
-    color: var(--ink-muted);
-    margin-top: 0.3rem;
-  }
-
-  .hero-divider {
-    width: 2rem;
-    height: 1px;
-    background: var(--rule);
-    margin: 0.75rem 0;
-  }
-
-  /* ── SECTIONS ── */
-  section {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 6rem 3rem;
-    border-top: 1px solid var(--rule);
-  }
-
-  .section-label {
-    font-family: 'Jost', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 3rem;
-  }
-
-  /* ── WHAT I DO ── */
-  .what-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 6rem;
-    align-items: start;
-  }
-
-  .what-heading {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 300;
-    line-height: 1.15;
-    color: var(--ink);
-    position: sticky;
-    top: 8rem;
-  }
-
-  .services-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .service-item {
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--rule);
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 2rem;
-    align-items: start;
-  }
-  .service-item:first-child { border-top: 1px solid var(--rule); }
-
-  .service-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.85rem;
-    font-style: italic;
-    color: var(--ink-muted);
-    padding-top: 0.2rem;
-    min-width: 2rem;
-  }
-
-  .service-content {}
-  .service-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--ink);
-    margin-bottom: 0.6rem;
-    line-height: 1.2;
-  }
-  .service-desc {
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.75;
-    color: var(--ink-soft);
-    max-width: 52ch;
-  }
-  .service-tools {
-    margin-top: 0.85rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-  .tool-tag {
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    border: 1px solid var(--rule);
-    padding: 0.2rem 0.6rem;
-  }
-
-  /* ── GAP STATS ── */
-  .gap-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
-
-  /* ── PROOF ── */
-  .proof-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-  }
-
-  .proof-item {}
-  .proof-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1.6;
-    color: var(--ink-soft);
-    margin-bottom: 1.25rem;
-  }
-  .proof-meta {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-  }
-  .proof-rule {
-    width: 2rem;
-    height: 2px;
-    background: var(--accent);
-    margin-bottom: 1.25rem;
-  }
-
-  /* ── PORTFOLIO ── */
-  .portfolio-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .portfolio-item {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 3rem;
-    padding: 2.5rem 0;
-    border-bottom: 1px solid var(--rule);
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    transition: background 0.2s;
-    cursor: pointer;
-  }
-  .portfolio-item:first-child { border-top: 1px solid var(--rule); }
-  .portfolio-item:hover .portfolio-arrow { transform: translateX(4px); color: var(--accent); }
-  .portfolio-item:hover .portfolio-title { color: var(--accent); }
-
-  .portfolio-meta {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .portfolio-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: var(--ink);
-    margin-bottom: 0.4rem;
-    transition: color 0.2s;
-  }
-  .portfolio-desc {
-    font-size: 0.95rem;
-    font-weight: 400;
-    color: var(--ink-muted);
-    margin-bottom: 0.75rem;
-  }
-  .portfolio-arrow {
-    font-size: 1.2rem;
-    color: var(--ink-muted);
-    transition: transform 0.2s, color 0.2s;
-  }
-
-  .portfolio-thumb {
-    position: relative;
-    width: 300px;
-    height: 188px;
-    overflow: hidden;
-    background: var(--cream-dark);
-    flex-shrink: 0;
-    border: 1px solid var(--rule);
-  }
-  .portfolio-thumb video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    opacity: 0.85;
-  }
-  .portfolio-item:hover .portfolio-thumb video {
-    opacity: 1;
-  }
-  .portfolio-tag {
-    position: absolute;
-    bottom: 0.75rem;
-    left: 0.75rem;
-    font-size: 0.6rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--cream);
-    background: rgba(26, 34, 32, 0.72);
-    padding: 0.25rem 0.6rem;
-    backdrop-filter: blur(4px);
-  }
+  /* ── GAP (dark data spread) ── */
+  .gap-lead { font-family:var(--serif); font-optical-sizing:auto; font-weight:340; font-size:clamp(22px,3.2vw,34px); line-height:1.28; color:var(--paper); max-width:26ch; }
+  .gap-lead em{ font-style:italic; color:var(--highlight); }
+  .gap-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(20px,3vw,32px); margin-top: clamp(34px,5vw,52px); }
+  .gap-item { border-top:1px solid rgba(230,227,220,.22); padding-top:18px; }
+  .gap-num { font-family:var(--serif); font-optical-sizing:auto; font-weight:400; font-size:clamp(40px,5vw,60px); line-height:.9; color:var(--paper); }
+  .gap-num span{ font-size:.5em; color:var(--highlight); }
+  .gap-item p { font-family:var(--sans); font-size:13.5px; line-height:1.55; color:rgba(230,227,220,.8); margin-top:12px; }
+  .gap-item .src { font-family:var(--mono); font-size:10px; letter-spacing:.05em; text-transform:uppercase; color:rgba(230,227,220,.5); margin-top:10px; }
+  @media (max-width:820px){ .gap-grid{ grid-template-columns:1fr 1fr; gap:28px 24px; } }
+  @media (max-width:440px){ .gap-grid{ grid-template-columns:1fr; } }
 
   /* ── ABOUT ── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr 1fr;
-    gap: 4rem;
-    align-items: start;
+  .about-grid { display:grid; grid-template-columns: 260px 1fr 190px; gap: clamp(26px,4vw,52px); align-items:start; }
+  .about-photo { position:relative; }
+  .about-photo .frame { position:relative; }
+  .about-photo img { width:100%; display:block; border-radius:2px; filter:url(#duo) contrast(1.02); }
+  .about-photo .ring { position:absolute; inset:-14px -10px -10px -12px; width:calc(100% + 22px); height:calc(100% + 24px); overflow:visible; pointer-events:none; }
+  .about-photo .ring path { fill:none; stroke:var(--red); stroke-width:2.2; stroke-linecap:round; }
+  .about-photo .cap { font-family:var(--hand); font-size:19px; color:var(--blue); transform:rotate(-2deg); display:block; margin-top:16px; }
+  .about-text p { font-family:var(--sans); font-size:16px; line-height:1.7; color:var(--ink); margin-bottom:18px; max-width:60ch; }
+  .about-text p.lead { font-family:var(--serif); font-weight:380; font-size:clamp(20px,2.6vw,26px); line-height:1.35; color:var(--ink); }
+  .about-text a { color:var(--blue); text-decoration:none; border-bottom:1px solid rgba(30,63,184,.35); }
+  .about-side .creds-label { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--soft); padding-bottom:10px; border-bottom:1px solid var(--rule); margin-bottom:14px; }
+  .creds { list-style:none; }
+  .creds li { font-family:var(--mono); font-size:12px; line-height:1.4; color:var(--ink); padding:9px 0; border-bottom:1px dotted var(--graphite); }
+  .creds li span { display:block; color:var(--soft); font-size:10.5px; margin-top:2px; }
+  @media (max-width:900px){
+    .about-grid{ grid-template-columns:1fr; }
+    .about-photo{ max-width:300px; }
+    .about-side{ border-top:1px solid var(--rule); padding-top:8px; }
   }
-
-  .about-photo {
-    position: sticky;
-    top: 8rem;
-  }
-
-  .about-photo img {
-    width: 100%;
-    display: block;
-    filter: grayscale(15%);
-    transition: filter 0.4s ease;
-  }
-
-  .about-photo img:hover { filter: grayscale(0%); }
-
-  .about-text p {
-    font-size: 1.05rem;
-    font-weight: 400;
-    line-height: 1.85;
-    color: var(--ink-soft);
-    margin-bottom: 1.5rem;
-    max-width: 60ch;
-  }
-  .about-text p:last-child { margin-bottom: 0; }
-
-  .about-sidebar {}
-  .credentials-label {
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    margin-bottom: 1rem;
-  }
-  .credential-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-  .credential-list li {
-    font-size: 0.95rem;
-    font-weight: 400;
-    color: var(--ink-soft);
-    padding: 0.65rem 0;
-    border-bottom: 1px solid var(--rule);
-    line-height: 1.4;
-  }
-  .credential-list li:first-child { border-top: 1px solid var(--rule); }
 
   /* ── CTA ── */
-  .cta-section {
-    background: var(--ink);
-    max-width: none;
-    padding: 6rem 3rem;
-    border-top: none;
-  }
-  .cta-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-  .cta-heading {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 3.5vw, 3.2rem);
-    font-weight: 300;
-    line-height: 1.15;
-    color: var(--cream);
-  }
-  .cta-heading em { font-style: italic; color: #7AB0A8; }
-
-  .cta-right {}
-  .cta-body {
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.75;
-    color: #8AADA8;
-    margin-bottom: 2rem;
-  }
-  .cta-btn {
-    display: inline-block;
-    padding: 0.85rem 2.25rem;
-    background: var(--accent);
-    color: var(--cream);
-    font-family: 'Jost', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: background 0.25s ease, transform 0.2s ease;
-  }
-  .cta-btn:hover {
-    background: #7AB0A8;
-    transform: translateY(-2px);
-  }
+  .cta-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:clamp(28px,5vw,56px); align-items:center; }
+  .cta-grid h2 { font-family:var(--serif); font-optical-sizing:auto; font-weight:360; font-size:clamp(32px,5vw,58px); line-height:1.02; letter-spacing:-.02em; color:var(--paper); }
+  .cta-grid h2 em{ font-style:italic; }
+  .cta-body { font-family:var(--sans); font-size:16.5px; line-height:1.65; color:rgba(230,227,220,.82); margin-bottom:26px; }
+  .btn-light { background:var(--paper); color:var(--ink); }
+  .btn-light:hover { background:var(--red); color:var(--paper); }
+  @media (max-width:760px){ .cta-grid{ grid-template-columns:1fr; } }
 
   /* ── FOOTER ── */
-  footer {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 2.5rem 3rem;
-    border-top: 1px solid var(--rule);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    color: var(--ink-muted);
-    text-decoration: none;
-  }
-  .footer-logo span { color: var(--accent); }
-  .footer-copy {
-    font-size: 0.7rem;
-    font-weight: 300;
-    letter-spacing: 0.06em;
-    color: var(--ink-muted);
-  }
+  footer { border-top:1px solid var(--rule); }
+  .footer-inner { max-width:var(--maxw); margin:0 auto; padding:34px var(--gutter); display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .footer-logo { font-family:var(--serif); font-weight:440; font-size:20px; text-decoration:none; color:var(--ink); }
+  .footer-copy { font-family:var(--mono); font-size:11px; letter-spacing:.03em; color:var(--soft); }
+  .footer-copy a { color:var(--soft); text-decoration:none; border-bottom:1px solid var(--rule); }
 
-  /* ── GAP CAROUSEL ── */
-  .gap-carousel {
-    position: relative;
-    min-height: 220px;
-  }
-  .gap-slide {
-    display: none;
-    animation: gapFade 0.5s ease;
-  }
-  .gap-slide.active { display: block; }
-  @keyframes gapFade {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .gap-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(4rem, 10vw, 7rem);
-    font-weight: 300;
-    color: var(--cream);
-    line-height: 1;
-    margin-bottom: 1.25rem;
-  }
-  .gap-number span { color: #7AB0A8; font-style: italic; }
-  .gap-body {
-    font-size: 1.05rem;
-    font-weight: 300;
-    line-height: 1.75;
-    color: #7A9E9A;
-    max-width: 52ch;
-    margin-bottom: 1rem;
-  }
-  .gap-source {
-    font-size: 0.65rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #3A5250;
-  }
-  .gap-dots {
-    display: flex;
-    gap: 0.6rem;
-    margin-top: 2.5rem;
-  }
-  .gap-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #243430;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
-    padding: 0;
-  }
-  .gap-dot.active {
-    background: #7AB0A8;
-    transform: scale(1.4);
-  }
-
-  .cta-nowrap { white-space: nowrap; }
-  @media (max-width: 900px) { .cta-nowrap { white-space: normal; } }
-
-  /* ── PORTFOLIO STACKED (mobile) ── */
-  @media (max-width: 768px) {
-    .portfolio-item {
-      display: flex;
-      flex-direction: column;
-      grid-template-columns: unset;
-      gap: 0;
+  /* ── MOBILE NAV ── */
+  @media (max-width:760px){
+    .hamburger{ display:block; }
+    .nav-links{
+      position:fixed; inset:0; background:var(--paper); flex-direction:column; justify-content:center;
+      gap:26px; transform:translateY(-100%); transition:transform .35s cubic-bezier(.65,0,.35,1); z-index:40;
     }
-    .portfolio-thumb {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 9;
-      order: -1;
-      margin-bottom: 1rem;
-    }
+    .nav-links.open{ transform:translateY(0); }
+    .nav-links a{ font-size:16px; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-margin{ border-left:none; border-top:1px solid var(--rule); padding-left:0; padding-top:22px; margin-top:6px; display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start; }
+    .hero-margin .note{ grid-column:1/-1; margin-bottom:6px; }
+    .hero-arrow{ display:none; }
   }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    .nav-inner { padding: 1.25rem 1.5rem; }
-    .nav-hamburger { display: flex; }
-    .nav-links {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: var(--cream);
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2.5rem;
-      z-index: 100;
-    }
-    .nav-links.open { display: flex; }
-    .nav-links a { font-size: 1.1rem; letter-spacing: 0.15em; }
-
-    .hero {
-      grid-template-columns: 1fr;
-      padding: 8rem 1.5rem 4rem;
-      gap: 3rem;
-    }
-    .hero-stats {
-      border-left: none;
-      padding-left: 0;
-      border-top: 1px solid var(--rule);
-      padding-top: 2rem;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-
-    section { padding: 4rem 1.5rem; }
-
-    .what-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .what-heading { position: static; }
-
-    .gap-stats-grid { grid-template-columns: repeat(2, 1fr); }
-
-    .proof-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-
-    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .about-photo { position: static; max-width: 280px; }
-
-    .cta-inner { grid-template-columns: 1fr; gap: 2rem; }
-
-    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+  /* ── reduced motion ── */
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .hmark path, .about-photo .ring path{ stroke-dasharray:none !important; stroke-dashoffset:0 !important; }
+    .hl::before{ transform:rotate(-1.6deg) scaleX(1) !important; transition:none !important; }
+    .btn, .case-link .arw{ transition:none !important; }
   }
 </style>
 </head>
 <body>
 
+<!-- hidden SVG duotone filter for headshot -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="duo" color-interpolation-filters="sRGB">
+    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0"/>
+    <feComponentTransfer>
+      <feFuncR type="table" tableValues="0.102 0.902"/>
+      <feFuncG type="table" tableValues="0.098 0.890"/>
+      <feFuncB type="table" tableValues="0.090 0.863"/>
+    </feComponentTransfer>
+  </filter>
+</svg>
+
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-logo"><img src="LB_Logo.jpg" alt="Ligaya Beebe" width="298" height="92" style="height: 2.4rem; width: auto; display: block;"></a>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="#" class="nav-logo">Ligaya Beebe</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="#services">Services</a></li>
       <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="https://calendly.com/ligaya-b/chat" target="_blank">Book a Call</a></li>
+      <li><a href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener" class="book">Book a Call</a></li>
     </ul>
   </div>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-left">
-    <p class="hero-eyebrow">AI Enablement · Training · Consulting</p>
-    <h1 class="hero-headline">
-      Your dev team gets it.<br>
-      <em>Let's bring everyone else along.</em>
-    </h1>
-    <p class="hero-sub">
-      I work with the help desk, the implementation team, the ops people, the ones your dev team is waiting on. Hands-on, collaborative, built around your actual work.
-    </p>
-    <a href="https://calendly.com/ligaya-b/chat" target="_blank" class="hero-cta">Book a Free Consultation</a>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-main">
+      <p class="kicker">Ligaya Beebe · AI Enablement &amp; Training</p>
+      <h1 style="margin-top:18px;">
+        Your dev team gets&nbsp;it.<br>
+        Now let's bring
+        <span class="hl">everyone</span>
+        <span class="u-wrap em2">else<svg class="hmark" viewBox="0 0 120 12" preserveAspectRatio="none"><path class="drawon" d="M4 8 C 30 3, 90 3, 116 6"/></svg></span>
+        along.
+      </h1>
+      <p class="hero-sub">I work with the help desk, the implementation team, the ops people — the ones your dev team is waiting on. Hands-on, collaborative, built around your team's actual work.</p>
+      <a href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener" class="btn">Book a free consultation <span class="arw">→</span></a>
+    </div>
+
+    <aside class="hero-margin">
+      <p class="note">Former teacher.<br>I make the hard<br>stuff make sense.</p>
+      <div class="hero-arrow"><svg viewBox="0 0 70 44"><path class="drawon" d="M6 4 C 30 10, 44 22, 40 40 M40 40 L30 30 M40 40 L52 34"/></svg></div>
+      <div class="mini-stat"><b>91+</b><span>professionals trained</span></div>
+      <div class="mini-stat"><b>96%</b><span>satisfaction · $0 ad spend</span></div>
+    </aside>
   </div>
+</header>
 
-  <div class="hero-right">
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-number"><span class="counter" data-target="91" data-suffix="+">0</span></div>
-        <div class="stat-label">Professionals trained via AI Architect Program</div>
+<!-- PROOF -->
+<section class="dark sec" id="proof">
+  <div class="wrap">
+    <div class="sec-top">
+      <p class="kicker">§ 01 — The Receipts</p>
+      <h2>Proof, not promises.</h2>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-item">
+        <div class="proof-num"><span class="circle-wrap">96<span class="unit">%</span><svg class="hmark" viewBox="0 0 160 80" preserveAspectRatio="none"><path class="drawon" d="M150 20 C 118 5, 42 5, 18 22 C -2 36, 8 60, 44 68 C 96 78, 152 66, 152 42 C 152 30, 144 22, 134 18"/></svg></span></div>
+        <p>Satisfaction across the AI Architect Program — 91 registrants, 4.8★ rating, built from zero with zero paid marketing.</p>
+        <p class="src">AI Architect Program · Never Search Alone</p>
       </div>
-      <div class="hero-divider"></div>
-      <div class="stat-item">
-        <div class="stat-number"><span class="counter" data-target="96" data-suffix="%">0</span></div>
-        <div class="stat-label">Satisfaction rate · zero paid marketing</div>
+      <div class="proof-item">
+        <div class="proof-num">$8M<span class="unit">+</span></div>
+        <p>In grant funding and renewals secured across multiple U.S. State Department-funded global education programs.</p>
+        <p class="src">iEARN-USA · 12+ countries</p>
       </div>
-      <div class="hero-divider"></div>
-      <div class="stat-item">
-        <div class="stat-number"><span class="counter" data-target="27" data-suffix="%">0</span></div>
-        <div class="stat-label">Reduction in support requests after onboarding redesign · 8 countries</div>
+      <div class="proof-item">
+        <div class="proof-num">27<span class="unit">%</span></div>
+        <p>Fewer support requests after an onboarding redesign spanning eight countries. Better learning design, measurable result.</p>
+        <p class="src">Onboarding redesign · 8 countries</p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">4-wk</div>
+        <p>Active engagement turning a 30-person team from AI skeptics into daily practitioners — right now, in 2026.</p>
+        <p class="src">Current client engagement</p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- RESEARCH / AUTHORITY -->
-<section style="border-top: 1px solid var(--rule); max-width: none; padding: 5rem 3rem; background: var(--ink);">
-  <div style="max-width: 700px; margin: 0 auto;">
-    <p class="section-label reveal" style="color: #7AB0A8;">The Gap Is Real</p>
-    <h2 class="reveal" style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; line-height: 1.3; color: var(--cream); max-width: 60ch; margin-bottom: 3rem;">
-      Most teams know AI is changing everything.<br>
-      <em style="font-style: italic; color: #7AB0A8;">Almost none are ready for it.</em>
-    </h2>
-
-    <!-- Carousel -->
-    <div class="gap-carousel" id="gapCarousel">
-      <div class="gap-slide active">
-        <div class="gap-number">70<span>%</span></div>
-        <p class="gap-body">of workers worry about AI's economic impact, but only 39% think their own job is at risk. Fear without action is the default.</p>
-        <p class="gap-source">WEF / Udemy, Jan 2026</p>
-      </div>
-      <div class="gap-slide">
-        <div class="gap-number">59<span>%</span></div>
-        <p class="gap-body">of enterprise leaders report an AI skills gap — even though most are already spending on training. Spending isn't the same as doing it well.</p>
-        <p class="gap-source">DataCamp / YouGov, 2026</p>
-      </div>
-      <div class="gap-slide">
-        <div class="gap-number">72<span>%</span></div>
-        <p class="gap-body">of leaders say AI literacy is now essential for day-to-day work. Yet 60% of those same organizations report a significant skills gap.</p>
-        <p class="gap-source">DataCamp / YouGov, 2026</p>
-      </div>
-      <div class="gap-slide">
-        <div class="gap-number">2<span>×</span></div>
-        <p class="gap-body">Organizations with structured AI literacy programs are nearly twice as likely to report significant AI ROI. Training design matters.</p>
-        <p class="gap-source">DataCamp / YouGov, 2026</p>
-      </div>
+<!-- WORK -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-top">
+      <p class="kicker">§ 02 — Selected Work</p>
+      <h2>Things I built<br>and shipped.</h2>
+      <p class="sec-note">↳ real work you can click into — not a skills list</p>
     </div>
 
-    <!-- Dots -->
-    <div class="gap-dots" id="gapDots">
-      <button class="gap-dot active" data-index="0"></button>
-      <button class="gap-dot" data-index="1"></button>
-      <button class="gap-dot" data-index="2"></button>
-      <button class="gap-dot" data-index="3"></button>
-    </div>
+    <!-- CASE 1 -->
+    <article class="case">
+      <div class="case-body">
+        <p class="case-num">01 / 04</p>
+        <h3 class="case-title u-wrap">AI Architect Program<svg class="hmark" viewBox="0 0 300 12" preserveAspectRatio="none"><path class="drawon" d="M4 8 C 60 3, 150 3, 210 7 S 280 9, 296 5"/></svg></h3>
+        <p class="case-desc">A peer-led AI learning series I designed and facilitated end to end — 91 registrants, 4.8★, <span class="circle-wrap">96% satisfaction<svg class="hmark" viewBox="0 0 200 60" preserveAspectRatio="none"><path class="drawon" d="M190 16 C 150 3, 45 3, 18 18 C -2 32, 8 50, 55 56 C 130 64, 194 52, 192 32 C 191 23, 182 17, 172 14"/></svg></span> — with zero paid marketing.</p>
+        <div class="meta">
+          <span class="chip"><b>ROLE</b>Program design + facilitation</span>
+          <span class="chip"><b>FORMAT</b>Peer-led cohort</span>
+          <span class="chip"><b>YEAR</b>2025</span>
+        </div>
+        <a class="case-link" href="https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html" target="_blank" rel="noopener">View live report <span class="arw">→</span></a>
+      </div>
+      <div class="case-media">
+        <a class="screen" href="https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html" target="_blank" rel="noopener" data-video="videos/AI Architect Program Scroll.mp4">
+          <span class="tag">Live site</span>
+          <img src="videos/aiarchitect-poster.jpg" alt="AI Architect Program report" loading="lazy">
+          <span class="playcue">▶ hover to play</span>
+        </a>
+        <p class="media-cap">↑ scroll-through of the published report</p>
+      </div>
+    </article>
+
+    <!-- CASE 2 -->
+    <article class="case">
+      <div class="case-body">
+        <p class="case-num">02 / 04</p>
+        <h3 class="case-title">Compare Top Image Models</h3>
+        <p class="case-desc">A <span class="circle-wrap">hackathon runner-up<svg class="hmark" viewBox="0 0 220 60" preserveAspectRatio="none"><path class="drawon" d="M210 16 C 168 3, 48 3, 20 18 C -2 33, 8 51, 55 57 C 130 65, 212 53, 212 33 C 212 23, 202 17, 192 14"/></svg></span> MindStudio agent that runs six image-generation models in parallel on one prompt and returns a side-by-side comparison — built to help teams actually evaluate AI tools.</p>
+        <div class="meta">
+          <span class="chip"><b>ROLE</b>Agent development</span>
+          <span class="chip"><b>PLATFORM</b>MindStudio</span>
+          <span class="chip"><b>AWARD</b>Runner-up</span>
+        </div>
+        <a class="case-link" href="https://app.mindstudio.ai/agents/compare-top-image-models-18755b63" target="_blank" rel="noopener">Try the agent <span class="arw">→</span></a>
+      </div>
+      <div class="case-media">
+        <a class="screen" href="https://app.mindstudio.ai/agents/compare-top-image-models-18755b63" target="_blank" rel="noopener" data-video="videos/top image models.mp4">
+          <span class="tag">Runner-up</span>
+          <img src="videos/imagemodels-poster.jpg" alt="Compare Top Image Models agent" loading="lazy">
+          <span class="playcue">▶ hover to play</span>
+        </a>
+        <p class="media-cap">↑ six models, one prompt, side by side</p>
+      </div>
+    </article>
+
+    <!-- CASE 3 -->
+    <article class="case">
+      <div class="case-body">
+        <p class="case-num">03 / 04</p>
+        <h3 class="case-title u-wrap">Document Archivist<svg class="hmark" viewBox="0 0 300 12" preserveAspectRatio="none"><path class="drawon" d="M4 7 C 70 4, 160 10, 220 6 S 285 4, 296 8"/></svg></h3>
+        <p class="case-desc">An AI workflow that ingests PDFs, cleans up OCR text, and generates structured metadata automatically — built for teams drowning in documents who need to find things fast.</p>
+        <div class="meta">
+          <span class="chip"><b>ROLE</b>AI workflow design</span>
+          <span class="chip"><b>FOCUS</b>PDF · OCR · metadata</span>
+          <span class="chip"><b>SOURCE</b>GitHub</span>
+        </div>
+        <a class="case-link" href="https://github.com/1beebe/document-archivist" target="_blank" rel="noopener">View the code <span class="arw">→</span></a>
+      </div>
+      <div class="case-media">
+        <a class="screen" href="https://github.com/1beebe/document-archivist" target="_blank" rel="noopener" data-video="videos/archivist promo.mp4">
+          <span class="tag">GitHub</span>
+          <img src="videos/archivist-poster.jpg" alt="Document Archivist workflow" loading="lazy" style="object-position:50% 35%">
+          <span class="playcue">▶ hover to play</span>
+        </a>
+        <p class="media-cap">↑ ingest → clean → structured metadata</p>
+      </div>
+    </article>
+
+    <!-- CASE 4 -->
+    <article class="case">
+      <div class="case-body">
+        <p class="case-num">04 / 04</p>
+        <h3 class="case-title">Lakoff Lens</h3>
+        <p class="case-desc">A prototype that analyzes political text for sentiment <em>and</em> metaphorical framing using George Lakoff's cognitive-linguistics framework — sitting right where AI meets how language actually shapes thought.</p>
+        <div class="meta">
+          <span class="chip"><b>ROLE</b>Prototype</span>
+          <span class="chip"><b>METHOD</b>Framing + sentiment</span>
+          <span class="chip"><b>SOURCE</b>GitHub</span>
+        </div>
+        <a class="case-link" href="https://github.com/1beebe/lakoff-lens" target="_blank" rel="noopener">View the code <span class="arw">→</span></a>
+      </div>
+      <div class="case-media">
+        <a class="screen" href="https://github.com/1beebe/lakoff-lens" target="_blank" rel="noopener" data-video="videos/lakoff.mp4">
+          <span class="tag">GitHub</span>
+          <img src="videos/lakoff-poster.jpg" alt="Lakoff Lens prototype" loading="lazy">
+          <span class="playcue">▶ hover to play</span>
+        </a>
+        <p class="media-cap">↑ sentiment + metaphor-frame analysis</p>
+      </div>
+    </article>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services">
-  <p class="section-label reveal">What I Do</p>
-  <div class="what-grid">
-    <div>
-      <h2 class="what-heading reveal">Train.<br>Build.<br><em style="font-style: italic; color: var(--accent);">Embed.</em></h2>
+<section class="sec" id="services" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="sec-top">
+      <p class="kicker">§ 03 — What I Do</p>
     </div>
-    <div class="services-list">
+    <div class="svc-grid">
+      <div class="svc-head">Train.<br>Build.<br><em>Embed.</em></div>
+      <div class="svc-list">
 
-      <div class="service-item reveal">
-        <span class="service-num">01</span>
-        <div class="service-content">
-          <h3 class="service-title">AI Enablement &amp; Training</h3>
-          <p class="service-desc">
-            Custom workshops for non-technical teams, delivered online or I'll fly to you. We don't start with tools. We start with your team's actual work, figure out where AI creates real value, and build from there. The goal is lasting fluency, not a one-day hype session.
-          </p>
-          <div class="service-tools">
-            <span class="tool-tag">Online &amp; In-Person</span>
-            <span class="tool-tag">SMBs</span>
-            <span class="tool-tag">Custom Curriculum</span>
-            <span class="tool-tag">Cohort &amp; 1:1 Formats</span>
+        <div class="svc-item">
+          <div class="svc-n">1.</div>
+          <div>
+            <h3 class="svc-title">AI Enablement &amp; Training</h3>
+            <p class="svc-desc">Custom workshops for non-technical teams, delivered online or I'll fly to you. We don't start with tools — we start with your team's actual work, find where AI creates real value, and build from there. The goal is lasting fluency, not a one-day hype session.</p>
+            <div class="tools">
+              <span class="chip">Online &amp; in-person</span>
+              <span class="chip">SMBs</span>
+              <span class="chip">Custom curriculum</span>
+              <span class="chip">Cohort &amp; 1:1</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="service-item reveal">
-        <span class="service-num">02</span>
-        <div class="service-content">
-          <h3 class="service-title">AI Agent Development</h3>
-          <p class="service-desc">
-            Purpose-built AI workflows and agents for teams that need more than training. I design lightweight automation that fits how your team actually works. Then I teach them how to use it. The tool and the training come together.
-          </p>
-          <div class="service-tools">
-            <span class="tool-tag">MindStudio L3 Certified</span>
-            <span class="tool-tag">Workflow Automation</span>
-            <span class="tool-tag">No-Code Friendly</span>
-            <span class="tool-tag">Claude · ChatGPT · NotebookLM</span>
+        <div class="svc-item">
+          <div class="svc-n">2.</div>
+          <div>
+            <h3 class="svc-title">AI Agent Development</h3>
+            <p class="svc-desc">Purpose-built AI workflows and agents for teams that need more than training. I design lightweight automation that fits how your team actually works — then I teach them how to use it. The tool and the training come together.</p>
+            <div class="tools">
+              <span class="chip">MindStudio L3 certified</span>
+              <span class="chip">Workflow automation</span>
+              <span class="chip">No-code friendly</span>
+              <span class="chip">Claude · ChatGPT · NotebookLM</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="service-item reveal">
-        <span class="service-num">03</span>
-        <div class="service-content">
-          <h3 class="service-title">AI Program Management</h3>
-          <p class="service-desc">
-            Good training asks "what's next?" I can answer that. Hire me to design and manage your organization's ongoing AI adoption program, from curriculum to rollout to measurement. I've secured $8M across multiple U.S. State Department-funded education programs spanning 12+ countries. I know how to build programs that create lasting change.
-          </p>
-          <div class="service-tools">
-            <span class="tool-tag">Fractional Program Lead</span>
-            <span class="tool-tag">Nonprofits &amp; SMBs</span>
-            <span class="tool-tag">Grant-Funded Initiatives</span>
-            <span class="tool-tag">PMP Certified</span>
+        <div class="svc-item">
+          <div class="svc-n">3.</div>
+          <div>
+            <h3 class="svc-title">AI Program Management</h3>
+            <p class="svc-desc">Good training asks "what's next?" — I can answer that. Hire me to design and manage your organization's ongoing AI adoption program, from curriculum to rollout to measurement. I've secured $8M across U.S. State Department-funded education programs in 12+ countries. I know how to build programs that create lasting change.</p>
+            <div class="tools">
+              <span class="chip">Fractional program lead</span>
+              <span class="chip">Nonprofits &amp; SMBs</span>
+              <span class="chip">Grant-funded initiatives</span>
+              <span class="chip">PMP certified</span>
+            </div>
           </div>
         </div>
-      </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- PROOF -->
-<section style="background: var(--cream-dark); max-width: none; padding: 5rem 3rem;">
-  <div style="max-width: 960px; margin: 0 auto;">
-    <p class="section-label reveal">Results</p>
-    <div class="proof-grid">
-      <div class="proof-item reveal">
-        <div class="proof-rule"></div>
-        <div style="font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; line-height: 1; color: var(--ink); margin-bottom: 0.75rem;">91 <span style="font-size: 1.5rem; color: var(--accent); font-style: italic;">registrants</span></div>
-        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--ink-soft); margin-bottom: 0.6rem;">Built the AI Architect Program from zero: 4.8★ rating, 96% satisfaction, zero paid marketing. Good instructional design creates its own momentum.</p>
-        <p class="proof-meta">AI Architect Program · Never Search Alone</p>
-      </div>
-      <div class="proof-item reveal">
-        <div class="proof-rule"></div>
-        <div style="font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; line-height: 1; color: var(--ink); margin-bottom: 0.75rem;">$8M<span style="font-size: 1.5rem; color: var(--accent); font-style: italic;">+</span></div>
-        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--ink-soft); margin-bottom: 0.6rem;">In grant funding and renewals secured across multiple U.S. State Department-funded global education programs reaching learners in 12+ countries.</p>
-        <p class="proof-meta">iEARN-USA · U.S. State Dept. Programs</p>
-      </div>
-      <div class="proof-item reveal">
-        <div class="proof-rule"></div>
-        <div style="font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; line-height: 1; color: var(--ink); margin-bottom: 0.75rem;">4-week <span style="font-size: 1.5rem; color: var(--accent); font-style: italic;">engagement</span></div>
-        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--ink-soft); margin-bottom: 0.6rem;">Currently delivering hands-on AI enablement training for a 30-person team, turning skeptics into daily practitioners.</p>
-        <p class="proof-meta">Active Client Engagement · 2026</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PORTFOLIO -->
-<section id="work">
-  <p class="section-label reveal">Selected Work</p>
-  <h2 class="reveal" style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 300; margin-bottom: 3rem; line-height: 1.2;">Things I've built<br><em style="font-style: italic; color: var(--accent);">and shipped.</em></h2>
-
-  <div class="portfolio-list">
-
-    <a href="https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html" target="_blank" class="portfolio-item">
-      <div class="portfolio-meta">
-        <p class="portfolio-title">AI Architect Program Report</p>
-        <p class="portfolio-desc">Peer-led AI learning series: 91 registrants, 96% satisfaction, 4.8★ rating, zero paid marketing.</p>
-        <span class="portfolio-arrow">→</span>
+<!-- GAP -->
+<section class="dark sec" id="gap">
+  <div class="wrap">
+    <div class="sec-top">
+      <p class="kicker">§ 04 — Why Now</p>
+      <p class="gap-lead">Most teams know AI is changing everything. <em>Almost none are ready for it.</em></p>
+    </div>
+    <div class="gap-grid">
+      <div class="gap-item">
+        <div class="gap-num">70<span>%</span></div>
+        <p>of workers worry about AI's economic impact — but only 39% think their own job is at risk. Fear without action is the default.</p>
+        <p class="src">WEF / Udemy · Jan 2026</p>
       </div>
-      <div class="portfolio-thumb">
-        <video src="videos/AI Architect Program Scroll.mp4" muted loop playsinline></video>
-        <span class="portfolio-tag">Live Site</span>
+      <div class="gap-item">
+        <div class="gap-num">59<span>%</span></div>
+        <p>of enterprise leaders report an AI skills gap — even though most already spend on training. Spending isn't the same as doing it well.</p>
+        <p class="src">DataCamp / YouGov · 2026</p>
       </div>
-    </a>
-
-    <a href="https://app.mindstudio.ai/agents/compare-top-image-models-18755b63" target="_blank" class="portfolio-item">
-      <div class="portfolio-meta">
-        <p class="portfolio-title">Compare Top Image Models</p>
-        <p class="portfolio-desc">Hackathon runner-up. A MindStudio agent that runs 6 image generation models in parallel against the same prompt and returns a side-by-side visual comparison, built to help teams evaluate AI tools and learn about different image models.</p>
-        <span class="portfolio-arrow">→</span>
+      <div class="gap-item">
+        <div class="gap-num">72<span>%</span></div>
+        <p>of leaders say AI literacy is now essential for day-to-day work. Yet 60% of those same organizations report a significant skills gap.</p>
+        <p class="src">DataCamp / YouGov · 2026</p>
       </div>
-      <div class="portfolio-thumb">
-        <video src="videos/top image models.mp4" muted loop playsinline></video>
-        <span class="portfolio-tag">Runner-Up</span>
+      <div class="gap-item">
+        <div class="gap-num">2<span>×</span></div>
+        <p>Organizations with structured AI literacy programs are nearly twice as likely to report significant AI ROI. Training design matters.</p>
+        <p class="src">DataCamp / YouGov · 2026</p>
       </div>
-    </a>
-
-    <a href="https://github.com/1beebe/document-archivist" target="_blank" class="portfolio-item">
-      <div class="portfolio-meta">
-        <p class="portfolio-title">Document Archivist</p>
-        <p class="portfolio-desc">AI workflow that ingests PDFs, cleans OCR text, and generates structured metadata automatically, built for teams drowning in documents who need to find things fast.</p>
-        <span class="portfolio-arrow">→</span>
-      </div>
-      <div class="portfolio-thumb">
-        <video src="videos/archivist promo.mp4" muted loop playsinline style="object-position: 50% 35%"></video>
-        <span class="portfolio-tag">GitHub</span>
-      </div>
-    </a>
-
-    <a href="https://github.com/1beebe/lakoff-lens" target="_blank" class="portfolio-item">
-      <div class="portfolio-meta">
-        <p class="portfolio-title">Lakoff Lens</p>
-        <p class="portfolio-desc">Analyzes political text for sentiment and metaphorical framing using George Lakoff's cognitive linguistics framework. A prototype at the intersection of AI and how language actually shapes thought.</p>
-        <span class="portfolio-arrow">→</span>
-      </div>
-      <div class="portfolio-thumb">
-        <video src="videos/lakoff.mp4" muted loop playsinline></video>
-        <span class="portfolio-tag">GitHub</span>
-      </div>
-    </a>
-
-
-
+    </div>
   </div>
-
-
 </section>
 
 <!-- ABOUT -->
-<section id="about">
-  <p class="section-label reveal">About</p>
-  <div class="about-grid">
-    <div class="about-photo reveal">
-      <img src="headshot.jpg" alt="Ligaya Beebe — AI Enablement Consultant" width="896" height="1152" style="height: auto;">
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="sec-top">
+      <p class="kicker">§ 05 — About</p>
     </div>
-    <div class="about-text">
-      <p class="reveal">
-        I'm Ligaya Beebe, founder of L. Beebe LLC and co-founder of <a href="https://10xjobs.co/?utm_source=lbeebe&utm_medium=referral&utm_campaign=20260426" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-light);">10xJobs.co</a>, a personal AI executive coach built by job-seekers, for job-seekers.
-      </p>
-      <p class="reveal">
-        Before I pivoted to AI, I spent nine years at iEARN-USA building a career in learning and development at every level of an organization. As a Coordinator I was the front-line person helping students and families navigate the disorientation of overseas programs. When I became a Program Manager I shifted to developing the people around me: coaching direct reports and building the capacity of our international implementing partners. By the time I reached Senior Grants and Program Manager, I was operating at the relationship and systems level, managing U.S. government funders and creating the conditions for my team to thrive.
-      </p>
-      <p class="reveal">
-        Prior to that, I taught at universities in Qinghai Province (one of the most remote parts of China) and was a New York City Teaching Fellow in under-resourced public schools. I've spent my career helping people learn things they were convinced they couldn't.
-      </p>
-      <p class="reveal">
-        AI adoption is the same problem in a new context. Most people who struggle with it aren't struggling because they're not smart enough; nobody designed the learning for them. That's the kind of problem I've been solving for decades.
-      </p>
-      <p class="reveal">
-        The tools I recommend are tools I build with daily, mostly in MindStudio or with Claude Code. I also run the AI Architect Program inside Never Search Alone, a free peer-learning series, 144+ professionals, zero paid marketing. When I'm not wrangling two kids, I try to fill my sketchbook and photograph Florida wildlife — and sometimes I actually do.
-      </p>
-    </div>
-    <div class="about-sidebar reveal">
-      <p class="credentials-label">Credentials</p>
-      <ul class="credential-list">
-        <li>M.A. Social Sciences<br><span style="color: var(--ink-muted); font-size: 0.8rem;">University of Chicago</span></li>
-        <li>M.S. Special Education<br><span style="color: var(--ink-muted); font-size: 0.8rem;">St. John's University</span></li>
-        <li>B.A. Religion<br><span style="color: var(--ink-muted); font-size: 0.8rem;">Reed College</span></li>
-        <li>NYC Teaching Fellow<br><span style="color: var(--ink-muted); font-size: 0.8rem;">New York Dept. of Education</span></li>
-        <li>PMP Certified<br><span style="color: var(--ink-muted); font-size: 0.8rem;">Project Management Professional</span></li>
-        <li>MindStudio Level 3<br><span style="color: var(--ink-muted); font-size: 0.8rem;">AI Agent Developer</span></li>
-        <li>9+ Years<br><span style="color: var(--ink-muted); font-size: 0.8rem;">U.S. State Dept. programs · 12+ countries</span></li>
-      </ul>
+    <div class="about-grid">
+      <div class="about-photo">
+        <div class="frame">
+          <img src="headshot.jpg" alt="Ligaya Beebe — AI Enablement Consultant" width="896" height="1152">
+          <svg class="ring" viewBox="0 0 240 300" preserveAspectRatio="none"><path class="drawon" d="M120 6 C 200 4, 236 60, 232 150 C 229 240, 190 294, 116 296 C 44 298, 8 240, 8 150 C 8 58, 46 8, 120 6"/></svg>
+        </div>
+        <span class="cap">↳ sketchbook + Florida wildlife, off the clock</span>
+      </div>
+
+      <div class="about-text">
+        <p class="lead">I've spent my career helping people learn things they were convinced they couldn't.</p>
+        <p>I'm Ligaya Beebe, founder of L. Beebe LLC and co-founder of <a href="https://10xjobs.co/?utm_source=lbeebe&utm_medium=referral&utm_campaign=20260426" target="_blank" rel="noopener">10xJobs.co</a>, a personal AI executive coach built by job-seekers, for job-seekers.</p>
+        <p>Before I pivoted to AI, I spent nine years at iEARN-USA building a career in learning and development at every level of an organization — from the front-line coordinator helping families navigate overseas programs, to program manager coaching direct reports and international partners, to senior grants manager operating at the systems level with U.S. government funders.</p>
+        <p>Before that, I taught at universities in Qinghai Province — one of the most remote parts of China — and was a New York City Teaching Fellow in under-resourced public schools.</p>
+        <p>AI adoption is the same problem in a new context. Most people who struggle with it aren't struggling because they're not smart enough — nobody designed the learning for them. That's the kind of problem I've been solving for decades.</p>
+        <p>The tools I recommend are tools I build with daily, mostly in MindStudio or with Claude Code. I also run the AI Architect Program inside Never Search Alone — a free peer-learning series, 144+ professionals, zero paid marketing. When I'm not wrangling two kids, I try to fill my sketchbook and photograph Florida wildlife, and sometimes I actually do.</p>
+      </div>
+
+      <div class="about-side">
+        <p class="creds-label">Transcript</p>
+        <ul class="creds">
+          <li>M.A. Social Sciences<span>University of Chicago</span></li>
+          <li>M.S. Special Education<span>St. John's University</span></li>
+          <li>B.A. Religion<span>Reed College</span></li>
+          <li>NYC Teaching Fellow<span>NY Dept. of Education</span></li>
+          <li>PMP Certified<span>Project Management Professional</span></li>
+          <li>MindStudio Level 3<span>AI Agent Developer</span></li>
+          <li>9+ Years<span>U.S. State Dept. · 12+ countries</span></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section">
-  <div class="cta-inner">
-    <h2 class="cta-heading reveal">
-      <span class="cta-nowrap">Ready to stop worrying about AI</span><br>
-      and start <em>using it?</em>
-    </h2>
-    <div class="cta-right reveal">
-      <p class="cta-body">
-        Book a free 30-minute consultation. We'll talk about where your team is, where you want to be, and whether working together makes sense. No pitch deck. No pressure.
-      </p>
-      <a href="https://calendly.com/ligaya-b/chat" target="_blank" class="cta-btn">Book a Free Call</a>
+<section class="dark sec" id="cta">
+  <div class="wrap cta-grid">
+    <h2>Ready to stop worrying about AI and start <em>using it?</em></h2>
+    <div>
+      <p class="cta-body">Book a free 30-minute consultation. We'll talk about where your team is, where you want to be, and whether working together makes sense. No pitch deck. No pressure.</p>
+      <a href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener" class="btn btn-light">Book a free call <span class="arw">→</span></a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <a href="#" class="footer-logo">L. Beebe<span>,</span> LLC</a>
-  <p class="footer-copy">© 2026 L. Beebe, LLC · Estero, FL · Color story, logo & favicon by <a href="https://www.partanadesigns.com/" target="_blank" style="color: var(--ink-muted); text-decoration: none; border-bottom: 1px solid var(--rule);">Partana Designs</a></p>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">L. Beebe, LLC</a>
+    <p class="footer-copy">© 2026 L. Beebe, LLC · Estero, FL · Color story &amp; favicon by <a href="https://www.partanadesigns.com/" target="_blank" rel="noopener">Partana Designs</a></p>
+  </div>
 </footer>
 
 <script>
-  // Animated counters — sequential, like a slide deck
-  const counters = document.querySelectorAll('.counter');
-  let countersFired = false;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function runCounter(el, delay) {
-    setTimeout(() => {
-      const target = parseFloat(el.dataset.target);
-      const suffix = el.dataset.suffix || '';
-      const isDecimal = el.dataset.decimal === 'true';
-      const duration = 900;
-      const steps = 50;
-      const increment = target / steps;
-      let current = 0;
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-          current = target;
-          clearInterval(timer);
-        }
-        el.textContent = (isDecimal ? current.toFixed(1) : Math.floor(current)) + suffix;
-      }, duration / steps);
-    }, delay);
-  }
-
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !countersFired) {
-        countersFired = true;
-        counters.forEach((el, i) => runCounter(el, i * 700));
-        counterObserver.disconnect();
-      }
-    });
-  }, { threshold: 0.5 });
-
-  if (counters.length) counterObserver.observe(counters[0]);
-
-  // Gap carousel
-  const slides = document.querySelectorAll('.gap-slide');
-  const dots = document.querySelectorAll('.gap-dot');
-  let current = 0;
-  let carouselTimer;
-
-  function goTo(n) {
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    current = (n + slides.length) % slides.length;
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
-  }
-
-  function startTimer() {
-    carouselTimer = setInterval(() => goTo(current + 1), 6000);
-  }
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      clearInterval(carouselTimer);
-      goTo(parseInt(dot.dataset.index));
-      startTimer();
-    });
-  });
-
-  const carousel = document.getElementById('gapCarousel');
-  carousel.addEventListener('mouseenter', () => clearInterval(carouselTimer));
-  carousel.addEventListener('mouseleave', startTimer);
-
-  startTimer();
-
-  // Hamburger menu
-  const hamburger = document.getElementById('nav-hamburger');
-  const navLinks = document.getElementById('nav-links');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    navLinks.classList.toggle('open');
-  });
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
-    });
-  });
-
-  // Nav scroll effect
+  // Nav
   const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), {passive:true});
+  const ham = document.getElementById('hamburger');
+  const links = document.getElementById('nav-links');
+  ham.addEventListener('click', () => { ham.classList.toggle('open'); links.classList.toggle('open'); });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { ham.classList.remove('open'); links.classList.remove('open'); }));
+
+  // Hand-drawn marks: prep stroke, draw on when in view
+  const marks = document.querySelectorAll('.drawon');
+  marks.forEach(p => {
+    try {
+      const len = p.getTotalLength();
+      p.style.strokeDasharray = len;
+      p.style.strokeDashoffset = reduce ? 0 : len;
+      p.style.transition = 'stroke-dashoffset 640ms cubic-bezier(0.65,0,0.35,1)';
+    } catch(e){}
   });
+  if (!reduce) {
+    const mObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.style.strokeDashoffset = 0; mObs.unobserve(e.target); } });
+    }, { threshold: 0.55 });
+    marks.forEach(p => mObs.observe(p));
 
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), 80);
-        observer.unobserve(entry.target);
-      }
+    // Highlighter swipe grows when hero enters
+    const hl = document.querySelector('.hl');
+    if (hl) {
+      hl.style.setProperty('--hlx','0');
+      requestAnimationFrame(() => setTimeout(() => hl.style.setProperty('--hlx','1'), 350));
+    }
+  }
+
+  // Portfolio: lazy-load video on hover, poster + play-on-hover
+  document.querySelectorAll('.screen').forEach(screen => {
+    const src = screen.dataset.video;
+    if (!src) return;
+    let video = null;
+    const build = () => {
+      if (video) return video;
+      video = document.createElement('video');
+      video.muted = true; video.loop = true; video.playsInline = true; video.preload = 'auto';
+      video.src = src;
+      const img = screen.querySelector('img');
+      if (img && img.style.objectPosition) video.style.objectPosition = img.style.objectPosition;
+      screen.insertBefore(video, screen.querySelector('.playcue'));
+      return video;
+    };
+    screen.addEventListener('mouseenter', () => {
+      const v = build();
+      v.play().then(() => screen.classList.add('playing')).catch(()=>{});
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-  reveals.forEach(el => observer.observe(el));
-
-  // Portfolio video thumbnails — play on hover, pause+reset on leave
-  document.querySelectorAll('.portfolio-item').forEach(item => {
-    const video = item.querySelector('video');
-    if (!video) return;
-    item.addEventListener('mouseenter', () => video.play());
-    item.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+    screen.addEventListener('mouseleave', () => {
+      screen.classList.remove('playing');
+      if (video) { video.pause(); video.currentTime = 0; }
+    });
   });
 </script>
 
