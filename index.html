@@ -731,6 +731,23 @@
       hl.style.setProperty('--hlx','0');
       requestAnimationFrame(() => setTimeout(() => hl.style.setProperty('--hlx','1'), 350));
     }
+
+    // Glasses doodle: re-sketch every time the Lakoff Lens card is hovered,
+    // so the motion is repeatable and impossible to miss.
+    const glasses = document.querySelector('.doodle-glasses path.drawon');
+    const glassesCard = glasses && glasses.closest('.case');
+    if (glasses && glassesCard) {
+      const glen = glasses.getTotalLength();
+      glassesCard.addEventListener('mouseenter', () => {
+        glasses.style.transition = 'none';
+        glasses.style.strokeDashoffset = glen;
+        void glasses.getBoundingClientRect();      // force reflow so the reset takes
+        requestAnimationFrame(() => {
+          glasses.style.transition = 'stroke-dashoffset 1050ms cubic-bezier(0.65,0,0.35,1)';
+          glasses.style.strokeDashoffset = 0;
+        });
+      });
+    }
   }
 
   // Portfolio: warm the video up as it nears the viewport so hover plays instantly
