@@ -703,9 +703,10 @@
   marks.forEach(p => {
     try {
       const len = p.getTotalLength();
+      const slow = !!p.closest('.doodle-glasses');   // the glasses doodle draws slower + later so it's not missed
       p.style.strokeDasharray = len;
       p.style.strokeDashoffset = reduce ? 0 : len;
-      p.style.transition = 'stroke-dashoffset 640ms cubic-bezier(0.65,0,0.35,1)';
+      p.style.transition = 'stroke-dashoffset ' + (slow ? 1050 : 640) + 'ms cubic-bezier(0.65,0,0.35,1)';
     } catch(e){}
   });
   if (!reduce) {
@@ -714,8 +715,10 @@
     const mObs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          // tiny stagger for marks that share a viewport so they don't all snap at once
-          setTimeout(() => { e.target.style.strokeDashoffset = 0; }, 90);
+          // small stagger so marks sharing a viewport don't all snap at once;
+          // the glasses doodle waits a beat longer so the eye lands on the title first
+          const delay = e.target.closest('.doodle-glasses') ? 320 : 90;
+          setTimeout(() => { e.target.style.strokeDashoffset = 0; }, delay);
           mObs.unobserve(e.target);
         }
       });
