@@ -456,7 +456,7 @@
         <a class="case-link" href="https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html" target="_blank" rel="noopener">View live report <span class="arw">→</span></a>
       </div>
       <div class="case-media">
-        <a class="screen" href="https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html" target="_blank" rel="noopener" data-video="videos/AI Architect Program Scroll.mp4">
+        <a class="screen" href="https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html" target="_blank" rel="noopener" data-video="videos/AI Architect Program Scroll.mp4" data-speed="2.2">
           <span class="tag">Live site</span>
           <img src="videos/aiarchitect-poster.jpg" alt="AI Architect Program report" loading="lazy">
           <span class="playcue">▶ hover to play</span>
@@ -502,7 +502,7 @@
         <a class="case-link" href="https://github.com/1beebe/document-archivist" target="_blank" rel="noopener">View the code <span class="arw">→</span></a>
       </div>
       <div class="case-media">
-        <a class="screen" href="https://github.com/1beebe/document-archivist" target="_blank" rel="noopener" data-video="videos/archivist promo.mp4">
+        <a class="screen" href="https://github.com/1beebe/document-archivist" target="_blank" rel="noopener" data-video="videos/archivist promo.mp4" data-speed="2.2">
           <span class="tag">GitHub</span>
           <img src="videos/archivist-poster.jpg" alt="Document Archivist workflow" loading="lazy" style="object-position:50% 35%">
           <span class="playcue">▶ hover to play</span>
@@ -756,13 +756,14 @@
   document.querySelectorAll('.screen').forEach(screen => {
     const src = screen.dataset.video;
     if (!src) return;
+    const speed = parseFloat(screen.dataset.speed) || PREVIEW_SPEED;  // per-video override
     let video = null, warmed = false;
     const build = () => {
       if (video) return video;
       video = document.createElement('video');
       video.muted = true; video.loop = true; video.playsInline = true; video.preload = 'auto';
-      video.defaultPlaybackRate = PREVIEW_SPEED;
-      video.addEventListener('loadedmetadata', () => { video.playbackRate = PREVIEW_SPEED; });
+      video.defaultPlaybackRate = speed;
+      video.addEventListener('loadedmetadata', () => { video.playbackRate = speed; });
       const img = screen.querySelector('img');
       if (img && img.style.objectPosition) video.style.objectPosition = img.style.objectPosition;
       video.src = src;
@@ -776,8 +777,8 @@
     warmObs.observe(screen);
     screen.addEventListener('mouseenter', () => {
       const v = build();
-      v.playbackRate = PREVIEW_SPEED;
-      v.play().then(() => { v.playbackRate = PREVIEW_SPEED; screen.classList.add('playing'); }).catch(()=>{});
+      v.playbackRate = speed;
+      v.play().then(() => { v.playbackRate = speed; screen.classList.add('playing'); }).catch(()=>{});
     });
     screen.addEventListener('mouseleave', () => {
       screen.classList.remove('playing');
