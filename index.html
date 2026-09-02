@@ -326,13 +326,18 @@
 
   /* ── MOBILE NAV ── */
   @media (max-width:760px){
-    .hamburger{ display:block; }
+    .hamburger{ display:block; position:relative; z-index:60; }
+    .nav-logo{ position:relative; z-index:60; }
     .nav-links{
-      position:fixed; inset:0; background:var(--paper); flex-direction:column; justify-content:center;
-      gap:26px; transform:translateY(-100%); transition:transform .35s cubic-bezier(.65,0,.35,1); z-index:40;
+      position:fixed; top:0; left:0; right:0; bottom:0; width:100%; height:100vh; height:100dvh;
+      margin:0; padding:0; background:var(--paper);
+      flex-direction:column; justify-content:center; align-items:center; gap:28px;
+      opacity:0; visibility:hidden; pointer-events:none;
+      transition:opacity .3s ease, visibility .3s ease; z-index:50;
     }
-    .nav-links.open{ transform:translateY(0); }
-    .nav-links a{ font-size:16px; }
+    .nav-links.open{ opacity:1; visibility:visible; pointer-events:auto; }
+    .nav-links a{ font-size:18px; }
+    .nav-links a.book{ font-size:14px; }
     .hero-grid{ grid-template-columns:1fr; }
     .hero-margin{ border-left:none; border-top:1px solid var(--rule); padding-left:0; padding-top:22px; margin-top:6px; display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start; }
     .hero-margin .note{ grid-column:1/-1; margin-bottom:6px; }
