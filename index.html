@@ -750,7 +750,9 @@
     }
   }
 
-  // Portfolio: warm the video up as it nears the viewport so hover plays instantly
+  // Portfolio: warm the video up as it nears the viewport so hover plays instantly,
+  // and play it sped up so the muted preview is obviously in motion.
+  const PREVIEW_SPEED = 1.8;
   document.querySelectorAll('.screen').forEach(screen => {
     const src = screen.dataset.video;
     if (!src) return;
@@ -759,19 +761,23 @@
       if (video) return video;
       video = document.createElement('video');
       video.muted = true; video.loop = true; video.playsInline = true; video.preload = 'auto';
+      video.defaultPlaybackRate = PREVIEW_SPEED;
+      video.addEventListener('loadedmetadata', () => { video.playbackRate = PREVIEW_SPEED; });
       const img = screen.querySelector('img');
       if (img && img.style.objectPosition) video.style.objectPosition = img.style.objectPosition;
       video.src = src;
       screen.insertBefore(video, screen.querySelector('.playcue'));
       return video;
     };
-    // start buffering when the card is within 400px of the viewport
+    // start buffering when the card is within 600px of the viewport
     const warmObs = new IntersectionObserver((es) => {
       es.forEach(e => { if (e.isIntersecting && !warmed) { warmed = true; build().load(); warmObs.unobserve(screen); } });
-    }, { rootMargin: '400px 0px' });
+    }, { rootMargin: '600px 0px' });
     warmObs.observe(screen);
     screen.addEventListener('mouseenter', () => {
-      build().play().then(() => screen.classList.add('playing')).catch(()=>{});
+      const v = build();
+      v.playbackRate = PREVIEW_SPEED;
+      v.play().then(() => { v.playbackRate = PREVIEW_SPEED; screen.classList.add('playing'); }).catch(()=>{});
     });
     screen.addEventListener('mouseleave', () => {
       screen.classList.remove('playing');
