@@ -32,6 +32,8 @@ The best way to work with Ligaya or talk with her about a role is a free 30-minu
 ## Selected work
 
 - [AI Architect Program report](https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html): Peer-led AI learning series she designed and facilitated end to end (2025).
+- [Marble Descent case study](https://github.com/1beebe/marble-descent): The same tilt-to-roll phone game built twice with Claude, from a 400-word brief with four subagents and from a 70-word prompt; the short prompt won. [Play it](https://1beebe.github.io/marble-descent/) on a phone (2026).
+- [10xcolleges](https://10xcolleges.co/): Live AI college-admissions coach app she built with MindStudio's Remy on top of Yong Tian's open-source counseling skills. It is honest about odds, sources every fact, coaches essays without ghostwriting, and runs spoken mock interviews (2026).
 - [Compare Top Image Models](https://app.mindstudio.ai/agents/compare-top-image-models-18755b63): MindStudio hackathon runner-up agent that runs six image models in parallel on one prompt and compares the results side by side.
 - [Document Archivist](https://github.com/1beebe/document-archivist): AI workflow that ingests PDFs, cleans OCR text, and generates structured metadata into a navigable dashboard.
 - [Lakoff Lens](https://github.com/1beebe/lakoff-lens): Prototype that analyzes political text for sentiment and metaphorical framing using George Lakoff's cognitive-linguistics framework.
