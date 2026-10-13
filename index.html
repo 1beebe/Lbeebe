@@ -238,6 +238,20 @@
           "@type": "ListItem",
           "position": 2,
           "item": {
+            "@type": "CreativeWork",
+            "name": "Marble Descent",
+            "url": "https://github.com/1beebe/marble-descent",
+            "creator": {
+              "@id": "https://lbeebe.com/#ligaya"
+            },
+            "dateCreated": "2026",
+            "description": "Case study: the same tilt-to-roll phone game built twice with Claude, once from a 400-word brief with four subagents and once from a 70-word prompt. The short prompt won, with about 20 build steps instead of 132 and six courses instead of one. Playable at https://1beebe.github.io/marble-descent/."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
             "@type": "SoftwareApplication",
             "name": "Compare Top Image Models",
             "applicationCategory": "AI agent",
@@ -251,7 +265,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": 4,
           "item": {
             "@type": "SoftwareSourceCode",
             "name": "Document Archivist",
@@ -265,7 +279,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 4,
+          "position": 5,
           "item": {
             "@type": "SoftwareSourceCode",
             "name": "Lakoff Lens",
@@ -450,6 +464,7 @@
   .case-media { position:relative; }
   .screen { position:relative; display:block; border:1.5px solid var(--ink); border-radius:4px; overflow:hidden; background:#111; box-shadow:10px 10px 0 rgba(26,25,23,.13); aspect-ratio:16/10; text-decoration:none; }
   .screen img, .screen video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  .screen--phone img, .screen--phone video { object-fit:contain; } /* portrait phone footage, letterboxed */
   .screen video { opacity:0; transition:opacity .3s; }
   .screen.playing video { opacity:1; }
   .tag { position:absolute; top:12px; left:12px; z-index:3; font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; background:var(--paper); color:var(--ink); border:1px solid var(--ink); padding:4px 8px; border-radius:2px; }
@@ -679,7 +694,7 @@
     <!-- CASE 1 -->
     <article class="case">
       <div class="case-body">
-        <p class="case-num">01 / 04</p>
+        <p class="case-num">01 / 05</p>
         <h3 class="case-title u-wrap">AI Architect Program<svg class="hmark" viewBox="0 0 300 12" preserveAspectRatio="none"><path class="drawon" d="M4 8 C 60 3, 150 3, 210 7 S 280 9, 296 5"/></svg></h3>
         <p class="case-desc">A peer-led AI learning series I designed and facilitated end to end. It earned <span class="circle-wrap">96% satisfaction<svg class="hmark" viewBox="0 0 200 60" preserveAspectRatio="none"><path class="drawon" d="M190 16 C 150 3, 45 3, 18 18 C -2 32, 8 50, 55 56 C 130 64, 194 52, 192 32 C 191 23, 182 17, 172 14"/></svg></span> across 91 registrants and a 4.8★ rating, with zero paid marketing.</p>
         <div class="meta">
@@ -702,7 +717,30 @@
     <!-- CASE 2 -->
     <article class="case">
       <div class="case-body">
-        <p class="case-num">02 / 04</p>
+        <p class="case-num">02 / 05</p>
+        <h3 class="case-title u-wrap">Marble Descent<svg class="hmark" viewBox="0 0 300 12" preserveAspectRatio="none"><path class="drawon" d="M4 6 C 60 10, 140 3, 210 7 S 278 9, 296 4"/></svg></h3>
+        <p class="case-desc">I built the same tilt-to-roll phone game twice with Claude, once from a 400-word brief and four subagents, once from a 70-word prompt. <span class="circle-wrap">The short prompt won<svg class="hmark" viewBox="0 0 220 60" preserveAspectRatio="none"><path class="drawon" d="M210 16 C 168 3, 48 3, 20 18 C -2 33, 8 51, 55 57 C 130 65, 212 53, 212 33 C 212 23, 202 17, 192 14"/></svg></span>: about 20 build steps instead of 132, and six courses instead of one.</p>
+        <div class="meta">
+          <span class="chip"><b>ROLE</b>Build + write-up</span>
+          <span class="chip"><b>TOOL</b>Claude Code</span>
+          <span class="chip"><b>YEAR</b>2026</span>
+        </div>
+        <a class="case-link" href="https://github.com/1beebe/marble-descent" target="_blank" rel="noopener">Read the case study <span class="arw">→</span></a>
+      </div>
+      <div class="case-media">
+        <a class="screen screen--phone" href="https://1beebe.github.io/marble-descent/" target="_blank" rel="noopener" data-video="videos/marble-descent.mp4" data-speed="1.5">
+          <span class="tag">Playable</span>
+          <img src="videos/marble-descent-poster.jpg" alt="Marble Descent tilt game on a phone" loading="lazy">
+          <span class="playcue">▶ hover to play</span>
+        </a>
+        <p class="media-cap">↑ open it on your phone and tilt to roll</p>
+      </div>
+    </article>
+
+    <!-- CASE 3 -->
+    <article class="case">
+      <div class="case-body">
+        <p class="case-num">03 / 05</p>
         <h3 class="case-title">Compare Top Image Models</h3>
         <p class="case-desc">A <span class="circle-wrap">hackathon runner-up<svg class="hmark" viewBox="0 0 220 60" preserveAspectRatio="none"><path class="drawon" d="M210 16 C 168 3, 48 3, 20 18 C -2 33, 8 51, 55 57 C 130 65, 212 53, 212 33 C 212 23, 202 17, 192 14"/></svg></span> MindStudio agent that runs six image-generation models in parallel on one prompt and returns a side-by-side comparison, built to help design teams evaluate AI image models.</p>
         <div class="meta">
@@ -722,10 +760,10 @@
       </div>
     </article>
 
-    <!-- CASE 3 -->
+    <!-- CASE 4 -->
     <article class="case">
       <div class="case-body">
-        <p class="case-num">03 / 04</p>
+        <p class="case-num">04 / 05</p>
         <h3 class="case-title u-wrap">Document Archivist<svg class="hmark" viewBox="0 0 300 12" preserveAspectRatio="none"><path class="drawon" d="M4 7 C 70 4, 160 10, 220 6 S 285 4, 296 8"/></svg></h3>
         <p class="case-desc">An AI workflow that ingests PDFs, cleans up OCR text, and generates structured metadata into a navigable dashboard, so teams drowning in paper documents can find their work.</p>
         <div class="meta">
@@ -745,10 +783,10 @@
       </div>
     </article>
 
-    <!-- CASE 4 -->
+    <!-- CASE 5 -->
     <article class="case">
       <div class="case-body">
-        <p class="case-num">04 / 04</p>
+        <p class="case-num">05 / 05</p>
         <h3 class="case-title">Lakoff Lens<svg class="doodle-glasses" viewBox="0 0 104 46" aria-hidden="true"><path class="drawon" d="M10 24 C 10 13, 24 11, 32 16 C 40 21, 39 33, 30 37 C 21 41, 10 35, 10 24 Z M58 24 C 58 13, 72 11, 80 16 C 88 21, 87 33, 78 37 C 69 41, 58 35, 58 24 Z M34 18 C 40 14, 50 14, 56 18 M10 21 L 2 14 M88 20 L 100 16"/></svg></h3>
         <p class="case-desc">A prototype that analyzes political text for sentiment <em>and</em> metaphorical framing using George Lakoff's cognitive-linguistics framework. Built as an early prototype for a qualitative research workflow.</p>
         <div class="meta">
