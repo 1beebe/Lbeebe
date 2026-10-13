@@ -479,7 +479,10 @@
   .case-media { position:relative; }
   .screen { position:relative; display:block; border:1.5px solid var(--ink); border-radius:4px; overflow:hidden; background:#111; box-shadow:10px 10px 0 rgba(26,25,23,.13); aspect-ratio:16/10; text-decoration:none; }
   .screen img, .screen video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
-  .screen--phone img, .screen--phone video { object-fit:contain; } /* portrait phone footage, letterboxed */
+  /* portrait phone footage: a 9:16 frame so the clip fills it instead of letterboxing */
+  .screen--phone { aspect-ratio:9/16; width:min(100%, 320px); margin-inline:auto; }
+  .screen--phone + .media-cap { text-align:center; }
+  @media (max-width:820px){ .screen--phone { width:min(100%, 260px); } }
   .screen video { opacity:0; transition:opacity .3s; }
   .screen.playing video { opacity:1; }
   .tag { position:absolute; top:12px; left:12px; z-index:3; font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; background:var(--paper); color:var(--ink); border:1px solid var(--ink); padding:4px 8px; border-radius:2px; }
@@ -743,7 +746,7 @@
         <a class="case-link" href="https://github.com/1beebe/marble-descent" target="_blank" rel="noopener">Read the case study <span class="arw">→</span></a>
       </div>
       <div class="case-media">
-        <a class="screen screen--phone" href="https://1beebe.github.io/marble-descent/" target="_blank" rel="noopener" data-video="videos/marble-descent.mp4" data-speed="1.5" style="background:#1e1436">
+        <a class="screen screen--phone" href="https://1beebe.github.io/marble-descent/" target="_blank" rel="noopener" data-video="videos/marble-descent.mp4" data-speed="1.5">
           <span class="tag">Playable</span>
           <img src="videos/marble-descent-poster.jpg" alt="Marble Descent tilt game on a phone" loading="lazy">
           <span class="playcue">▶ hover to play</span>
@@ -766,7 +769,7 @@
         <a class="case-link" href="https://10xcolleges.co/" target="_blank" rel="noopener">Try the live app <span class="arw">→</span></a>
       </div>
       <div class="case-media">
-        <a class="screen screen--phone" href="https://10xcolleges.co/" target="_blank" rel="noopener" data-video="videos/10xcolleges.mp4" data-speed="2.2" style="background:#f4f4f2">
+        <a class="screen screen--phone" href="https://10xcolleges.co/" target="_blank" rel="noopener" data-video="videos/10xcolleges.mp4" data-speed="2.2" style="aspect-ratio:41/87">
           <span class="tag">Live app</span>
           <img src="videos/10xcolleges-poster.jpg" alt="10xcolleges coach answering a question about admissions odds" loading="lazy">
           <span class="playcue">▶ hover to play</span>
