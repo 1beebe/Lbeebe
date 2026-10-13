@@ -1,0 +1,9 @@
+# Files in the repo root that should not be served on lbeebe.com
+.git
+.github
+.gitignore
+.assetsignore
+.DS_Store
+**/.DS_Store
+wrangler.jsonc
+.wrangler
