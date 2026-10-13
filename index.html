@@ -482,6 +482,7 @@
   /* portrait phone footage: a 9:16 frame so the clip fills it instead of letterboxing */
   .screen--phone { aspect-ratio:9/16; width:min(100%, 320px); margin-inline:auto; }
   .screen--phone + .media-cap { text-align:center; }
+  .screen--phone .tag { top:auto; bottom:12px; } /* keep the label off the app/game header */
   @media (max-width:820px){ .screen--phone { width:min(100%, 260px); } }
   .screen video { opacity:0; transition:opacity .3s; }
   .screen.playing video { opacity:1; }
