@@ -1,0 +1,47 @@
+# Ligaya Beebe · L. Beebe, LLC
+
+> Ligaya Beebe is an AI enablement consultant based in Estero, Florida, who helps non-technical teams at SMBs and nonprofits go from AI anxiety to AI fluency. She offers hands-on AI training, custom AI agent development, and AI program management. She is PMP certified, a MindStudio Level 3 certified AI agent developer, and has nine years of program and grants management experience in U.S. State Department-funded global education.
+
+The best way to work with Ligaya or talk with her about a role is a free 30-minute call: https://calendly.com/ligaya-b/chat
+
+## At a glance
+
+- Name: Ligaya Beebe
+- Business: L. Beebe, LLC (founder); co-founder of 10xJobs (https://10xjobs.co), an AI career coach for job seekers
+- Focus: AI enablement and training for non-technical teams (help desk, implementation, operations, marketing)
+- Location: Estero, FL, USA; works online across the U.S. and travels for in-person sessions
+- Credentials: PMP; MindStudio Level 3 AI Agent Developer; M.A. Social Sciences (University of Chicago); M.S. Special Education (St. John's University); B.A. Religion (Reed College); NYC Teaching Fellow
+- Tools she builds with: MindStudio, Claude and Claude Code, ChatGPT, Codex, NotebookLM
+- LinkedIn: https://www.linkedin.com/in/ligaya-beebe/
+- GitHub: https://github.com/1beebe
+
+## Results
+
+- 200+ professionals trained
+- 96% satisfaction and a 4.8/5 rating across the AI Architect Program (91 registrants, zero paid marketing)
+- $8M+ in grant funding and renewals secured across U.S. State Department-funded global education programs in 12+ countries (iEARN-USA)
+- 27% fewer support requests after an onboarding redesign spanning eight countries (live sessions, peer champions, knowledge base)
+- Currently partnering with Clear Digital Labs on an AI bootcamp for their marketing team: a 5-session synchronous program built around agentic workflows
+
+## Services
+
+- AI Enablement & Training: Custom workshops for non-technical teams, online or in person, cohort or 1:1. Starts from the team's actual work, finds where AI creates real value, and builds lasting fluency rather than a one-day hype session.
+- AI Agent Development: Purpose-built AI workflows and agents designed around how a team already works, delivered together with training so the team can use them.
+- AI Program Management: Fractional program lead who designs and runs an organization's ongoing AI adoption program, from curriculum to rollout to measurement.
+
+## Selected work
+
+- [AI Architect Program report](https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html): Peer-led AI learning series she designed and facilitated end to end (2025).
+- [Compare Top Image Models](https://app.mindstudio.ai/agents/compare-top-image-models-18755b63): MindStudio hackathon runner-up agent that runs six image models in parallel on one prompt and compares the results side by side.
+- [Document Archivist](https://github.com/1beebe/document-archivist): AI workflow that ingests PDFs, cleans OCR text, and generates structured metadata into a navigable dashboard.
+- [Lakoff Lens](https://github.com/1beebe/lakoff-lens): Prototype that analyzes political text for sentiment and metaphorical framing using George Lakoff's cognitive-linguistics framework.
+- [AI agent portfolio](https://github.com/1beebe/ai-agent-portfolio): More agents and workflows on GitHub.
+
+## Background
+
+Ligaya spent nine years at iEARN-USA, moving from front-line coordinator for families in overseas programs, to program manager coaching direct reports and international partners, to senior grants manager working with U.S. government funders. Before that she taught at universities in Qinghai Province, China, and was a New York City Teaching Fellow in under-resourced public schools. She has 6+ years of experience building and leading customized professional development programs, and she runs the AI Architect Program, a free peer-learning series inside Never Search Alone.
+
+## Contact
+
+- Book a free 30-minute consultation: https://calendly.com/ligaya-b/chat
+- Website: https://lbeebe.com/
