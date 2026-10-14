@@ -11,15 +11,6 @@
         ],
         "createdAt": "2026-10-14T18:40:41.997Z",
         "reason": "Claude verified: every flagged section and .svc card has its own padding (var(--margin)/var(--section), clamp(1.5rem,2.6vw,2.25rem)); detector misreads padding set on the container itself"
-      },
-      {
-        "rule": "tight-leading",
-        "value": "*",
-        "files": [
-          "index.html"
-        ],
-        "createdAt": "2026-10-14T18:40:42.034Z",
-        "reason": "Claude verified: the only hit is the 1.22 line-height on the 1.5-2.5rem pull quote (.quote-lead blockquote), large display text where tight leading is intentional; body text is 1.5"
       }
     ]
   }
