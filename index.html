@@ -12,7 +12,8 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://lbeebe.com/">
 <link rel="alternate" type="text/markdown" title="Plain-text profile for AI agents" href="https://lbeebe.com/llms.txt">
-<link rel="icon" type="image/png" href="LB_Favicon.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 <!-- Open Graph (LinkedIn, Facebook previews) -->
 <meta property="og:type" content="website">
@@ -74,7 +75,7 @@
       "jobTitle": "AI Enablement Consultant",
       "description": "Ligaya Beebe is an AI enablement consultant, instructional designer, and MindStudio Level 3 certified AI agent developer who helps non-technical teams adopt AI tools through training, custom workflows, and program management. She spent nine years at iEARN-USA in program management and grants, securing $8M+ in U.S. State Department-funded education programs across 12+ countries, and is PMP certified.",
       "url": "https://lbeebe.com/",
-      "image": "https://lbeebe.com/headshot.jpg",
+      "image": "https://lbeebe.com/portrait.jpg",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Estero",
@@ -165,7 +166,6 @@
       "name": "L. Beebe, LLC",
       "description": "AI enablement training, AI agent development, and AI program management for non-technical teams at SMBs and nonprofits.",
       "url": "https://lbeebe.com/",
-      "logo": "https://lbeebe.com/LB_Logo.jpg",
       "image": "https://lbeebe.com/og-card.jpg",
       "founder": {
         "@id": "https://lbeebe.com/#ligaya"
@@ -365,7 +365,7 @@ ul, ol { list-style: none; }
 a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 0.07em; }
 ::selection { background: var(--accent); color: var(--accent-ink); }
 :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-.hiring :focus-visible, .quote-lead :focus-visible, .foot :focus-visible { outline-color: var(--sun); }
+.quote-lead :focus-visible, .foot :focus-visible { outline-color: var(--sun); }
 .pin:focus-visible { outline-offset: -6px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip { position: absolute; left: var(--margin); top: -4rem; background: var(--ink); color: var(--sun); padding: .6rem 1rem; z-index: 20; }
@@ -404,12 +404,14 @@ p { max-width: 62ch; text-wrap: pretty; }
 .pin.show { opacity: 1; transform: none; pointer-events: auto; }
 
 /* hero */
-.hero { background: var(--sun); padding: clamp(3rem, 7vw, 7rem) var(--margin) clamp(3rem, 6vw, 5.5rem); }
-.hero h1 { font-size: clamp(3rem, 1rem + 9.4vw, 11rem); max-width: 13ch; }
+.hero { background: var(--sun); padding: clamp(2.5rem, 5vw, 5rem) var(--margin) clamp(3rem, 6vw, 5.5rem); display: grid; grid-template-columns: minmax(0, 1fr) clamp(13rem, 19vw, 18rem); gap: clamp(2rem, 4vw, 4rem); align-items: end; }
+.hero h1 { font-size: clamp(3rem, 1rem + 8vw, 10rem); max-width: 13ch; }
+.hero-me img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 22%; }
+.hero-me figcaption { margin-top: .9rem; font-size: var(--step-small); color: var(--sun-ink); }
+.hero-me figcaption a { color: var(--ink); font-weight: 600; }
 .hero-sub { margin-top: 1.75rem; max-width: 40ch; }
 .hero-sub strong { display: block; margin-bottom: .4rem; font-size: clamp(1.5rem, 1.1rem + 1.3vw, 2.25rem); line-height: 1.15; font-weight: 600; }
 .hero-actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; align-items: center; }
-.hero-who { margin-top: 2.25rem; font-size: var(--step-small); color: var(--sun-ink); max-width: 52ch; }
 
 /* proof */
 .proof { background: var(--gulf); color: var(--ink); padding: var(--section) var(--margin); }
@@ -451,19 +453,8 @@ p { max-width: 62ch; text-wrap: pretty; }
 .call::after { content: "\201D"; }
 .response { margin-top: .6rem; max-width: 52ch; }
 .result-panel { margin-top: .6rem; background: var(--ink); color: var(--spoonbill); padding: 1.25rem 1.4rem; font-size: var(--step-lead); line-height: 1.35; }
-
-/* hiring */
-.hiring { background: var(--blackwater); color: var(--paper); padding: var(--section) var(--margin); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); }
-.hiring .label::before { background: var(--sun); }
-.hiring .lead { margin-top: 1.25rem; max-width: 34ch; }
-.hire-actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; }
-.hire-actions .btn { background: var(--sun); color: var(--ink); }
-.hire-actions .btn:hover { background: var(--accent); }
-.roles li { padding: 1.4rem 1.5rem; background: var(--blackwater-2); }
-.roles li + li { margin-top: .5rem; }
-.roles h3 { font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.75rem); color: var(--sun); }
-.roles p { margin-top: .5rem; }
-.flag { color: var(--paper-soft); font-size: var(--step-small); font-weight: 400; }
+.picker-cta { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; align-items: center; }
+.picker-cta p { font-weight: 600; }
 
 /* work */
 .work { padding: var(--section) var(--margin); display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(2rem, 4vw, 4rem); }
@@ -504,6 +495,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 .creds li + li { border-top: 0; }
 .creds b { display: block; }
 .creds span { font-size: var(--step-small); color: var(--ink-soft); }
+.hire-note { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--paper-soft); font-size: var(--step-small); color: var(--ink-soft); }
 
 /* close */
 .close { background: var(--accent); padding: var(--section) var(--margin) clamp(3rem, 5vw, 4rem); }
@@ -520,7 +512,10 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 @media (max-width: 1000px) {
   .nums { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .quote-lead { grid-row: auto; }
-  .quotes, .services-head, .svc-list, .picker, .hiring, .about { grid-template-columns: minmax(0, 1fr); }
+  .quotes, .services-head, .svc-list, .picker, .about { grid-template-columns: minmax(0, 1fr); }
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .hero-me { margin-top: 2.25rem; display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: 1.1rem; align-items: center; max-width: 34rem; }
+  .hero-me figcaption { margin-top: 0; }
   .work { grid-template-columns: minmax(0, 1fr); }
   .preview { display: none; }
 }
@@ -543,8 +538,8 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 <nav class="bar" aria-label="Main">
   <a class="mark" href="#top">Ligaya Beebe</a>
   <ul>
-    <li><a href="#services">For teams</a></li>
-    <li><a href="#hiring">For hiring managers</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#start">How I start</a></li>
     <li><a href="#work">Work</a></li>
     <li><a class="tlink" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a call</a></li>
   </ul>
@@ -556,10 +551,12 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     <p class="hero-sub lead"><strong>Your dev team gets it.<br>Now, everyone else.</strong> I work with help desk, operations, implementation and marketing teams, hands-on and built around the work they already do.</p>
     <div class="hero-actions">
       <a class="btn" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a free 30-minute call</a>
-      <a class="tlink" href="#hiring">Hiring for AI enablement or L&amp;D? Start here</a>
     </div>
-    <p class="hero-who">Ligaya Beebe, AI enablement consultant and program designer. PMP, MindStudio Level 3, nine years running international education programs. Estero, Florida, working everywhere.</p>
   </div>
+  <figure class="hero-me">
+    <img src="portrait.jpg" width="896" height="1152" alt="Ligaya Beebe">
+    <figcaption>Ligaya Beebe, AI enablement consultant and program designer. PMP, MindStudio Level 3, nine years running international education programs. Estero, Florida, working everywhere. <a href="/hire">Hiring? See where I fit.</a></figcaption>
+  </figure>
 </header>
 
 <main id="main">
@@ -613,46 +610,35 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
       <div class="exchange-step"><p>What I hear first</p><p class="call">I pasted a ticket into ChatGPT once. It made up a refund policy.</p></div>
       <div class="exchange-step"><p>Session one</p><p class="response">We take twenty real tickets and build a reply assistant that only answers from your own help-center articles. Everyone leaves with it running.</p></div>
       <div class="exchange-step"><p>A month later</p><p class="result-panel">First drafts come from the assistant, people check them against policy, and the saved time goes to the tickets that need a human.</p></div>
+      <div class="picker-cta"><p>Sound like your help desk?</p><a class="btn btn-dark" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a free 30-minute call</a></div>
     </div>
     <div role="tabpanel" id="p-impl" aria-labelledby="t-impl" hidden>
       <div class="exchange-step"><p>What I hear first</p><p class="call">Every kickoff, I rewrite the same project plan from a sales call I wasn’t on.</p></div>
       <div class="exchange-step"><p>Session one</p><p class="response">We turn three past kickoff calls into a template, then build a prompt that drafts the plan from a transcript, with open questions flagged.</p></div>
       <div class="exchange-step"><p>A month later</p><p class="result-panel">New projects start from a draft the team trusts, and the kickoff hour goes to the customer.</p></div>
+      <div class="picker-cta"><p>Sound like your implementation team?</p><a class="btn btn-dark" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a free 30-minute call</a></div>
     </div>
     <div role="tabpanel" id="p-ops" aria-labelledby="t-ops" hidden>
       <div class="exchange-step"><p>What I hear first</p><p class="call">Our SOPs live in six places, and three of them are wrong.</p></div>
       <div class="exchange-step"><p>Session one</p><p class="response">We pick the process everyone complains about, let AI interview the person who actually does it, and turn the transcript into a living SOP.</p></div>
       <div class="exchange-step"><p>A month later</p><p class="result-panel">The team keeps a notebook of its own processes and asks it before asking each other.</p></div>
+      <div class="picker-cta"><p>Sound like your operations team?</p><a class="btn btn-dark" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a free 30-minute call</a></div>
     </div>
     <div role="tabpanel" id="p-mkt" aria-labelledby="t-mkt" hidden>
       <div class="exchange-step"><p>What I hear first</p><p class="call">Everything AI writes for us sounds like everyone else.</p></div>
       <div class="exchange-step"><p>Session one</p><p class="response">We build a voice guide from your ten best pieces, then an agent that drafts in that voice and flags generic phrasing.</p></div>
       <div class="exchange-step"><p>A month later</p><p class="result-panel">Drafts arrive sounding like you, and the team spends its hours on ideas.</p></div>
+      <div class="picker-cta"><p>Sound like your marketing team?</p><a class="btn btn-dark" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a free 30-minute call</a></div>
     </div>
     <div role="tabpanel" id="p-lead" aria-labelledby="t-lead" hidden>
       <div class="exchange-step"><p>What I hear first</p><p class="call">We bought the licenses. I can’t tell if anyone uses them.</p></div>
       <div class="exchange-step"><p>Session one</p><p class="response">We map who uses what, where the worry is, and which three workflows pay back first. You leave with a 90-day adoption plan.</p></div>
       <div class="exchange-step"><p>A month later</p><p class="result-panel">A program with owners, peer champions in each team, and a number you can report upward.</p></div>
+      <div class="picker-cta"><p>Sound like your leadership team?</p><a class="btn btn-dark" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a free 30-minute call</a></div>
     </div>
   </div>
 </section>
 
-<section class="hiring" id="hiring" aria-labelledby="hire-h">
-  <div>
-    <span class="label">For hiring managers and recruiters</span>
-    <h2 class="h2 display" id="hire-h">Open to the right role</h2>
-    <p class="lead">Nine years leading programs, a PMP, and I build with AI every day. Here’s where I fit.</p>
-    <div class="hire-actions">
-      <a class="btn" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a 20-minute intro</a>
-      <a class="tlink" href="https://www.linkedin.com/in/ligaya-beebe/" target="_blank" rel="noopener">See my experience on LinkedIn</a>
-    </div>
-  </div>
-  <ul class="roles" aria-label="Roles I fit">
-    <li><h3 class="display">AI enablement lead</h3><p>Rolling AI tools out to non-technical teams, with training that sticks after launch week.</p></li>
-    <li><h3 class="display">L&amp;D or instructional design manager</h3><p>ADDIE, cohort design and facilitation across cultures, from Qinghai classrooms to twelve-country programs.</p></li>
-    <li><h3 class="display">AI program manager</h3><p>PMP. Over $8M in federal programs run end to end, with the reporting funders expect.</p></li>
-  </ul>
-</section>
 
 <section class="work" id="work" aria-labelledby="work-h">
   <div class="work-head">
@@ -711,6 +697,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     <li><b>M.S. Special Education</b><span>St. John’s University</span></li>
     <li><b>B.A. Religion</b><span>Reed College</span></li>
   </ul>
+  <p class="hire-note">Hiring for AI enablement, L&amp;D or AI program management? <a class="tlink" href="/hire">See the roles I fit</a>.</p>
   </div>
 </section>
 
@@ -726,8 +713,9 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 </main>
 
 <footer class="foot">
-  <p>© 2026 L.&nbsp;Beebe, LLC, Estero, Florida. Logo by Partana Designs.</p>
+  <p>© 2026 L.&nbsp;Beebe, LLC, Estero, Florida.</p>
   <ul>
+    <li><a href="/hire">For hiring managers</a></li>
     <li><a href="https://10xjobs.co/" target="_blank" rel="noopener">10xJobs</a></li>
     <li><a href="https://github.com/1beebe" target="_blank" rel="noopener">GitHub</a></li>
     <li><a href="llms.txt">For AI agents</a></li>
