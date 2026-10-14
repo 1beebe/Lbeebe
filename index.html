@@ -197,7 +197,7 @@
             "itemOffered": {
               "@type": "Service",
               "name": "AI Enablement & Training",
-              "description": "Custom workshops for non-technical teams, online or in person, built around the team's actual work. Cohort and 1:1 formats with custom curriculum, aimed at lasting AI fluency."
+              "description": "Custom workshops for non-technical teams, online or in person, built around the team's actual work. Hands-on-keyboard from the first session, with real time for experimentation. Cohort and 1:1 formats with custom curriculum, aimed at lasting AI fluency."
             }
           },
           {
@@ -388,6 +388,21 @@ p { max-width: 62ch; text-wrap: pretty; }
 .tlink { font-weight: 600; }
 .tlink:hover { text-decoration-thickness: .14em; }
 
+/* ink marks: the page marks itself up like Ligaya's sketchbook, at three moments only */
+.ink:not(.drawn) { visibility: hidden; }
+.ink-wrap { position: relative; display: inline-block; white-space: nowrap; }
+.ink { position: absolute; overflow: visible; pointer-events: none; max-width: none; }
+.ink path { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.ink.drawn path { stroke-dashoffset: 0; transition: stroke-dashoffset 650ms cubic-bezier(.65, 0, .35, 1); }
+.ink.drawn path + path { transition-delay: 220ms; }
+.ink-circle > .ink { left: -7%; top: -16%; width: 114%; height: 132%; }
+.hero-sub .ink-circle { margin-left: .18em; }
+.ink-under > .ink { left: -2%; width: 104%; bottom: -.16em; height: .24em; }
+.teams button { position: relative; }
+.teams .ink { left: -11px; top: -10px; width: calc(100% + 22px); height: calc(100% + 20px); }
+.teams .ink path { stroke-width: 2.5; }
+@media (prefers-reduced-motion: reduce) { .ink.drawn path { transition: none; } }
+
 /* nav */
 .bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .5rem var(--margin); background: var(--sun); font-size: var(--step-small); }
 .bar .mark { display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 600; text-decoration: none; font-size: var(--step-body); }
@@ -410,7 +425,7 @@ p { max-width: 62ch; text-wrap: pretty; }
 .hero-me figcaption { margin-top: .9rem; font-size: var(--step-small); color: var(--sun-ink); }
 .hero-me figcaption a { color: var(--ink); font-weight: 600; }
 .hero-sub { margin-top: 1.75rem; max-width: 40ch; }
-.hero-sub strong { display: block; margin-bottom: .4rem; font-size: clamp(1.5rem, 1.1rem + 1.3vw, 2.25rem); line-height: 1.15; font-weight: 600; }
+.hero-sub strong { display: block; margin-bottom: .4rem; font-size: clamp(1.5rem, 1.1rem + 1.3vw, 2.25rem); line-height: 1.35; font-weight: 600; }
 .hero-actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; align-items: center; }
 
 /* proof */
@@ -463,11 +478,12 @@ p { max-width: 62ch; text-wrap: pretty; }
 .ledger li + li { margin-top: .25rem; }
 .row { display: grid; grid-template-columns: 120px minmax(0, 1fr) auto; gap: .2rem 1.25rem; align-items: center; padding: .9rem 1rem; text-decoration: none; transition: background-color 180ms ease; }
 .row:hover, .row.is-on { background: var(--white-2); }
-.row-thumb { grid-row: 1 / 3; aspect-ratio: 4 / 3; background: var(--white-2); overflow: hidden; }
+.row-thumb { grid-row: 1 / 4; aspect-ratio: 4 / 3; background: var(--white-2); overflow: hidden; }
 .row-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
 .row .name { font-size: var(--step-lead); font-weight: 600; line-height: 1.2; }
 .row .kind { grid-column: 2; color: var(--ink-soft); font-size: var(--step-small); }
-.row .go { grid-column: 3; grid-row: 1 / 3; font-size: var(--step-small); font-weight: 600; }
+.row .taught { grid-column: 2; margin-top: .35rem; font-size: var(--step-small); line-height: 1.45; max-width: 52ch; }
+.row .go { grid-column: 3; grid-row: 1 / 4; font-size: var(--step-small); font-weight: 600; }
 .preview-frame { position: sticky; top: 2rem; }
 .preview figure { display: none; }
 .preview figure.is-on { display: block; }
@@ -524,7 +540,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   .hero h1 { font-size: 13vw; }
   .row { grid-template-columns: 88px minmax(0, 1fr); padding-inline: 0; }
   .row .go { display: none; }
-  .row-thumb { grid-row: 1 / 3; }
+  .row-thumb { grid-row: 1 / 4; align-self: start; }
   .work-more { padding-left: 0; }
   .close h2 { font-size: 15vw; }
   .pin { left: var(--margin); right: var(--margin); justify-content: center; }
@@ -548,7 +564,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 <header class="hero" id="top">
   <div>
     <h1 class="display">AI training for the rest of your team</h1>
-    <p class="hero-sub lead"><strong>Your dev team gets it.<br>Now, everyone else.</strong> I work with help desk, operations, implementation and marketing teams, hands-on and built around the work they already do.</p>
+    <p class="hero-sub lead"><strong>Your dev team gets it.<br>Now, <span class="ink-wrap ink-circle" id="hero-ink">everyone else.<svg class="ink" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M168 10 C 120 0, 40 2, 14 18 C -4 32, 10 54, 70 57 C 140 61, 196 50, 194 30 C 192 16, 172 8, 146 7"/></svg></span></strong> I work with help desk, operations, implementation and marketing teams, hands-on and built around the work they already do.</p>
     <div class="hero-actions">
       <a class="btn" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a free 30-minute call</a>
     </div>
@@ -585,7 +601,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     <p class="lead">Most engagements start with training and grow from there. Right now I’m rebuilding an AI bootcamp for Clear Digital Labs’ marketing team after a five-session pilot.</p>
   </div>
   <ul class="svc-list">
-    <li class="svc"><h3 class="display">Train the team</h3><p>Custom workshops for non-technical teams, online or in person, as a cohort or 1:1. We start with your team’s actual work and build fluency that lasts past the workshop.</p><p class="tags">Custom curriculum. Cohort and 1:1.</p></li>
+    <li class="svc"><h3 class="display">Train the team</h3><p>Custom workshops for non-technical teams, online or in person, as a cohort or 1:1. Everyone is hands on the keyboard from the first session. We start with your team’s actual work and leave real time to experiment, because curiosity is what keeps people using these tools after the workshop ends.</p><p class="tags">Custom curriculum. Hands-on, cohort and 1:1.</p></li>
     <li class="svc"><h3 class="display">Build the agent</h3><p>Lightweight workflows and agents that fit how your team already works, delivered with the training to run them.</p><p class="tags">MindStudio Level 3. Claude, ChatGPT, NotebookLM.</p></li>
     <li class="svc"><h3 class="display">Run the program</h3><p>A fractional lead for your AI adoption: curriculum, rollout, peer champions and measurement.</p><p class="tags">PMP. Nine years running federal programs.</p></li>
   </ul>
@@ -597,11 +613,11 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     <h2 class="h2 display" id="pick-h">Which team is stuck?</h2>
     <p class="picker-intro lead">Pick one to see how I’d start.</p>
     <div class="teams" role="tablist" aria-label="Teams">
-      <button role="tab" id="t-help" aria-selected="true" aria-controls="p-help">Help desk</button>
-      <button role="tab" id="t-impl" aria-selected="false" aria-controls="p-impl" tabindex="-1">Implementation</button>
-      <button role="tab" id="t-ops" aria-selected="false" aria-controls="p-ops" tabindex="-1">Operations</button>
-      <button role="tab" id="t-mkt" aria-selected="false" aria-controls="p-mkt" tabindex="-1">Marketing</button>
-      <button role="tab" id="t-lead" aria-selected="false" aria-controls="p-lead" tabindex="-1">Leadership</button>
+      <button role="tab" id="t-help" aria-selected="true" aria-controls="p-help">Help desk<svg class="ink" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M168 10 C 120 0, 40 2, 14 18 C -4 32, 10 54, 70 57 C 140 61, 196 50, 194 30 C 192 16, 172 8, 146 7"/></svg></button>
+      <button role="tab" id="t-impl" aria-selected="false" aria-controls="p-impl" tabindex="-1">Implementation<svg class="ink" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M168 10 C 120 0, 40 2, 14 18 C -4 32, 10 54, 70 57 C 140 61, 196 50, 194 30 C 192 16, 172 8, 146 7"/></svg></button>
+      <button role="tab" id="t-ops" aria-selected="false" aria-controls="p-ops" tabindex="-1">Operations<svg class="ink" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M168 10 C 120 0, 40 2, 14 18 C -4 32, 10 54, 70 57 C 140 61, 196 50, 194 30 C 192 16, 172 8, 146 7"/></svg></button>
+      <button role="tab" id="t-mkt" aria-selected="false" aria-controls="p-mkt" tabindex="-1">Marketing<svg class="ink" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M168 10 C 120 0, 40 2, 14 18 C -4 32, 10 54, 70 57 C 140 61, 196 50, 194 30 C 192 16, 172 8, 146 7"/></svg></button>
+      <button role="tab" id="t-lead" aria-selected="false" aria-controls="p-lead" tabindex="-1">Leadership<svg class="ink" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M168 10 C 120 0, 40 2, 14 18 C -4 32, 10 54, 70 57 C 140 61, 196 50, 194 30 C 192 16, 172 8, 146 7"/></svg></button>
     </div>
     <p class="picker-note">Illustrative examples of how a first session might go.</p>
   </div>
@@ -642,17 +658,18 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 
 <section class="work" id="work" aria-labelledby="work-h">
   <div class="work-head">
-    <span class="label">Proof I build what I teach</span>
-    <h2 class="h2 display" id="work-h">Things I built</h2>
+    <span class="label">Play is part of the method</span>
+    <h2 class="h2 display" id="work-h">Learning by building</h2>
+    <p class="lead">In this AI era, learning by doing means learning by building. I tell every client the same thing: stay open to trying new tools, and give your people room to play with them. I follow my own advice. A couple of these are live products, and the rest started as experiments I ran to see what would happen. Each one taught me something I now bring into training. We learn more when we build.</p>
   </div>
   <div>
     <ol class="ledger">
       <li><a class="row is-on" data-p="aia" href="https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/aiarchitect-poster.jpg" alt="" width="960" height="960"></span><span class="name">AI Architect Program</span><span class="kind">Peer-led AI training I designed and ran, 2025</span><span class="go">Report</span></a></li>
-      <li><a class="row" data-p="xc" href="https://10xcolleges.co/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/10xcolleges-poster.jpg" alt="" width="492" height="1044"></span><span class="name">10xcolleges</span><span class="kind">Live AI admissions coach I built with MindStudio Remy, 2026</span><span class="go">App</span></a></li>
-      <li><a class="row" data-p="md" href="https://1beebe.github.io/marble-descent/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/marble-descent-poster.jpg" alt="" width="540" height="960"></span><span class="name">Marble Descent</span><span class="kind">One phone game, built twice with Claude Code, 2026</span><span class="go">Play</span></a></li>
-      <li><a class="row" data-p="im" href="https://app.mindstudio.ai/agents/compare-top-image-models-18755b63" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/imagemodels-poster.jpg" alt="" width="960" height="594"></span><span class="name">Compare Top Image Models</span><span class="kind">MindStudio agent, hackathon runner-up</span><span class="go">Agent</span></a></li>
-      <li><a class="row" data-p="da" href="https://github.com/1beebe/document-archivist" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/archivist-poster.jpg" alt="" width="960" height="1200"></span><span class="name">Document Archivist</span><span class="kind">PDFs in, clean OCR and metadata out</span><span class="go">Code</span></a></li>
-      <li><a class="row" data-p="ll" href="https://github.com/1beebe/lakoff-lens" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/lakoff-poster.jpg" alt="" width="960" height="600"></span><span class="name">Lakoff Lens</span><span class="kind">Reads political text for metaphor and framing</span><span class="go">Code</span></a></li>
+      <li><a class="row" data-p="xc" href="https://10xcolleges.co/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/10xcolleges-poster.jpg" alt="" width="492" height="1044"></span><span class="name">10xcolleges</span><span class="kind">Live AI admissions coach I built with MindStudio Remy, 2026</span><span class="taught">Pointing a product agent like Remy at an open-source repo got me a full app with frontend, backend and logins in a few hours. It’s why I now build with my own team of sub-agents in Claude Code.</span><span class="go">App</span></a></li>
+      <li><a class="row" data-p="md" href="https://1beebe.github.io/marble-descent/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/marble-descent-poster.jpg" alt="" width="540" height="960"></span><span class="name">Marble Descent</span><span class="kind">One phone game, built twice with Claude Code, 2026</span><span class="taught">A 70-word prompt beat a 400-word brief. Clearer asks usually win.</span><span class="go">Play</span></a></li>
+      <li><a class="row" data-p="im" href="https://app.mindstudio.ai/agents/compare-top-image-models-18755b63" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/imagemodels-poster.jpg" alt="" width="960" height="594"></span><span class="name">Compare Top Image Models</span><span class="kind">MindStudio agent, hackathon runner-up</span><span class="taught">Test tools side by side on your own prompt before your team commits to one.</span><span class="go">Agent</span></a></li>
+      <li><a class="row" data-p="ll" href="https://github.com/1beebe/lakoff-lens" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/lakoff-poster.jpg" alt="" width="960" height="600"></span><span class="name">Lakoff Lens</span><span class="kind">Reads political text for metaphor and framing</span><span class="taught">My first agent, built in January 2026 and aimed at my father James Beebe’s research method from day one. It wasn’t good enough yet, and that was fine.</span><span class="go">Code</span></a></li>
+      <li><a class="row" data-p="da" href="https://github.com/1beebe/document-archivist" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/archivist-poster.jpg" alt="" width="960" height="1200"></span><span class="name">Document Archivist</span><span class="kind">PDFs in, clean OCR and metadata out</span><span class="taught">Five months of building later, the version that works. It turns his paper archive into clean, searchable text for the analysis skills I’m using to finish his study.</span><span class="go">Code</span></a></li>
     </ol>
     <a class="tlink work-more" href="https://github.com/1beebe/ai-agent-portfolio" target="_blank" rel="noopener">More on GitHub</a>
   </div>
@@ -702,7 +719,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 </section>
 
 <section class="close" aria-labelledby="close-h">
-  <h2 class="display" id="close-h">Tell me about your team</h2>
+  <h2 class="display" id="close-h">Tell me about <span class="ink-wrap ink-under" id="close-ink">your team<svg class="ink" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12 C 70 5, 170 4, 296 8"/><path pathLength="1" d="M34 17 C 110 12, 200 12, 272 14"/></svg></span></h2>
   <p class="lead">A free 30-minute call about where your team is and what would help. No pitch deck.</p>
   <div class="close-actions">
     <a class="btn" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a free call</a>
@@ -739,14 +756,26 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 // team picker
 (() => {
   const tabs = [...document.querySelectorAll('.teams [role=tab]')];
+  let seen = !('IntersectionObserver' in window);
   const pick = (tab, focus) => {
-    tabs.forEach(t => { const on = t === tab; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; document.getElementById(t.getAttribute('aria-controls')).hidden = !on; });
+    tabs.forEach(t => { const on = t === tab; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; document.getElementById(t.getAttribute('aria-controls')).hidden = !on; t.querySelector('.ink').classList.toggle('drawn', on && seen); });
     if (focus) tab.focus();
   };
+  document.addEventListener('picker-seen', () => { seen = true; pick(tabs.find(t => t.getAttribute('aria-selected') === 'true')); });
   tabs.forEach((t, i) => {
-    t.addEventListener('click', () => pick(t));
-    t.addEventListener('keydown', e => { const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (d) { e.preventDefault(); pick(tabs[(i + d + tabs.length) % tabs.length], true); } });
+    t.addEventListener('click', () => { seen = true; pick(t); });
+    t.addEventListener('keydown', e => { const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (d) { e.preventDefault(); seen = true; pick(tabs[(i + d + tabs.length) % tabs.length], true); } });
   });
+})();
+
+// ink marks: hero circle on load, picker circle once the picker is in view, close underline on arrival
+(() => {
+  const draw = el => el && el.querySelector('.ink').classList.add('drawn');
+  setTimeout(() => draw(document.getElementById('hero-ink')), 450);
+  if (!('IntersectionObserver' in window)) { draw(document.getElementById('close-ink')); document.querySelectorAll('.teams [aria-selected="true"]').forEach(draw); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; io.unobserve(e.target);
+    if (e.target.classList.contains('teams')) { document.dispatchEvent(new Event('picker-seen')); } else draw(e.target); }), { rootMargin: '0px 0px -25% 0px' });
+  io.observe(document.querySelector('.teams')); io.observe(document.getElementById('close-ink'));
 })();
 
 // work preview: plays only on hover or focus, never on its own
