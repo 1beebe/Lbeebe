@@ -456,7 +456,7 @@ p { max-width: 62ch; text-wrap: pretty; }
 /* picker */
 .picker { background: var(--spoonbill); padding: var(--section) var(--margin); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); }
 .picker-intro { margin-top: 1.25rem; }
-.teams { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .5rem; }
+.teams { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .9rem; }
 .teams button { font: inherit; font-weight: 600; cursor: pointer; border: 0; min-height: 2.9rem; padding: .6rem 1.1rem; background: var(--spoonbill-2); color: var(--ink); transition: background-color 180ms ease, color 180ms ease; }
 .teams button:hover { background: var(--spoonbill-3); }
 .teams button[aria-selected="true"] { background: var(--ink); color: var(--spoonbill); }
@@ -497,16 +497,6 @@ p { max-width: 62ch; text-wrap: pretty; }
 .story p + p { margin-top: 1em; }
 .story { font-size: var(--step-lead); line-height: 1.42; }
 mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-.reveal { margin-top: clamp(2rem, 4vw, 3.5rem); max-width: 46rem; }
-.reveal-pair { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 5fr); gap: .75rem; align-items: end; }
-.reveal-stage[data-v="single"] { aspect-ratio: 1280 / 752; }
-.reveal-pair img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; }
-.reveal-stage { position: relative; background: #000; aspect-ratio: 1; }
-.reveal-stage video { width: 100%; height: 100%; display: block; object-fit: cover; }
-.replay { position: absolute; right: .5rem; bottom: .5rem; font: 600 var(--step-small)/1 var(--font-text); color: var(--ink); background: var(--sun); border: 0; padding: .55rem .8rem; cursor: pointer; opacity: 0; transition: opacity .3s var(--ease-out); }
-.reveal-stage.done .replay, .replay:focus-visible { opacity: 1; }
-@media (max-width: 600px) { .reveal-pair { grid-template-columns: 1fr; } .reveal-pair img { order: 2; width: 62%; } }
-.reveal figcaption { margin-top: .6rem; font-size: var(--step-small); color: var(--ink-soft); max-width: 42ch; }
 .creds li { padding-block: .7rem; }
 .creds li + li { border-top: 0; }
 .creds b { display: block; }
@@ -534,6 +524,8 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   .hero-me figcaption { margin-top: 0; }
   .work { grid-template-columns: minmax(0, 1fr); }
   .preview { display: none; }
+  .row.is-on { background: transparent; }
+  .row:hover { background: var(--white-2); }
 }
 @media (max-width: 640px) {
   .bar ul li:not(:last-child) { display: none; }
@@ -555,7 +547,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   <a class="mark" href="#top">Ligaya Beebe</a>
   <ul>
     <li><a href="#services">Services</a></li>
-    <li><a href="#start">How I start</a></li>
+    <li><a href="#start">First session</a></li>
     <li><a href="#work">Work</a></li>
     <li><a class="tlink" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a call</a></li>
   </ul>
@@ -571,7 +563,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   </div>
   <figure class="hero-me">
     <img src="portrait.jpg" width="896" height="1152" alt="Ligaya Beebe">
-    <figcaption>Ligaya Beebe, AI enablement consultant and program designer. PMP, MindStudio Level 3, nine years running international education programs. Estero, Florida, working everywhere. <a href="/hire">Hiring? See where I fit.</a></figcaption>
+    <figcaption>Ligaya Beebe, AI enablement consultant and program designer. PMP, MindStudio Level 3, nine years running international education programs. Estero, Florida, working everywhere.</figcaption>
   </figure>
 </header>
 
@@ -592,7 +584,6 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     <figure class="quote"><blockquote>“Super clear explanation and demos too, absolutely feel more confident in agent vs. workflow.”</blockquote><figcaption>AI Architect Program participant</figcaption></figure>
   </div>
   <p class="partners"><b>Worked with:</b> iEARN-USA, State Department-funded exchanges, Clear Digital Labs, Never Search Alone, 10xJobs, MindStudio, universities in Qinghai, New York City public schools.</p>
-  <p class="partners"><b>Right now:</b> Partnering with Clear Digital Labs on an AI bootcamp for their marketing team. We shipped the first proof of concept, a five-session live program built around agentic workflows, and we’re now rebuilding the full curriculum to keep pace with the field.</p>
 </section>
 
 <section class="services" id="services" aria-labelledby="svc-h">
@@ -660,16 +651,17 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   <div class="work-head">
     <span class="label">Play is part of the method</span>
     <h2 class="h2 display" id="work-h">Learning by building</h2>
-    <p class="lead">In this AI era, learning by doing means learning by building. I tell every client the same thing: stay open to trying new tools, and give your people room to play with them. I follow my own advice. A couple of these are live products, and the rest started as experiments I ran to see what would happen. Each one taught me something I now bring into training. We learn more when we build.</p>
+    <p class="lead">In this AI era, learning by doing means learning by building. I tell every client the same thing: stay open to trying new tools, and give your people room to play with them. I follow my own advice. A couple of these are live products, and the rest started as experiments I ran to see what would happen. Each one taught me something I now bring into training.</p>
   </div>
   <div>
     <ol class="ledger">
       <li><a class="row is-on" data-p="aia" href="https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/aiarchitect-poster.jpg" alt="" width="960" height="960"></span><span class="name">AI Architect Program</span><span class="kind">Peer-led AI training I designed and ran, 2025</span><span class="go">Report</span></a></li>
-      <li><a class="row" data-p="xc" href="https://10xcolleges.co/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/10xcolleges-poster.jpg" alt="" width="492" height="1044"></span><span class="name">10xcolleges</span><span class="kind">Live AI admissions coach I built with MindStudio Remy, 2026</span><span class="taught">Pointing a product agent like Remy at an open-source repo got me a full app with frontend, backend and logins in a few hours. It’s why I now build with my own team of sub-agents in Claude Code.</span><span class="go">App</span></a></li>
+      <li><a class="row" data-p="xc" href="https://10xcolleges.co/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/10xcolleges-poster.jpg" alt="" width="492" height="1044"></span><span class="name">10xcolleges</span><span class="kind">Live AI admissions coach I built with a product agent, 2026</span><span class="taught">A product agent pointed at an open-source project built a full app, with frontend, backend and logins, in a few hours. Your team doesn’t have to start from a blank page.</span><span class="go">App</span></a></li>
       <li><a class="row" data-p="md" href="https://1beebe.github.io/marble-descent/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/marble-descent-poster.jpg" alt="" width="540" height="960"></span><span class="name">Marble Descent</span><span class="kind">One phone game, built twice with Claude Code, 2026</span><span class="taught">A 70-word prompt beat a 400-word brief. Clearer asks usually win.</span><span class="go">Play</span></a></li>
       <li><a class="row" data-p="im" href="https://app.mindstudio.ai/agents/compare-top-image-models-18755b63" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/imagemodels-poster.jpg" alt="" width="960" height="594"></span><span class="name">Compare Top Image Models</span><span class="kind">MindStudio agent, hackathon runner-up</span><span class="taught">Test tools side by side on your own prompt before your team commits to one.</span><span class="go">Agent</span></a></li>
-      <li><a class="row" data-p="ll" href="https://github.com/1beebe/lakoff-lens" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/lakoff-poster.jpg" alt="" width="960" height="600"></span><span class="name">Lakoff Lens</span><span class="kind">Reads political text for metaphor and framing</span><span class="taught">My first agent, built in January 2026 and aimed at my father James Beebe’s research method from day one. It wasn’t good enough yet, and that was fine.</span><span class="go">Code</span></a></li>
-      <li><a class="row" data-p="da" href="https://github.com/1beebe/document-archivist" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/archivist-poster.jpg" alt="" width="960" height="1200"></span><span class="name">Document Archivist</span><span class="kind">PDFs in, clean OCR and metadata out</span><span class="taught">Five months of building later, the version that works. It turns his paper archive into clean, searchable text for the analysis skills I’m using to finish his study.</span><span class="go">Code</span></a></li>
+      <li><div class="row" data-p="rv"><span class="row-thumb"><img src="sketchbook.jpg" alt="" width="1099" height="1460"></span><span class="name">Sketch to agent</span><span class="kind">Sketched on paper first, then built as a MindStudio agent that reveals a generated photo shoot pixel by pixel</span></div></li>
+      <li><a class="row" data-p="ll" href="https://github.com/1beebe/lakoff-lens" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/lakoff-poster.jpg" alt="" width="960" height="600"></span><span class="name">Lakoff Lens</span><span class="kind">Reads political text for metaphor and framing</span><span class="taught">My first agent, built in January 2026 and aimed at my father James Beebe’s research method from day one. It wasn’t good enough yet, and that was fine.</span><span class="go">GitHub</span></a></li>
+      <li><a class="row" data-p="da" href="https://github.com/1beebe/document-archivist" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/archivist-poster.jpg" alt="" width="960" height="1200"></span><span class="name">Document Archivist</span><span class="kind">Scanned PDFs in, clean searchable text out</span><span class="taught">Five months of building later, the version that works. It turns his paper archive into clean, searchable text for the analysis skills I’m using to finish his study. Your team’s first build won’t be the one that sticks, and that’s normal.</span><span class="go">GitHub</span></a></li>
     </ol>
     <a class="tlink work-more" href="https://github.com/1beebe/ai-agent-portfolio" target="_blank" rel="noopener">More on GitHub</a>
   </div>
@@ -680,6 +672,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
       <figure data-p="md"><div class="media"><video muted loop playsinline preload="none" poster="videos/marble-descent-poster.jpg" data-src="videos/marble-descent.mp4"></video></div><figcaption>A 400-word brief with four subagents against a 70-word prompt. The short prompt won: about 20 build steps instead of 132.</figcaption></figure>
       <figure data-p="im"><div class="media"><video muted loop playsinline preload="none" poster="videos/imagemodels-poster.jpg" data-src="videos/imagemodels.mp4"></video></div><figcaption>Runs six image models in parallel on one prompt and lays the results side by side.</figcaption></figure>
       <figure data-p="da"><div class="media"><video muted loop playsinline preload="none" poster="videos/archivist-poster.jpg" data-src="videos/archivist.mp4"></video></div><figcaption>Ingests PDFs, cleans the OCR text and builds structured metadata into a browsable dashboard.</figcaption></figure>
+      <figure data-p="rv"><div class="media"><video muted loop playsinline preload="none" poster="videos/reveal-single-poster.jpg" data-src="videos/reveal-single.mp4"></video></div><figcaption>A pencil sketch of a pixel-to-clear reveal, then the agent that builds it: it generates a photo shoot and reveals each shot pixel by pixel.</figcaption></figure>
       <figure data-p="ll"><div class="media"><video muted loop playsinline preload="none" poster="videos/lakoff-poster.jpg" data-src="videos/lakoff.mp4"></video></div><figcaption>Scores sentiment and metaphorical framing using George Lakoff’s cognitive-linguistics framework.</figcaption></figure>
     </div>
   </div>
@@ -694,16 +687,6 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
       <p>Now I run L.&nbsp;Beebe, LLC, co-founded <mark>10xJobs</mark>, and host the AI Architect Program inside Never Search Alone. I build every day in MindStudio and Claude Code, so what I teach is what I use.</p>
       <p>The problem I keep seeing: teams get the tools but not the time to learn them. That part I can fix. Off the clock, it’s two kids, a sketchbook and Florida swamp wildlife.</p>
     </div>
-    <figure class="reveal" aria-labelledby="reveal-cap">
-    <div class="reveal-pair">
-      <img src="sketchbook.jpg" width="1099" height="1460" alt="Sketchbook page: a pencil grid with notes reading mask and light reveal, single photo, pixel to clear reveal">
-      <div class="reveal-stage" data-v="single">
-        <video muted playsinline preload="metadata" poster="videos/reveal-single-poster.jpg" aria-label="A generated fashion portrait resolves from coarse grey pixels into a clear photo, then white blocks wipe across before the next shot appears"></video>
-        <button type="button" class="replay" aria-label="Replay the reveal">Replay</button>
-      </div>
-    </div>
-    <figcaption id="reveal-cap">Sketched first, then built as a MindStudio agent: it generates a photo shoot and reveals it pixel by pixel.</figcaption>
-  </figure>
   </div>
   <div class="about-side">
 
@@ -722,7 +705,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   <h2 class="display" id="close-h">Tell me about <span class="ink-wrap ink-under" id="close-ink">your team<svg class="ink" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12 C 70 5, 170 4, 296 8"/><path pathLength="1" d="M34 17 C 110 12, 200 12, 272 14"/></svg></span></h2>
   <p class="lead">A free 30-minute call about where your team is and what would help. No pitch deck.</p>
   <div class="close-actions">
-    <a class="btn" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a free call</a>
+    <a class="btn" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a free 30-minute call</a>
     <a class="tlink" href="https://www.linkedin.com/in/ligaya-beebe/" target="_blank" rel="noopener">Or message me on LinkedIn</a>
   </div>
 </section>
@@ -740,17 +723,21 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   </ul>
 </footer>
 
-<a class="btn pin" id="pin" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener" tabindex="-1">Book a free call</a>
+<a class="btn pin" id="pin" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener" tabindex="-1">Book a free 30-minute call</a>
 
 <script>
-// pinned call button: appears once the hero's own button has scrolled away, hides at the closing section
+// pinned call button: appears once the hero has scrolled away, hides at the closing section and beside the picker's own button
 (() => {
   const pin = document.getElementById('pin'), hero = document.querySelector('.hero'), close = document.querySelector('.close');
   if (!('IntersectionObserver' in window)) return;
   let heroOut = false, closeIn = false;
-  const set = () => { const on = heroOut && !closeIn; pin.classList.toggle('show', on); pin.tabIndex = on ? 0 : -1; };
+  const ctasIn = new Set();
+  const set = () => { const on = heroOut && !closeIn && !ctasIn.size; pin.classList.toggle('show', on); pin.tabIndex = on ? 0 : -1; };
   new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; set(); }).observe(hero);
   new IntersectionObserver(([e]) => { closeIn = e.isIntersecting; set(); }).observe(close);
+  // the picker has its own booking button; don't stack a second one on top of it
+  const ctaObs = new IntersectionObserver(es => { es.forEach(e => e.isIntersecting ? ctasIn.add(e.target) : ctasIn.delete(e.target)); set(); });
+  document.querySelectorAll('.picker-cta').forEach(c => ctaObs.observe(c));
 })();
 
 // team picker
@@ -788,20 +775,6 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
       if (on && play && !still.matches) { if (!v.src) v.src = v.dataset.src; v.playbackRate = 1.6; v.play().catch(() => {}); } else v.pause(); });
   };
   rows.forEach(r => { r.addEventListener('mouseenter', () => show(r.dataset.p, true)); r.addEventListener('focus', () => show(r.dataset.p, true)); });
-})();
-// sketchbook reveal: plays once when it scrolls into view, silent, replay on demand
-(() => {
-  const stage = document.querySelector('.reveal-stage'); if (!stage) return;
-  const v = stage.querySelector('video');
-  const still = matchMedia('(prefers-reduced-motion: reduce)');
-  const ext = v.canPlayType('video/mp4; codecs="avc1.42E01E"') ? 'mp4' : 'webm';
-  v.src = `videos/reveal-single.${ext}`;
-  const play = () => { stage.classList.remove('done'); v.currentTime = 0; v.play().catch(() => stage.classList.add('done')); };
-  v.addEventListener('ended', () => stage.classList.add('done'));
-  stage.querySelector('.replay').addEventListener('click', play);
-  if (still.matches || !('IntersectionObserver' in window)) { stage.classList.add('done'); return; }
-  const io = new IntersectionObserver(([e]) => { if (e.intersectionRatio > .6) { io.disconnect(); play(); } }, { threshold: .6 });
-  io.observe(stage);
 })();
 </script>
 </body>
