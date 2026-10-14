@@ -328,6 +328,10 @@
   --white-2: #f2f1ee;
   --spoonbill: #ffc0d6;
   --spoonbill-2: #ffaac8;
+  --spoonbill-3: #ff97bd;
+  --spoonbill-wash: #fff3f8;
+  --spoonbill-ink: #4a2a36;
+  --sun-ink: #5e4a0a;
   --blackwater: #15130f;
   --blackwater-2: #26231d;
   --ink: #0a0a0a;
@@ -360,7 +364,9 @@ h1, h2, h3, p, ul, ol, figure, blockquote { margin: 0; padding: 0; }
 ul, ol { list-style: none; }
 a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 0.07em; }
 ::selection { background: var(--accent); color: var(--accent-ink); }
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.hiring :focus-visible, .quote-lead :focus-visible, .foot :focus-visible { outline-color: var(--sun); }
+.pin:focus-visible { outline-offset: -6px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip { position: absolute; left: var(--margin); top: -4rem; background: var(--ink); color: var(--sun); padding: .6rem 1rem; z-index: 20; }
 .skip:focus { top: .75rem; }
@@ -383,10 +389,10 @@ p { max-width: 62ch; text-wrap: pretty; }
 .tlink:hover { text-decoration-thickness: .14em; }
 
 /* nav */
-.bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.25rem var(--margin); background: var(--sun); font-size: var(--step-small); }
-.bar .mark { font-weight: 600; text-decoration: none; font-size: var(--step-body); }
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .5rem var(--margin); background: var(--sun); font-size: var(--step-small); }
+.bar .mark { display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 600; text-decoration: none; font-size: var(--step-body); }
 .bar ul { display: flex; gap: clamp(1rem, 2.4vw, 2rem); align-items: center; }
-.bar ul a { text-decoration: none; font-weight: 600; }
+.bar ul a { display: inline-flex; align-items: center; min-height: 2.75rem; text-decoration: none; font-weight: 600; }
 .bar ul a:hover { text-decoration: underline; }
 
 /* pinned action */
@@ -403,9 +409,7 @@ p { max-width: 62ch; text-wrap: pretty; }
 .hero-sub { margin-top: 1.75rem; max-width: 40ch; }
 .hero-sub strong { display: block; margin-bottom: .4rem; font-size: clamp(1.5rem, 1.1rem + 1.3vw, 2.25rem); line-height: 1.15; font-weight: 600; }
 .hero-actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; align-items: center; }
-.hero-who { margin-top: 2.25rem; font-size: var(--step-small); color: #5e4a0a; max-width: 52ch; }
-.hero-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; }
-.hero-photo figcaption { margin-top: .6rem; font-size: var(--step-small); color: #5e4a0a; }
+.hero-who { margin-top: 2.25rem; font-size: var(--step-small); color: var(--sun-ink); max-width: 52ch; }
 
 /* proof */
 .proof { background: var(--gulf); color: var(--ink); padding: var(--section) var(--margin); }
@@ -421,7 +425,6 @@ p { max-width: 62ch; text-wrap: pretty; }
 .quote figcaption { margin-top: 1.25rem; font-size: var(--step-small); color: var(--ink-soft); }
 .quote-lead { background: var(--blackwater); color: var(--paper); }
 .quote-lead figcaption { color: var(--paper-soft); }
-.placeholder { color: var(--accent); font-weight: 600; }
 .partners { margin-top: 3.5rem; font-size: var(--step-small); color: var(--ink-soft); max-width: 80ch; }
 .partners b { color: var(--ink); font-weight: 600; }
 
@@ -438,12 +441,12 @@ p { max-width: 62ch; text-wrap: pretty; }
 .picker-intro { margin-top: 1.25rem; }
 .teams { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .5rem; }
 .teams button { font: inherit; font-weight: 600; cursor: pointer; border: 0; min-height: 2.9rem; padding: .6rem 1.1rem; background: var(--spoonbill-2); color: var(--ink); transition: background-color 180ms ease, color 180ms ease; }
-.teams button:hover { background: #ff97bd; }
+.teams button:hover { background: var(--spoonbill-3); }
 .teams button[aria-selected="true"] { background: var(--ink); color: var(--spoonbill); }
-.picker-note { margin-top: 1.5rem; font-size: var(--step-small); color: #4a2a36; }
+.picker-note { margin-top: 1.5rem; font-size: var(--step-small); color: var(--spoonbill-ink); }
 .exchange-step + .exchange-step { margin-top: 1.75rem; }
 .exchange-step > p:first-child { font-weight: 600; }
-.call { margin-top: .6rem; padding: 1.1rem 1.3rem; background: #fff3f8; font-size: var(--step-lead); line-height: 1.35; max-width: none; }
+.call { margin-top: .6rem; padding: 1.1rem 1.3rem; background: var(--spoonbill-wash); font-size: var(--step-lead); line-height: 1.35; max-width: none; }
 .call::before { content: "\201C"; }
 .call::after { content: "\201D"; }
 .response { margin-top: .6rem; max-width: 52ch; }
@@ -510,8 +513,8 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 .close-actions .btn { background: var(--ink); color: var(--paper); }
 .close-actions .btn:hover { background: var(--sun); color: var(--ink); }
 .foot { background: var(--blackwater); color: var(--paper-soft); padding: 2rem var(--margin) calc(5.5rem + env(safe-area-inset-bottom, 0px)); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem 2rem; font-size: var(--step-small); }
-.foot ul { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
-.foot a { color: var(--paper); text-decoration: none; }
+.foot ul { display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin-top: -.75rem; }
+.foot a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--paper); text-decoration: none; }
 .foot a:hover { text-decoration: underline; }
 
 @media (max-width: 1000px) {
@@ -603,7 +606,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
       <button role="tab" id="t-mkt" aria-selected="false" aria-controls="p-mkt" tabindex="-1">Marketing</button>
       <button role="tab" id="t-lead" aria-selected="false" aria-controls="p-lead" tabindex="-1">Leadership</button>
     </div>
-    <p class="picker-note">Example scenarios. These slots are best filled with real before-and-after stories from your engagements.</p>
+    <p class="picker-note">Illustrative examples of how a first session might go.</p>
   </div>
   <div class="exchange">
     <div role="tabpanel" id="p-help" aria-labelledby="t-help">
