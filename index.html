@@ -429,7 +429,10 @@ p { max-width: 62ch; text-wrap: pretty; }
 .hero-actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; align-items: center; }
 
 /* proof */
+.stats { background: var(--gulf); color: var(--ink); padding: clamp(2rem, 4vw, 3.25rem) var(--margin); }
+.stats .num strong { font-size: clamp(2.5rem, 1.6rem + 2.4vw, 4.25rem); }
 .proof { background: var(--gulf); color: var(--ink); padding: var(--section) var(--margin); }
+.proof .quotes { margin-top: 0; }
 .nums { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem clamp(1.5rem, 3vw, 3rem); }
 .num strong { display: block; font-size: clamp(3.75rem, 1.5rem + 5.4vw, 7.5rem); color: var(--blackwater); font-variant-numeric: tabular-nums; }
 
@@ -553,8 +556,8 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 <nav class="bar" aria-label="Main">
   <a class="mark" href="#top">Ligaya Beebe</a>
   <ul>
-    <li><a href="#services">Services</a></li>
     <li><a href="#start">First session</a></li>
+    <li><a href="#services">Services</a></li>
     <li><a href="#work">Work</a></li>
     <li><a class="tlink" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a call</a></li>
   </ul>
@@ -576,34 +579,14 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 
 <main id="main">
 
-<section class="proof" aria-labelledby="proof-h">
-  <h2 class="sr-only" id="proof-h">Results</h2>
+<section class="stats" aria-labelledby="stats-h">
+  <h2 class="sr-only" id="stats-h">Results</h2>
   <div class="nums">
-    <div class="num"><strong class="display">96%</strong><p>satisfaction across the AI Architect Program: 91 registrants, a 4.8 rating, zero paid marketing.</p></div>
-    <div class="num"><strong class="display">$8M+</strong><p>in grant funding and renewals for State Department-funded programs in 12+ countries.</p></div>
     <div class="num"><strong class="display">27%</strong><p>fewer support requests after an onboarding redesign across eight countries.</p></div>
+    <div class="num"><strong class="display">96%</strong><p>satisfaction across the AI Architect Program: 91 registrants, a 4.8 rating, zero paid marketing.</p></div>
     <div class="num"><strong class="display">200+</strong><p>professionals trained, most of whom would never call themselves technical.</p></div>
+    <div class="num"><strong class="display">$8M+</strong><p>in grant funding and renewals for State Department-funded programs in 12+ countries.</p></div>
   </div>
-  <div class="quotes" id="quotes">
-    <figure class="quote quote-lead"><blockquote>“I use ChatGPT and that’s about it. This is the first time I’ve ever gone in. I didn’t know that you could create AI agents. From a complete beginner standpoint, I thought it was a really, really easy way to dip my toes in the water when it comes to getting better at AI.”</blockquote><figcaption>Marketing team member, Clear Digital Labs AI bootcamp pilot</figcaption></figure>
-    <figure class="quote"><blockquote>“This is more advanced than ChatGPT, but not super crazy advanced, where beginners can’t pick it up.”</blockquote><figcaption>Marketing team member, Clear Digital Labs pilot</figcaption></figure>
-    <figure class="quote"><blockquote>“[By] the capstone, I knew exactly what this is going to do and what this is going to streamline and automate.”</blockquote><figcaption>Marketing team member, Clear Digital Labs pilot</figcaption></figure>
-    <figure class="quote"><blockquote>“Super clear explanation and demos too, absolutely feel more confident in agent vs. workflow.”</blockquote><figcaption>AI Architect Program participant</figcaption></figure>
-  </div>
-  <button type="button" class="more-quotes" aria-controls="quotes" aria-expanded="false">More from participants</button>
-  <p class="partners"><b>Worked with:</b> iEARN-USA, State Department-funded exchanges, Clear Digital Labs, Never Search Alone, 10xJobs, MindStudio, universities in Qinghai, New York City public schools.</p>
-</section>
-
-<section class="services" id="services" aria-labelledby="svc-h">
-  <div class="services-head">
-    <div><span class="label">For teams</span><h2 class="h2 display" id="svc-h">Three ways to work together</h2></div>
-    <p class="lead">Most engagements start with training and grow from there. Right now I’m rebuilding an AI bootcamp for Clear Digital Labs’ marketing team after a five-session pilot.</p>
-  </div>
-  <ul class="svc-list">
-    <li class="svc"><h3 class="display">Train the team</h3><p>Custom workshops for non-technical teams, online or in person, as a cohort or 1:1. Everyone is hands on the keyboard from the first session. We start with your team’s actual work and leave real time to experiment, because curiosity is what keeps people using these tools after the workshop ends.</p><p class="tags">Custom curriculum. Hands-on, cohort and 1:1.</p></li>
-    <li class="svc"><h3 class="display">Build the agent</h3><p>Lightweight workflows and agents that fit how your team already works, delivered with the training to run them.</p><p class="tags">Certified AI agent builder (MindStudio Level 3). Claude, ChatGPT, NotebookLM.</p></li>
-    <li class="svc"><h3 class="display">Run the program</h3><p>A fractional lead for your AI adoption: curriculum, rollout, peer champions and measurement.</p><p class="tags">PMP. Nine years running federal programs.</p></li>
-  </ul>
 </section>
 
 <section class="picker" id="start" aria-labelledby="pick-h">
@@ -653,6 +636,33 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     </div>
   </div>
 </section>
+
+<section class="proof" aria-labelledby="proof-h">
+  <span class="label">What participants say</span>
+  <h2 class="sr-only" id="proof-h">What participants say</h2>
+  <div class="quotes" id="quotes">
+    <figure class="quote quote-lead"><blockquote>“I use ChatGPT and that’s about it. This is the first time I’ve ever gone in. I didn’t know that you could create AI agents. From a complete beginner standpoint, I thought it was a really, really easy way to dip my toes in the water when it comes to getting better at AI.”</blockquote><figcaption>Marketing team member, Clear Digital Labs AI bootcamp pilot</figcaption></figure>
+    <figure class="quote"><blockquote>“This is more advanced than ChatGPT, but not super crazy advanced, where beginners can’t pick it up.”</blockquote><figcaption>Marketing team member, Clear Digital Labs pilot</figcaption></figure>
+    <figure class="quote"><blockquote>“[By] the capstone, I knew exactly what this is going to do and what this is going to streamline and automate.”</blockquote><figcaption>Marketing team member, Clear Digital Labs pilot</figcaption></figure>
+    <figure class="quote"><blockquote>“Super clear explanation and demos too, absolutely feel more confident in agent vs. workflow.”</blockquote><figcaption>AI Architect Program participant</figcaption></figure>
+  </div>
+  <button type="button" class="more-quotes" aria-controls="quotes" aria-expanded="false">More from participants</button>
+  <p class="partners"><b>Worked with:</b> iEARN-USA, State Department-funded exchanges, Clear Digital Labs, Never Search Alone, 10xJobs, MindStudio, universities in Qinghai, New York City public schools.</p>
+</section>
+
+
+<section class="services" id="services" aria-labelledby="svc-h">
+  <div class="services-head">
+    <div><span class="label">For teams</span><h2 class="h2 display" id="svc-h">Three ways to work together</h2></div>
+    <p class="lead">Most engagements start with training and grow from there. Right now I’m rebuilding an AI bootcamp for Clear Digital Labs’ marketing team after a five-session pilot.</p>
+  </div>
+  <ul class="svc-list">
+    <li class="svc"><h3 class="display">Train the team</h3><p>Custom workshops for non-technical teams, online or in person, as a cohort or 1:1. Everyone is hands on the keyboard from the first session. We start with your team’s actual work and leave real time to experiment, because curiosity is what keeps people using these tools after the workshop ends.</p><p class="tags">Custom curriculum. Hands-on, cohort and 1:1.</p></li>
+    <li class="svc"><h3 class="display">Build the agent</h3><p>Lightweight workflows and agents that fit how your team already works, delivered with the training to run them.</p><p class="tags">Certified AI agent builder (MindStudio Level 3). Claude, ChatGPT, NotebookLM.</p></li>
+    <li class="svc"><h3 class="display">Run the program</h3><p>A fractional lead for your AI adoption: curriculum, rollout, peer champions and measurement.</p><p class="tags">PMP. Nine years running federal programs.</p></li>
+  </ul>
+</section>
+
 
 
 <section class="work" id="work" aria-labelledby="work-h">
