@@ -23,6 +23,13 @@ The best way to work with Ligaya or talk with her about a role is a free 30-minu
 - 27% fewer support requests after an onboarding redesign spanning eight countries (live sessions, peer champions, knowledge base)
 - Currently partnering with Clear Digital Labs on an AI bootcamp for their marketing team: a 5-session synchronous program built around agentic workflows
 
+## What participants say
+
+- "I use ChatGPT and that's about it. This is the first time I've ever gone in. I didn't know that you could create AI agents. From a complete beginner standpoint, I thought it was a really, really easy way to dip my toes in the water when it comes to getting better at AI." (Marketing team member, Clear Digital Labs AI bootcamp pilot)
+- "This is more advanced than ChatGPT, but not super crazy advanced, where beginners can't pick it up." (Marketing team member, Clear Digital Labs pilot)
+- "[By] the capstone, I knew exactly what this is going to do and what this is going to streamline and automate." (Marketing team member, Clear Digital Labs pilot)
+- "Super clear explanation and demos too, absolutely feel more confident in agent vs. workflow." (AI Architect Program participant)
+
 ## Services
 
 - AI Enablement & Training: Custom workshops for non-technical teams, online or in person, cohort or 1:1. Starts from the team's actual work, finds where AI creates real value, and builds lasting fluency rather than a one-day hype session.
