@@ -32,18 +32,22 @@ The best way to work with Ligaya or talk with her about a role is a free 30-minu
 
 ## Services
 
-- AI Enablement & Training: Custom workshops for non-technical teams, online or in person, cohort or 1:1. Starts from the team's actual work, finds where AI creates real value, and builds lasting fluency rather than a one-day hype session.
+- AI Enablement & Training: Custom workshops for non-technical teams, online or in person, cohort or 1:1. Everyone is hands on the keyboard from the first session. Starts from the team's actual work, leaves real time to experiment, and builds lasting fluency rather than a one-day hype session.
 - AI Agent Development: Purpose-built AI workflows and agents designed around how a team already works, delivered together with training so the team can use them.
 - AI Program Management: Fractional program lead who designs and runs an organization's ongoing AI adoption program, from curriculum to rollout to measurement.
+
+## Learning by building
+
+Ligaya's view of AI adoption: in this AI era, learning by doing means learning by building. Teams need AI skills tied to real workflow results, and organizations should also give people room to try new tools, run experiments, and play. She builds that hands-on experimentation into client engagements and follows the same advice herself. Each project below taught her something she now brings into training.
 
 ## Selected work
 
 - [AI Architect Program report](https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html): Peer-led AI learning series she designed and facilitated end to end (2025).
-- [Marble Descent case study](https://github.com/1beebe/marble-descent): The same tilt-to-roll phone game built twice with Claude, from a 400-word brief with four subagents and from a 70-word prompt; the short prompt won. [Play it](https://1beebe.github.io/marble-descent/) on a phone (2026).
-- [10xcolleges](https://10xcolleges.co/): Live AI college-admissions coach app she built with MindStudio's Remy on top of Yong Tian's open-source counseling skills. It is honest about odds, sources every fact, coaches essays without ghostwriting, and runs spoken mock interviews (2026).
-- [Compare Top Image Models](https://app.mindstudio.ai/agents/compare-top-image-models-18755b63): MindStudio hackathon runner-up agent that runs six image models in parallel on one prompt and compares the results side by side.
-- [Document Archivist](https://github.com/1beebe/document-archivist): AI workflow that ingests PDFs, cleans OCR text, and generates structured metadata into a navigable dashboard.
-- [Lakoff Lens](https://github.com/1beebe/lakoff-lens): Prototype that analyzes political text for sentiment and metaphorical framing using George Lakoff's cognitive-linguistics framework.
+- [10xcolleges](https://10xcolleges.co/): Live AI college-admissions coach app she built with MindStudio's Remy on top of Yong Tian's open-source counseling skills. It is honest about odds, sources every fact, coaches essays without ghostwriting, and runs spoken mock interviews (2026). What it taught her: pointing a product agent like Remy at an open-source, MIT-licensed repo produced a full app with frontend, backend, and logins in a few hours, and it led her to build with her own team of sub-agents in Claude Code.
+- [Marble Descent case study](https://github.com/1beebe/marble-descent): The same tilt-to-roll phone game built twice with Claude, from a 400-word brief with four subagents and from a 70-word prompt. [Play it](https://1beebe.github.io/marble-descent/) on a phone (2026). What it taught her: the 70-word prompt won, with about 20 build steps instead of 132. Clearer asks usually win.
+- [Compare Top Image Models](https://app.mindstudio.ai/agents/compare-top-image-models-18755b63): MindStudio hackathon runner-up agent that runs six image models in parallel on one prompt and compares the results side by side. What it taught her: test tools side by side on your own prompt before a team commits to one.
+- [Lakoff Lens](https://github.com/1beebe/lakoff-lens): Her first agent, built in January 2026. It analyzes political text for sentiment and metaphorical framing using George Lakoff's framework, and it was aimed from day one at the research method of her father, anthropologist Dr. James Beebe. It wasn't good enough yet, and that was fine.
+- [Document Archivist (Archive Intelligence)](https://github.com/1beebe/document-archivist): Five months of building later, the version that works. It turns her father's paper archive into clean, searchable text with structured metadata, which feeds the [qualitative analysis skills](https://github.com/1beebe/beebe-qualitative-skills) she is using to finish his study.
 - [AI agent portfolio](https://github.com/1beebe/ai-agent-portfolio): More agents and workflows on GitHub.
 
 ## Background
