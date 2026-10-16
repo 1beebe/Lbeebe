@@ -320,7 +320,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@800&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
-/* Layout: three colour fields (sun, blackwater, spoonbill) on white; value first, both audiences labelled, one pinned action. */
+/* Layout: three colour fields (sun, blackwater, spoonbill) on white; value first, a quiet door for recruiters, one pinned action. */
 :root {
   color-scheme: light;
   --sun: #ffd249;
@@ -382,8 +382,6 @@ p { max-width: 62ch; text-wrap: pretty; }
 .h2 { font-size: var(--step-head); max-width: 18ch; }
 .lead { font-size: var(--step-lead); line-height: 1.38; }
 .small { font-size: var(--step-small); }
-.label { display: block; font-weight: 600; font-size: var(--step-body); margin-bottom: 1rem; }
-.label::before { content: ""; display: inline-block; width: .7em; height: .7em; background: var(--accent); margin-right: .55em; vertical-align: -0.02em; }
 .wrap { padding-inline: var(--margin); }
 
 .btn { display: inline-flex; align-items: center; min-height: 3.25rem; padding: .85rem 1.4rem; background: var(--accent); color: var(--accent-ink); font-weight: 600; text-decoration: none; transition: transform 140ms var(--ease-out), background-color 180ms ease, color 180ms ease; }
@@ -597,7 +595,6 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 
 <section class="picker" id="start" aria-labelledby="pick-h">
   <div>
-    <span class="label">How a first session looks</span>
     <h2 class="h2 display" id="pick-h">Which team is stuck?</h2>
     <p class="picker-intro lead">Pick one to see how I’d start.</p>
     <div class="teams" role="tablist" aria-label="Teams">
@@ -644,7 +641,6 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 </section>
 
 <section class="proof" aria-labelledby="proof-h">
-  <span class="label">What participants say</span>
   <h2 class="sr-only" id="proof-h">What participants say</h2>
   <div class="quotes" id="quotes">
     <figure class="quote quote-lead"><blockquote>“I use ChatGPT and that’s about it. This is the first time I’ve ever gone in. I didn’t know that you could create AI agents. From a complete beginner standpoint, I thought it was a really, really easy way to dip my toes in the water when it comes to getting better at AI.”</blockquote><figcaption>Marketing team member, Clear Digital Labs AI bootcamp pilot</figcaption></figure>
@@ -659,7 +655,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 
 <section class="services" id="services" aria-labelledby="svc-h">
   <div class="services-head">
-    <div><span class="label">For teams</span><h2 class="h2 display" id="svc-h">Three ways to work together</h2></div>
+    <div><h2 class="h2 display" id="svc-h">Three ways to work together</h2></div>
     <p class="lead">Most engagements start with training and grow from there. Right now I’m rebuilding an AI bootcamp for Clear Digital Labs’ marketing team after a five-session pilot.</p>
   </div>
   <ul class="svc-list">
@@ -673,7 +669,6 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 
 <section class="work" id="work" aria-labelledby="work-h">
   <div class="work-head">
-    <span class="label">Play is part of the method</span>
     <h2 class="h2 display" id="work-h">Learning by building</h2>
     <p class="lead">In this AI era, learning by doing means learning by building. I tell every client the same thing: stay open to trying new tools, and give your people room to play with them. I follow my own advice. A couple of these are live products, and the rest started as experiments I ran to see what would happen. Each one taught me something I now bring into training.</p>
   </div>
@@ -704,7 +699,6 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 
 <section class="about" id="about" aria-labelledby="about-h">
   <div>
-    <span class="label">About</span>
     <h2 class="sr-only" id="about-h">About Ligaya Beebe</h2>
     <div class="story">
       <p>I’ve spent my career helping people learn unfamiliar things. I taught at universities in <mark>Qinghai Province</mark> and in New York City public schools as a Teaching Fellow, then spent nine years at <mark>iEARN-USA</mark>, from front-line coordinator to senior grants manager.</p>
