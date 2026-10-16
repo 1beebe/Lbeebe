@@ -81,8 +81,6 @@ p { max-width: 62ch; text-wrap: pretty; }
 .h2 { font-size: var(--step-head); max-width: 18ch; }
 .lead { font-size: var(--step-lead); line-height: 1.38; }
 .small { font-size: var(--step-small); }
-.label { display: block; font-weight: 600; font-size: var(--step-body); margin-bottom: 1rem; }
-.label::before { content: ""; display: inline-block; width: .7em; height: .7em; background: var(--accent); margin-right: .55em; vertical-align: -0.02em; }
 .wrap { padding-inline: var(--margin); }
 
 .btn { display: inline-flex; align-items: center; min-height: 3.25rem; padding: .85rem 1.4rem; background: var(--accent); color: var(--accent-ink); font-weight: 600; text-decoration: none; transition: transform 140ms var(--ease-out), background-color 180ms ease, color 180ms ease; }
@@ -106,7 +104,6 @@ body { background: var(--blackwater); color: var(--paper); }
 
 /* hiring */
 .hiring { padding: var(--section) var(--margin); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); }
-.hiring .label::before { background: var(--sun); }
 .hiring :focus-visible { outline-color: var(--sun); }
 .hiring .lead { margin-top: 1.25rem; max-width: 34ch; }
 .hire-me { margin-top: 2rem; display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: 1.1rem; align-items: center; max-width: 30rem; }
@@ -159,7 +156,6 @@ body { background: var(--blackwater); color: var(--paper); }
 <main id="main">
 <section class="hiring" aria-labelledby="hire-h">
   <div>
-    <span class="label">For hiring managers and recruiters</span>
     <h1 class="h2 display" id="hire-h">Open to the right role</h1>
     <p class="lead">Nine years leading programs, a PMP, and I build with AI every day. Here’s where I fit.</p>
     <figure class="hire-me">
