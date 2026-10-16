@@ -119,6 +119,17 @@ body { background: var(--blackwater); color: var(--paper); }
 .roles li + li { margin-top: .5rem; }
 .roles h2 { font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.75rem); color: var(--sun); }
 .roles p { margin-top: .5rem; }
+/* recommendations */
+.vouch { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 1.25rem; }
+.vouch figure { padding: clamp(1.5rem, 3vw, 2.5rem); background: var(--blackwater-2); display: flex; flex-direction: column; justify-content: space-between; }
+.vouch blockquote { font-size: var(--step-lead); line-height: 1.35; }
+.vouch figcaption { margin-top: 1.25rem; font-size: var(--step-small); color: var(--paper-soft); }
+.vouch figcaption a { color: var(--paper); }
+.vouch .vouch-lead { background: var(--sun); color: var(--ink); }
+.vouch .vouch-lead blockquote { font-size: clamp(1.375rem, 1rem + 1.2vw, 2.125rem); line-height: 1.3; }
+.vouch .vouch-lead figcaption { color: var(--sun-ink); }
+.vouch .vouch-lead figcaption a { color: var(--ink); }
+.vouch .vouch-lead :focus-visible { outline-color: var(--ink); }
 .teams-note { padding: 0 var(--margin) var(--section); font-size: var(--step-small); color: var(--paper-soft); }
 .teams-note a { color: var(--paper); }
 .foot { background: var(--blackwater); color: var(--paper-soft); padding: 2rem var(--margin) calc(5.5rem + env(safe-area-inset-bottom, 0px)); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem 2rem; font-size: var(--step-small); }
@@ -126,7 +137,7 @@ body { background: var(--blackwater); color: var(--paper); }
 .foot a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--paper); text-decoration: none; }
 .foot a:hover { text-decoration: underline; }
 .foot { padding-bottom: 2rem; border-top: 1px solid var(--blackwater-2); }
-@media (max-width: 1000px) { .hiring { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 1000px) { .hiring, .vouch { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 640px) { .bar ul li:not(:last-child) { display: none; } }
 </style>
 </head>
@@ -163,6 +174,11 @@ body { background: var(--blackwater); color: var(--paper); }
     <li><h2 class="display">L&amp;D or instructional design manager</h2><p>ADDIE, cohort design and facilitation across cultures, from Qinghai classrooms to twelve-country programs.</p></li>
     <li><h2 class="display">AI program manager</h2><p>PMP. Over $8M in federal programs run end to end, with the reporting funders expect.</p></li>
   </ul>
+  <div class="vouch">
+    <h2 class="sr-only">What colleagues and clients say</h2>
+    <figure class="vouch-lead"><blockquote>“Ligaya ran some of our most complex international education programs, juggling everything from intricate logistics and government partnerships to high-stakes visa issues and student well-being. … She’s particularly good at translating technical concepts for people who aren’t [technically savvy]. I highly recommend Ligaya; her unique blend of intelligence, kindness, and technical curiosity would make her a huge asset to any team.”</blockquote><figcaption>Julia Heitner, Ecosystem Growth @ Ripple. Worked with Ligaya at iEARN-USA. <a href="https://www.linkedin.com/in/ligaya-beebe/details/recommendations/" target="_blank" rel="noopener">LinkedIn recommendation</a></figcaption></figure>
+    <figure><blockquote>“Ligaya did a terrific job offering AI training across all disciplines in our company. A week ago, very few people used AI. Now AI is being talked about in the kitchen, on our company chat and in general conversations. The best training has verifiable results. Ligaya’s results are awesome!”</blockquote><figcaption>Sam Sklaroff, CEO, Axxess Networks, a training client. <a href="https://www.linkedin.com/in/ligaya-beebe/details/recommendations/" target="_blank" rel="noopener">LinkedIn recommendation</a></figcaption></figure>
+  </div>
 </section>
 <p class="teams-note">Looking for training for your team instead? <a class="tlink" href="/">See how I work with teams</a>.</p>
 </main>
