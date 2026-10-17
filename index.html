@@ -6,7 +6,7 @@
 
 <!-- Primary SEO -->
 <title>L. Beebe, LLC · AI Enablement & Training for Non-Technical Teams</title>
-<meta name="description" content="Ligaya Beebe helps non-technical teams at SMBs go from AI anxiety to AI fluency. Hands-on AI enablement training, custom AI agent development, and AI program management. Based in Estero, FL.">
+<meta name="description" content="Ligaya Beebe trains non-technical teams at SMBs to use AI in the work they already do. Hands-on AI enablement training, custom AI agent development, and AI program management. Based in Estero, FL.">
 <meta name="keywords" content="AI enablement, AI training, non-technical teams, SMB AI training, AI literacy, MindStudio, AI consultant, AI program management, Estero Florida">
 <meta name="author" content="Ligaya Beebe">
 <meta name="robots" content="index, follow">
@@ -205,7 +205,7 @@
             "itemOffered": {
               "@type": "Service",
               "name": "AI Agent Development",
-              "description": "Purpose-built AI workflows and agents (MindStudio, Claude, ChatGPT, NotebookLM) designed around how a team works, delivered together with training on how to use them."
+              "description": "Lightweight AI workflows and agents (MindStudio, Claude, ChatGPT, NotebookLM) that fit how a team already works, delivered together with training on how to use them."
             }
           },
           {
@@ -509,6 +509,10 @@ p { max-width: 62ch; text-wrap: pretty; }
 .preview video { width: 100%; height: 100%; object-fit: contain; }
 .preview figcaption { margin-top: 1rem; max-width: 46ch; }
 .work-more { display: inline-block; margin-top: 1.5rem; padding-left: 1rem; }
+/* click ripple: faint code characters wake up in a ring around each click */
+.work { position: relative; isolation: isolate; }
+.work > :not(.ripple) { position: relative; z-index: 1; }
+.ripple { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 
 /* about */
 .about { background: var(--white-2); padding: var(--section) var(--margin); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(2rem, 5vw, 5rem); }
@@ -676,11 +680,11 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 <section class="work" id="work" aria-labelledby="work-h">
   <div class="work-head">
     <h2 class="h2 display" id="work-h">Learning by building</h2>
-    <p class="lead">In this AI era, learning by doing means learning by building. I tell every client the same thing: stay open to trying new tools, and give your people room to play with them. I follow my own advice. A couple of these are live products, and the rest started as experiments I ran to see what would happen. Each one taught me something I now bring into training.</p>
+    <p class="lead">Learning by doing now means learning by building. I tell every client the same thing: stay open to trying new tools, and give your people room to play with them. I follow my own advice. A couple of these are live products, and the rest started as experiments I ran to see what would happen. Each one taught me something I now bring into training.</p>
   </div>
   <div>
     <ol class="ledger">
-      <li><a class="row is-on" data-p="aia" href="https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/aiarchitect-poster.jpg" alt="" width="960" height="960"></span><span class="name">AI Architect Program</span><span class="kind">Peer-led AI training I designed and ran, 2025</span><span class="taught">A motivated group can run its own semi-structured peer learning, and building alongside others beats building alone. Your team learns faster in community.</span><span class="go">Report</span></a></li>
+      <li><a class="row is-on" data-p="aia" href="https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/aiarchitect-poster.jpg" alt="" width="960" height="960"></span><span class="name">AI Architect Program</span><span class="kind">Peer-led AI training I designed and ran, 2025</span><span class="taught">A motivated group can run its own semi-structured peer learning, and building alongside others beats building alone.</span><span class="go">Report</span></a></li>
       <li><a class="row" data-p="xc" href="https://10xcolleges.co/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/10xcolleges-poster.jpg" alt="" width="492" height="1044"></span><span class="name">10xcolleges</span><span class="kind">Live AI admissions coach I built with a product agent, 2026</span><span class="taught">A product agent pointed at an open-source project built a full app, with frontend, backend and logins, in a few hours. Your team doesn’t have to start from a blank page.</span><span class="go">App</span></a></li>
       <li><a class="row" data-p="md" href="https://1beebe.github.io/marble-descent/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/marble-descent-poster.jpg" alt="" width="540" height="960"></span><span class="name">Marble Descent</span><span class="kind">One phone game, built twice with Claude Code, 2026</span><span class="taught">A 70-word prompt beat a 400-word brief. Clearer asks usually win.</span><span class="go">Play</span></a></li>
       <li><a class="row" data-p="im" href="https://app.mindstudio.ai/agents/compare-top-image-models-18755b63" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/imagemodels-poster.jpg" alt="" width="960" height="594"></span><span class="name">Compare Top Image Models</span><span class="kind">MindStudio agent, hackathon runner-up</span><span class="taught">Test tools side by side on your own prompt before your team commits to one.</span><span class="go">Agent</span></a></li>
@@ -806,6 +810,80 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
       if (on && play && !still.matches) { if (!v.src) v.src = v.dataset.src; v.playbackRate = 1.6; v.play().catch(() => {}); } else v.pause(); });
   };
   rows.forEach(r => { r.addEventListener('mouseenter', () => show(r.dataset.p, true)); r.addEventListener('focus', () => show(r.dataset.p, true)); });
+})();
+
+// work ripple: a click sends a ring of code characters out from the pointer, mostly circles, sometimes a heart, diamond or flower
+(() => {
+  const zone = document.getElementById('work');
+  if (!zone || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const canvas = document.createElement('canvas'), ctx = canvas.getContext('2d');
+  canvas.className = 'ripple'; canvas.setAttribute('aria-hidden', 'true'); zone.prepend(canvas);
+  const GLYPHS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FONT = 13, LINE = 17;
+  const PINK = [239, 61, 138], GREY = [70, 66, 58], SPEED = 520, LIFE = 2.4, BINS = 360, TAU = Math.PI * 2;
+  const glyph = () => GLYPHS[(Math.random() * GLYPHS.length) | 0];
+  let cw = 8, cols = 0, rows = 0, W = 0, H = 0, chars = [], ripples = [], running = false, clicks = 0;
+
+  // a shape is its outline radius by angle, 1 at the widest point
+  const lut = fn => Float32Array.from({ length: BINS }, (_, i) => fn(i / BINS * TAU));
+  const heart = (() => {
+    const a = new Float32Array(BINS); let max = 0;
+    for (let k = 0; k < 4000; k++) {
+      const t = k / 4000 * TAU, s = Math.sin(t), x = 16 * s * s * s;
+      const y = 2 - (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+      const b = Math.min(BINS - 1, (((Math.atan2(y, x) + TAU) % TAU) / TAU * BINS) | 0), r = Math.hypot(x, y);
+      if (r > a[b]) a[b] = r; if (r > max) max = r;
+    }
+    for (let i = 0; i < BINS; i++) { if (!a[i]) a[i] = a[(i + BINS - 1) % BINS]; a[i] /= max; }
+    return a;
+  })();
+  const SHAPES = { circle: lut(() => 1), heart, diamond: lut(q => 1 / (Math.abs(Math.cos(q)) + Math.abs(Math.sin(q)))), flower: lut(q => 0.82 + 0.18 * Math.cos(5 * q - Math.PI / 2)) };
+  const ORDER = ['circle', 'heart', 'circle', 'diamond', 'circle', 'flower'];
+  const nextShape = () => SHAPES[clicks < ORDER.length ? ORDER[clicks++] : (clicks++, Math.random() < 0.55 ? 'circle' : ['heart', 'diamond', 'flower'][(Math.random() * 3) | 0])];
+
+  const size = () => {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = zone.clientWidth; H = zone.clientHeight; canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.font = FONT + 'px ui-monospace, "SF Mono", Menlo, Consolas, monospace'; ctx.textBaseline = 'top';
+    cw = Math.ceil(ctx.measureText('M').width) + 1; cols = Math.ceil(W / cw); rows = Math.ceil(H / LINE);
+    chars = Array.from({ length: cols * rows }, glyph);
+  };
+  // drifting patchiness so the glow breaks up instead of drawing a solid line
+  const patch = (c, r, t) => 0.45 + 0.35 * Math.sin(c * 0.23 + t * 0.9) * Math.sin(r * 0.37 - t * 0.6) + 0.2 * Math.sin((c + r) * 0.11 - t * 0.4);
+
+  const frame = now => {
+    const t = now / 1000;
+    ripples = ripples.filter(p => t - p.t0 < LIFE);
+    ctx.clearRect(0, 0, W, H);
+    if (!ripples.length) { running = false; return; }
+    for (const p of ripples) {
+      const age = t - p.t0, rad = age * SPEED, band = 34 + age * 34, fade = Math.pow(1 - age / LIFE, 1.6), reach = rad + band * 1.5;
+      const c0 = Math.max(0, ((p.x - reach) / cw) | 0), c1 = Math.min(cols - 1, ((p.x + reach) / cw) | 0);
+      const r0 = Math.max(0, ((p.y - reach) / LINE) | 0), r1 = Math.min(rows - 1, ((p.y + reach) / LINE) | 0);
+      for (let r = r0; r <= r1; r++) for (let c = c0; c <= c1; c++) {
+        const x = c * cw, y = r * LINE, dx = x - p.x, dy = y - p.y;
+        const edge = rad * p.shape[(((Math.atan2(dy, dx) + TAU) % TAU) / TAU * BINS) | 0];
+        const off = (Math.hypot(dx, dy) - edge) / band;
+        const v = (Math.exp(-off * off * 2.2) + (off < 0 ? 0.18 * Math.exp(off * 1.2) : 0)) * fade * patch(c, r, t);
+        if (v < 0.05) continue;
+        const i = r * cols + c;
+        if (Math.random() < 0.25 * v) chars[i] = glyph();
+        const hot = Math.min(1, Math.max(0, (v - 0.35) / 0.45)), mix = k => (GREY[k] + (PINK[k] - GREY[k]) * hot) | 0;
+        ctx.fillStyle = `rgba(${mix(0)},${mix(1)},${mix(2)},${Math.min(0.55, v * 0.65).toFixed(3)})`;
+        ctx.fillText(chars[i], x, y);
+      }
+    }
+    requestAnimationFrame(frame);
+  };
+
+  zone.addEventListener('pointerdown', e => {
+    const box = zone.getBoundingClientRect();
+    ripples.push({ x: e.clientX - box.left, y: e.clientY - box.top, t0: performance.now() / 1000, shape: nextShape() });
+    if (ripples.length > 5) ripples.shift();
+    if (!running) { running = true; requestAnimationFrame(frame); }
+  });
+  size();
+  if ('ResizeObserver' in window) new ResizeObserver(size).observe(zone); else addEventListener('resize', size);
 })();
 </script>
 </body>

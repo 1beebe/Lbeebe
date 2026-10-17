@@ -1,6 +1,6 @@
 # Ligaya Beebe · L. Beebe, LLC
 
-> Ligaya Beebe is an AI enablement consultant based in Estero, Florida, who helps non-technical teams at SMBs and nonprofits go from AI anxiety to AI fluency. She offers hands-on AI training, custom AI agent development, and AI program management. She is PMP certified, a MindStudio Level 3 certified AI agent developer, and has nine years of program and grants management experience in U.S. State Department-funded global education.
+> Ligaya Beebe is an AI enablement consultant based in Estero, Florida, who trains non-technical teams at SMBs and nonprofits to use AI in the work they already do. She offers hands-on AI training, custom AI agent development, and AI program management. She is PMP certified, a MindStudio Level 3 certified AI agent developer, and has nine years of program and grants management experience in U.S. State Department-funded global education.
 
 The best way to work with Ligaya or talk with her about a role is a free 30-minute call: https://calendly.com/ligaya-b/chat
 
@@ -37,13 +37,13 @@ The best way to work with Ligaya or talk with her about a role is a free 30-minu
 
 ## Services
 
-- AI Enablement & Training: Custom workshops for non-technical teams, online or in person, cohort or 1:1. Everyone is hands on the keyboard from the first session. Starts from the team's actual work, leaves real time to experiment, and builds lasting fluency rather than a one-day hype session.
-- AI Agent Development: Purpose-built AI workflows and agents designed around how a team already works, delivered together with training so the team can use them.
+- AI Enablement & Training: Custom workshops for non-technical teams, online or in person, cohort or 1:1. Everyone is hands on the keyboard from the first session. Starts from the team's actual work and leaves real time to experiment, so people keep using the tools after the workshop ends.
+- AI Agent Development: Lightweight AI workflows and agents that fit how a team already works, delivered together with training so the team can use them.
 - AI Program Management: Fractional program lead who designs and runs an organization's ongoing AI adoption program, from curriculum to rollout to measurement.
 
 ## Learning by building
 
-Ligaya's view of AI adoption: in this AI era, learning by doing means learning by building. Teams need AI skills tied to real workflow results, and organizations should also give people room to try new tools, run experiments, and play. She builds that hands-on experimentation into client engagements and follows the same advice herself. Each project below taught her something she now brings into training.
+Ligaya's view of AI adoption: learning by doing now means learning by building. Teams need AI skills tied to real workflow results, and organizations should also give people room to play with new tools. She builds that hands-on experimentation into client engagements and follows the same advice herself. Each project below taught her something she now brings into training.
 
 ## Selected work
 
