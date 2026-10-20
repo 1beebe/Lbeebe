@@ -43,7 +43,7 @@ A good fit when a company's engineers already use AI and the rest of the staff d
 
 ## Services
 
-- AI Enablement & Training: Custom workshops for non-technical teams, online or in person, cohort or 1:1. Everyone is hands on the keyboard from the first session. Starts from the team's actual work and leaves real time to experiment, so people keep using the tools after the workshop ends.
+- AI Enablement & Training: Custom workshops for non-technical teams, online or in person, cohort or 1:1. Everyone is hands on the keyboard from the first session. Starts from the team's actual work and leaves real time to experiment, so people keep using the tools after the workshop ends. She can also deliver the same training as an asynchronous course on whatever L&D platform the team already uses.
 - AI Agent Development: Lightweight AI workflows and agents that fit how a team already works, delivered together with training so the team can use them.
 - AI Program Management: Fractional program lead who designs and runs an organization's ongoing AI adoption program, from curriculum to rollout to measurement.
 
