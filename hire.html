@@ -123,6 +123,9 @@ body { background: var(--blackwater); color: var(--paper); }
 .hiring { padding: var(--section) var(--margin); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); }
 .hiring :focus-visible { outline-color: var(--sun); }
 .hiring .lead { margin-top: 1.25rem; max-width: 34ch; }
+.fit { margin-top: 1.75rem; max-width: 40ch; }
+.fit-q { font-size: var(--step-lead); line-height: 1.3; font-weight: 600; color: var(--sun); }
+.fit p { margin-top: .5rem; }
 .hire-me { margin-top: 2rem; display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: 1.1rem; align-items: center; max-width: 30rem; }
 .hire-me img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 22%; }
 .hire-me figcaption { font-size: var(--step-small); color: var(--paper-soft); }
@@ -175,6 +178,10 @@ body { background: var(--blackwater); color: var(--paper); }
   <div>
     <h1 class="h2 display" id="hire-h">Open to the right role</h1>
     <p class="lead">Nine years leading programs, a PMP, and I build with AI every day. Here’s where I fit.</p>
+    <div class="fit">
+      <h2 class="fit-q">Is Ligaya a fit for your AI enablement role?</h2>
+      <p>Yes, if the job is getting non-technical people to actually use AI: rollout, training design and program management. I’m not the right hire for ML engineering or data science.</p>
+    </div>
     <figure class="hire-me">
       <img src="/portrait.jpg" width="896" height="1152" alt="Ligaya Beebe, a woman with shoulder-length dark hair, in a black blazer over a cream top, smiling slightly in a warmly lit room">
       <figcaption>Ligaya Beebe, AI enablement consultant and program designer. PMP, MindStudio Level 3, nine years running international education programs. Estero, Florida.</figcaption>
