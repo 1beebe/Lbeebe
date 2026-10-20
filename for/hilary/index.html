@@ -163,6 +163,10 @@ th { font-weight: 600; background: var(--sun); }
 .btn:hover { box-shadow: 3px 3px 0 var(--ink); }
 .btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 .copied { font-family: var(--font-hand); font-size: 1.15rem; }
+.email-plain { font-weight: 600; color: var(--ink); overflow-wrap: anywhere; }
+.linkbtn { background: none; border: 0; padding: 0; font: inherit; font-weight: 600; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.linkbtn:hover { color: var(--accent); }
+.linkbtn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
 .skilldetails summary { cursor: pointer; font-weight: 600; padding: .5rem 0; }
 .skilldetails summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
@@ -495,7 +499,7 @@ If more context would sharpen the review, ask for it here.
         <li><div><strong>Send</strong><p>One email to your students with the guide, sent with time to spare before the deadline.</p></div></li>
       </ol>
 
-      <div class="reply" data-path="Path 1: moving my GPTs"></div>
+      <div class="reply" data-path="Path 1: moving my GPTs" data-opener="I'd like to talk about moving my GPTs."></div>
       <a class="back" href="#cover">Back to the choices</a>
     </div>
   </section>
@@ -541,7 +545,7 @@ If more context would sharpen the review, ask for it here.
 
       <p><strong>Ballpark:</strong> $1,200 per day of support. You choose the pace: one day a month ($1,200), two days a month ($2,400) or four days a month ($4,800). We'd set it on the call based on how often the platforms change and how active your community is.</p>
 
-      <div class="reply" data-path="Path 2: keeping my course current"></div>
+      <div class="reply" data-path="Path 2: keeping my course current" data-opener="I'd like to talk about keeping my course current."></div>
       <a class="back" href="#cover">Back to the choices</a>
     </div>
   </section>
@@ -576,7 +580,7 @@ If more context would sharpen the review, ask for it here.
       </div>
       <p>You keep the curriculum, the voice and the final say. I take the operations. Your time: one 30-minute call to start, then approvals by email.</p>
       <p><strong>Ballpark:</strong> the migration at $2,400–$3,600, then $1,200 per day of ongoing support at the pace you choose.</p>
-      <div class="reply" data-path="Path 3: both"></div>
+      <div class="reply" data-path="Path 3: both" data-opener="I'd like to talk about both: moving my GPTs, then keeping the course current."></div>
       <a class="back" href="#cover">Back to the choices</a>
     </div>
   </section>
@@ -597,7 +601,7 @@ If more context would sharpen the review, ask for it here.
         <path class="ink thin" d="M45 140 q-14 -16 -18 -4 q4 8 18 4 q14 -16 18 -4 q-4 8 -18 4"/>
       </svg>
       <p>If you ever change your mind, my email is below.</p>
-      <div class="reply" data-path="Path 4: just saying thanks" data-soft></div>
+      <div class="reply" data-path="Path 4: just saying thanks" data-opener="Just saying thanks for the skill." data-soft></div>
       <a class="back" href="#cover">Back to the choices</a>
     </div>
   </section>
@@ -639,15 +643,13 @@ document.querySelectorAll(".reply").forEach((box, i) => {
   const path = box.dataset.path;
   const soft = box.hasAttribute("data-soft");
   const subject = encodeURIComponent(path);
+  const body = encodeURIComponent(`Hi Ligaya,\n\n${box.dataset.opener}\n\n`);
   box.innerHTML =
     (soft ? "" : `<p><strong>Interested?</strong> Reply with this path by November 1 and we'll book the 30-minute call, which leaves time before December 11. No worries if the timing is wrong.</p>`) +
     `<div class="replyrow">
-       <span class="email" id="email${i}">${REPLY_EMAIL}</span>
-       <button class="btn ghost" type="button" id="copyEmail${i}">Copy email</button>
-       <a class="btn" href="mailto:${REPLY_EMAIL}?subject=${subject}">Email me: ${path.split(":")[0]}</a>
-       <span class="copied" id="emailCopied${i}" aria-live="polite"></span>
+       <a class="btn" href="mailto:${REPLY_EMAIL}?subject=${subject}&body=${body}">Email me about ${path.split(":")[0].toLowerCase()}</a>
      </div>
-     <p class="hand" style="font-size:1.05rem">Subject line to use: ${path}</p>`;
+     <p class="small">Or write to <span class="email-plain" id="email${i}">${REPLY_EMAIL}</span> · <button class="linkbtn" type="button" id="copyEmail${i}">copy</button> <span class="copied" id="emailCopied${i}" aria-live="polite"></span></p>`;
   box.querySelector(`#copyEmail${i}`).addEventListener("click", () =>
     copyText(REPLY_EMAIL, box.querySelector(`#email${i}`), box.querySelector(`#emailCopied${i}`), "Copied"));
 });
