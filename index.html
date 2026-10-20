@@ -437,6 +437,9 @@ p { max-width: 62ch; text-wrap: pretty; }
 .hero-actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; align-items: center; }
 
 /* proof */
+.fit { background: var(--white); padding: clamp(3rem, 2rem + 4vw, 6rem) var(--margin); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.5rem, 4vw, 4rem); }
+.fit .lead { max-width: 46ch; }
+.fit .lead + p { margin-top: 1.25rem; max-width: 60ch; }
 .stats { background: var(--gulf); color: var(--ink); padding: clamp(2rem, 4vw, 3.25rem) var(--margin); }
 .stats .num strong { font-size: clamp(2.5rem, 1.6rem + 2.4vw, 4.25rem); }
 .proof { background: var(--gulf); color: var(--ink); padding: var(--section) var(--margin); }
@@ -540,7 +543,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 @media (max-width: 1000px) {
   .nums { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .quote-lead { grid-row: auto; }
-  .quotes, .services-head, .svc-list, .picker, .about { grid-template-columns: minmax(0, 1fr); }
+  .quotes, .services-head, .svc-list, .picker, .about, .fit { grid-template-columns: minmax(0, 1fr); }
   .hero { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .hero-me { margin-top: 2.25rem; display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: 1.1rem; align-items: center; max-width: 34rem; }
   .hero-me figcaption { margin-top: 0; }
@@ -592,12 +595,20 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 
 <main id="main">
 
+<section class="fit" aria-labelledby="fit-h">
+  <h2 class="h2 display" id="fit-h">Who trains non-technical teams to use AI?</h2>
+  <div>
+    <p class="lead">L.&nbsp;Beebe, LLC is my AI training practice for small and mid-sized companies: I teach non-technical teams to use tools like ChatGPT, Claude and MindStudio in their daily work, through hands-on workshops, custom agents and fractional AI program leadership.</p>
+    <p>I’m a good fit if your engineers already use AI and the rest of the company doesn’t. I train help desk, operations, implementation and marketing teams on their own work, then build the small agents they’ll keep using. If you need production software built, hire an engineer. If you want a self-paced video library for hundreds of people, a course platform will cost less. If you bought licenses and can’t tell whether anyone uses them, that’s exactly where I start.</p>
+  </div>
+</section>
+
 <section class="stats" aria-labelledby="stats-h">
   <h2 class="sr-only" id="stats-h">Results</h2>
   <div class="nums">
     <div class="num"><strong class="display">27%</strong><p>fewer support requests after an onboarding redesign across eight countries.</p></div>
-    <div class="num"><strong class="display">96%</strong><p>satisfaction across the AI Architect Program: 91 registrants, a 4.8 rating, zero paid marketing.</p></div>
-    <div class="num"><strong class="display">200+</strong><p>professionals trained, most of whom would never call themselves technical.</p></div>
+    <div class="num"><strong class="display">96%</strong><p>satisfaction across the 2025 AI Architect Program: 91 registrants, a 4.8 rating, zero paid marketing.</p></div>
+    <div class="num"><strong class="display">200+</strong><p>professionals trained as of October 2026, most of whom would never call themselves technical.</p></div>
     <div class="num"><strong class="display">$8M+</strong><p>in grant funding and renewals for State Department-funded programs in 12+ countries.</p></div>
   </div>
 </section>
@@ -666,7 +677,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 <section class="services" id="services" aria-labelledby="svc-h">
   <div class="services-head">
     <div><h2 class="h2 display" id="svc-h">Three ways to work together</h2></div>
-    <p class="lead">Most engagements start with training and grow from there. Right now I’m rebuilding an AI bootcamp for Clear Digital Labs’ marketing team after a five-session pilot.</p>
+    <p class="lead">Most engagements start with training and grow from there. As of fall 2026, I’m rebuilding an AI bootcamp for Clear Digital Labs’ marketing team after a five-session pilot.</p>
   </div>
   <ul class="svc-list">
     <li class="svc"><h3 class="display">Train the team</h3><p>Custom workshops for non-technical teams, online or in person, as a cohort or 1:1. Everyone is hands on the keyboard from the first session. We start with your team’s actual work and leave real time to experiment, because curiosity is what keeps people using these tools after the workshop ends.</p><p class="tags">Custom curriculum. Hands-on, cohort and 1:1.</p></li>

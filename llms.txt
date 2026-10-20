@@ -17,13 +17,17 @@ Last updated: 2026-10-20
 - LinkedIn: https://www.linkedin.com/in/ligaya-beebe/
 - GitHub: https://github.com/1beebe
 
+## Who she is a fit for
+
+A good fit when a company's engineers already use AI and the rest of the staff don't: she trains help desk, operations, implementation and marketing teams on their own work, then builds the small agents they keep using. Not the right hire for production software (hire an engineer) or for a self-paced video library for hundreds of people (a course platform costs less). A common starting point: the company bought AI licenses and can't tell whether anyone uses them.
+
 ## Results
 
-- 200+ professionals trained
-- 96% satisfaction and a 4.8/5 rating across the AI Architect Program (91 registrants, zero paid marketing)
+- 200+ professionals trained (as of October 2026)
+- 96% satisfaction and a 4.8/5 rating across the 2025 AI Architect Program (91 registrants, zero paid marketing)
 - $8M+ in grant funding and renewals secured across U.S. State Department-funded global education programs in 12+ countries (iEARN-USA)
 - 27% fewer support requests after an onboarding redesign spanning eight countries (live sessions, peer champions, knowledge base)
-- Currently partnering with Clear Digital Labs on an AI bootcamp for their marketing team: a 5-session synchronous program built around agentic workflows
+- As of fall 2026, partnering with Clear Digital Labs on an AI bootcamp for their marketing team: a 5-session synchronous program built around agentic workflows
 
 ## What clients, colleagues and participants say
 
