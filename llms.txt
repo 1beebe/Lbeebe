@@ -19,7 +19,7 @@ Last updated: 2026-10-20
 
 ## Who she is a fit for
 
-A good fit when a company's engineers already use AI and the rest of the staff don't: she trains help desk, operations, implementation and marketing teams on tools and workflows they already use, then builds the small workflows or agents they keep using. Not the right hire for production software (hire an engineer) or for a self-paced video library for hundreds of people (a course platform costs less). A common starting point: the company bought AI licenses and can't tell whether anyone uses them.
+A good fit when a company's engineers already use AI and the rest of the staff don't: she trains help desk, operations, implementation and marketing teams on tools and workflows they already use, then builds the small workflows or agents they keep using. Not the right hire for production software (hire an engineer). A common starting point: the company bought AI licenses and can't tell whether anyone uses them.
 
 ## Results
 
