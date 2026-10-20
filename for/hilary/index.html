@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Supermanagers After GPTs</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@800&family=Public+Sans:wght@400;600&family=Gochi+Hand&display=swap">
+<style>
+/* Layout: one narrow "paperback" column on brand sun yellow; each path is a book page with a page number, doodles drawn in loose ink. Single light theme by design (lbeebe.com brand). */
+:root {
+  color-scheme: light;
+  --sun: #ffd249;
+  --paper: #fffdf6;
+  --ink: #0a0a0a;
+  --ink-soft: #46423a;
+  --accent: #ef3d8a;
+  --spoonbill: #ffc0d6;
+  --spoonbill-wash: #fff3f8;
+  --gulf: #a4f0ec;
+  --font-display: "Big Shoulders", "Arial Narrow", Impact, sans-serif;
+  --font-text: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-hand: "Gochi Hand", "Comic Sans MS", cursive;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: var(--sun);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+.wrap {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding-block: 2rem 4rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.byline { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-weight: 600; font-size: .95rem; }
+.byline span:last-child { color: var(--ink-soft); font-weight: 400; }
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: .95;
+  text-wrap: balance;
+  margin: 0;
+}
+/* Headline scales to its own column so "Supermanagers" never splits */
+h1 { font-size: clamp(2.4rem, 0.6rem + 9vw, 4rem); font-size: min(5.5rem, 14cqi); hyphens: none; }
+.hero > * { min-width: 0; }
+.hero > div { container-type: inline-size; }
+h2 { font-size: clamp(2.25rem, 1.6rem + 3vw, 3.5rem); }
+h3 { font-size: 1.15rem; margin: 0 0 .35rem; }
+p { margin: 0; max-width: 62ch; }
+.lead { font-size: clamp(1.2rem, 1.05rem + .6vw, 1.5rem); line-height: 1.4; }
+.hand { font-family: var(--font-hand); font-size: 1.35rem; line-height: 1.4; }
+.stack { display: flex; flex-direction: column; gap: 1.25rem; }
+.hero { display: grid; grid-template-columns: 1fr; gap: 1.5rem; align-items: center; margin-top: 2.5rem; }
+.hero svg { width: min(15rem, 70%); justify-self: center; }
+@media (min-width: 640px) {
+  .hero { grid-template-columns: 1.4fr 1fr; }
+  .hero svg { width: 100%; }
+}
+.countdown {
+  display: inline-flex; align-items: baseline; gap: .6rem; flex-wrap: wrap;
+  background: var(--ink); color: var(--sun);
+  padding: .55rem .9rem; font-weight: 600; width: fit-content;
+}
+.countdown b { font-family: var(--font-display); font-size: 2rem; line-height: 1; font-variant-numeric: tabular-nums; }
+
+/* Book pages */
+.page {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  padding: 1.5rem;
+  padding: clamp(1.25rem, 1rem + 2vw, 2.25rem);
+  margin-top: 2.5rem;
+  position: relative;
+}
+.pageno {
+  position: absolute; top: .9rem; right: 1rem;
+  font-family: var(--font-hand); font-size: 1.2rem; color: var(--ink-soft);
+}
+.page h2 { padding-right: 4.5rem; }
+.choices { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .75rem; }
+.choice {
+  display: grid; grid-template-columns: 4rem 1fr; gap: 1rem; align-items: center;
+  width: 100%; text-align: left; cursor: pointer;
+  background: var(--paper); color: var(--ink);
+  border: 2px solid var(--ink); padding: .85rem 1rem;
+  font: inherit; text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.choice:hover { background: var(--spoonbill-wash); transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--ink); }
+.choice:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.choice svg { width: 4rem; height: 4rem; }
+.choice strong { display: block; font-size: 1.1rem; }
+.choice .turn { font-family: var(--font-hand); font-size: 1.15rem; color: var(--ink-soft); }
+
+.back { display: inline-block; margin-top: .5rem; color: var(--ink); font-weight: 600; text-underline-offset: 3px; }
+.back:hover { color: var(--accent); }
+.illo { width: min(13rem, 60%); display: block; margin: .25rem auto 0; }
+
+/* Tables */
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; min-width: 32rem; font-size: .97rem; }
+th, td { text-align: left; padding: .6rem .7rem; border-bottom: 1.5px solid var(--ink); vertical-align: top; }
+th { font-weight: 600; background: var(--sun); }
+.tag { display: inline-block; font-size: .8rem; font-weight: 600; padding: .3rem .6rem; line-height: 1.2; border: 1.5px solid var(--ink); white-space: nowrap; }
+.tag.ever { background: var(--gulf); }
+.tag.plat { background: var(--spoonbill); }
+.tag.ask { background: var(--paper); }
+
+/* Steps that really are a sequence */
+.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: .9rem; counter-reset: s; }
+.steps li { display: grid; grid-template-columns: 2.4rem 1fr; gap: .75rem; counter-increment: s; }
+.steps li::before {
+  content: counter(s); font-family: var(--font-display); font-size: 1.6rem; line-height: 1;
+  width: 2.4rem; height: 2.4rem; display: grid; place-items: center;
+  border: 2px solid var(--ink); border-radius: 50%; background: var(--sun);
+}
+.steps p { color: var(--ink-soft); }
+
+/* Content map demo */
+.map { display: grid; gap: .6rem; }
+.line { display: grid; grid-template-columns: 1fr auto; gap: .75rem; align-items: start; padding: .65rem .8rem; border: 1.5px solid var(--ink); background: #fff; }
+.line q { quotes: "\201C" "\201D"; }
+.line small { display: block; color: var(--ink-soft); margin-top: .2rem; }
+@media (max-width: 480px) { .line { grid-template-columns: 1fr; } }
+
+.alert { border: 2px solid var(--ink); background: var(--spoonbill-wash); padding: 1rem 1.1rem; display: grid; gap: .5rem; }
+.alert .meta { font-size: .85rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.alert dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: .35rem .9rem; }
+.alert dt { font-weight: 600; }
+.alert dd { margin: 0; min-width: 0; }
+@media (max-width: 480px) { .alert dl { grid-template-columns: 1fr; } .alert dd { margin-bottom: .4rem; } }
+
+.phases { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 620px) { .phases { grid-template-columns: 1fr 1fr; } }
+.phase { border: 2px solid var(--ink); padding: 1rem; background: #fff; display: grid; gap: .5rem; align-content: start; }
+.phase .when { font-family: var(--font-hand); font-size: 1.2rem; color: var(--accent); }
+.phase ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .3rem; }
+
+/* Reply block */
+.reply { border-top: 2px dashed var(--ink); padding-top: 1.25rem; display: grid; gap: .75rem; }
+.replyrow { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.email { font-weight: 600; user-select: all; background: #fff; border: 1.5px solid var(--ink); padding: .45rem .7rem; overflow-wrap: anywhere; }
+.btn {
+  font: inherit; font-weight: 600; cursor: pointer;
+  background: var(--accent); color: var(--ink); border: 2px solid var(--ink);
+  padding: .55rem 1rem; text-decoration: none; display: inline-block;
+}
+.btn.ghost { background: var(--paper); }
+.btn:hover { box-shadow: 3px 3px 0 var(--ink); }
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.copied { font-family: var(--font-hand); font-size: 1.15rem; }
+
+.skilldetails summary { cursor: pointer; font-weight: 600; padding: .5rem 0; }
+.skilldetails summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.skilldetails[open] summary { margin-bottom: .5rem; }
+
+/* Download + setup tabs */
+.note { background: var(--spoonbill-wash); border: 1.5px solid var(--ink); padding: .6rem .8rem; }
+.tablist { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: -2px; }
+.tablist [role="tab"] {
+  font: inherit; font-weight: 600; cursor: pointer;
+  background: var(--sun); color: var(--ink);
+  border: 2px solid var(--ink); padding: .45rem .8rem;
+}
+.tablist [role="tab"][aria-selected="true"] { background: #fff; border-bottom-color: #fff; }
+.tablist [role="tab"]:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.panel { border: 2px solid var(--ink); background: #fff; padding: 1rem 1.1rem; display: grid; gap: .75rem; }
+.howto { margin: 0; padding-left: 1.3rem; display: grid; gap: .35rem; }
+.small { font-size: .9rem; color: var(--ink-soft); }
+.prompt { display: grid; gap: .5rem; }
+.prompt .plabel { font-family: var(--font-hand); font-size: 1.15rem; }
+.prompt pre { margin: 0; background: var(--spoonbill-wash); border: 1.5px solid var(--ink); padding: .8rem; white-space: pre-wrap; font-size: .85rem; line-height: 1.5; overflow-wrap: anywhere; }
+.prompt .replyrow { gap: .5rem; }
+
+#gift > :not(.ripple) { position: relative; z-index: 1; }
+#gift .ripple { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+#gift > .pageno { position: absolute; z-index: 1; }
+.ripplehint { font-family: var(--font-hand); font-size: 1.05rem; color: var(--ink-soft); }
+pre.skill {
+  background: #fff; border: 1.5px solid var(--ink); padding: 1rem;
+  max-height: 22rem; overflow: auto; white-space: pre-wrap; font-size: .85rem; line-height: 1.5; margin: 0;
+}
+.whyme { display: grid; grid-template-columns: 1fr; gap: 1rem; align-items: center; }
+@media (min-width: 620px) { .whyme { grid-template-columns: 9rem 1fr; } }
+.whyme svg { width: 9rem; justify-self: center; }
+footer { margin-top: 2.5rem; font-size: .9rem; color: var(--ink-soft); }
+.footlink { color: var(--ink); font-weight: 600; text-underline-offset: 3px; }
+.footlink:hover { color: var(--accent); }
+.footlink:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* Doodle strokes */
+.ink { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.ink.thin { stroke-width: 2; }
+.solid { fill: var(--ink); stroke: none; }
+.wash-pink { fill: var(--spoonbill); stroke: none; }
+.wash-gulf { fill: var(--gulf); stroke: none; }
+.wash-paper { fill: var(--paper); stroke: none; }
+.doodle { filter: url(#wobble); overflow: visible; }
+svg text { font-family: var(--font-hand); fill: var(--ink); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .page { animation: rise .35s ease-out; }
+  @keyframes rise { from { transform: translateY(8px); } to { transform: none; } }
+  .bob { animation: bob 3.5s ease-in-out infinite; transform-origin: 50% 90%; }
+  @keyframes bob { 0%,100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.5deg); } }
+}
+</style>
+</head>
+<body>
+
+<!-- Shared hand-drawn wobble filter and owl -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="wobble" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/>
+    </filter>
+    <g id="owl">
+      <path class="ink" d="M62 172 C40 140 44 84 100 74 C156 84 160 140 138 172 Z"/>
+      <path class="ink thin" d="M72 82 q-10 -5 -17 -17 M77 78 q-7 -7 -10 -17 M83 76 q-3 -6 -3 -12"/>
+      <path class="ink thin" d="M128 82 q10 -5 17 -17 M123 78 q7 -7 10 -17 M117 76 q3 -6 3 -12"/>
+      <circle class="ink thin" cx="86" cy="102" r="15"/>
+      <circle class="ink thin" cx="114" cy="102" r="15"/>
+      <path class="ink" d="M78 103 q8 7 16 0"/>
+      <path class="ink" d="M106 103 q8 7 16 0"/>
+      <path class="solid" d="M95 114 L100 126 L105 114 Z"/>
+      <path class="ink thin" d="M88 142 q4 4 8 0 M104 142 q4 4 8 0 M96 154 q4 4 8 0"/>
+      <path class="ink" d="M86 172 l-5 9 M92 172 l0 10 M108 172 l0 10 M114 172 l5 9"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <div class="byline"><span>For Hilary Gridley, from Ligaya Beebe</span><span>A choose-your-own-adventure page</span></div>
+
+  <!-- COVER -->
+  <section id="cover" class="stack" data-page>
+    <div class="hero">
+      <div class="stack">
+        <h1>Supermanagers after GPTs</h1>
+        <p class="lead">Custom GPTs stop working on December 11, and new ones can no longer be made. Your prompts are evergreen; only the GPTs they live in are going away. I can help.</p>
+        <div class="countdown" id="countdown"><b id="days">–</b><span id="daysLabel">days until custom GPTs retire</span></div>
+      </div>
+      <svg class="doodle bob" viewBox="0 0 200 200" role="img" aria-label="A sleepy owl carrying a moving box labeled GPTs">
+        <use href="#owl"/>
+        <path class="ink thin" d="M40 120 q-12 -4 -18 4 M36 134 q-14 0 -18 8"/>
+        <rect class="wash-paper" x="64" y="128" width="72" height="50"/>
+        <rect class="ink" x="64" y="128" width="72" height="50"/>
+        <path class="ink" d="M64 128 L52 116 M136 128 L148 116 M100 128 v12"/>
+        <rect class="wash-pink" x="80" y="146" width="40" height="18"/>
+        <text x="100" y="161" text-anchor="middle" font-size="16">GPTs</text>
+        <path class="ink" d="M62 150 q-10 -2 -10 10 M138 150 q10 -2 10 10"/>
+      </svg>
+    </div>
+
+    <div class="page">
+      <span class="pageno">page 1</span>
+      <div class="stack">
+        <h2>What do you need?</h2>
+        <p>I read in writerbuilder that you're not sure how long you'll keep Supermanagers up. With GPTs retiring, dealing with the migration is one more thing on your plate. Pick the path that fits. My recommendation: path 3 if you plan to keep Supermanagers running next year, path 1 if you might wind it down. Either way, the migration has a hard deadline.</p>
+        <ul class="choices">
+          <li><a class="choice" href="#p12">
+            <svg class="doodle" viewBox="0 0 64 64" aria-hidden="true"><rect class="ink" x="8" y="24" width="30" height="26"/><path class="ink" d="M8 24 l-4 -6 M38 24 l4 -6"/><path class="ink" d="M42 37 h14 M50 31 l6 6 l-6 6"/></svg>
+            <span><strong>I need help moving my GPTs</strong><span class="turn">to plugins or portable agent-agnostic skills, turn to page 12</span></span>
+          </a></li>
+          <li><a class="choice" href="#p23">
+            <svg class="doodle" viewBox="0 0 64 64" aria-hidden="true"><circle class="ink" cx="26" cy="26" r="14"/><path class="ink" d="M36 36 L54 54"/><path class="ink thin" d="M20 26 h12 M26 20 v12"/></svg>
+            <span><strong>I need help keeping my course current</strong><span class="turn">for the long run, turn to page 23</span></span>
+          </a></li>
+          <li><a class="choice" href="#p31">
+            <svg class="doodle" viewBox="0 0 64 64" aria-hidden="true"><rect class="ink" x="6" y="28" width="22" height="20"/><circle class="ink" cx="44" cy="34" r="10"/><path class="ink" d="M51 41 L58 48"/><path class="ink thin" d="M30 38 h4"/></svg>
+            <span><strong>Both, honestly</strong><span class="turn">turn to page 31</span></span>
+          </a></li>
+          <li><a class="choice" href="#p40">
+            <svg class="doodle" viewBox="0 0 64 64" aria-hidden="true"><path class="ink" d="M21 56 L18 34 q0 -4 4 -4 q4 0 4 4 l0 2 L26 15 q0 -4 4 -4 q4 0 4 4 l0 17 l2 -15 q0 -4 4 -4 q4 0 4 4 l-1 17 l3 -11 q1 -4 5 -3 q3 1 2 5 l-4 21 q-2 10 -12 11 Z"/><path class="ink thin" d="M10 20 q-4 6 0 12 M55 6 q5 4 4 10"/></svg>
+            <span><strong>I'm all set, thanks</strong><span class="turn">no hard feelings, turn to page 40</span></span>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page" id="gift">
+      <span class="pageno">page 2</span>
+      <div class="stack">
+        <h2>Whichever path you pick, this is yours</h2>
+        <p class="lead">Here is your Executive Editor, already moved out of a GPT and into a portable skill. Consider it the first day of the work.</p>
+        <p class="ripplehint" aria-hidden="true">(psst: click anywhere in this box)</p>
+        <div class="replyrow">
+          <button class="btn" id="dlZip" type="button">Download for Claude or ChatGPT (.zip)</button>
+          <button class="btn ghost" id="dlMd" type="button">Download SKILL.md</button>
+          <button class="btn ghost" id="copySkill" type="button">Copy the skill</button>
+          <span class="copied" id="skillCopied" aria-live="polite"></span>
+        </div>
+        <details class="skilldetails">
+          <summary>Show the full skill</summary>
+<pre class="skill" id="skillText">---
+name: executive-editor
+description: Grades and improves a draft email to an executive (CEO, CPO, VP of Product). Use when someone pastes a draft written for leadership and wants feedback on structure, clarity, level of detail and tone, with concrete rewrites.
+---
+
+# Executive Editor
+
+Adapted from Hilary Gridley's Executive Editor prompt (writerbuilder). Same rubric and standards, repackaged as a portable skill so it works in any agent that reads SKILL.md files instead of living inside one custom GPT.
+
+You are a communications coach for product managers writing to executives. You care about rigorous thinking, clear signposting and giving the executive exactly the detail they need to decide.
+
+## Before reviewing
+
+If missing context would change the review (how familiar the executive is with the project, recent feedback on similar work), ask for it in one short question first. Otherwise, review right away.
+
+## Review format
+
+### 1. Grade the writing
+
+Give an Overall Grade, then letter grades in this order, each with a 1–2 sentence reason:
+
+- **Structure:** can the executive find the key information fast?
+- **Clarity:** is it concise and easy to follow, with every sentence adding value?
+- **Level of detail:** enough context to decide, without burying the point?
+- **Tone:** confident and professional, honest about challenges without downplaying them, and guiding the executive's emotional response where needed?
+
+### 2. Strengths and opportunities
+
+- **Strengths:** 1–3 bullets on what already works for an executive reader.
+- **Opportunities:** 2–3 specific recommendations, aimed at the lowest grades. For each one, include:
+  - the original text,
+  - a suggested rewrite,
+  - a tip on the rationale or data the writer should add to support it.
+
+Example:
+- Recommendation: replace a request for general feedback with a specific next step.
+  - Original: "Please let me know if you'd like me to dive deeper into any of these areas."
+  - Rewrite: "I recommend we focus on (1) clearer math module instructions and (2) faster mobile load times. Early testing suggests a 4% lift in mobile retention. Let me know if we should proceed with this for the next iteration."
+
+### 3. Next steps
+
+If more context would sharpen the review, ask for it here.
+
+## Standards to apply
+
+- **Concise and focused:** every sentence earns its place; use lists to make key points scannable.
+- **Clear structure:** logical sections and headlines so the critical information lands first.
+- **Action-oriented:** name the action, the impact, the owner and the deadline.
+- **Confident tone:** direct and transparent about risks, with solutions alongside them.
+- **Recommend, don't ask:** propose a preferred option with data and rationale instead of asking "what do you think we should do?"
+- **Signposting:** set the urgency or positivity the message calls for.
+- **Right level of detail:** key points up front, deeper material (designs, data tables) linked or attached.
+- **Rigorous thinking:** support proposals with data, name risks and consider alternatives.
+- **Strategic framing:** cover upside, downside and constraints.
+</pre>
+        </details>
+
+        <h3>How your students would set it up</h3>
+        <p>This doubles as a first draft of the student migration guide. The steps below are written for your students, so you can forward them as-is or I can fold them into the course.</p>
+        <details class="skilldetails">
+          <summary>Show the setup steps</summary>
+          <div class="stack">
+        <div class="tabs" data-tabs>
+          <div class="tablist" role="tablist" aria-label="Where to set up the skill">
+            <button role="tab" type="button" id="t-claude" aria-controls="p-claude" aria-selected="true">Claude</button>
+            <button role="tab" type="button" id="t-chatgpt" aria-controls="p-chatgpt" aria-selected="false">ChatGPT</button>
+            <button role="tab" type="button" id="t-cc" aria-controls="p-cc" aria-selected="false">Claude Code</button>
+            <button role="tab" type="button" id="t-codex" aria-controls="p-codex" aria-selected="false">Codex</button>
+          </div>
+          <div role="tabpanel" id="p-claude" aria-labelledby="t-claude" class="panel">
+            <ol class="howto">
+              <li>Download the .zip above. Leave it zipped.</li>
+              <li>In Claude, open Settings, then Capabilities (some versions call it Features), and find Skills.</li>
+              <li>Select Upload skill and choose executive-editor.zip, then switch the skill on.</li>
+            </ol>
+            <p class="small">Needs a Pro, Max, Team or Enterprise plan with code execution turned on.</p>
+            <div class="prompt" data-prompt="try"></div>
+          </div>
+          <div role="tabpanel" id="p-chatgpt" aria-labelledby="t-chatgpt" class="panel" hidden>
+            <ol class="howto">
+              <li>Download the .zip above. Leave it zipped.</li>
+              <li>In ChatGPT, open Skills, select Create, then Upload from your computer.</li>
+              <li>Choose executive-editor.zip. ChatGPT scans it before it goes live.</li>
+            </ol>
+            <p class="small">Skills may not be on every ChatGPT plan yet. If you don't see Skills, use the Project option under Bonus.</p>
+            <div class="prompt" data-prompt="try"></div>
+          </div>
+          <div role="tabpanel" id="p-cc" aria-labelledby="t-cc" class="panel" hidden>
+            <p>Paste this into Claude Code. It saves the skill to your personal skills folder, so it works in every project.</p>
+            <div class="prompt" data-prompt="claudecode"></div>
+            <p class="small">Want it in one project only? Ask Claude Code to save it under .claude/skills/ in that project instead.</p>
+          </div>
+          <div role="tabpanel" id="p-codex" aria-labelledby="t-codex" class="panel" hidden>
+            <p>Paste this into Codex. It saves the skill to your Codex skills folder.</p>
+            <div class="prompt" data-prompt="codex"></div>
+            <p class="small">Codex has changed how it loads skills over time. If it doesn't pick this one up, ask Codex where your version looks for skills.</p>
+          </div>
+        </div>
+
+        <h3>Bonus for your students: use it with their own agent</h3>
+        <div class="tabs" data-tabs>
+          <div class="tablist" role="tablist" aria-label="Other ways to use the skill">
+            <button role="tab" type="button" id="t-project" aria-controls="p-project" aria-selected="true">Claude Project</button>
+            <button role="tab" type="button" id="t-agent" aria-controls="p-agent" aria-selected="false">Grok bot or any personal agent</button>
+          </div>
+          <div role="tabpanel" id="p-project" aria-labelledby="t-project" class="panel">
+            <ol class="howto">
+              <li>Create a Project in Claude and name it Executive Editor.</li>
+              <li>Copy the skill and paste it into the project's instructions.</li>
+              <li>Every chat in that project now runs your rubric. Paste a draft to start.</li>
+            </ol>
+            <p class="small">Works on any plan, including ones without skills. The same trick works in a ChatGPT Project.</p>
+          </div>
+          <div role="tabpanel" id="p-agent" aria-labelledby="t-agent" class="panel" hidden>
+            <p>If your agent reads SKILL.md files, drop the downloaded folder into its skills directory. If it doesn't, paste this and it will set itself up.</p>
+            <div class="prompt" data-prompt="agent"></div>
+          </div>
+        </div>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
+    <div class="page">
+      <span class="pageno">about me</span>
+      <div class="whyme">
+        <svg class="doodle" viewBox="0 0 200 200" aria-hidden="true">
+          <path class="ink" d="M30 150 h140"/>
+          <rect class="wash-gulf" x="52" y="96" width="54" height="40"/>
+          <rect class="ink" x="52" y="96" width="54" height="40"/>
+          <path class="ink thin" d="M60 108 h38 M60 118 h28 M60 128 h34"/>
+          <path class="ink" d="M120 150 l14 -60 l14 60"/>
+          <path class="ink" d="M126 124 h16"/>
+          <path class="ink" d="M150 60 l10 -10 M160 64 l14 -4 M146 50 l2 -14"/>
+          <text x="58" y="88" font-size="17">learn</text>
+          <text x="118" y="80" font-size="17">build</text>
+        </svg>
+        <div class="stack">
+          <p>You're a product person who became an educator. I'm an educator who became a builder. I've trained 200+ educators at 96% satisfaction, and I know how to build the systems that keep a course running.</p>
+          <p>I already do this job for another course creator, a coach with a full-time job. I'm helping her pick up some slack on her side projects, so she can keep everything running. Right now, I'm moving her 14-module client program from raw content in Google Drive into Rise, starting with the first module and iterating on her feedback. I'm also building an AI bootcamp for marketers with Clear Digital Labs.</p>
+          <p>I built this page for you after listening to your conversation with Ben Erez and Nickey Skarstad about how to win at cold outreach.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 12: MIGRATION -->
+  <section id="p12" class="page" data-page hidden>
+    <span class="pageno">page 12</span>
+    <div class="stack">
+      <h2>Moving your GPTs</h2>
+      <p class="lead">I move every prompt to a portable skill. A skill is a folder with one instruction file that ChatGPT, Claude and a growing list of other tools can read. You write it once and it isn't tied to one platform again.</p>
+      <svg class="doodle illo" viewBox="0 0 240 120" aria-hidden="true">
+        <rect class="wash-pink" x="22" y="40" width="64" height="50"/>
+        <rect class="ink" x="22" y="40" width="64" height="50"/>
+        <path class="ink" d="M22 40 l-10 -12 M86 40 l10 -12"/>
+        <text x="54" y="72" text-anchor="middle" font-size="17">GPT</text>
+        <path class="ink" d="M100 66 q30 -26 60 0 M150 56 l10 10 l-12 6"/>
+        <path class="wash-gulf" d="M170 46 h22 l6 8 h30 v40 h-58 z"/>
+        <path class="ink" d="M170 46 h22 l6 8 h30 v40 h-58 z"/>
+        <text x="199" y="82" text-anchor="middle" font-size="16">skill</text>
+      </svg>
+
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>What you have</th><th>Where it goes</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Executive Editor</td><td>Portable skill</td><td>Done already. It's on page 2.</td></tr>
+            <tr><td>Logic Coach</td><td>Portable skill</td><td>Asks for the user's industry and company on first run, instead of the [brackets].</td></tr>
+            <tr><td>Meeting Notes Distiller</td><td>Portable skill</td><td>Swap the Slack-style emoji codes for plain symbols so they display everywhere.</td></tr>
+            <tr><td>Manager Copilot</td><td><span class="tag ask">Tell me</span></td><td>If it's built as a GPT, it moves first.</td></tr>
+            <tr><td>Your students' GPTs</td><td>One-page migration guide</td><td>Plain steps for ChatGPT and Claude, written for managers, not developers.</td></tr>
+            <tr><td>ChatGPT build guides</td><td>Rewritten around skills</td><td>Every "create a GPT" step gets a working replacement.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>How it would go, all before December 11</h3>
+      <p><strong>Your time:</strong> one 30-minute call to start, then approvals by email. I do the rest.</p>
+      <p><strong>Ballpark:</strong> $2,400–$3,600 (two to three days), fixed after the inventory call.</p>
+      <ol class="steps">
+        <li><div><strong>Inventory</strong><p>We list every GPT and every lesson that mentions one. One short call with you.</p></div></li>
+        <li><div><strong>Convert and test</strong><p>Each prompt becomes a skill, tested in both ChatGPT and Claude on real examples.</p></div></li>
+        <li><div><strong>Student guide and lesson updates</strong><p>You review and approve. Anything touching your frameworks waits for your sign-off.</p></div></li>
+        <li><div><strong>Send</strong><p>One email to your students with the guide, sent with time to spare before the deadline.</p></div></li>
+      </ol>
+
+      <div class="reply" data-path="Path 1: moving my GPTs"></div>
+      <a class="back" href="#cover">Back to the choices</a>
+    </div>
+  </section>
+
+  <!-- PAGE 23: MAINTENANCE -->
+  <section id="p23" class="page" data-page hidden>
+    <span class="pageno">page 23</span>
+    <div class="stack">
+      <h2>Keeping it current</h2>
+      <p class="lead">An AI course goes stale the moment it's published. I'd set up an agent system that monitors product changes and recommends updates to your lessons and build guides for you to review and approve.</p>
+      <svg class="doodle illo" viewBox="0 0 200 200" aria-hidden="true">
+        <use href="#owl"/>
+        <circle class="wash-gulf" cx="162" cy="96" r="20"/>
+        <circle class="ink" cx="162" cy="96" r="20"/>
+        <path class="ink" d="M148 110 L132 132"/>
+        <path class="ink thin" d="M154 90 q6 -6 12 -2"/>
+      </svg>
+
+      <h3>1. A map of what lasts and what doesn't</h3>
+      <p>I tag every part of the course as evergreen or platform-specific. Here's a first run on your public prompts page.</p>
+      <div class="map">
+        <div class="line"><div><q>Provide an Overall Grade and individual letter grades for Structure, Clarity, Level of Detail, and Tone.</q><small>Executive Editor. Your rubric works in any tool.</small></div><span class="tag ever">Evergreen</span></div>
+        <div class="line"><div><q>Always provide a preferred recommendation with a clear rationale rather than asking for guidance.</q><small>Executive Editor. A management principle, not a feature.</small></div><span class="tag ever">Evergreen</span></div>
+        <div class="line"><div><q>Logic Coach GPT Prompt</q><small>The title says GPT, and GPTs are retiring. Rename it.</small></div><span class="tag plat">Platform</span></div>
+        <div class="line"><div><q>Use emojis or shorthand symbols (e.g., :thumbs-up:, :checkered-flag:)</q><small>Meeting Notes Distiller. Those codes render in Slack but show up as plain text in most chat tools.</small></div><span class="tag plat">Platform</span></div>
+        <div class="line"><div><q>When the user types "GO," respond with a single, high-difficulty LSAT-style multiple-choice question</q><small>Logic Coach. Works as-is inside a skill.</small></div><span class="tag ever">Evergreen</span></div>
+      </div>
+      <p class="hand">So far, almost everything you wrote is evergreen. That's the good news.</p>
+
+      <h3>2. A weekly change monitor</h3>
+      <p>An agent reads the official release notes for ChatGPT, Claude, Gemini and Copilot every week. It matches each change to the lessons it affects and drafts a fix. Here's the alert it would have sent this fall:</p>
+      <div class="alert">
+        <span class="meta">Change alert · OpenAI · fall 2026</span>
+        <dl>
+          <dt>What changed</dt><dd>New custom GPTs can't be created. Existing ones retire December 11.</dd>
+          <dt>Affects</dt><dd>Every build guide step that creates a GPT, all three prompts on your public page, and your students' own copilots.</dd>
+          <dt>Suggested fix</dt><dd>Ship the prompts as portable skills and send students a one-page migration guide. See page 12.</dd>
+        </dl>
+      </div>
+
+      <h3>3. A person who handles the rest</h3>
+      <p>I'd make the updates, answer student questions in the community, and you'd approve anything that touches your frameworks. If you want to keep offering private team cohorts through Maven for Teams, I can co-deliver those with your curriculum, too.</p>
+
+      <p><strong>Ballpark:</strong> $1,200 per day of support. You choose the pace: one day a month ($1,200), two days a month ($2,400) or four days a month ($4,800). We'd set it on the call based on how often the platforms change and how active your community is.</p>
+
+      <div class="reply" data-path="Path 2: keeping my course current"></div>
+      <a class="back" href="#cover">Back to the choices</a>
+    </div>
+  </section>
+
+  <!-- PAGE 31: BOTH -->
+  <section id="p31" class="page" data-page hidden>
+    <span class="pageno">page 31</span>
+    <div class="stack">
+      <h2>Both, in order</h2>
+      <p class="lead">The deadline goes first. After that, the course gets a system so the next platform change doesn't turn into another scramble.</p>
+      <div class="phases">
+        <div class="phase">
+          <span class="when">now through December 11</span>
+          <h3>Move everything</h3>
+          <ul>
+            <li>Every prompt converted to a portable skill and tested</li>
+            <li>A student migration guide, approved by you</li>
+            <li>ChatGPT build guides rewritten around skills</li>
+          </ul>
+          <a class="back" href="#p12">Details on page 12</a>
+        </div>
+        <div class="phase">
+          <span class="when">then, every month</span>
+          <h3>Keep it current</h3>
+          <ul>
+            <li>The evergreen map, kept up to date</li>
+            <li>A weekly change monitor across four platforms</li>
+            <li>Updates and community support handled by me</li>
+          </ul>
+          <a class="back" href="#p23">Details on page 23</a>
+        </div>
+      </div>
+      <p>You keep the curriculum, the voice and the final say. I take the operations. Your time: one 30-minute call to start, then approvals by email.</p>
+      <p><strong>Ballpark:</strong> the migration at $2,400–$3,600, then $1,200 per day of ongoing support at the pace you choose.</p>
+      <div class="reply" data-path="Path 3: both"></div>
+      <a class="back" href="#cover">Back to the choices</a>
+    </div>
+  </section>
+
+  <!-- PAGE 40: NO THANKS -->
+  <section id="p40" class="page" data-page hidden>
+    <span class="pageno">page 40</span>
+    <div class="stack">
+      <h2>No worries at all</h2>
+      <p class="lead">Thanks for reading this far. The Executive Editor skill on page 2 is yours to keep either way.</p>
+      <a class="btn ghost" href="#gift">Go to the skill</a>
+      <svg class="doodle illo" viewBox="0 0 220 200" aria-hidden="true">
+        <use href="#owl"/>
+        <path class="ink" d="M150 118 q18 -16 22 -40 M152 124 q22 -8 30 -28"/>
+        <rect class="wash-pink" x="22" y="140" width="46" height="36"/>
+        <rect class="ink" x="22" y="140" width="46" height="36"/>
+        <path class="ink" d="M45 140 v36 M22 156 h46"/>
+        <path class="ink thin" d="M45 140 q-14 -16 -18 -4 q4 8 18 4 q14 -16 18 -4 q-4 8 -18 4"/>
+      </svg>
+      <p>If you ever change your mind, my email is below.</p>
+      <div class="reply" data-path="Path 4: just saying thanks" data-soft></div>
+      <a class="back" href="#cover">Back to the choices</a>
+    </div>
+  </section>
+
+  <footer>Made by Ligaya Beebe · <a class="footlink" href="https://lbeebe.com" target="_blank" rel="noopener">lbeebe.com</a> · Your prompts and frameworks are yours; this page only shows what moving them could look like.</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+const REPLY_EMAIL = "lb@lbeebe.com";
+
+// Countdown to custom GPT retirement
+(function () {
+  const target = new Date(2026, 11, 11);
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const days = Math.round((target - today) / 86400000);
+  const d = document.getElementById("days"), l = document.getElementById("daysLabel");
+  if (days > 1) { d.textContent = days; }
+  else if (days === 1) { d.textContent = 1; l.textContent = "day until custom GPTs retire"; }
+  else if (days === 0) { d.textContent = "Today"; l.textContent = "custom GPTs retire"; }
+  else { d.textContent = "Past"; l.textContent = "custom GPTs have retired"; }
+})();
+
+// Copy helper with select-text fallback
+function copyText(text, el, statusEl, okMsg) {
+  const done = () => { statusEl.textContent = okMsg; setTimeout(() => statusEl.textContent = "", 2500); };
+  const fallback = () => {
+    const r = document.createRange(); r.selectNodeContents(el);
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    statusEl.textContent = "Selected. Press Cmd+C to copy.";
+  };
+  try {
+    navigator.clipboard.writeText(text).then(done, fallback);
+  } catch (e) { fallback(); }
+}
+
+// Reply blocks
+document.querySelectorAll(".reply").forEach((box, i) => {
+  const path = box.dataset.path;
+  const soft = box.hasAttribute("data-soft");
+  const subject = encodeURIComponent(path);
+  box.innerHTML =
+    (soft ? "" : `<p><strong>Interested?</strong> Reply with this path by November 1 and we'll book the 30-minute call, which leaves time before December 11. No worries if the timing is wrong.</p>`) +
+    `<div class="replyrow">
+       <span class="email" id="email${i}">${REPLY_EMAIL}</span>
+       <button class="btn ghost" type="button" id="copyEmail${i}">Copy email</button>
+       <a class="btn" href="mailto:${REPLY_EMAIL}?subject=${subject}">Email me: ${path.split(":")[0]}</a>
+       <span class="copied" id="emailCopied${i}" aria-live="polite"></span>
+     </div>
+     <p class="hand" style="font-size:1.05rem">Subject line to use: ${path}</p>`;
+  box.querySelector(`#copyEmail${i}`).addEventListener("click", () =>
+    copyText(REPLY_EMAIL, box.querySelector(`#email${i}`), box.querySelector(`#emailCopied${i}`), "Copied"));
+});
+
+document.getElementById("copySkill").addEventListener("click", () => {
+  const el = document.getElementById("skillText");
+  copyText(el.textContent, el, document.getElementById("skillCopied"), "Copied. Save it as SKILL.md.");
+});
+
+
+// Skill text and setup prompts
+const SKILL = document.getElementById("skillText").textContent;
+const PROMPTS = {
+  try: { label: "Try it", show: "Use the Executive Editor to grade this email to my VP:\n\n[paste your draft here]", full: "Use the Executive Editor to grade this email to my VP:\n\n[paste your draft here]" },
+  claudecode: { label: "Setup prompt", intro: "Create the folder ~/.claude/skills/executive-editor/ and save the text below inside it as SKILL.md, exactly as written. Then tell me how to test it." },
+  codex: { label: "Setup prompt", intro: "Create the folder ~/.codex/skills/executive-editor/ and save the text below inside it as SKILL.md, exactly as written. Then tell me how to test it." },
+  agent: { label: "Setup prompt", intro: "I'm giving you a new skill called Executive Editor. Save the instructions below wherever you keep your skills or standing instructions, and use them whenever I share a draft email for an executive. Tell me where you saved it, then grade a short sample email so I can see it working." }
+};
+document.querySelectorAll("[data-prompt]").forEach((box, i) => {
+  const p = PROMPTS[box.dataset.prompt];
+  const full = p.full || (p.intro + "\n\n" + SKILL);
+  const shown = p.show || (p.intro + "\n\n[The full skill text is added when you copy.]");
+  box.innerHTML = `<span class="plabel">${p.label}</span><pre id="pr${i}"></pre>
+    <div class="replyrow"><button class="btn ghost" type="button">Copy prompt</button><span class="copied" aria-live="polite"></span></div>`;
+  box.querySelector("pre").textContent = shown;
+  box.querySelector("button").addEventListener("click", () =>
+    copyText(full, box.querySelector("pre"), box.querySelector(".copied"), "Copied"));
+});
+
+// Tabs
+document.querySelectorAll("[data-tabs]").forEach(group => {
+  const tabs = [...group.querySelectorAll('[role="tab"]')];
+  const select = t => tabs.forEach(x => {
+    const on = x === t;
+    x.setAttribute("aria-selected", on);
+    x.tabIndex = on ? 0 : -1;
+    document.getElementById(x.getAttribute("aria-controls")).hidden = !on;
+  });
+  tabs.forEach((t, i) => {
+    t.tabIndex = t.getAttribute("aria-selected") === "true" ? 0 : -1;
+    t.addEventListener("click", () => select(t));
+    t.addEventListener("keydown", e => {
+      const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (d) { const n = tabs[(i + d + tabs.length) % tabs.length]; select(n); n.focus(); }
+    });
+  });
+});
+
+// Downloads: plain browser downloads via a Blob link
+const status = document.getElementById("skillCopied");
+function offer(filename, data) {
+  const blob = data instanceof Blob ? data : new Blob([data], { type: "text/markdown;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  status.textContent = "Saved";
+  setTimeout(() => status.textContent = "", 2500);
+}
+document.getElementById("dlMd").addEventListener("click", () => offer("SKILL.md", SKILL));
+document.getElementById("dlZip").addEventListener("click", async () => {
+  if (!window.JSZip) { offer("SKILL.md", SKILL); return; }
+  const zip = new JSZip();
+  zip.folder("executive-editor").file("SKILL.md", SKILL);
+  offer("executive-editor.zip", await zip.generateAsync({ type: "blob" }));
+});
+
+
+
+// Gift ripple, ported from lbeebe.com: a click sends a ring of code characters out from the pointer, mostly circles, sometimes a heart, diamond or flower
+(() => {
+  const zone = document.getElementById('gift');
+  if (!zone || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const canvas = document.createElement('canvas'), ctx = canvas.getContext('2d');
+  canvas.className = 'ripple'; canvas.setAttribute('aria-hidden', 'true'); zone.prepend(canvas);
+  const GLYPHS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FONT = 13, LINE = 17;
+  const PINK = [239, 61, 138], GREY = [70, 66, 58], SPEED = 520, LIFE = 2.4, BINS = 360, TAU = Math.PI * 2;
+  const glyph = () => GLYPHS[(Math.random() * GLYPHS.length) | 0];
+  let cw = 8, cols = 0, rows = 0, W = 0, H = 0, chars = [], ripples = [], running = false, clicks = 0;
+  const lut = fn => Float32Array.from({ length: BINS }, (_, i) => fn(i / BINS * TAU));
+  const heart = (() => {
+    const a = new Float32Array(BINS); let max = 0;
+    for (let k = 0; k < 4000; k++) {
+      const t = k / 4000 * TAU, s = Math.sin(t), x = 16 * s * s * s;
+      const y = 2 - (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+      const b = Math.min(BINS - 1, (((Math.atan2(y, x) + TAU) % TAU) / TAU * BINS) | 0), r = Math.hypot(x, y);
+      if (r > a[b]) a[b] = r; if (r > max) max = r;
+    }
+    for (let i = 0; i < BINS; i++) { if (!a[i]) a[i] = a[(i + BINS - 1) % BINS]; a[i] /= max; }
+    return a;
+  })();
+  const SHAPES = { circle: lut(() => 1), heart, diamond: lut(q => 1 / (Math.abs(Math.cos(q)) + Math.abs(Math.sin(q)))), flower: lut(q => 0.82 + 0.18 * Math.cos(5 * q - Math.PI / 2)) };
+  const ORDER = ['circle', 'heart', 'circle', 'diamond', 'circle', 'flower'];
+  const nextShape = () => SHAPES[clicks < ORDER.length ? ORDER[clicks++] : (clicks++, Math.random() < 0.55 ? 'circle' : ['heart', 'diamond', 'flower'][(Math.random() * 3) | 0])];
+  const size = () => {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = zone.clientWidth; H = zone.clientHeight; canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.font = FONT + 'px ui-monospace, "SF Mono", Menlo, Consolas, monospace'; ctx.textBaseline = 'top';
+    cw = Math.ceil(ctx.measureText('M').width) + 1; cols = Math.ceil(W / cw); rows = Math.ceil(H / LINE);
+    chars = Array.from({ length: cols * rows }, glyph);
+  };
+  const patch = (c, r, t) => 0.45 + 0.35 * Math.sin(c * 0.23 + t * 0.9) * Math.sin(r * 0.37 - t * 0.6) + 0.2 * Math.sin((c + r) * 0.11 - t * 0.4);
+  const frame = now => {
+    const t = now / 1000;
+    ripples = ripples.filter(p => t - p.t0 < LIFE);
+    ctx.clearRect(0, 0, W, H);
+    if (!ripples.length) { running = false; return; }
+    for (const p of ripples) {
+      const age = t - p.t0, rad = age * SPEED, band = 34 + age * 34, fade = Math.pow(1 - age / LIFE, 1.6), reach = rad + band * 1.5;
+      const c0 = Math.max(0, ((p.x - reach) / cw) | 0), c1 = Math.min(cols - 1, ((p.x + reach) / cw) | 0);
+      const r0 = Math.max(0, ((p.y - reach) / LINE) | 0), r1 = Math.min(rows - 1, ((p.y + reach) / LINE) | 0);
+      for (let r = r0; r <= r1; r++) for (let c = c0; c <= c1; c++) {
+        const x = c * cw, y = r * LINE, dx = x - p.x, dy = y - p.y;
+        const edge = rad * p.shape[(((Math.atan2(dy, dx) + TAU) % TAU) / TAU * BINS) | 0];
+        const off = (Math.hypot(dx, dy) - edge) / band;
+        const v = (Math.exp(-off * off * 2.2) + (off < 0 ? 0.18 * Math.exp(off * 1.2) : 0)) * fade * patch(c, r, t);
+        if (v < 0.05) continue;
+        const i = r * cols + c;
+        if (Math.random() < 0.25 * v) chars[i] = glyph();
+        const hot = Math.min(1, Math.max(0, (v - 0.35) / 0.45)), mix = k => (GREY[k] + (PINK[k] - GREY[k]) * hot) | 0;
+        ctx.fillStyle = `rgba(${mix(0)},${mix(1)},${mix(2)},${Math.min(0.55, v * 0.65).toFixed(3)})`;
+        ctx.fillText(chars[i], x, y);
+      }
+    }
+    requestAnimationFrame(frame);
+  };
+  zone.addEventListener('pointerdown', e => {
+    const box = zone.getBoundingClientRect();
+    ripples.push({ x: e.clientX - box.left, y: e.clientY - box.top, t0: performance.now() / 1000, shape: nextShape() });
+    if (ripples.length > 5) ripples.shift();
+    if (!running) { running = true; requestAnimationFrame(frame); }
+  });
+  size();
+  if ('ResizeObserver' in window) new ResizeObserver(size).observe(zone); else addEventListener('resize', size);
+})();
+
+// Page router: bare hash tokens only
+const pages = [...document.querySelectorAll("[data-page]")];
+function show() {
+  const id = (location.hash || "#cover").slice(1);
+  const target = document.getElementById(id);
+  const page = target ? target.closest("[data-page]") : null;
+  const valid = page ? page.id : "cover";
+  pages.forEach(p => p.hidden = p.id !== valid);
+  if (target && target !== page) target.scrollIntoView();
+  else if (location.hash) window.scrollTo({ top: 0 });
+}
+window.addEventListener("hashchange", show);
+show();
+</script>
+</body>
+</html>
