@@ -373,7 +373,7 @@ footer{border-top:1px solid var(--line)}
 .dg .dgsvg .lab.sm{font-size:16px;stroke-width:5px}
 .dg .dgsvg .lab.big{font-size:24px}
 .dgsvg .colh{font-family:var(--text);font-stretch:100%;font-weight:700;font-size:22px;fill:var(--ink)}
-.dg .dgsvg{aspect-ratio:1150/690}
+.dg .dgsvg{aspect-ratio:1150/670}
 .pdsvg .lab.pl{stroke:#fff}
 .pdsvg .node{fill:var(--spoonbill)}
 .pdsvg .lab.cm{fill:var(--accent-dk)}
@@ -437,6 +437,8 @@ section.band + section,section.band + section.band{margin-top:0}
 .closing.band .btn.ghost{background:#fff;border-color:#fff}
 .closing.band .btn.gulf{background:#fff;color:var(--ink);border-color:var(--ink)}
 @media (max-width:560px){.band{padding:2.6rem 0}.closing.band{padding:2.6rem .5rem}}
+/* pass8: simplified diagram */
+.dgsvg .lab.big2{font-family:var(--text);font-weight:700;font-size:20px}
 @media print{.band{box-shadow:none;clip-path:none;background:none;color:var(--ink)}}
 @media print{body{background:#fff}.mini,.wb,.big{box-shadow:none}.chips,.skip,#replay{display:none}}
 </style>
@@ -516,124 +518,85 @@ section.band + section,section.band + section.band{margin-top:0}
     <button type="button" class="btn ghost" id="replay">▶ Walk through it step by step</button>
    </div>
    <div class="dg-scroll">
-   <svg class="dgsvg" viewBox="-40 -40 1150 690" role="img" aria-labelledby="dg-title dg-desc">
+   <svg class="dgsvg" viewBox="-40 -40 1150 670" role="img" aria-labelledby="dg-title dg-desc">
     <title id="dg-title">How the four tracks connect</title>
-    <desc id="dg-desc">Business units, through active discovery, the AI Champions network, and the Learning Community, which keeps me close to participants, feed problems and insight into a community of practice flywheel built around the Lunch and Learn, which sends problems into the SAIL funnel: intake, discovery, pilot, and a decision. The portfolio is a frame around the whole funnel. It tracks every initiative from intake to graduation, with its status, cost, adoption, outcomes, and readiness to graduate. A yes graduates and goes to product teams to be built to last. A not yet or no goes back to the community with the reason. Every decision and every win comes back to the community as a story.</desc>
+    <desc id="dg-desc">Three inputs bring problems into the community of practice flywheel, built around the Lunch and Learn: the AI Champions, the Learning Community, which keeps me close to participants, and business units through active discovery. The community feeds the SAIL funnel: intake, discovery, pilot, and a decision. The portfolio is a frame around the whole funnel, one trusted view of every initiative with its status, cost, adoption, outcomes, and readiness to graduate. A yes graduates to product teams to be built to last. A not yet or no, and every win, come back to the community as a story.</desc>
     <defs>
      <marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#170055" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
-     <marker id="ahr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ff1d46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+     <marker id="ahr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ff1e47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
     </defs>
     <g class="cols">
-     <text class="colh" data-fix="1" x="150" y="-8" text-anchor="middle">1 · Surface problems</text>
-     <text class="colh" data-fix="2" x="560" y="-8" text-anchor="middle">2 · Decide what to test</text>
-     <text class="colh" data-fix="4" x="920" y="-8" text-anchor="middle">3 · Graduate and scale</text>
-     <path class="divs" d="M395 -30 L395 470" stroke="#d6d3e0" stroke-width="2" stroke-dasharray="6 8" fill="none"/>
+     <text class="colh" data-fix="1" x="185" y="-8" text-anchor="middle">1 · Surface problems</text>
+     <text class="colh" data-fix="3" x="580" y="-8" text-anchor="middle">2 · Decide what to test</text>
+     <text class="colh" data-fix="4" x="915" y="-8" text-anchor="middle">3 · Graduate and scale</text>
     </g>
     <g class="shapes">
-    <!-- ===== PORTFOLIO FRAME (wraps SAIL + graduation) ===== -->
-    <rect class="d fillport" data-p="1" data-fix="4" x="415" y="110" width="670" height="372" rx="12" pathLength="1"/>
-    <!-- ===== COMMUNITY LOOP ===== -->
-    <circle class="d thin" data-p="1" cx="190" cy="290" r="88" pathLength="1"/>
-    <path class="d arr" data-p="2" d="M276.8 214.6 A115 115 0 0 1 304.6 300.0" pathLength="1"/>
-    <path class="d arr" data-p="2" d="M288.6 349.2 A115 115 0 0 1 215.9 402.1" pathLength="1"/>
-    <path class="d arr" data-p="2" d="M164.1 402.1 A115 115 0 0 1 91.4 349.2" pathLength="1"/>
-    <path class="d arr" data-p="2" d="M75.4 300.0 A115 115 0 0 1 103.2 214.6" pathLength="1"/>
-    <path class="d arr" data-p="2" d="M145.1 184.1 A115 115 0 0 1 234.9 184.1" pathLength="1"/>
-    <circle class="pop node" data-p="2" cx="257.6" cy="197.0" r="8"/>
-    <circle class="pop node" data-p="2" cx="299.4" cy="325.5" r="8"/>
-    <circle class="pop node" data-p="2" cx="190.0" cy="405.0" r="8"/>
-    <circle class="pop node" data-p="2" cx="80.6" cy="325.5" r="8"/>
-    <circle class="pop node" data-p="2" cx="122.4" cy="197.0" r="8"/>
-    <ellipse class="d fillgold" data-p="1" cx="190" cy="318" rx="52" ry="15" pathLength="1"/>
-    <circle class="d fillw" data-p="1" cx="146" cy="268" r="13" pathLength="1"/><path class="d" data-p="1" d="M126 300 Q146 278 166 300" pathLength="1"/>
-    <circle class="d fillw" data-p="1" cx="190" cy="256" r="13" pathLength="1"/><path class="d" data-p="1" d="M170 288 Q190 266 210 288" pathLength="1"/>
-    <circle class="d fillw" data-p="1" cx="234" cy="268" r="13" pathLength="1"/><path class="d" data-p="1" d="M214 300 Q234 278 254 300" pathLength="1"/>
-    <circle class="d fillgold" data-p="1" cx="-12" cy="58" r="18" pathLength="1"/>
-    <path class="pop star" data-p="1" d="M-12 46 L-9 54 L-1 55 L-7 60 L-5 68 L-12 64 L-19 68 L-17 60 L-23 55 L-15 54 Z"/>
-    <path class="d arr" data-p="2" d="M-14 80 C -44 170, -14 282, 68 300" pathLength="1"/>
-    <!-- metrics bars -->
-
-    <!-- ideas arrow -->
-    <path class="d arr" data-p="2" d="M300 250 C 350 222, 400 236, 452 250" pathLength="1"/>
-
-    
-    <!-- ===== LEARNING COMMUNITY ===== -->
-    <circle class="d fillblue" data-p="1" cx="-12" cy="540" r="18" pathLength="1"/>
-    <g class="pop" data-p="1"><circle class="lcd" cx="-21" cy="540" r="4"/><circle class="lcd" cx="-12" cy="540" r="4"/><circle class="lcd" cx="-3" cy="540" r="4"/></g>
-    <path class="d arr" data-p="2" d="M-14 520 C -44 450, -14 398, 96 388" pathLength="1"/>
-    <!-- ===== BUSINESS UNITS ===== -->
-    <g transform="translate(-170,-22)">
-    <path class="d fillblue" data-p="1" data-fix="2" d="M660 40 L720 40 L720 104 L660 104 Z M674 52 L684 52 M696 52 L706 52 M674 68 L684 68 M696 68 L706 68 M684 104 L684 86 L696 86 L696 104" pathLength="1"/>
-    <path class="d" data-p="1" data-fix="2" d="M640 104 L660 92 L660 104 M720 92 L740 104 L720 104" pathLength="1"/>
-    </g>
-    <path class="d arr" data-p="1" data-fix="2" d="M520 88 C 516 150, 512 190, 516 232" pathLength="1"/>
-    <!-- ===== SAIL FUNNEL ===== -->
-    <ellipse class="d fillblue" data-p="1" data-fix="3" cx="560" cy="250" rx="105" ry="12" pathLength="1"/>
-    <path class="d" data-p="1" data-fix="3" d="M455 250 L545 420 L545 436 M665 250 L575 420 L575 436" pathLength="1"/>
-    <path class="d" data-p="2" data-fix="3" d="M482 300 L638 300 M508 350 L612 350 M532 395 L588 395" pathLength="1"/>
-    <path class="d fillw" data-p="3" data-fix="3" d="M560 440 L573 453 L560 466 L547 453 Z" pathLength="1"/>
-    <path class="d arr red" data-p="3" data-fix="3" d="M550 464 C 500 520, 330 520, 288 398" pathLength="1"/>
-    <!-- ===== TRACKER (inside the portfolio) ===== -->
-    <rect class="d fillw thin" data-p="1" data-fix="4" x="735" y="222" width="335" height="226" rx="8" pathLength="1"/>
-    <rect class="d fillw thin" data-p="1" data-fix="4" x="750" y="280" width="305" height="34" rx="5" pathLength="1"/>
-    <rect class="d fillw thin" data-p="1" data-fix="4" x="750" y="322" width="305" height="34" rx="5" pathLength="1"/>
-    <rect class="d fillw thin" data-p="1" data-fix="4" x="750" y="364" width="305" height="34" rx="5" pathLength="1"/>
-    <rect class="d fillgold thin" data-p="3" data-fix="4" x="750" y="406" width="305" height="34" rx="5" pathLength="1"/>
-    <g class="pop" data-p="1" data-fix="4">
-     <rect class="bar" x="880" y="293" width="70" height="8" rx="4"/><rect class="bar lt" x="956" y="293" width="40" height="8" rx="4"/>
-     <rect class="bar" x="880" y="335" width="100" height="8" rx="4"/><rect class="bar lt" x="986" y="335" width="30" height="8" rx="4"/>
-     <rect class="bar" x="880" y="377" width="130" height="8" rx="4"/><rect class="bar lt" x="1016" y="377" width="20" height="8" rx="4"/>
-    </g>
-    <path class="pop star" data-p="3" data-fix="4" d="M1030 411 L1034 420 L1044 421 L1036 427 L1039 437 L1030 431 L1021 437 L1024 427 L1016 421 L1026 420 Z"/>
-    <path class="d thin dash2" data-p="1" data-fix="4" d="M648 281 L748 297" pathLength="1"/>
-    <path class="d thin dash2" data-p="1" data-fix="4" d="M626 325 L748 339" pathLength="1"/>
-    <path class="d thin dash2" data-p="1" data-fix="4" d="M602 372 L748 381" pathLength="1"/>
-    <path class="d arr" data-p="3" data-fix="4" d="M574 453 C 640 453, 700 425, 746 423" pathLength="1"/>
-    <!-- ===== PRODUCT TEAMS ===== -->
-    <path class="d arr" data-p="3" data-fix="5" d="M900 442 L900 492" pathLength="1"/>
-    <circle class="d fillblue" data-p="3" data-fix="5" cx="900" cy="520" r="22" pathLength="1"/>
-    <path class="d" data-p="3" data-fix="5" d="M900 492 L900 498 M900 542 L900 548 M872 520 L878 520 M922 520 L928 520 M880 500 L884 504 M916 536 L920 540 M880 540 L884 536 M916 504 L920 500" pathLength="1"/>
-    <!-- ===== STORY LOOP ===== -->
-    <path class="d arr red" data-p="3" data-fix="6" d="M878 540 C 720 650, 360 650, 250 422" pathLength="1"/>
+    <!-- portfolio frame wraps SAIL and graduation -->
+    <rect class="d fillport" data-p="1" data-fix="4" x="460" y="40" width="630" height="400" rx="12" pathLength="1"/>
+    <!-- inputs -->
+    <circle class="d fillgold" data-p="1" data-fix="1" cx="-22" cy="150" r="16" pathLength="1"/>
+    <path class="pop star" data-p="1" data-fix="1" d="M-22 140 L-19.5 146.5 L-12.5 147 L-18 151.5 L-16 158 L-22 154.5 L-28 158 L-26 151.5 L-31.5 147 L-24.5 146.5 Z"/>
+    <circle class="d fillblue" data-p="1" data-fix="1" cx="-22" cy="290" r="16" pathLength="1"/>
+    <g class="pop" data-p="1" data-fix="1"><circle class="lcd" cx="-30" cy="290" r="3.5"/><circle class="lcd" cx="-22" cy="290" r="3.5"/><circle class="lcd" cx="-14" cy="290" r="3.5"/></g>
+    <circle class="d fillblue" data-p="1" data-fix="2" cx="-22" cy="430" r="16" pathLength="1"/>
+    <path class="d" data-p="1" data-fix="2" d="M-29 438 L-29 423 L-15 423 L-15 438 M-25 428 L-19 428 M-25 433 L-19 433" pathLength="1"/>
+    <path class="d arr" data-p="2" data-fix="1" d="M138 150 C 190 160, 225 190, 266 228" pathLength="1"/>
+    <path class="d arr" data-p="2" data-fix="1" d="M208 290 L246 290" pathLength="1"/>
+    <path class="d arr" data-p="2" data-fix="2" d="M170 430 C 210 425, 240 395, 270 352" pathLength="1"/>
+    <!-- community of practice flywheel -->
+    <circle class="d thin fillw" data-p="1" data-fix="1" cx="345" cy="290" r="70" pathLength="1"/>
+    <path class="d arr" data-p="2" data-fix="1" d="M368.3 203.1 A90 90 0 0 1 431.9 313.3" pathLength="1"/>
+    <path class="d arr" data-p="2" data-fix="1" d="M408.6 353.6 A90 90 0 0 1 281.4 353.6" pathLength="1"/>
+    <path class="d arr" data-p="2" data-fix="1" d="M258.1 313.3 A90 90 0 0 1 321.7 203.1" pathLength="1"/>
+    <!-- community feeds SAIL -->
+    <path class="d arr" data-p="2" data-fix="3" d="M438 262 C 452 236, 462 216, 476 211" pathLength="1"/>
+    <!-- SAIL funnel -->
+    <ellipse class="d fillblue" data-p="1" data-fix="3" cx="580" cy="210" rx="100" ry="12" pathLength="1"/>
+    <path class="d" data-p="1" data-fix="3" d="M480 210 L565 380 L565 396 M680 210 L595 380 L595 396" pathLength="1"/>
+    <path class="d" data-p="2" data-fix="3" d="M505 260 L655 260 M530 310 L630 310 M552 355 L608 355" pathLength="1"/>
+    <path class="d fillw" data-p="3" data-fix="3" d="M580 400 L593 413 L580 426 L567 413 Z" pathLength="1"/>
+    <!-- tracker rows: every stage is tracked -->
+    <rect class="d fillw thin" data-p="1" data-fix="4" x="760" y="230" width="310" height="34" rx="5" pathLength="1"/>
+    <rect class="d fillw thin" data-p="1" data-fix="4" x="760" y="276" width="310" height="34" rx="5" pathLength="1"/>
+    <rect class="d fillw thin" data-p="1" data-fix="4" x="760" y="322" width="310" height="34" rx="5" pathLength="1"/>
+    <rect class="d fillgold thin" data-p="3" data-fix="4" x="760" y="368" width="310" height="34" rx="5" pathLength="1"/>
+    <g class="pop" data-p="1" data-fix="4"><rect class="bar" x="900" y="243" width="70" height="8" rx="4"/><rect class="bar" x="900" y="289" width="105" height="8" rx="4"/><rect class="bar" x="900" y="335" width="140" height="8" rx="4"/></g>
+    <path class="pop star" data-p="3" data-fix="4" d="M1045 373 L1049 382 L1059 383 L1051 389 L1054 399 L1045 393 L1036 399 L1039 389 L1031 383 L1041 382 Z"/>
+    <path class="d thin dash2" data-p="1" data-fix="4" d="M664 242 L758 247" pathLength="1"/>
+    <path class="d thin dash2" data-p="1" data-fix="4" d="M641 288 L758 293" pathLength="1"/>
+    <path class="d thin dash2" data-p="1" data-fix="4" d="M618 334 L758 339" pathLength="1"/>
+    <path class="d arr" data-p="3" data-fix="4" d="M594 413 C 660 413, 715 386, 756 385" pathLength="1"/>
+    <!-- product teams -->
+    <path class="d arr" data-p="3" data-fix="5" d="M915 404 L915 456" pathLength="1"/>
+    <circle class="d fillblue" data-p="3" data-fix="5" cx="915" cy="480" r="20" pathLength="1"/>
+    <!-- one return loop: not yet / no joins every win on the way back -->
+    <path class="d red" data-p="3" data-fix="3" d="M580 428 L580 566" pathLength="1"/>
+    <path class="d arr red" data-p="3" data-fix="6" d="M915 502 C 890 572, 720 572, 580 572 C 470 572, 425 470, 394 380" pathLength="1"/>
     </g>
     <g class="dg-labels">
-    <text class="lab big" data-p="1" x="190" y="112" text-anchor="middle">Community of practice</text>
-    <text class="lab red" data-p="1" x="190" y="140" text-anchor="middle">the innovation flywheel</text>
-    <text class="lab" data-p="2" x="272" y="170" text-anchor="start">try it</text>
-    <text class="lab" data-p="2" x="326" y="336" text-anchor="start">share in the CoP</text>
-    <text class="lab" data-p="2" x="190" y="452" text-anchor="middle">share org-wide</text>
-    <text class="lab" data-p="2" x="60" y="352" text-anchor="end">write it up</text>
-    <text class="lab" data-p="2" x="108" y="170" text-anchor="end">take it public</text>
-    <text class="lab sm" data-p="1" x="190" y="358" text-anchor="middle">live convenings</text>
-    <text class="lab" data-p="1" x="12" y="56">AI Champions</text>
-    <text class="lab sm" data-p="1" x="12" y="76">eyes and ears in every function</text>
-    <text class="lab sm" data-p="2" x="-24" y="246">lead</text>
-    <text class="lab sm" data-p="2" x="-24" y="264">sessions</text>
-    <text class="lab" data-p="1" x="12" y="538">Learning Community</text>
-    <text class="lab sm" data-p="1" x="12" y="558">close to participants</text>
-    <text class="lab sm" data-p="2" x="-14" y="456">problems</text>
-    <text class="lab sm" data-p="2" x="-14" y="474">and insight</text>
-    <text class="lab" data-p="2" x="380" y="222" text-anchor="middle">problems</text>
-    <text class="lab big" data-p="1" data-fix="4" x="1070" y="142" text-anchor="end">Portfolio: one trusted view of every initiative</text>
-    <text class="lab sm" data-p="1" data-fix="4" x="1070" y="164" text-anchor="end">every initiative tracked from intake to graduation</text>
-    <text class="lab sm" data-p="1" data-fix="2" x="582" y="40">business units</text>
-    <text class="lab sm" data-p="1" data-fix="2" x="582" y="58">active discovery</text>
-    <text class="lab big" data-p="1" data-fix="3" x="560" y="228" text-anchor="middle">SAIL</text>
-    <text class="lab sm" data-p="2" data-fix="3" x="560" y="285" text-anchor="middle">intake</text>
-    <text class="lab sm" data-p="2" data-fix="3" x="560" y="333" text-anchor="middle">discovery</text>
-    <text class="lab sm" data-p="2" data-fix="3" x="560" y="381" text-anchor="middle">pilot</text>
-    <text class="lab red" data-p="3" data-fix="3" x="420" y="538" text-anchor="middle">not yet or no</text>
-    <text class="lab sm" data-p="3" data-fix="3" x="420" y="557" text-anchor="middle">back with the reason</text>
-    <text class="lab sm hd" data-p="1" data-fix="4" x="902" y="246" text-anchor="middle">status · cost · adoption</text>
-    <text class="lab sm hd" data-p="1" data-fix="4" x="902" y="265" text-anchor="middle">outcomes · readiness to graduate</text>
-    <text class="lab sm" data-p="1" data-fix="4" x="764" y="302">intake</text>
-    <text class="lab sm" data-p="1" data-fix="4" x="764" y="344">discovery</text>
-    <text class="lab sm" data-p="1" data-fix="4" x="764" y="386">pilot</text>
-    <text class="lab sm" data-p="3" data-fix="4" x="764" y="428">graduated</text>
-    <text class="lab" data-p="3" data-fix="4" x="650" y="440" text-anchor="middle">yes</text>
-    <text class="lab sm" data-p="3" data-fix="5" x="934" y="516">built to last</text>
-    <text class="lab sm" data-p="3" data-fix="5" x="934" y="535">by product teams</text>
-    <text class="lab red" data-p="3" data-fix="6" x="560" y="636" text-anchor="middle">every decision and every win comes back as a story</text>
+    <text class="lab" data-p="1" data-fix="1" x="0" y="157">AI Champions</text>
+    <text class="lab" data-p="1" data-fix="1" x="0" y="288">Learning Community</text>
+    <text class="lab sm" data-p="1" data-fix="1" x="0" y="308">close to participants</text>
+    <text class="lab" data-p="1" data-fix="2" x="0" y="428">Business units</text>
+    <text class="lab sm" data-p="1" data-fix="2" x="0" y="448">active discovery</text>
+    <text class="lab big2" data-p="1" data-fix="1" x="345" y="284" text-anchor="middle">Community</text>
+    <text class="lab big2" data-p="1" data-fix="1" x="345" y="306" text-anchor="middle">of practice</text>
+    <text class="lab sm" data-p="1" data-fix="1" x="345" y="327" text-anchor="middle">Lunch &amp; Learn</text>
+    <text class="lab sm" data-p="2" data-fix="1" x="345" y="184" text-anchor="middle">try it, share it, spread it</text>
+    <text class="lab big" data-p="1" data-fix="4" x="1072" y="76" text-anchor="end">Portfolio: one trusted view of every initiative</text>
+    <text class="lab sm hd" data-p="1" data-fix="4" x="1072" y="100" text-anchor="end">status · cost · adoption · outcomes · readiness to graduate</text>
+    <text class="lab big" data-p="1" data-fix="3" x="580" y="188" text-anchor="middle">SAIL</text>
+    <text class="lab sm" data-p="2" data-fix="3" x="580" y="245" text-anchor="middle">intake</text>
+    <text class="lab sm" data-p="2" data-fix="3" x="580" y="293" text-anchor="middle">discovery</text>
+    <text class="lab sm" data-p="2" data-fix="3" x="580" y="341" text-anchor="middle">pilot</text>
+    <text class="lab sm" data-p="1" data-fix="4" x="776" y="252">intake</text>
+    <text class="lab sm" data-p="1" data-fix="4" x="776" y="298">discovery</text>
+    <text class="lab sm" data-p="1" data-fix="4" x="776" y="344">pilot</text>
+    <text class="lab sm" data-p="3" data-fix="4" x="776" y="390">graduated</text>
+    <text class="lab" data-p="3" data-fix="4" x="660" y="400" text-anchor="middle">yes</text>
+    <text class="lab" data-p="3" data-fix="5" x="946" y="478">Product teams</text>
+    <text class="lab sm" data-p="3" data-fix="5" x="946" y="498">built to last</text>
+    <text class="lab red" data-p="3" data-fix="6" x="600" y="606" text-anchor="middle">not yet or no, and every win, come back as a story</text>
     </g>
    </svg>
    </div>
@@ -778,14 +741,14 @@ section.band + section,section.band + section.band{margin-top:0}
   });
  }
  // ---- story mode ----
- const VB0=[-40,-40,1150,690];
+ const VB0=[-40,-40,1150,670];
  const steps=[
-  {vb:[-40,-40,470,600],txt:"It starts with people. AI Champions are a national network of staff building with AI in every function, and the organization's eyes and ears. Being present in the Learning Community keeps me close to the participants Year Up serves. Both bring problems and insight into the community of practice, where people try something, share it, and get others to try."},
-  {vb:[400,-45,420,330],txt:"Business units bring problems too. I go to them directly and run discovery with the people closest to the work."},
-  {vb:[290,100,580,520],txt:"SAIL decides what's worth testing. Each request moves through intake, discovery, and a small pilot, using a product discovery loop. A not yet or no goes back to the community with the reason."},
-  {vb:[395,80,720,450],txt:"The portfolio wraps the whole funnel. Every initiative is tracked from intake onward, not just the winners: status, cost, adoption, outcomes, and readiness to graduate, each tied to the business problem it solves."},
-  {vb:[690,370,430,260],txt:"A yes graduates. Graduated work goes to product teams to be built to last, with a named owner, and stays visible in the portfolio."},
-  {vb:VB0,txt:"Every decision and every win comes back to the community as a story. Building in public keeps the flywheel turning."},
+  {vb:[-45,60,520,420],txt:"It starts with people. AI Champions are a national network of staff building with AI in every function, and the organization's eyes and ears. Being present in the Learning Community keeps me close to the participants Year Up serves. Both bring problems and insight into the community of practice, where people try something, share it, and get others to try."},
+  {vb:[-45,250,520,260],txt:"Business units bring problems too. I go to them directly and run discovery with the people closest to the work."},
+  {vb:[380,130,500,470],txt:"The community feeds SAIL, which decides what's worth testing. Each request moves through intake, discovery, and a small pilot, using a product discovery loop. A not yet or no goes back to the community with the reason."},
+  {vb:[440,20,680,440],txt:"The portfolio wraps the whole funnel. Every initiative is tracked from intake onward, not just the winners: status, cost, adoption, outcomes, and readiness to graduate, each tied to the business problem it solves."},
+  {vb:[700,340,430,220],txt:"A yes graduates. Graduated work goes to product teams to be built to last, with a named owner, and stays visible in the portfolio."},
+  {vb:VB0,txt:"A not yet or no, and every win, comes back to the community as a story. Building in public keeps the flywheel turning."},
   {vb:VB0,txt:"That's the whole picture. Tap a day to see what each track does by then."}
  ];
  const all=[...svg.querySelectorAll('[data-p], .colh, .divs')];
