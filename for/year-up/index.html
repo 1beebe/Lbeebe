@@ -442,6 +442,19 @@ section.band + section,section.band + section.band{margin-top:0}
 /* pass9: hide the round-cap dot left by undrawn strokes */
 .dgsvg .d:not(.shown){stroke-linecap:butt}
 .dg.storying .swipe{display:none}
+/* pass9b: four-track cards */
+.tracks.tcards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:none;margin-top:1.4rem;align-items:stretch;grid-auto-rows:1fr}
+.tcards .tc{background:#fff;border:1px solid var(--line);border-top:5px solid var(--ink);border-radius:10px;padding:1rem 1.15rem 1.1rem;display:flex;flex-direction:column;gap:.5rem;font-size:.97rem;line-height:1.5}
+.tcards .tc p{margin:0}
+.tcards .tc-h{display:flex;align-items:center;gap:.7rem}
+.tcards .tc-h b{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:1.12rem;line-height:1.1}
+.tcards .ti{width:44px;height:44px;flex:none}
+.tcards .ic{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.tcards .ic.gold{fill:var(--gold-wash)}.tcards .ic.star{fill:var(--gold);stroke-width:1.6}.tcards .ic.w{fill:#fff}
+.tcards .ic.loop{stroke:var(--blue-dk);stroke-width:2.6}.tcards .ic.blue{fill:var(--gulf)}
+.tcards .ic.port{fill:#f3f8ff;stroke:var(--blue-dk)}.tcards .ic.chk{stroke:var(--accent-dk);stroke-width:2.6}
+.tcards .tc-champ{border-top-color:#7fc4ff}.tcards .tc-cop{border-top-color:var(--accent)}.tcards .tc-sail{border-top-color:var(--blue)}.tcards .tc-port{border-top-color:var(--ink)}
+@media (max-width:700px){.tracks.tcards{grid-template-columns:1fr;grid-auto-rows:auto}}
 @media print{.band{box-shadow:none;clip-path:none;background:none;color:var(--ink)}}
 @media print{body{background:#fff}.mini,.wb,.big{box-shadow:none}.chips,.skip,#replay{display:none}}
 </style>
@@ -489,11 +502,11 @@ section.band + section,section.band + section.band{margin-top:0}
   <h2 id="h-road">Four tracks, 90 days</h2>
   <p class="thesis">Champions, the community of practice, and active discovery with business units are where people surface business problems. SAIL decides what's worth testing, and the portfolio tracks every initiative from intake to graduation, so leaders see one trusted picture.</p>
   <p class="buildon">I'd start from what's already running: SAIL, the AI Champions, and the Lunch &amp; Learn. This plan builds on them instead of reinventing them. Being present in the Learning Community is how I stay close to the participants Year Up serves and understand their needs from a workforce readiness perspective.</p>
-  <ul class="tracks">
-   <li class="wide"><i class="dot t3"></i><b>Community of practice:</b> the innovation flywheel. People try something, share it, and get others to try. It starts with the Lunch &amp; Learn and the AI Champions who lead sessions. A shared knowledge base, an async channel like Slack, and an internal newsletter keep it going in between.</li>
-   <li><i class="dot t2"></i><b>AI Champions:</b> a national network of staff building with AI across every function, and the organization's eyes and ears. I would co-lead it.</li>
-   <li><i class="dot t1"></i><b>SAIL:</b> decides what's worth testing, using a product discovery loop. I also go to business units directly to find problems worth solving.</li>
-   <li><i class="dot t0"></i><b>Portfolio:</b> the single trusted view of every AI initiative, tracked from intake through graduation, not just the winners: status, cost, adoption, outcomes, and <a href="#graduated">readiness to graduate</a>. Each one is tied to the business problem it solves. The rubric for judging builds in the portfolio comes out of discovery: I'd work with the team to agree on the metrics first, then stand up the rubric.</li>
+  <ul class="tracks tcards">
+   <li class="tc tc-champ"><div class="tc-h"><svg class="ti" viewBox="0 0 48 48" aria-hidden="true"><circle class="ic gold" cx="24" cy="24" r="17"/><path class="ic star" d="M24 13 L27 20.5 L35 21 L29 26 L31 34 L24 29.5 L17 34 L19 26 L13 21 L21 20.5 Z"/></svg><b>AI Champions</b></div><p>a national network of staff building with AI across every function, and the organization's eyes and ears. I would co-lead it.</p></li>
+   <li class="tc tc-cop"><div class="tc-h"><svg class="ti" viewBox="0 0 48 48" aria-hidden="true"><ellipse class="ic gold" cx="24" cy="36" rx="17" ry="5"/><circle class="ic w" cx="12" cy="16" r="5"/><path class="ic" d="M4 29 Q12 21 20 29"/><circle class="ic w" cx="24" cy="12" r="5"/><path class="ic" d="M16 25 Q24 17 32 25"/><circle class="ic w" cx="36" cy="16" r="5"/><path class="ic" d="M28 29 Q36 21 44 29"/></svg><b>Community of practice</b></div><p>the innovation flywheel. People try something, share it, and get others to try. It starts with the Lunch &amp; Learn and the AI Champions who lead sessions. A shared knowledge base, an async channel like Slack, and an internal newsletter keep it going in between.</p></li>
+   <li class="tc tc-sail"><div class="tc-h"><svg class="ti" viewBox="0 0 48 48" aria-hidden="true"><path class="ic loop" d="M24 7 A17 17 0 1 1 9.3 15.5"/><path class="ic loop" d="M5.5 9.5 L9.3 15.5 L16 13.5"/><circle class="ic blue" cx="24" cy="24" r="5"/></svg><b>SAIL</b></div><p>decides what's worth testing, using a product discovery loop. I also go to business units directly to find problems worth solving.</p></li>
+   <li class="tc tc-port"><div class="tc-h"><svg class="ti" viewBox="0 0 48 48" aria-hidden="true"><rect class="ic port" x="6" y="6" width="36" height="36" rx="4"/><path class="ic chk" d="M11 15 L14 18 L19 12 M11 25 L14 28 L19 22 M11 35 L14 38 L19 32"/><path class="ic" d="M23 15 L37 15 M23 25 L37 25 M23 35 L33 35"/></svg><b>Portfolio</b></div><p>the single trusted view of every AI initiative, tracked from intake through graduation, not just the winners: status, cost, adoption, outcomes, and <a href="#graduated">readiness to graduate</a>. Each one is tied to the business problem it solves. The rubric for judging builds in the portfolio comes out of discovery: I'd work with the team to agree on the metrics first, then stand up the rubric.</p></li>
   </ul>
   <div class="hold" id="days">
    <div class="holdk">what you could hold me to</div>
