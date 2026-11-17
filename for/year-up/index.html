@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<link rel="icon" type="image/png" href="/favicon.png">
+<title>My first 90 days · Ligaya Beebe for Year Up United</title>
+<meta name="description" content="Ligaya Beebe's 30, 60, and 90 day roadmap for the AI Innovation and Portfolio Lead role at Year Up United.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800&family=Public+Sans:wght@400;600&family=Gochi+Hand&display=swap" rel="stylesheet">
+<style>
+:root{--sun:#fff8cb;--paper:#fffdf6;--ink:#170055;--ink-soft:#4b4466;--accent:#ff1d46;--spoonbill:#cdbfff;--spoonbill-wash:#f3efff;--gulf:#8fc9ff;--gulf-wash:#e8f3ff;--gold:#f3bd51;--gold-wash:#fff1c4;--orange:#fe6500;
+--display:"Archivo","Helvetica Neue",Arial,sans-serif;--text:"Public Sans","Helvetica Neue",Arial,sans-serif;--hand:"Gochi Hand","Comic Sans MS",cursive}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--sun);color:var(--ink);font:400 1.05rem/1.55 var(--text)}
+a{color:var(--ink);font-weight:600;text-underline-offset:3px}
+a:hover{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:.5rem 1rem;border:2px solid var(--ink);z-index:9}
+.wrap{max-width:1120px;margin:0 auto;padding:1.25rem 1.25rem 3rem}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;font-weight:600;font-size:.95rem}
+.topbar nav{display:flex;gap:1rem;flex-wrap:wrap}
+.topbar nav a{text-decoration:none;font-weight:400}
+.topbar nav a:hover{text-decoration:underline}
+h1,h2,h3{font-family:var(--display);font-weight:800;font-stretch:125%;line-height:1.05;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(2.3rem,1rem + 4.2vw,4rem)}
+h2{font-size:clamp(1.7rem,1rem + 2.6vw,2.5rem)}
+h3{font-size:1.2rem}
+p{margin:0}
+section{margin-top:4.5rem}
+.kicker{font-family:var(--hand);font-size:1.3rem;margin-bottom:.35rem}
+.lede{max-width:60ch;margin-top:.8rem;font-size:1.1rem}
+.mini{background:#fff;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:.85rem .95rem}
+.mini b{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:1.02rem;display:block;line-height:1.15;margin-bottom:.4rem}
+.mini span{font-size:.95rem}
+.pink{background:var(--spoonbill)}.gulf{background:var(--gulf)}.wash{background:var(--spoonbill-wash)}.gwash{background:var(--gulf-wash)}
+.tag{display:inline-block;font-family:var(--hand);font-size:1.1rem;line-height:1;padding:.35rem .6rem;border:2px solid var(--ink);background:var(--accent);transform:rotate(-4deg)}
+.btn{display:inline-block;border-radius:999px;background:var(--accent);border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:.55rem 1rem;font-weight:600;text-decoration:none;transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);color:var(--ink)}
+.btn.ghost{background:var(--paper)}.btn.gulf{background:var(--gulf)}
+button{font:inherit;color:inherit;cursor:pointer}
+blockquote{margin:0}
+.quote{border:2px solid var(--ink);padding:.9rem 1rem;background:var(--spoonbill-wash)}
+.quote p{font-family:var(--hand);font-size:1.25rem;line-height:1.3}
+.quote cite{display:block;font-style:normal;font-size:.88rem;color:var(--ink-soft);margin-top:.45rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.mt{margin-top:1.6rem}
+
+/* hero */
+.heroband{background:var(--ink);color:#fff;position:relative;overflow:hidden;margin:1.4rem 0 0;padding:3rem 1.6rem 3.2rem;border-radius:6px}
+.heroband::before{content:"";position:absolute;right:-8%;top:-30%;width:46%;height:170%;background:linear-gradient(160deg,var(--accent),var(--orange));transform:skewX(-18deg);opacity:.95}
+.heroband::after{content:"";position:absolute;right:30%;top:-30%;width:3%;height:170%;background:var(--spoonbill);transform:skewX(-18deg);opacity:.8}
+.hero{max-width:40rem;position:relative;z-index:1;margin-top:0}
+.hero .kicker{color:#fff}
+.hero .tag{color:var(--ink)}
+@media (max-width:700px){.heroband::before{width:30%;right:-14%}.heroband::after{display:none}}
+.hero .sub{font-size:1.22rem;max-width:52ch;margin-top:1.1rem}
+.hero .sig{font-family:var(--hand);font-size:1.35rem;margin-top:.7rem}
+
+/* whiteboard */
+.wb{margin-top:1.4rem;border-radius:6px;background:#fff;border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:1rem 1rem 1.2rem;position:relative;
+ background-image:linear-gradient(#eef3f6 1px,transparent 1px),linear-gradient(90deg,#eef3f6 1px,transparent 1px);background-size:28px 28px}
+.wb-bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:.8rem}
+.wb-bar .hand{font-family:var(--hand);font-size:1.25rem}
+.board{display:grid;grid-template-columns:150px repeat(3,1fr);gap:.8rem 1rem;align-items:stretch}
+.phase{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:1.1rem;line-height:1;text-align:center;padding:.3rem 0;position:relative}
+.phase small{display:block;font-family:var(--hand);text-transform:none;font-size:1.05rem;font-weight:400}
+.timeline{grid-column:2/5;height:22px;position:relative;margin-bottom:-.2rem}
+.timeline svg{width:100%;height:22px;display:block;overflow:visible}
+.lane{font-family:var(--hand);font-size:1.25rem;line-height:1.15;display:flex;align-items:center;padding-right:.3rem}
+.lane span{display:block}
+.lane em{display:block;font-style:normal;font-family:var(--text);font-size:.78rem;color:var(--ink-soft);margin-top:.2rem}
+.note{position:relative;padding:.75rem .8rem .8rem;min-height:120px;font-size:.92rem;line-height:1.4}
+.note .t{font-weight:600;display:block;margin-bottom:.2rem;font-size:.98rem}
+.note .bgfill{position:absolute;inset:0;z-index:0}
+.note .txt{position:relative;z-index:1}
+.note svg.outline{position:absolute;inset:-3px;width:calc(100% + 6px);height:calc(100% + 6px);z-index:2;pointer-events:none;overflow:visible}
+.note svg.outline path{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ph{display:none;font-family:var(--hand);font-size:1rem;color:var(--ink-soft)}
+.l0 .bgfill{background:var(--spoonbill-wash)}.l1 .bgfill{background:var(--gulf-wash)}.l2 .bgfill{background:var(--gold-wash)}
+.note.goal .bgfill{background:var(--spoonbill)}
+.l1.goal .bgfill{background:var(--gulf)}.l2.goal .bgfill{background:var(--gold)}
+.check{position:absolute;right:.45rem;top:.35rem;z-index:3;width:22px;height:22px}
+.check path{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.marker{position:absolute;width:34px;height:34px;z-index:5;pointer-events:none;transition:left .45s ease,top .45s ease,opacity .3s;opacity:0}
+/* animation states */
+.anim .note .bgfill,.anim .note .txt,.anim .phase,.anim .lane,.anim .check{opacity:0}
+.anim .note svg.outline path{stroke-dasharray:var(--len,900);stroke-dashoffset:var(--len,900)}
+.anim .timeline path{stroke-dasharray:101;stroke-dashoffset:101}
+.anim.play .phase,.anim.play .lane{animation:fade .4s ease forwards;animation-delay:var(--d,0s)}
+.anim.play .timeline path{animation:draw 1.2s ease forwards}
+.anim.play .note svg.outline path{animation:draw .55s ease forwards;animation-delay:var(--d,0s)}
+.anim.play .note .bgfill{animation:fade .35s ease forwards;animation-delay:calc(var(--d,0s) + .45s)}
+.anim.play .note .txt{animation:write .5s ease forwards;animation-delay:calc(var(--d,0s) + .55s)}
+.anim.play .check{animation:pop .3s ease forwards;animation-delay:calc(var(--d,0s) + 1s)}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fade{to{opacity:1}}
+@keyframes write{from{opacity:0;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes pop{0%{opacity:0;transform:scale(1.8)}100%{opacity:1;transform:scale(1)}}
+.wb-foot{margin-top:1rem;display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;font-size:.9rem;color:var(--ink-soft)}
+.wb-foot .sw{background:var(--spoonbill)!important;display:inline-block;width:14px;height:14px;border:2px solid var(--ink);vertical-align:-2px;margin-right:.3rem}
+
+
+/* diagram */
+.dg{margin-top:1.4rem;background:#fff;border:3px solid var(--ink);border-radius:6px;box-shadow:8px 8px 0 var(--ink);padding:1rem 1rem 1.2rem;
+ background-image:linear-gradient(#f0eef8 1px,transparent 1px),linear-gradient(90deg,#f0eef8 1px,transparent 1px);background-size:28px 28px}
+.dg-bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.phases{display:flex;gap:.6rem;flex-wrap:wrap}
+.phases button{background:#fff;border:2px solid var(--ink);border-radius:999px;padding:.35rem .95rem;font-family:var(--display);font-stretch:125%;font-weight:800;font-size:.95rem;line-height:1.1;text-align:left;transition:background .15s}
+.phases button small{display:block;font-family:var(--hand);font-weight:400;font-stretch:100%;font-size:.95rem}
+.phases button[aria-pressed=true]{background:var(--accent);color:#fff}
+.dg-scroll{overflow-x:auto;margin-top:.6rem}
+.dgsvg{width:100%;min-width:760px;height:auto;display:block}
+.dgsvg .d{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .8s ease,stroke .4s}
+.dgsvg .d.thin{stroke-width:2}
+.dgsvg .d.shown{stroke-dashoffset:0}
+.dgsvg .d.dash.shown{stroke-dasharray:.012 .012}
+.dgsvg .d.fillw{fill:#fff;fill-opacity:0;transition:stroke-dashoffset .8s ease,fill-opacity .4s .5s}
+.dgsvg .d.fillgold{fill:var(--gold-wash);fill-opacity:0;transition:stroke-dashoffset .8s ease,fill-opacity .4s .5s}
+.dgsvg .d.fillblue{fill:var(--gulf-wash);fill-opacity:0;transition:stroke-dashoffset .8s ease,fill-opacity .4s .5s}
+.dgsvg .d.fillcream{fill:var(--spoonbill-wash);fill-opacity:0;transition:stroke-dashoffset .8s ease,fill-opacity .4s .5s}
+.dgsvg .d.shown.fillw,.dgsvg .d.shown.fillgold,.dgsvg .d.shown.fillblue,.dgsvg .d.shown.fillcream{fill-opacity:1}
+.dgsvg .d.arr.shown{marker-end:url(#ah)}
+.dgsvg .d.red{stroke:var(--accent)}
+.dgsvg .d.arr.red.shown{marker-end:url(#ahr)}
+.dgsvg .d.now:not(.red){stroke:#3d1fb3}
+.dgsvg .lab{font-family:var(--hand);font-size:21px;fill:var(--ink);paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round;opacity:0;transition:opacity .5s}
+.dgsvg .lab.big{font-size:27px}
+.dgsvg .lab.sm{font-size:17px}
+.dgsvg .lab.red{fill:var(--accent)}
+.dgsvg .lab.shown{opacity:1}
+.dgsvg .pop{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.2);transition:opacity .35s,transform .45s cubic-bezier(.3,1.6,.5,1)}
+.dgsvg .pop.shown{opacity:1;transform:none}
+.dgsvg .pin{fill:var(--accent);stroke:var(--ink);stroke-width:2}
+.dgsvg .star{fill:var(--gold);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+.dgsvg .rec{fill:var(--accent)}
+.dgsvg .node{fill:var(--spoonbill);stroke:var(--ink);stroke-width:2}
+.dgsvg .spin{stroke-dasharray:.03 .02!important;transform-box:fill-box;transform-origin:center}
+.dgsvg .spin.shown{animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.caps{margin-top:.9rem;min-height:9.5rem;max-width:72ch}
+.caps .capk{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:1.05rem;margin-bottom:.3rem}
+.caps p{margin:.25rem 0;font-size:.98rem}
+.caps .dot{display:inline-block;width:12px;height:12px;border-radius:50%;border:2px solid var(--ink);margin-right:.45rem;vertical-align:-1px}
+.caps .t0{background:var(--spoonbill)}.caps .t1{background:var(--gulf)}.caps .t2{background:var(--gold)}.caps .t3{background:var(--orange)}
+.swipe{display:none;font-family:var(--hand);font-size:1rem;color:var(--ink-soft);margin-top:.3rem}
+@media (max-width:800px){.swipe{display:block}}
+
+.bip{margin-top:2rem;max-width:62ch;position:relative;padding-left:1.4rem;border-left:4px solid var(--accent)}
+.bip-k{font-family:var(--hand);font-size:1.25rem;color:var(--accent);display:block}
+.bip p{font-size:1.12rem;margin-top:.2rem}
+.pd{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;margin-top:1.4rem}
+.pdsvg{width:100%;min-width:0!important;max-width:520px;height:auto;display:block;margin:auto}
+.pdl-list{margin:0;padding-left:1.6rem;display:grid;gap:1rem;font-size:1rem}
+.pdl-list li::marker{font-family:var(--hand);font-size:1.3rem;color:var(--accent)}
+.pdl-list b{display:block;font-family:var(--display);font-stretch:125%;font-weight:800;font-size:1rem;margin-bottom:.15rem}
+@media (max-width:900px){.pd{grid-template-columns:1fr}}
+.herolist{margin:.9rem 0 0;padding-left:1.2rem;font-size:1.12rem;max-width:46ch}
+.herolist li{margin:.25rem 0}
+.herolist li::marker{color:var(--accent)}
+.thesis{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:clamp(1.1rem,1rem + .6vw,1.45rem);line-height:1.3;max-width:52ch;margin-top:1rem}
+.tracks{list-style:none;padding:0;margin:1rem 0 0;display:grid;grid-template-columns:1fr 1fr;gap:.5rem 1.6rem;max-width:62rem}
+.tracks li{font-size:1rem}
+.tracks li.wide{grid-column:1/-1}
+.cop{margin:.35rem 0 0;padding-left:2.2rem;display:grid;grid-template-columns:repeat(3,auto);gap:.15rem 1.4rem;font-size:.95rem}
+.cop li::marker{color:var(--accent)}
+@media (max-width:900px){.cop{grid-template-columns:1fr}}
+.tracks .dot,.caps .dot{display:inline-block;width:12px;height:12px;border-radius:50%;border:2px solid var(--ink);margin-right:.45rem;vertical-align:-1px}
+.tracks .t0{background:var(--spoonbill)}.tracks .t1{background:var(--gulf)}.tracks .t2{background:var(--gold)}.tracks .t3{background:var(--orange)}
+.hint{font-family:var(--hand);font-size:1.15rem;margin-top:1rem}
+.measure{margin-top:1.6rem;font-size:1rem}
+.measure ul{margin:.4rem 0 0;padding-left:1.2rem;display:grid;grid-template-columns:1fr 1fr;gap:.2rem 1.6rem;max-width:54rem}
+.measure li::marker,.critlist li::marker,.commit li::marker,.fmi li::marker{color:var(--accent)}
+.critk{font-family:var(--hand);font-size:1.2rem}
+.critlist{margin:.4rem 0 0;padding-left:1.2rem;display:grid;gap:.55rem}
+.commit{margin:.7rem 0 0;padding-left:1.2rem;display:grid;gap:.25rem;font-size:1.05rem}
+.fmlist{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 2rem}
+.fmi{border-left:4px solid var(--ink);padding-left:1rem}
+.fmi:nth-child(1){border-color:var(--spoonbill)}.fmi:nth-child(2){border-color:var(--gulf)}.fmi:nth-child(3){border-color:var(--accent)}.fmi:nth-child(4){border-color:var(--gold)}
+.fmi .lbl{font-family:var(--hand);font-size:1.1rem;color:var(--ink-soft)}
+.fmi h3{margin:.1rem 0 .4rem;font-size:1.15rem}
+.fmi ul{margin:0;padding-left:1.1rem;display:grid;gap:.35rem;font-size:.98rem}
+.pdsvg{max-width:400px!important}
+@media (max-width:900px){.tracks,.measure ul,.fmlist{grid-template-columns:1fr}}
+.whyme{margin-top:1.6rem;display:grid;grid-template-columns:auto 1fr;gap:.4rem 1.4rem;align-items:start}
+.whyk{font-family:var(--hand);font-size:1.4rem;color:var(--accent)}
+.whyme ul{margin:0;padding-left:1.1rem;display:grid;grid-template-columns:1fr 1fr;gap:.35rem 2rem;font-size:1rem}
+.whyme li::marker{color:var(--accent)}
+.dgsvg .colh{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:24px;fill:var(--accent)}
+@media (max-width:900px){.whyme{grid-template-columns:1fr}.whyme ul{grid-template-columns:1fr}}
+.story{background:var(--paper);border:2px solid var(--ink);border-radius:6px;padding:.8rem 1rem;margin-bottom:.6rem}
+.story-top{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.story-k{font-family:var(--hand);font-size:1.1rem;color:var(--accent)}
+.dots{display:flex;gap:.35rem}
+.dots i{width:10px;height:10px;border-radius:50%;border:2px solid var(--ink);display:block}
+.dots i.on{background:var(--accent)}
+.story-txt{font-size:1.12rem;margin-top:.35rem;min-height:3.3em;max-width:70ch}
+.story-ctrl{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-top:.6rem}
+.story-ctrl .btn[disabled]{opacity:.4;cursor:default;transform:none}
+.skip-all{background:none;border:0;text-decoration:underline;text-underline-offset:3px;font-size:.92rem;color:var(--ink-soft);padding:.3rem}
+.skip-all[hidden]{display:none}
+.dgsvg .colh,.dgsvg .divs{transition:opacity .5s}
+.dgsvg .hide{opacity:0}
+.dg-bar[hidden],.caps[hidden]{display:none}
+.dg .dgsvg{aspect-ratio:1150/650;height:auto}
+/* graduated */
+.grad{margin-top:1.4rem;display:grid;grid-template-columns:1fr 1.2fr;gap:1.4rem;align-items:start}
+.big{background:#fff;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:1.1rem 1.2rem}
+.big .k{font-family:var(--hand);font-size:1.15rem}
+.big h3{margin:.15rem 0 .8rem;font-size:1.55rem}
+.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:.6rem;align-items:center;margin:.45rem 0}
+.ba .v{border:2px solid var(--ink);padding:.4rem .6rem;text-align:center;background:#fff}
+.ba .v b{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:1.6rem;line-height:1;display:block}
+.ba .v span{font-size:.8rem}
+.ba .v.after{background:var(--gulf)}
+.ba .arr{font-weight:600;font-size:1.3rem}
+.src{font-size:.82rem;color:var(--ink-soft);margin-top:.8rem}
+.crit{display:grid;gap:.6rem}
+.crit .mini{display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem .75rem}
+.crit .n{font-family:var(--hand);font-size:1.25rem;border:2px solid var(--ink);border-radius:50%;width:2rem;height:2rem;display:grid;place-items:center;background:var(--paper)}
+.crit .mini b{font-size:.98rem}
+.crit .mini span{font-size:.92rem}
+
+/* metrics */
+.metrics .mini b{font-size:.98rem}
+.metrics .mini .why{display:block;margin-top:.3rem;font-size:.85rem;color:var(--ink-soft)}
+
+/* failure modes */
+.fm .mini{display:flex;flex-direction:column;gap:.45rem}
+.fm .lbl{font-family:var(--hand);font-size:1.1rem;color:var(--ink-soft)}
+.fm .proof{margin-top:auto;border-top:2px dashed var(--ink);padding-top:.55rem;font-size:.88rem}
+
+.stat b{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:1.7rem;line-height:1;display:block}
+.stat span{font-size:.9rem}
+
+.closing{text-align:center;margin-top:5rem}
+.closing h2{max-width:24ch;margin:0 auto;text-wrap:balance}
+.closing p.big2{font-family:var(--hand);font-size:clamp(1.35rem,1rem + 1.2vw,1.9rem);max-width:36ch;margin:.9rem auto 0;line-height:1.25}
+.closing .chips{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.4rem}
+footer{margin-top:3rem;padding-top:1.1rem;border-top:2px solid var(--ink);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.9rem}
+footer .disc{color:var(--ink-soft);max-width:66ch}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+ .anim .note .bgfill,.anim .note .txt,.anim .phase,.anim .lane,.anim .check{opacity:1!important}
+ .anim .note svg.outline path,.anim .timeline path{stroke-dashoffset:0!important}}
+@media (max-width:900px){
+ .grad,.grid2{grid-template-columns:1fr}
+ .grid3{grid-template-columns:1fr}
+ .grid4{grid-template-columns:1fr 1fr}
+ .board{grid-template-columns:1fr;gap:.7rem}
+ .board .timeline,.board .corner,.board .phase{display:none}
+ .ph{display:block}
+ .lane{font-size:1.4rem;margin-top:1rem;border-bottom:3px solid var(--ink)}
+ .note{min-height:0}
+ .lane em{display:none}
+}
+@media (max-width:560px){.grid4{grid-template-columns:1fr}.wrap{padding:1rem 1rem 2.5rem}.topbar nav{gap:.7rem;font-size:.88rem}}
+/* day 30/60/90 deliverables */
+.hold{margin-top:2rem;margin-bottom:2.2rem}
+.hold .holdk{font-family:var(--hand);font-size:1.25rem}
+.hold h3{font-size:1.45rem;margin:.1rem 0 .3rem}
+.hold .note2{font-size:.95rem;color:var(--ink-soft);max-width:62ch}
+.hold .grid3{margin-top:1rem}
+.hold .mini b{font-size:1.3rem;margin-bottom:.15rem}
+.hold .mini small{display:block;font-family:var(--hand);font-size:1.05rem;color:var(--ink-soft);margin-bottom:.45rem}
+.hold .mini ul{margin:0;padding-left:1.1rem;display:grid;gap:.4rem;font-size:.95rem}
+.hold .mini li::marker{color:var(--accent)}
+.hold .d30{background:var(--spoonbill-wash)}.hold .d60{background:var(--gulf-wash)}.hold .d90{background:var(--gold-wash)}
+.buildon{margin-top:.8rem;max-width:62ch;font-size:1.05rem}
+.why{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:clamp(1.15rem,1rem + .5vw,1.4rem);line-height:1.25;max-width:34ch;margin-top:1.1rem;color:#fff}
+.story[hidden]{display:none}
+.gradlink{margin-top:1rem;font-size:1rem;max-width:60ch}
+.fmi .instead{font-weight:600}
+/* discovery loop labels: plain sans, bigger, high contrast on the yellow page */
+.pdsvg{max-width:520px!important}
+.pdsvg .lab.pl{font-family:var(--text);font-weight:600;fill:var(--ink);stroke:var(--sun);stroke-width:7px;letter-spacing:0}
+.pdsvg .lab.st{font-size:29px}
+.pdsvg .lab.ctr{font-size:31px;font-weight:600}
+.pdsvg .lab.src{font-size:20px;fill:var(--ink-soft)}
+.pdsvg .lab.num{font-size:20px;stroke:none}
+.pdsvg .lab.cm{font-size:25px;font-weight:600;fill:#b0002a}
+/* small labels in the roadmap diagram: plain sans so they stay legible when scaled down */
+.dg .dgsvg .lab.sm{font-family:var(--text);font-weight:600;font-size:15px;stroke-width:5px}
+@media print{body{background:#fff}.mini,.wb,.big{box-shadow:none}.chips,.skip,#replay{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+ <header class="topbar">
+  <span>Ligaya Beebe · for Year Up United</span>
+  <nav aria-label="Sections">
+   <a href="#roadmap">Roadmap</a><a href="#days">Day 30 · 60 · 90</a><a href="#graduated">Graduated</a><a href="#breaks">Four ways to fail</a><a href="https://1beebe.github.io/listening-tour-supplement/">What my colleagues say</a>
+  </nav>
+ </header>
+
+ <main id="main">
+ <div class="heroband">
+ <section class="hero" aria-labelledby="h-hero">
+  <div class="kicker"><span class="tag">a plan</span>&nbsp; AI Innovation &amp; Portfolio Lead</div>
+  <h1 id="h-hero">My first 90 days at Year Up United</h1>
+  <p class="why">Serving ten times more students by 2030 means AI work has to scale past pilots.</p>
+  <p class="sub">Year Up United already has plenty of AI work underway. Here is what I think it needs next:</p>
+  <ul class="herolist">
+   <li>One trusted view of every AI initiative</li>
+   <li>An honest, repeatable way to decide what grows</li>
+   <li>Staff who are ready when AI licenses reach the whole organization in early 2027</li>
+  </ul>
+  <p class="sig">Ligaya Beebe, PMP</p>
+ </section>
+ </div>
+
+ <!-- WHY ME -->
+ <section class="whyme" aria-label="Why me">
+  <span class="whyk">why me</span>
+  <ul>
+   <li>Former NYC Teaching Fellow, then ran U.S. Department of State youth exchange programs with 12 international partners</li>
+   <li>I run an AI enablement consultancy. In one rollout I designed, staff confidence using AI rose from 70% to 92%.</li>
+   <li>My AI learning community, the AI Architect Program, drew 144 registrants with no paid marketing.</li>
+   <li><a href="https://1beebe.github.io/listening-tour-supplement/">What 13 former colleagues say about working with me →</a></li>
+  </ul>
+ </section>
+
+ <!-- ROADMAP -->
+ <section id="roadmap" aria-labelledby="h-road" style="margin-top:2.5rem">
+  <div class="kicker">the roadmap</div>
+  <h2 id="h-road">Four tracks, 90 days</h2>
+  <p class="thesis">Champions, the community of practice, and active discovery with business units are where people surface business problems. SAIL decides what's worth testing, and the portfolio shows leaders what's working.</p>
+  <p class="buildon">I'd start from what's already running: SAIL, the AI Champions, and the Lunch &amp; Learn. This plan builds on them instead of reinventing them.</p>
+  <ul class="tracks">
+   <li class="wide"><i class="dot t3"></i><b>Community of practice:</b> the innovation flywheel. People try something, share it, and get others to try. It starts with the Lunch &amp; Learn and the AI Champions who lead sessions. A shared knowledge base, an async channel like Slack, and an internal newsletter keep it going in between.</li>
+   <li><i class="dot t2"></i><b>AI Champions:</b> a national network of staff building with AI across every function, and the organization's eyes and ears. I would co-lead it.</li>
+   <li><i class="dot t1"></i><b>SAIL:</b> decides what's worth testing, using a product discovery loop. I also go to business units directly to find problems worth solving.</li>
+   <li><i class="dot t0"></i><b>Portfolio:</b> the single trusted view of every AI initiative: status, cost, adoption, outcomes, and <a href="#graduated">readiness to graduate</a>. Each one is tied to the business problem it solves. The rubric for judging builds in the portfolio comes out of discovery: I'd work with the team to agree on the metrics first, then stand up the rubric.</li>
+  </ul>
+  <div class="hold" id="days">
+   <div class="holdk">what you could hold me to</div>
+   <h3>Day 30, 60, and 90</h3>
+   <p class="note2">This is my proposal. I'd adjust it after the first month of listening.</p>
+   <div class="grid3">
+    <div class="mini d30"><b>By day 30</b><small>listen and map</small><ul><li>Every AI initiative is inventoried in the portfolio, with its status, cost, adoption, and outcomes.</li><li>Listening conversations are done with SAIL, the AI Champions, and business units.</li></ul></div>
+    <div class="mini d60"><b>By day 60</b><small>co-design</small><ul><li>The metrics for judging builds are agreed with the team, and the intake and graduation rubric is co-designed with SAIL on top of them.</li><li>The first pilots are running, each with a test card.</li><li>The first portfolio view is shared with leaders.</li></ul></div>
+    <div class="mini d90"><b>By day 90</b><small>decide and share results</small><ul><li>The first decisions are made against the rubric: graduate, not yet, or no.</li><li>The first before-and-after stories are shared.</li><li>A staff readiness plan is ready ahead of the early-2027 license rollout.</li></ul></div>
+   </div>
+  </div>
+  <p class="hint">Here's how the four tracks connect. Tap a day to see what each track does by then, or walk through it step by step.</p>
+  <div class="dg" id="dg">
+   <div class="story" id="story" hidden>
+    <div class="story-top"><span class="story-k" id="storyk">1 of 7</span><span class="dots" id="dots"></span></div>
+    <p class="story-txt" id="storytxt" aria-live="polite"></p>
+    <div class="story-ctrl"><button type="button" class="btn ghost" id="sback">← Back</button><button type="button" class="btn" id="snext">Next →</button><button type="button" class="skip-all" id="sskip">Skip to the whole picture</button></div>
+   </div>
+   <div class="dg-bar" id="dgbar">
+    <div class="phases" role="group" aria-label="Choose a phase">
+     <button type="button" data-ph="1" aria-pressed="false">Day 30<small>listen and map</small></button>
+     <button type="button" data-ph="2" aria-pressed="false">Day 60<small>co-design</small></button>
+     <button type="button" data-ph="3" aria-pressed="false">Day 90<small>decide and share results</small></button>
+    </div>
+    <button type="button" class="btn ghost" id="replay">▶ Walk through it step by step</button>
+   </div>
+   <div class="dg-scroll">
+   <svg class="dgsvg" viewBox="-40 -40 1150 650" role="img" aria-labelledby="dg-title dg-desc">
+    <title id="dg-title">How the four tracks connect</title>
+    <desc id="dg-desc">Business units, through active discovery, and the AI Champions network feed a community of practice flywheel built around the Lunch and Learn, which sends ideas into the SAIL funnel. Yes decisions go to the portfolio, one trusted view of every AI initiative showing status, cost, adoption, outcomes, and readiness to graduate, and graduated work goes on to product teams. Not yet or no decisions go back to the community with the reason. Every win returns to the community as the next story.</desc>
+    <defs>
+     <marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#170055" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+     <marker id="ahr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ff1d46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+     <filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.6"/></filter>
+    </defs>
+    <g class="cols">
+     <text class="colh" x="150" y="-8" text-anchor="middle">1 · Surface problems</text>
+     <text class="colh" x="560" y="-8" text-anchor="middle">2 · Decide what to test</text>
+     <text class="colh" x="920" y="-8" text-anchor="middle">3 · Map and scale</text>
+     <path class="divs" d="M395 -30 L395 600 M760 -30 L760 600" stroke="#cdbfff" stroke-width="2" stroke-dasharray="6 8" fill="none"/>
+    </g>
+    <g filter="url(#wob)">
+    <!-- ===== COMMUNITY LOOP ===== -->
+    <circle class="d thin spin" data-p="1" cx="190" cy="290" r="88" pathLength="1"/>
+    <path class="d arr" data-p="2" d="M276.8 214.6 A115 115 0 0 1 304.6 300.0" pathLength="1"/>
+    <path class="d arr" data-p="2" d="M288.6 349.2 A115 115 0 0 1 215.9 402.1" pathLength="1"/>
+    <path class="d arr" data-p="2" d="M164.1 402.1 A115 115 0 0 1 91.4 349.2" pathLength="1"/>
+    <path class="d arr" data-p="2" d="M75.4 300.0 A115 115 0 0 1 103.2 214.6" pathLength="1"/>
+    <path class="d arr" data-p="2" d="M145.1 184.1 A115 115 0 0 1 234.9 184.1" pathLength="1"/>
+    <circle class="pop node" data-p="2" cx="257.6" cy="197.0" r="8"/>
+    <circle class="pop node" data-p="2" cx="299.4" cy="325.5" r="8"/>
+    <circle class="pop node" data-p="2" cx="190.0" cy="405.0" r="8"/>
+    <circle class="pop node" data-p="2" cx="80.6" cy="325.5" r="8"/>
+    <circle class="pop node" data-p="2" cx="122.4" cy="197.0" r="8"/>
+    <ellipse class="d fillgold" data-p="1" cx="190" cy="318" rx="52" ry="15" pathLength="1"/>
+    <circle class="d fillw" data-p="1" cx="146" cy="268" r="13" pathLength="1"/><path class="d" data-p="1" d="M126 300 Q146 278 166 300" pathLength="1"/>
+    <circle class="d fillw" data-p="1" cx="190" cy="256" r="13" pathLength="1"/><path class="d" data-p="1" d="M170 288 Q190 266 210 288" pathLength="1"/>
+    <circle class="d fillw" data-p="1" cx="234" cy="268" r="13" pathLength="1"/><path class="d" data-p="1" d="M214 300 Q234 278 254 300" pathLength="1"/>
+    <circle class="d fillgold" data-p="1" cx="-12" cy="58" r="18" pathLength="1"/>
+    <path class="pop star" data-p="1" d="M-12 46 L-9 54 L-1 55 L-7 60 L-5 68 L-12 64 L-19 68 L-17 60 L-23 55 L-15 54 Z"/>
+    <path class="d arr" data-p="2" d="M-14 80 C -44 170, -14 282, 68 300" pathLength="1"/>
+    <!-- metrics bars -->
+
+    <!-- ideas arrow -->
+    <path class="d arr" data-p="2" d="M300 250 C 350 205, 390 186, 430 186" pathLength="1"/>
+
+    <!-- ===== SAIL FUNNEL ===== -->
+    <ellipse class="d fillblue" data-p="1" cx="560" cy="150" rx="120" ry="14" pathLength="1"/>
+    <path class="d" data-p="1" d="M440 150 L540 360 L540 392 M680 150 L580 360 L580 392" pathLength="1"/>
+    <path class="d" data-p="2" d="M466 205 L654 205 M495 265 L625 265 M521 320 L599 320" pathLength="1"/>
+    <!-- test card -->
+
+    <!-- decisions -->
+    <path class="d arr" data-p="3" d="M566 398 C 640 425, 712 392, 760 336" pathLength="1"/>
+
+    <!-- ===== PORTFOLIO MAP ===== -->
+    <path class="d fillcream" data-p="1" d="M770 150 L870 130 L970 150 L1070 130 L1070 380 L970 400 L870 380 L770 400 Z" pathLength="1"/>
+    <path class="d thin" data-p="1" d="M870 130 L870 380 M970 150 L970 400" pathLength="1"/>
+    <path class="d thin dash" data-p="1" d="M810 200 C 830 250, 830 280, 845 300 S 900 260, 905 230 S 930 300, 940 330 S 990 250, 1010 212 S 1030 290, 1040 320" pathLength="1"/>
+    <g class="pop" data-p="1"><circle class="pin" cx="810" cy="200" r="8"/><circle class="pin" cx="845" cy="300" r="8"/><circle class="pin" cx="905" cy="230" r="8"/><circle class="pin" cx="940" cy="330" r="8"/><circle class="pin" cx="1040" cy="320" r="8"/><circle class="pin" cx="1010" cy="212" r="8"/></g>
+    <circle class="d" data-p="1" cx="905" cy="230" r="28" pathLength="1"/><path class="d" data-p="1" d="M925 250 L952 277" pathLength="1"/>
+    <path class="pop star" data-p="2" d="M1010 192 L1015 205 L1029 206 L1018 215 L1022 229 L1010 221 L998 229 L1002 215 L991 206 L1005 205 Z"/>
+    <!-- clipboard -->
+    <!-- built to last -->
+    <path class="d arr" data-p="3" d="M1010 400 L1010 462" pathLength="1"/>
+    <circle class="d fillblue" data-p="3" cx="1010" cy="496" r="24" pathLength="1"/>
+    <path class="d" data-p="3" d="M1010 466 L1010 472 M1010 520 L1010 526 M980 496 L986 496 M1034 496 L1040 496 M989 475 L993 479 M1027 513 L1031 517 M989 517 L993 513 M1027 479 L1031 475" pathLength="1"/>
+
+    <!-- business units -->
+    <path class="d fillblue" data-p="1" d="M660 40 L720 40 L720 104 L660 104 Z M674 52 L684 52 M696 52 L706 52 M674 68 L684 68 M696 68 L706 68 M684 104 L684 86 L696 86 L696 104" pathLength="1"/>
+    <path class="d" data-p="1" d="M640 104 L660 92 L660 104 M720 92 L740 104 L720 104" pathLength="1"/>
+    <path class="d arr" data-p="1" d="M662 108 C 650 124, 636 132, 622 138" pathLength="1"/>
+    <!-- one return loop -->
+    <path class="d arr red" data-p="3" d="M972 516 C 820 600, 440 610, 262 410" pathLength="1"/>
+
+    </g>
+    <g class="dg-labels">
+    <text class="lab big" data-p="1" x="190" y="112" text-anchor="middle">Community of practice</text>
+    <text class="lab red" data-p="1" x="190" y="140" text-anchor="middle">the innovation flywheel</text>
+    <text class="lab" data-p="2" x="272" y="170" text-anchor="start">try it</text>
+    <text class="lab" data-p="2" x="326" y="336" text-anchor="start">share in the CoP</text>
+    <text class="lab" data-p="2" x="190" y="452" text-anchor="middle">share org-wide</text>
+    <text class="lab" data-p="2" x="60" y="352" text-anchor="end">write it up</text>
+    <text class="lab" data-p="2" x="108" y="170" text-anchor="end">take it public</text>
+    <text class="lab sm" data-p="1" x="190" y="358" text-anchor="middle">live convenings</text>
+    <text class="lab" data-p="1" x="12" y="56">AI Champions</text>
+    <text class="lab sm" data-p="1" x="12" y="76">eyes and ears in every function</text>
+    <text class="lab sm" data-p="2" x="-24" y="246">lead</text>
+<text class="lab sm" data-p="2" x="-24" y="264">sessions</text>
+    <text class="lab" data-p="2" x="392" y="246" text-anchor="middle">problems</text>
+    <text class="lab big" data-p="1" x="560" y="96" text-anchor="middle">SAIL</text>
+    <text class="lab sm" data-p="2" x="560" y="194" text-anchor="middle">intake</text>
+    <text class="lab sm" data-p="2" x="560" y="254" text-anchor="middle">discovery</text>
+    <text class="lab sm" data-p="2" x="560" y="310" text-anchor="middle">pilot</text>
+    <text class="lab" data-p="3" x="676" y="430">yes</text>
+    <text class="lab big" data-p="1" x="920" y="108" text-anchor="middle">Portfolio: one trusted view</text>
+    <text class="lab sm" data-p="2" data-fix="4" x="864" y="424" text-anchor="middle">each pin: status · cost · adoption</text>
+    <text class="lab sm" data-p="2" data-fix="4" x="864" y="443" text-anchor="middle">outcomes · readiness to graduate</text>
+    <text class="lab sm" data-p="2" x="1008" y="178" text-anchor="middle">graduated</text>
+    <text class="lab sm" data-p="3" x="1010" y="550" text-anchor="middle">built to last</text>
+    <text class="lab sm" data-p="3" x="1010" y="568" text-anchor="middle">by product teams</text>
+    <text class="lab sm" data-p="1" x="732" y="62">business units</text>
+    <text class="lab sm" data-p="1" x="732" y="82">active discovery</text>
+    <text class="lab red" data-p="3" x="610" y="586" text-anchor="middle">every decision and every win comes back as a story</text>
+    </g>
+   </svg>
+   </div>
+   <div class="swipe">swipe to see the whole picture →</div>
+   <div class="caps" id="caps" aria-live="polite"></div>
+  </div>
+  <div class="measure"><b>How I'd measure the community of practice:</b>
+   <ul><li>Repeat attendance and departments represented</li><li>Share of sessions led by Champions</li><li>Resources published to the knowledge base, and posts in the async channel</li><li>Ideas that reach SAIL, and how many get a yes</li></ul>
+  </div>
+  <div class="bip"><span class="bip-k">the culture underneath it all</span><p>All four tracks rest on a culture of building in public. When people share what they're trying while it's still unfinished, others pick it up and try it too, and that's what keeps the flywheel turning. The same habit takes care of communicating value, because the work and its results are already out where leaders, employers, and funders can see them.</p></div>
+ </section>
+
+
+ <!-- GRADUATED -->
+ <section id="graduated" aria-labelledby="h-grad">
+  <div class="kicker">the bar for "graduated"</div>
+  <h2 id="h-grad">Year Up United already has a model</h2>
+  <p class="lede">The 2025 Impact Report describes a predictive internship matching tool. I think it's the best picture of what a graduated AI initiative should look like here, so I would use it to set the bar for "readiness to graduate" in the portfolio.</p>
+  <div class="grad">
+   <div class="big">
+    <span class="k">from the 2025 Impact Report</span>
+    <h3>Predictive internship matching</h3>
+    <div class="ba"><div class="v"><b>58 min</b><span>to match one student, before</span></div><span class="arr">→</span><div class="v after"><b>4.5 min</b><span>after</span></div></div>
+    <div class="ba"><div class="v"><b>3.0</b><span>staff satisfaction, before</span></div><span class="arr">→</span><div class="v after"><b>5.0</b><span>out of 5, after</span></div></div>
+    <p class="src">Source: Year Up United 2025 Impact Report, "Investing in Technology."</p>
+   </div>
+   <div>
+    <p class="critk">What makes it the model, and the bar I'd hold every pilot to:</p>
+    <ul class="critlist">
+     <li><b>It solves a real bottleneck.</b> Matching used to take almost an hour of staff time per student.</li>
+     <li><b>It has a before and after.</b> The time savings were measured in real use.</li>
+     <li><b>Staff keep the final call.</b> The tool recommends, people decide, and staff satisfaction went up.</li>
+     <li><b>Equity is checked.</b> Every match is reviewed against EEOC guidelines.</li>
+     <li><b>It helps Year Up United grow.</b> Placements can scale without staffing costs growing at the same rate.</li>
+    </ul>
+   </div>
+  </div>
+ </section>
+
+ <!-- FOUR WAYS TO FAIL -->
+ <section id="breaks" aria-labelledby="h-breaks">
+  <div class="kicker">how this role goes wrong</div>
+  <h2 id="h-breaks">Four ways to fail in this role</h2>
+  <p class="lede">In our conversation, Eduvijes described how someone would fail in this role. Here is how I'd avoid each one.</p>
+  <div class="fmlist mt">
+   <div class="fmi"><span class="lbl">way to fail #1</span><h3>Can't co-create</h3><ul><li><span class="instead">What I do instead:</span> I build with people. I listen first and write every pilot's test card with the team that will use it.</li><li><b>Proof:</b> when eight international partners moved to one application portal, all eight adopted it and support requests dropped about 30%.</li></ul></div>
+   <div class="fmi"><span class="lbl">way to fail #2</span><h3>Can't design</h3><ul><li><span class="instead">What I do instead:</span> I design the test before anything is built: the problem, the person, and what success looks like, plus the metrics that tell us we're getting there.</li><li><b>Proof:</b> in a Claude for Teams rollout I designed, staff confidence using AI rose from 70% to 92%.</li></ul></div>
+   <div class="fmi"><span class="lbl">way to fail #3</span><h3>Can't share the value and impact</h3><ul><li><span class="instead">What I do instead:</span> Because we defined success and the metrics up front, the impact story is mostly written before the pilot ends. Every win gets a before and after, told by the staff who did the work.</li><li><b>Proof:</b> my AI learning community, the AI Architect Program, drew 144 registrants with no paid marketing.</li></ul></div>
+   <div class="fmi"><span class="lbl">way to fail #4</span><h3>Can't handle ambiguity</h3><ul><li><span class="instead">What I do instead:</span> I define success with others, then build clarity as we go. I document decisions and put just enough structure in place to meet ambiguity with clear eyes.</li><li><b>Proof:</b> on a youth language program, we agreed on one measure together and learners meeting their goals went from 72% to 93%.</li></ul></div>
+  </div>
+ </section>
+
+ <!-- DISCOVERY LOOP -->
+ <section id="discovery" aria-labelledby="h-disc">
+  <div class="kicker">how I handle ambiguity</div>
+  <h2 id="h-disc">The product discovery loop</h2>
+  <p class="lede">Inside the SAIL funnel, I run a product discovery loop borrowed from lean and agile practice. I wrap it in three commitments I make with the people who will live with the results:</p>
+  <ul class="commit"><li><b>Co-define success</b> with SAIL and the teams served</li><li><b>Co-design the system</b>, including the intake and the rubric</li><li><b>Build in public</b>, so learning sticks and impact is visible</li></ul>
+  <div class="pd">
+   <svg class="dgsvg pdsvg" id="pdl" viewBox="-50 -8 680 538" role="img" aria-label="A five step product discovery loop: discover, experiment, measure, discern, hand off. Around it, three commitments: co-define success, co-design the system, build in public."><g filter="url(#wob)">
+<circle class="d thin dash" data-p="1" cx="290" cy="275" r="222" pathLength="1"/>
+<path class="d arr" data-p="1" d="M324.9 144.6 A135 135 0 0 1 403.2 201.5" pathLength="1"/>
+<path class="d arr" data-p="1" d="M424.8 267.9 A135 135 0 0 1 394.9 360.0" pathLength="1"/>
+<path class="d arr" data-p="1" d="M338.4 401.0 A135 135 0 0 1 241.6 401.0" pathLength="1"/>
+<path class="d arr" data-p="1" d="M185.1 360.0 A135 135 0 0 1 155.2 267.9" pathLength="1"/>
+<path class="d arr" data-p="1" d="M176.8 201.5 A135 135 0 0 1 255.1 144.6" pathLength="1"/>
+<circle class="pop node" data-p="1" cx="290.0" cy="140.0" r="19"/>
+<circle class="pop node" data-p="1" cx="418.4" cy="233.3" r="19"/>
+<circle class="pop node" data-p="1" cx="369.4" cy="384.2" r="19"/>
+<circle class="pop node" data-p="1" cx="210.6" cy="384.2" r="19"/>
+<circle class="pop node" data-p="1" cx="161.6" cy="233.3" r="19"/>
+</g>
+<g class="pdl-labels">
+<text class="lab pl cm" data-p="1" x="75" y="64" text-anchor="middle">co-define success</text>
+<text class="lab pl cm" data-p="1" x="290" y="30" text-anchor="middle">co-design the system</text>
+<text class="lab pl cm" data-p="1" x="510" y="64" text-anchor="middle">build in public</text>
+<text class="lab pl st" data-p="1" x="290" y="100" text-anchor="middle">Discover</text>
+<text class="lab pl st" data-p="1" x="450" y="241" text-anchor="start">Experiment</text>
+<text class="lab pl st" data-p="1" x="397" y="438" text-anchor="start">Measure</text>
+<text class="lab pl st" data-p="1" x="183" y="438" text-anchor="end">Discern</text>
+<text class="lab pl st" data-p="1" x="130" y="241" text-anchor="end">Hand off</text>
+<text class="lab pl ctr" data-p="1" x="290" y="266" text-anchor="middle">product</text>
+<text class="lab pl ctr" data-p="1" x="290" y="300" text-anchor="middle">discovery loop</text>
+<text class="lab pl src" data-p="1" x="290" y="330" text-anchor="middle">from lean and agile</text>
+<text class="lab pl num" data-p="1" x="290.0" y="147.0" text-anchor="middle">1</text>
+<text class="lab pl num" data-p="1" x="418.4" y="240.3" text-anchor="middle">2</text>
+<text class="lab pl num" data-p="1" x="369.4" y="391.2" text-anchor="middle">3</text>
+<text class="lab pl num" data-p="1" x="210.6" y="391.2" text-anchor="middle">4</text>
+<text class="lab pl num" data-p="1" x="161.6" y="240.3" text-anchor="middle">5</text>
+</g></svg>
+   <ol class="pdl-list">
+    <li><b>Discover.</b> Embed with the people closest to the problem and listen.</li>
+    <li><b>Experiment.</b> Run small tests side by side, then iterate.</li>
+    <li><b>Measure.</b> Score results against the rubric we agreed on.</li>
+    <li><b>Discern.</b> Decide what's worth building, and kill the rest early.</li>
+    <li><b>Hand off.</b> Give winners to a product team with a named owner.</li>
+   </ol>
+  </div>
+ </section>
+ <section class="closing" aria-labelledby="h-close">
+  <h2 id="h-close">I'd love to walk the team through this in the next round</h2>
+  <p class="big2">I'm curious where you see the biggest gaps today, so the first 30 days of listening start in the right places.</p>
+  <div class="chips">
+   <a class="btn" href="https://1beebe.github.io/listening-tour-supplement/">What my colleagues say</a>
+   <a class="btn ghost" href="https://lbeebe.com/">lbeebe.com</a>
+   <a class="btn gulf" href="https://www.linkedin.com/in/ligaya-beebe/">LinkedIn</a>
+   <a class="btn ghost" href="https://github.com/1beebe">GitHub</a>
+  </div>
+ </section>
+ </main>
+
+ <footer>
+  <span><a href="https://lbeebe.com/">Ligaya Beebe, PMP</a> · <a href="https://lbeebe.com/">lbeebe.com</a> · <a href="https://github.com/1beebe">GitHub</a></span>
+  <span class="disc">A proposal from a candidate, not a Year Up United document. Internship matching figures come from Year Up United's public 2025 Impact Report.</span>
+ </footer>
+</div>
+
+<script>
+(function(){
+ const dg=document.getElementById('dg'), svg=dg.querySelector('svg');
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const caps={
+  1:[["Portfolio","I meet the owner of every AI initiative in flight and log each one's status, cost, adoption, and outcomes in one place."],["SAIL","I sit in on SAIL to learn how intake works today, and start discovery conversations with business units."],["AI Champions","I meet my co-lead and the Champions to learn what the network needs from me."],["Community of practice","I take ownership of the Lunch &amp; Learn, start a baseline, and map what already exists, like Slack channels and shared folders."]],
+  2:[["Portfolio","Each initiative is tied to the business problem it solves, and leaders see the first portfolio view. Internship matching sets the bar for readiness to graduate."],["SAIL","Together we co-define the intake, starting with a one-page test card, and co-manage the queue."],["AI Champions","Champions take turns leading Lunch &amp; Learn content, so what their teams build reaches everyone."],["Community of practice","With presenters' consent, each Lunch &amp; Learn becomes a write-up in a shared knowledge base, and an async channel keeps sharing going in between."]],
+  3:[["Portfolio","Leaders use one trusted view to see what's working, and graduated work stays visible after it goes to the product teams."],["SAIL","Every decision is published with its reason, so teams learn what to bring forward next time."],["AI Champions","My co-lead and I share a plan for growing the network ahead of the early-2027 license rollout."],["Community of practice","The community has its first metrics report, a regular internal newsletter or blog, and starter resources for every department."]]
+ };
+ const els=[...svg.querySelectorAll('[data-p]')];
+ let timers=[], seq=[];
+ let show=function(ph,animate){
+  timers.forEach(clearTimeout); timers=[];
+  dg.querySelectorAll('.phases button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.ph===ph));
+  document.getElementById('caps').innerHTML='<div class="capk">Day '+[0,30,60,90][ph]+'</div>'+caps[ph].map((c,i)=>`<p><i class="dot t${i}"></i><b>${c[0]}:</b> ${c[1]}</p>`).join('');
+  let k=0;
+  els.forEach(el=>{
+   const p=+el.dataset.p;
+   el.classList.toggle('now',p===ph);
+   if(p<ph||(p===ph&&(!animate||reduce))){el.style.transitionDelay='0s';el.classList.add('shown')}
+   else if(p>ph){el.style.transitionDelay='0s';el.classList.remove('shown')}
+   else{el.classList.remove('shown');el.style.transitionDelay=(k++*0.13)+'s';timers.push(setTimeout(()=>el.classList.add('shown'),40))}
+  });
+ }
+ // ---- story mode ----
+ const VB0=[-40,-40,1150,650];
+ const steps=[
+  {vb:[-40,-40,470,600],txt:"It starts with people. AI Champions are a national network of staff building with AI in every function, and the organization's eyes and ears. They bring what they learn into the community of practice, where people try something, share it, and get others to try."},
+  {vb:[520,-45,420,330],txt:"Business units bring problems too. I go to them directly and run discovery with the people closest to the work."},
+  {vb:[300,-45,520,560],txt:"SAIL decides what's worth testing. Each request moves through intake, discovery, and a small pilot, using a product discovery loop."},
+  {vb:[700,-45,420,560],txt:"A yes lands in the portfolio, one trusted view of every AI initiative: status, cost, adoption, outcomes, and readiness to graduate. Each one is tied to the business problem it solves."},
+  {vb:[790,360,360,280],txt:"Winners go to product teams to be built to last, with a named owner."},
+  {vb:VB0,txt:"Every decision and every win comes back to the community as a story. Building in public keeps the flywheel turning."},
+  {vb:VB0,txt:"That's the whole picture. Tap a day to see what each track does by then."}
+ ];
+ const all=[...svg.querySelectorAll('[data-p], .colh, .divs')];
+ all.forEach(el=>{
+  let b; try{b=el.getBBox()}catch(e){b={x:0,y:0,width:0,height:0}}
+  const cx=b.x+b.width/2, cy=b.y+b.height/2;
+  let s;
+  if(el.classList.contains('divs')) s=6;
+  else if(el.classList.contains('red')&&b.width>400) s=6;
+  else if(el.textContent.trim()==='yes') s=4;
+  else if(el.textContent.trim()==='problems'||(el.getAttribute('d')||'').startsWith('M300 250')) s=3;
+  else if(cx<395) s=1;
+  else if(cx>600&&cx<840&&cy<125) s=2;
+  else if(cx<760) s=(b.width>150&&cx>600)?4:3;
+  else if(cy>445) s=5;
+  else s=4;
+  if(el.dataset.fix) s=+el.dataset.fix;
+  el.dataset.s=s;
+ });
+ const dots=document.getElementById('dots');
+ dots.innerHTML=steps.map(()=>'<i></i>').join('');
+ let cur=0, vbNow=VB0.slice(), anim=null;
+ function zoomTo(vb,instant){
+  cancelAnimationFrame(anim);
+  if(instant||reduce){vbNow=vb.slice();svg.setAttribute('viewBox',vb.join(' '));return}
+  const from=vbNow.slice(), t0=performance.now(), D=900;
+  const tick=now=>{let k=Math.min(1,(now-t0)/D);k=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+   vbNow=from.map((v,i)=>v+(vb[i]-v)*k);svg.setAttribute('viewBox',vbNow.map(v=>v.toFixed(1)).join(' '));if(k<1)anim=requestAnimationFrame(tick)};
+  anim=requestAnimationFrame(tick);
+ }
+ const _show=show; show=function(ph,an){all.forEach(el=>{if(el.classList.contains('colh')||el.classList.contains('divs'))el.classList.remove('hide')});_show(ph,an)};
+ function story(i){
+  timers.forEach(clearTimeout); timers=[];
+  cur=i; const st=steps[i-1];
+  document.getElementById('storyk').textContent=i+' of '+steps.length;
+  dots.querySelectorAll('i').forEach((d,j)=>d.classList.toggle('on',j<i));
+  document.getElementById('storytxt').textContent=st.txt;
+  document.getElementById('sback').disabled=i===1;
+  document.getElementById('snext').disabled=i===steps.length;
+  const last=i===steps.length;
+  document.getElementById('dgbar').hidden=!last; document.getElementById('caps').hidden=!last;
+  document.getElementById('sskip').hidden=last;
+  document.getElementById('story').hidden=last;
+  zoomTo(st.vb);
+  if(last){show(3,false);return}
+  let k=0;
+  all.forEach(el=>{
+   el.classList.remove('now');
+   const s=+el.dataset.s, isCol=el.classList.contains('colh')||el.classList.contains('divs');
+   if(isCol){el.classList.toggle('hide',s>i);return}
+   if(s<i||(s===i&&reduce)){el.style.transitionDelay='0s';el.classList.add('shown')}
+   else if(s>i){el.style.transitionDelay='0s';el.classList.remove('shown')}
+   else{el.classList.remove('shown');el.style.transitionDelay=(.5+k++*0.07)+'s';timers.push(setTimeout(()=>el.classList.add('shown'),30))}
+  });
+ }
+ document.getElementById('snext').addEventListener('click',()=>{story(Math.min(steps.length,cur+1));if(cur===steps.length)document.getElementById('replay').focus()});
+ document.getElementById('sback').addEventListener('click',()=>story(Math.max(1,cur-1)));
+ document.getElementById('sskip').addEventListener('click',()=>{story(steps.length);document.getElementById('replay').focus()});
+ dg.querySelectorAll('.phases button').forEach(b=>b.addEventListener('click',()=>{zoomTo(VB0);show(+b.dataset.ph,true)}));
+ document.getElementById('replay').addEventListener('click',()=>{story(1);document.getElementById('snext').focus()});
+ story(steps.length);
+ // draw the whole picture in once, the first time it scrolls into view
+ if('IntersectionObserver' in window&&!reduce){
+  const drawIn=()=>{timers.forEach(clearTimeout);timers=[];
+   els.forEach(el=>{el.style.transitionDelay='0s';el.classList.remove('shown')});
+   const k={1:0,2:0,3:0};
+   timers.push(setTimeout(()=>els.forEach(el=>{const p=+el.dataset.p;el.style.transitionDelay=((p-1)*.7+(k[p]++)*.03)+'s';el.classList.add('shown')}),40));};
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){if(cur===steps.length)drawIn();io.disconnect()}})},{threshold:.35});
+  io.observe(dg);
+ }
+ const pdl=document.getElementById('pdl');
+ if(pdl){
+  const pe=[...pdl.querySelectorAll('[data-p]')];
+  const go=()=>pe.forEach((el,i)=>{el.style.transitionDelay=(reduce?0:i*0.08)+'s';el.classList.add('shown')});
+  if('IntersectionObserver' in window&&!reduce){const io2=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){go();io2.disconnect()}})},{threshold:.3});io2.observe(pdl)}else go();
+ }
+})();
+</script>
+</body>
+</html>
