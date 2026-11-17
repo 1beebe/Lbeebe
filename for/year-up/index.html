@@ -9,10 +9,10 @@
 <meta name="description" content="Ligaya Beebe's 30, 60, and 90 day roadmap for the AI Innovation and Portfolio Lead role at Year Up United.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800&family=Public+Sans:wght@400;600&family=Gochi+Hand&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--sun:#fff8cb;--paper:#fffdf6;--ink:#170055;--ink-soft:#4b4466;--accent:#ff1d46;--spoonbill:#cdbfff;--spoonbill-wash:#f3efff;--gulf:#8fc9ff;--gulf-wash:#e8f3ff;--gold:#f3bd51;--gold-wash:#fff1c4;--orange:#fe6500;
---display:"Archivo","Helvetica Neue",Arial,sans-serif;--text:"Public Sans","Helvetica Neue",Arial,sans-serif;--hand:"Gochi Hand","Comic Sans MS",cursive}
+:root{--sun:#ffffff;--paper:#ffffff;--ink:#170055;--ink-soft:#4b4466;--accent:#ff1d46;--spoonbill:#cdbfff;--spoonbill-wash:#f3efff;--gulf:#8fc9ff;--gulf-wash:#e8f3ff;--gold:#f3bd51;--gold-wash:#fff1c4;--orange:#fe6500;
+--display:"Archivo","Helvetica Neue",Arial,sans-serif;--text:"Public Sans","Helvetica Neue",Arial,sans-serif;--hand:"Public Sans","Helvetica Neue",Arial,sans-serif}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--sun);color:var(--ink);font:400 1.05rem/1.55 var(--text)}
@@ -286,6 +286,83 @@ footer .disc{color:var(--ink-soft);max-width:66ch}
 .pdsvg .lab.cm{font-size:25px;font-weight:600;fill:#b0002a}
 /* small labels in the roadmap diagram: plain sans so they stay legible when scaled down */
 .dg .dgsvg .lab.sm{font-family:var(--text);font-weight:600;font-size:15px;stroke-width:5px}
+
+/* ===== pass5: crisp, professional restyle ===== */
+:root{--ink:#170055;--ink-soft:#4a4560;--accent:#ff1e47;--accent-dk:#c8102e;--blue:#008aff;--blue-dk:#0063c4;--gray:#eeeeee;--line:#d9d6e3;
+ --spoonbill:#e9e5f7;--spoonbill-wash:#f6f5fb;--gulf:#d6ecff;--gulf-wash:#f0f7ff;--gold:#ffd166;--gold-wash:#fff6dc;--orange:#ff1e47}
+body{background:#fff}
+.kicker,.hold .holdk,.big .k,.critk,.bip-k,.whyk,.story-k,.fmi .lbl,.fm .lbl,.hold .mini small{font-family:var(--text);font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-dk)}
+.kicker{margin-bottom:.5rem}
+.hero .kicker{color:#fff}
+.tag{transform:none;font-family:var(--text);font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .55rem;border:0;border-radius:4px;background:var(--accent);color:#fff!important}
+.hero .sig{font-family:var(--text);font-weight:600;font-size:1rem;margin-top:1rem;opacity:.9}
+.heroband{border-radius:12px;padding:3rem 2rem 3.2rem}
+.heroband::before{background:var(--blue);transform:skewX(-14deg);opacity:1;right:-10%;width:34%}
+.heroband::after{display:none}
+.hero .why{color:#fff}
+.whyme{background:var(--spoonbill-wash);border-radius:12px;padding:1.1rem 1.3rem}
+.whyk{font-size:.8rem;color:var(--accent-dk);padding-top:.15rem}
+.mini{border:1px solid var(--line);box-shadow:none;border-radius:10px;padding:1rem 1.1rem}
+.big{border:1px solid var(--line);box-shadow:none;border-radius:12px}
+.dg{border:1px solid var(--line);box-shadow:none;border-radius:12px;background-image:none;background:#fff}
+.wb{box-shadow:none;border:1px solid var(--line)}
+.btn{background:var(--ink);color:#fff;border:2px solid var(--ink);box-shadow:none;border-radius:999px;padding:.6rem 1.15rem}
+.btn:hover{transform:none;box-shadow:none;background:var(--blue-dk);border-color:var(--blue-dk);color:#fff}
+.btn.ghost{background:#fff;color:var(--ink)}
+.btn.ghost:hover{background:var(--gray);color:var(--ink);border-color:var(--ink)}
+.btn.gulf{background:var(--blue-dk);border-color:var(--blue-dk);color:#fff}
+.story-ctrl .btn[disabled]{opacity:.35}
+.story{background:var(--spoonbill-wash);border:1px solid var(--line);border-radius:10px}
+.dots i{border:2px solid var(--ink)}
+.dots i.on{background:var(--ink)}
+.phases button{border:1.5px solid var(--ink);font-family:var(--text);font-stretch:100%;font-weight:700;font-size:.92rem;border-radius:8px}
+.phases button small{font-family:var(--text);font-weight:400;font-size:.8rem}
+.phases button[aria-pressed=true]{background:var(--ink);color:#fff}
+.hint{font-family:var(--text);font-size:1rem;font-weight:600;color:var(--ink-soft)}
+.swipe{font-family:var(--text);font-size:.85rem;font-weight:600}
+.closing p.big2{font-family:var(--text);font-weight:400;font-size:clamp(1.1rem,1rem + .5vw,1.3rem);max-width:46ch;line-height:1.45;color:var(--ink-soft)}
+.pdl-list li::marker{font-family:var(--text);font-weight:700;font-size:1rem;color:var(--accent-dk)}
+.fmi{border-left-width:3px}
+.fmi:nth-child(1){border-color:var(--blue)}.fmi:nth-child(2){border-color:var(--ink)}.fmi:nth-child(3){border-color:var(--accent)}.fmi:nth-child(4){border-color:var(--blue-dk)}
+.bip{border-left:3px solid var(--accent)}
+.bip-k{color:var(--accent-dk)}
+.hold .d30,.hold .d60,.hold .d90{background:#fff;border-top:4px solid var(--blue)}
+.hold .d60{border-top-color:var(--ink)}.hold .d90{border-top-color:var(--accent)}
+.ba .v{border:1px solid var(--line);border-radius:8px}
+.ba .v.after{background:var(--gulf);border-color:var(--blue)}
+.tracks .t0,.caps .t0{background:var(--ink)}.tracks .t1,.caps .t1{background:var(--blue)}.tracks .t2,.caps .t2{background:#7fc4ff}.tracks .t3,.caps .t3{background:var(--accent)}
+.tracks .dot,.caps .dot{border:0;width:11px;height:11px}
+.measure li::marker,.critlist li::marker,.commit li::marker,.fmi li::marker,.herolist li::marker,.whyme li::marker,.hold .mini li::marker{color:var(--accent)}
+footer{border-top:1px solid var(--line)}
+/* diagram: clean lines, sans labels */
+.dgsvg .d{stroke-width:2.5}
+.dgsvg .d.thin{stroke-width:1.75}
+.dgsvg .d.dash2.shown{stroke-dasharray:.03 .03}
+.dgsvg .d.fillport{fill:#f3f8ff;fill-opacity:0;stroke:var(--blue-dk);stroke-width:2.5;transition:stroke-dashoffset .8s ease,fill-opacity .4s .5s}
+.dgsvg .d.shown.fillport{fill-opacity:1}
+.dgsvg .d.fillgold{fill:var(--gold-wash)}
+.dgsvg .d.fillblue{fill:var(--gulf)}
+.dgsvg .d.fillcream{fill:var(--spoonbill-wash)}
+.dgsvg .d.red{stroke:var(--accent)}
+.dgsvg .d.now:not(.red){stroke:var(--ink)}
+.dgsvg .bar{fill:var(--blue)}.dgsvg .bar.lt{fill:#cfe6ff}
+.dgsvg .star{fill:var(--gold);stroke:var(--ink);stroke-width:1.5}
+.dgsvg .node{fill:#fff;stroke:var(--ink);stroke-width:2}
+.dgsvg .lab{font-family:var(--text);font-weight:600;font-size:19px;stroke:#fff;stroke-width:5px}
+.dgsvg .lab.big{font-family:var(--text);font-weight:700;font-size:24px}
+.dgsvg .lab.sm{font-family:var(--text);font-weight:600;font-size:16px}
+.dgsvg .lab.red{fill:var(--accent-dk);font-weight:700}
+.dgsvg .lab.hd{fill:var(--blue-dk)}
+.dg .dgsvg .lab.sm{font-size:16px;stroke-width:5px}
+.dg .dgsvg .lab.big{font-size:24px}
+.dgsvg .colh{font-family:var(--text);font-stretch:100%;font-weight:700;font-size:22px;fill:var(--ink)}
+.dg .dgsvg{aspect-ratio:1150/690}
+.pdsvg .lab.pl{stroke:#fff}
+.pdsvg .node{fill:var(--spoonbill)}
+.pdsvg .lab.cm{fill:var(--accent-dk)}
+@media (max-width:800px){.dgsvg{min-width:820px}.dg.storying .dgsvg{min-width:0}}
+/* pass6: Learning Community icon */
+.dgsvg .lcd{fill:var(--ink)}
 @media print{body{background:#fff}.mini,.wb,.big{box-shadow:none}.chips,.skip,#replay{display:none}}
 </style>
 </head>
@@ -330,20 +407,20 @@ footer .disc{color:var(--ink-soft);max-width:66ch}
  <section id="roadmap" aria-labelledby="h-road" style="margin-top:2.5rem">
   <div class="kicker">the roadmap</div>
   <h2 id="h-road">Four tracks, 90 days</h2>
-  <p class="thesis">Champions, the community of practice, and active discovery with business units are where people surface business problems. SAIL decides what's worth testing, and the portfolio shows leaders what's working.</p>
-  <p class="buildon">I'd start from what's already running: SAIL, the AI Champions, and the Lunch &amp; Learn. This plan builds on them instead of reinventing them.</p>
+  <p class="thesis">Champions, the community of practice, and active discovery with business units are where people surface business problems. SAIL decides what's worth testing, and the portfolio tracks every initiative from intake to graduation, so leaders see one trusted picture.</p>
+  <p class="buildon">I'd start from what's already running: SAIL, the AI Champions, and the Lunch &amp; Learn. This plan builds on them instead of reinventing them. Being present in the Learning Community is how I stay close to the participants Year Up serves and understand their needs from a workforce readiness perspective.</p>
   <ul class="tracks">
    <li class="wide"><i class="dot t3"></i><b>Community of practice:</b> the innovation flywheel. People try something, share it, and get others to try. It starts with the Lunch &amp; Learn and the AI Champions who lead sessions. A shared knowledge base, an async channel like Slack, and an internal newsletter keep it going in between.</li>
    <li><i class="dot t2"></i><b>AI Champions:</b> a national network of staff building with AI across every function, and the organization's eyes and ears. I would co-lead it.</li>
    <li><i class="dot t1"></i><b>SAIL:</b> decides what's worth testing, using a product discovery loop. I also go to business units directly to find problems worth solving.</li>
-   <li><i class="dot t0"></i><b>Portfolio:</b> the single trusted view of every AI initiative: status, cost, adoption, outcomes, and <a href="#graduated">readiness to graduate</a>. Each one is tied to the business problem it solves. The rubric for judging builds in the portfolio comes out of discovery: I'd work with the team to agree on the metrics first, then stand up the rubric.</li>
+   <li><i class="dot t0"></i><b>Portfolio:</b> the single trusted view of every AI initiative, tracked from intake through graduation, not just the winners: status, cost, adoption, outcomes, and <a href="#graduated">readiness to graduate</a>. Each one is tied to the business problem it solves. The rubric for judging builds in the portfolio comes out of discovery: I'd work with the team to agree on the metrics first, then stand up the rubric.</li>
   </ul>
   <div class="hold" id="days">
    <div class="holdk">what you could hold me to</div>
    <h3>Day 30, 60, and 90</h3>
    <p class="note2">This is my proposal. I'd adjust it after the first month of listening.</p>
    <div class="grid3">
-    <div class="mini d30"><b>By day 30</b><small>listen and map</small><ul><li>Every AI initiative is inventoried in the portfolio, with its status, cost, adoption, and outcomes.</li><li>Listening conversations are done with SAIL, the AI Champions, and business units.</li></ul></div>
+    <div class="mini d30"><b>By day 30</b><small>listen and map</small><ul><li>Every AI initiative is inventoried in the portfolio, with its status, cost, adoption, and outcomes.</li><li>Listening conversations are done with SAIL, the AI Champions, and business units.</li><li>Time in the Learning Community, listening to participants and their needs.</li></ul></div>
     <div class="mini d60"><b>By day 60</b><small>co-design</small><ul><li>The metrics for judging builds are agreed with the team, and the intake and graduation rubric is co-designed with SAIL on top of them.</li><li>The first pilots are running, each with a test card.</li><li>The first portfolio view is shared with leaders.</li></ul></div>
     <div class="mini d90"><b>By day 90</b><small>decide and share results</small><ul><li>The first decisions are made against the rubric: graduate, not yet, or no.</li><li>The first before-and-after stories are shared.</li><li>A staff readiness plan is ready ahead of the early-2027 license rollout.</li></ul></div>
    </div>
@@ -364,23 +441,24 @@ footer .disc{color:var(--ink-soft);max-width:66ch}
     <button type="button" class="btn ghost" id="replay">▶ Walk through it step by step</button>
    </div>
    <div class="dg-scroll">
-   <svg class="dgsvg" viewBox="-40 -40 1150 650" role="img" aria-labelledby="dg-title dg-desc">
+   <svg class="dgsvg" viewBox="-40 -40 1150 690" role="img" aria-labelledby="dg-title dg-desc">
     <title id="dg-title">How the four tracks connect</title>
-    <desc id="dg-desc">Business units, through active discovery, and the AI Champions network feed a community of practice flywheel built around the Lunch and Learn, which sends ideas into the SAIL funnel. Yes decisions go to the portfolio, one trusted view of every AI initiative showing status, cost, adoption, outcomes, and readiness to graduate, and graduated work goes on to product teams. Not yet or no decisions go back to the community with the reason. Every win returns to the community as the next story.</desc>
+    <desc id="dg-desc">Business units, through active discovery, the AI Champions network, and the Learning Community, which keeps me close to participants, feed problems and insight into a community of practice flywheel built around the Lunch and Learn, which sends problems into the SAIL funnel: intake, discovery, pilot, and a decision. The portfolio is a frame around the whole funnel. It tracks every initiative from intake to graduation, with its status, cost, adoption, outcomes, and readiness to graduate. A yes graduates and goes to product teams to be built to last. A not yet or no goes back to the community with the reason. Every decision and every win comes back to the community as a story.</desc>
     <defs>
      <marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#170055" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
      <marker id="ahr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ff1d46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
-     <filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.6"/></filter>
     </defs>
     <g class="cols">
-     <text class="colh" x="150" y="-8" text-anchor="middle">1 · Surface problems</text>
-     <text class="colh" x="560" y="-8" text-anchor="middle">2 · Decide what to test</text>
-     <text class="colh" x="920" y="-8" text-anchor="middle">3 · Map and scale</text>
-     <path class="divs" d="M395 -30 L395 600 M760 -30 L760 600" stroke="#cdbfff" stroke-width="2" stroke-dasharray="6 8" fill="none"/>
+     <text class="colh" data-fix="1" x="150" y="-8" text-anchor="middle">1 · Surface problems</text>
+     <text class="colh" data-fix="2" x="560" y="-8" text-anchor="middle">2 · Decide what to test</text>
+     <text class="colh" data-fix="4" x="920" y="-8" text-anchor="middle">3 · Graduate and scale</text>
+     <path class="divs" d="M395 -30 L395 470" stroke="#d6d3e0" stroke-width="2" stroke-dasharray="6 8" fill="none"/>
     </g>
-    <g filter="url(#wob)">
+    <g class="shapes">
+    <!-- ===== PORTFOLIO FRAME (wraps SAIL + graduation) ===== -->
+    <rect class="d fillport" data-p="1" data-fix="4" x="415" y="110" width="670" height="372" rx="12" pathLength="1"/>
     <!-- ===== COMMUNITY LOOP ===== -->
-    <circle class="d thin spin" data-p="1" cx="190" cy="290" r="88" pathLength="1"/>
+    <circle class="d thin" data-p="1" cx="190" cy="290" r="88" pathLength="1"/>
     <path class="d arr" data-p="2" d="M276.8 214.6 A115 115 0 0 1 304.6 300.0" pathLength="1"/>
     <path class="d arr" data-p="2" d="M288.6 349.2 A115 115 0 0 1 215.9 402.1" pathLength="1"/>
     <path class="d arr" data-p="2" d="M164.1 402.1 A115 115 0 0 1 91.4 349.2" pathLength="1"/>
@@ -401,37 +479,47 @@ footer .disc{color:var(--ink-soft);max-width:66ch}
     <!-- metrics bars -->
 
     <!-- ideas arrow -->
-    <path class="d arr" data-p="2" d="M300 250 C 350 205, 390 186, 430 186" pathLength="1"/>
+    <path class="d arr" data-p="2" d="M300 250 C 350 222, 400 236, 452 250" pathLength="1"/>
 
+    
+    <!-- ===== LEARNING COMMUNITY ===== -->
+    <circle class="d fillblue" data-p="1" cx="-12" cy="540" r="18" pathLength="1"/>
+    <g class="pop" data-p="1"><circle class="lcd" cx="-21" cy="540" r="4"/><circle class="lcd" cx="-12" cy="540" r="4"/><circle class="lcd" cx="-3" cy="540" r="4"/></g>
+    <path class="d arr" data-p="2" d="M-14 520 C -44 450, -14 398, 96 388" pathLength="1"/>
+    <!-- ===== BUSINESS UNITS ===== -->
+    <g transform="translate(-170,-22)">
+    <path class="d fillblue" data-p="1" data-fix="2" d="M660 40 L720 40 L720 104 L660 104 Z M674 52 L684 52 M696 52 L706 52 M674 68 L684 68 M696 68 L706 68 M684 104 L684 86 L696 86 L696 104" pathLength="1"/>
+    <path class="d" data-p="1" data-fix="2" d="M640 104 L660 92 L660 104 M720 92 L740 104 L720 104" pathLength="1"/>
+    </g>
+    <path class="d arr" data-p="1" data-fix="2" d="M520 88 C 516 150, 512 190, 516 232" pathLength="1"/>
     <!-- ===== SAIL FUNNEL ===== -->
-    <ellipse class="d fillblue" data-p="1" cx="560" cy="150" rx="120" ry="14" pathLength="1"/>
-    <path class="d" data-p="1" d="M440 150 L540 360 L540 392 M680 150 L580 360 L580 392" pathLength="1"/>
-    <path class="d" data-p="2" d="M466 205 L654 205 M495 265 L625 265 M521 320 L599 320" pathLength="1"/>
-    <!-- test card -->
-
-    <!-- decisions -->
-    <path class="d arr" data-p="3" d="M566 398 C 640 425, 712 392, 760 336" pathLength="1"/>
-
-    <!-- ===== PORTFOLIO MAP ===== -->
-    <path class="d fillcream" data-p="1" d="M770 150 L870 130 L970 150 L1070 130 L1070 380 L970 400 L870 380 L770 400 Z" pathLength="1"/>
-    <path class="d thin" data-p="1" d="M870 130 L870 380 M970 150 L970 400" pathLength="1"/>
-    <path class="d thin dash" data-p="1" d="M810 200 C 830 250, 830 280, 845 300 S 900 260, 905 230 S 930 300, 940 330 S 990 250, 1010 212 S 1030 290, 1040 320" pathLength="1"/>
-    <g class="pop" data-p="1"><circle class="pin" cx="810" cy="200" r="8"/><circle class="pin" cx="845" cy="300" r="8"/><circle class="pin" cx="905" cy="230" r="8"/><circle class="pin" cx="940" cy="330" r="8"/><circle class="pin" cx="1040" cy="320" r="8"/><circle class="pin" cx="1010" cy="212" r="8"/></g>
-    <circle class="d" data-p="1" cx="905" cy="230" r="28" pathLength="1"/><path class="d" data-p="1" d="M925 250 L952 277" pathLength="1"/>
-    <path class="pop star" data-p="2" d="M1010 192 L1015 205 L1029 206 L1018 215 L1022 229 L1010 221 L998 229 L1002 215 L991 206 L1005 205 Z"/>
-    <!-- clipboard -->
-    <!-- built to last -->
-    <path class="d arr" data-p="3" d="M1010 400 L1010 462" pathLength="1"/>
-    <circle class="d fillblue" data-p="3" cx="1010" cy="496" r="24" pathLength="1"/>
-    <path class="d" data-p="3" d="M1010 466 L1010 472 M1010 520 L1010 526 M980 496 L986 496 M1034 496 L1040 496 M989 475 L993 479 M1027 513 L1031 517 M989 517 L993 513 M1027 479 L1031 475" pathLength="1"/>
-
-    <!-- business units -->
-    <path class="d fillblue" data-p="1" d="M660 40 L720 40 L720 104 L660 104 Z M674 52 L684 52 M696 52 L706 52 M674 68 L684 68 M696 68 L706 68 M684 104 L684 86 L696 86 L696 104" pathLength="1"/>
-    <path class="d" data-p="1" d="M640 104 L660 92 L660 104 M720 92 L740 104 L720 104" pathLength="1"/>
-    <path class="d arr" data-p="1" d="M662 108 C 650 124, 636 132, 622 138" pathLength="1"/>
-    <!-- one return loop -->
-    <path class="d arr red" data-p="3" d="M972 516 C 820 600, 440 610, 262 410" pathLength="1"/>
-
+    <ellipse class="d fillblue" data-p="1" data-fix="3" cx="560" cy="250" rx="105" ry="12" pathLength="1"/>
+    <path class="d" data-p="1" data-fix="3" d="M455 250 L545 420 L545 436 M665 250 L575 420 L575 436" pathLength="1"/>
+    <path class="d" data-p="2" data-fix="3" d="M482 300 L638 300 M508 350 L612 350 M532 395 L588 395" pathLength="1"/>
+    <path class="d fillw" data-p="3" data-fix="3" d="M560 440 L573 453 L560 466 L547 453 Z" pathLength="1"/>
+    <path class="d arr red" data-p="3" data-fix="3" d="M550 464 C 500 520, 330 520, 288 398" pathLength="1"/>
+    <!-- ===== TRACKER (inside the portfolio) ===== -->
+    <rect class="d fillw thin" data-p="1" data-fix="4" x="735" y="222" width="335" height="226" rx="8" pathLength="1"/>
+    <rect class="d fillw thin" data-p="1" data-fix="4" x="750" y="280" width="305" height="34" rx="5" pathLength="1"/>
+    <rect class="d fillw thin" data-p="1" data-fix="4" x="750" y="322" width="305" height="34" rx="5" pathLength="1"/>
+    <rect class="d fillw thin" data-p="1" data-fix="4" x="750" y="364" width="305" height="34" rx="5" pathLength="1"/>
+    <rect class="d fillgold thin" data-p="3" data-fix="4" x="750" y="406" width="305" height="34" rx="5" pathLength="1"/>
+    <g class="pop" data-p="1" data-fix="4">
+     <rect class="bar" x="880" y="293" width="70" height="8" rx="4"/><rect class="bar lt" x="956" y="293" width="40" height="8" rx="4"/>
+     <rect class="bar" x="880" y="335" width="100" height="8" rx="4"/><rect class="bar lt" x="986" y="335" width="30" height="8" rx="4"/>
+     <rect class="bar" x="880" y="377" width="130" height="8" rx="4"/><rect class="bar lt" x="1016" y="377" width="20" height="8" rx="4"/>
+    </g>
+    <path class="pop star" data-p="3" data-fix="4" d="M1030 411 L1034 420 L1044 421 L1036 427 L1039 437 L1030 431 L1021 437 L1024 427 L1016 421 L1026 420 Z"/>
+    <path class="d thin dash2" data-p="1" data-fix="4" d="M648 281 L748 297" pathLength="1"/>
+    <path class="d thin dash2" data-p="1" data-fix="4" d="M626 325 L748 339" pathLength="1"/>
+    <path class="d thin dash2" data-p="1" data-fix="4" d="M602 372 L748 381" pathLength="1"/>
+    <path class="d arr" data-p="3" data-fix="4" d="M574 453 C 640 453, 700 425, 746 423" pathLength="1"/>
+    <!-- ===== PRODUCT TEAMS ===== -->
+    <path class="d arr" data-p="3" data-fix="5" d="M900 442 L900 492" pathLength="1"/>
+    <circle class="d fillblue" data-p="3" data-fix="5" cx="900" cy="520" r="22" pathLength="1"/>
+    <path class="d" data-p="3" data-fix="5" d="M900 492 L900 498 M900 542 L900 548 M872 520 L878 520 M922 520 L928 520 M880 500 L884 504 M916 536 L920 540 M880 540 L884 536 M916 504 L920 500" pathLength="1"/>
+    <!-- ===== STORY LOOP ===== -->
+    <path class="d arr red" data-p="3" data-fix="6" d="M878 540 C 720 650, 360 650, 250 422" pathLength="1"/>
     </g>
     <g class="dg-labels">
     <text class="lab big" data-p="1" x="190" y="112" text-anchor="middle">Community of practice</text>
@@ -445,26 +533,36 @@ footer .disc{color:var(--ink-soft);max-width:66ch}
     <text class="lab" data-p="1" x="12" y="56">AI Champions</text>
     <text class="lab sm" data-p="1" x="12" y="76">eyes and ears in every function</text>
     <text class="lab sm" data-p="2" x="-24" y="246">lead</text>
-<text class="lab sm" data-p="2" x="-24" y="264">sessions</text>
-    <text class="lab" data-p="2" x="392" y="246" text-anchor="middle">problems</text>
-    <text class="lab big" data-p="1" x="560" y="96" text-anchor="middle">SAIL</text>
-    <text class="lab sm" data-p="2" x="560" y="194" text-anchor="middle">intake</text>
-    <text class="lab sm" data-p="2" x="560" y="254" text-anchor="middle">discovery</text>
-    <text class="lab sm" data-p="2" x="560" y="310" text-anchor="middle">pilot</text>
-    <text class="lab" data-p="3" x="676" y="430">yes</text>
-    <text class="lab big" data-p="1" x="920" y="108" text-anchor="middle">Portfolio: one trusted view</text>
-    <text class="lab sm" data-p="2" data-fix="4" x="864" y="424" text-anchor="middle">each pin: status · cost · adoption</text>
-    <text class="lab sm" data-p="2" data-fix="4" x="864" y="443" text-anchor="middle">outcomes · readiness to graduate</text>
-    <text class="lab sm" data-p="2" x="1008" y="178" text-anchor="middle">graduated</text>
-    <text class="lab sm" data-p="3" x="1010" y="550" text-anchor="middle">built to last</text>
-    <text class="lab sm" data-p="3" x="1010" y="568" text-anchor="middle">by product teams</text>
-    <text class="lab sm" data-p="1" x="732" y="62">business units</text>
-    <text class="lab sm" data-p="1" x="732" y="82">active discovery</text>
-    <text class="lab red" data-p="3" x="610" y="586" text-anchor="middle">every decision and every win comes back as a story</text>
+    <text class="lab sm" data-p="2" x="-24" y="264">sessions</text>
+    <text class="lab" data-p="1" x="12" y="538">Learning Community</text>
+    <text class="lab sm" data-p="1" x="12" y="558">close to participants</text>
+    <text class="lab sm" data-p="2" x="-14" y="456">problems</text>
+    <text class="lab sm" data-p="2" x="-14" y="474">and insight</text>
+    <text class="lab" data-p="2" x="380" y="222" text-anchor="middle">problems</text>
+    <text class="lab big" data-p="1" data-fix="4" x="1070" y="142" text-anchor="end">Portfolio: one trusted view of every initiative</text>
+    <text class="lab sm" data-p="1" data-fix="4" x="1070" y="164" text-anchor="end">every initiative tracked from intake to graduation</text>
+    <text class="lab sm" data-p="1" data-fix="2" x="582" y="40">business units</text>
+    <text class="lab sm" data-p="1" data-fix="2" x="582" y="58">active discovery</text>
+    <text class="lab big" data-p="1" data-fix="3" x="560" y="228" text-anchor="middle">SAIL</text>
+    <text class="lab sm" data-p="2" data-fix="3" x="560" y="285" text-anchor="middle">intake</text>
+    <text class="lab sm" data-p="2" data-fix="3" x="560" y="333" text-anchor="middle">discovery</text>
+    <text class="lab sm" data-p="2" data-fix="3" x="560" y="381" text-anchor="middle">pilot</text>
+    <text class="lab red" data-p="3" data-fix="3" x="420" y="538" text-anchor="middle">not yet or no</text>
+    <text class="lab sm" data-p="3" data-fix="3" x="420" y="557" text-anchor="middle">back with the reason</text>
+    <text class="lab sm hd" data-p="1" data-fix="4" x="902" y="246" text-anchor="middle">status · cost · adoption</text>
+    <text class="lab sm hd" data-p="1" data-fix="4" x="902" y="265" text-anchor="middle">outcomes · readiness to graduate</text>
+    <text class="lab sm" data-p="1" data-fix="4" x="764" y="302">intake</text>
+    <text class="lab sm" data-p="1" data-fix="4" x="764" y="344">discovery</text>
+    <text class="lab sm" data-p="1" data-fix="4" x="764" y="386">pilot</text>
+    <text class="lab sm" data-p="3" data-fix="4" x="764" y="428">graduated</text>
+    <text class="lab" data-p="3" data-fix="4" x="650" y="440" text-anchor="middle">yes</text>
+    <text class="lab sm" data-p="3" data-fix="5" x="934" y="516">built to last</text>
+    <text class="lab sm" data-p="3" data-fix="5" x="934" y="535">by product teams</text>
+    <text class="lab red" data-p="3" data-fix="6" x="560" y="636" text-anchor="middle">every decision and every win comes back as a story</text>
     </g>
    </svg>
    </div>
-   <div class="swipe">swipe to see the whole picture →</div>
+   <div class="swipe">Swipe to see SAIL and the portfolio →, or tap "Walk through it step by step" to zoom in on each part.</div>
    <div class="caps" id="caps" aria-live="polite"></div>
   </div>
   <div class="measure"><b>How I'd measure the community of practice:</b>
@@ -520,7 +618,7 @@ footer .disc{color:var(--ink-soft);max-width:66ch}
   <p class="lede">Inside the SAIL funnel, I run a product discovery loop borrowed from lean and agile practice. I wrap it in three commitments I make with the people who will live with the results:</p>
   <ul class="commit"><li><b>Co-define success</b> with SAIL and the teams served</li><li><b>Co-design the system</b>, including the intake and the rubric</li><li><b>Build in public</b>, so learning sticks and impact is visible</li></ul>
   <div class="pd">
-   <svg class="dgsvg pdsvg" id="pdl" viewBox="-50 -8 680 538" role="img" aria-label="A five step product discovery loop: discover, experiment, measure, discern, hand off. Around it, three commitments: co-define success, co-design the system, build in public."><g filter="url(#wob)">
+   <svg class="dgsvg pdsvg" id="pdl" viewBox="-50 -8 680 538" role="img" aria-label="A five step product discovery loop: discover, experiment, measure, discern, hand off. Around it, three commitments: co-define success, co-design the system, build in public."><g>
 <circle class="d thin dash" data-p="1" cx="290" cy="275" r="222" pathLength="1"/>
 <path class="d arr" data-p="1" d="M324.9 144.6 A135 135 0 0 1 403.2 201.5" pathLength="1"/>
 <path class="d arr" data-p="1" d="M424.8 267.9 A135 135 0 0 1 394.9 360.0" pathLength="1"/>
@@ -583,9 +681,9 @@ footer .disc{color:var(--ink-soft);max-width:66ch}
  const dg=document.getElementById('dg'), svg=dg.querySelector('svg');
  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  const caps={
-  1:[["Portfolio","I meet the owner of every AI initiative in flight and log each one's status, cost, adoption, and outcomes in one place."],["SAIL","I sit in on SAIL to learn how intake works today, and start discovery conversations with business units."],["AI Champions","I meet my co-lead and the Champions to learn what the network needs from me."],["Community of practice","I take ownership of the Lunch &amp; Learn, start a baseline, and map what already exists, like Slack channels and shared folders."]],
-  2:[["Portfolio","Each initiative is tied to the business problem it solves, and leaders see the first portfolio view. Internship matching sets the bar for readiness to graduate."],["SAIL","Together we co-define the intake, starting with a one-page test card, and co-manage the queue."],["AI Champions","Champions take turns leading Lunch &amp; Learn content, so what their teams build reaches everyone."],["Community of practice","With presenters' consent, each Lunch &amp; Learn becomes a write-up in a shared knowledge base, and an async channel keeps sharing going in between."]],
-  3:[["Portfolio","Leaders use one trusted view to see what's working, and graduated work stays visible after it goes to the product teams."],["SAIL","Every decision is published with its reason, so teams learn what to bring forward next time."],["AI Champions","My co-lead and I share a plan for growing the network ahead of the early-2027 license rollout."],["Community of practice","The community has its first metrics report, a regular internal newsletter or blog, and starter resources for every department."]]
+  1:[["Portfolio","I meet the owner of every AI initiative in flight, wherever it sits in the SAIL funnel, and log each one's status, cost, adoption, and outcomes in one place."],["SAIL","I sit in on SAIL to learn how intake works today, and start discovery conversations with business units."],["AI Champions","I meet my co-lead and the Champions to learn what the network needs from me."],["Community of practice","I take ownership of the Lunch &amp; Learn, start a baseline, and map what already exists, like Slack channels and shared folders."]],
+  2:[["Portfolio","Every initiative is tracked from intake onward and tied to the business problem it solves, and leaders see the first portfolio view. Internship matching sets the bar for readiness to graduate."],["SAIL","Together we co-define the intake, starting with a one-page test card, and co-manage the queue."],["AI Champions","Champions take turns leading Lunch &amp; Learn content, so what their teams build reaches everyone."],["Community of practice","With presenters' consent, each Lunch &amp; Learn becomes a write-up in a shared knowledge base, and an async channel keeps sharing going in between."]],
+  3:[["Portfolio","Leaders use one trusted view of every initiative, from intake to graduation, and graduated work stays visible after it goes to the product teams."],["SAIL","Every decision is published with its reason, so teams learn what to bring forward next time."],["AI Champions","My co-lead and I share a plan for growing the network ahead of the early-2027 license rollout."],["Community of practice","The community has its first metrics report, a regular internal newsletter or blog, and starter resources for every department."]]
  };
  const els=[...svg.querySelectorAll('[data-p]')];
  let timers=[], seq=[];
@@ -603,13 +701,13 @@ footer .disc{color:var(--ink-soft);max-width:66ch}
   });
  }
  // ---- story mode ----
- const VB0=[-40,-40,1150,650];
+ const VB0=[-40,-40,1150,690];
  const steps=[
-  {vb:[-40,-40,470,600],txt:"It starts with people. AI Champions are a national network of staff building with AI in every function, and the organization's eyes and ears. They bring what they learn into the community of practice, where people try something, share it, and get others to try."},
-  {vb:[520,-45,420,330],txt:"Business units bring problems too. I go to them directly and run discovery with the people closest to the work."},
-  {vb:[300,-45,520,560],txt:"SAIL decides what's worth testing. Each request moves through intake, discovery, and a small pilot, using a product discovery loop."},
-  {vb:[700,-45,420,560],txt:"A yes lands in the portfolio, one trusted view of every AI initiative: status, cost, adoption, outcomes, and readiness to graduate. Each one is tied to the business problem it solves."},
-  {vb:[790,360,360,280],txt:"Winners go to product teams to be built to last, with a named owner."},
+  {vb:[-40,-40,470,600],txt:"It starts with people. AI Champions are a national network of staff building with AI in every function, and the organization's eyes and ears. Being present in the Learning Community keeps me close to the participants Year Up serves. Both bring problems and insight into the community of practice, where people try something, share it, and get others to try."},
+  {vb:[400,-45,420,330],txt:"Business units bring problems too. I go to them directly and run discovery with the people closest to the work."},
+  {vb:[290,100,580,520],txt:"SAIL decides what's worth testing. Each request moves through intake, discovery, and a small pilot, using a product discovery loop. A not yet or no goes back to the community with the reason."},
+  {vb:[395,80,720,450],txt:"The portfolio wraps the whole funnel. Every initiative is tracked from intake onward, not just the winners: status, cost, adoption, outcomes, and readiness to graduate, each tied to the business problem it solves."},
+  {vb:[690,370,430,260],txt:"A yes graduates. Graduated work goes to product teams to be built to last, with a named owner, and stays visible in the portfolio."},
   {vb:VB0,txt:"Every decision and every win comes back to the community as a story. Building in public keeps the flywheel turning."},
   {vb:VB0,txt:"That's the whole picture. Tap a day to see what each track does by then."}
  ];
@@ -654,6 +752,7 @@ footer .disc{color:var(--ink-soft);max-width:66ch}
   document.getElementById('dgbar').hidden=!last; document.getElementById('caps').hidden=!last;
   document.getElementById('sskip').hidden=last;
   document.getElementById('story').hidden=last;
+  dg.classList.toggle('storying',!last);
   zoomTo(st.vb);
   if(last){show(3,false);return}
   let k=0;
