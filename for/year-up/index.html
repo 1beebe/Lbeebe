@@ -439,6 +439,9 @@ section.band + section,section.band + section.band{margin-top:0}
 @media (max-width:560px){.band{padding:2.6rem 0}.closing.band{padding:2.6rem .5rem}}
 /* pass8: simplified diagram */
 .dgsvg .lab.big2{font-family:var(--text);font-weight:700;font-size:20px}
+/* pass9: hide the round-cap dot left by undrawn strokes */
+.dgsvg .d:not(.shown){stroke-linecap:butt}
+.dg.storying .swipe{display:none}
 @media print{.band{box-shadow:none;clip-path:none;background:none;color:var(--ink)}}
 @media print{body{background:#fff}.mini,.wb,.big{box-shadow:none}.chips,.skip,#replay{display:none}}
 </style>
@@ -502,20 +505,20 @@ section.band + section,section.band + section.band{margin-top:0}
     <div class="mini d90"><b>By day 90</b><small>decide and share results</small><ul><li>The first decisions are made against the rubric: graduate, not yet, or no.</li><li>The first before-and-after stories are shared.</li><li>A staff readiness plan is ready ahead of the early-2027 license rollout.</li></ul></div>
    </div>
   </div>
-  <p class="hint">Here's how the four tracks connect. Tap a day to see what each track does by then, or walk through it step by step.</p>
+  <p class="hint">Here's how the four tracks connect, one step at a time. Click Next to walk through it, or skip to the whole picture and tap a day to see what each track does by then.</p>
   <div class="dg" id="dg">
-   <div class="story" id="story" hidden>
+   <div class="story" id="story">
     <div class="story-top"><span class="story-k" id="storyk">1 of 7</span><span class="dots" id="dots"></span></div>
     <p class="story-txt" id="storytxt" aria-live="polite"></p>
     <div class="story-ctrl"><button type="button" class="btn ghost" id="sback">← Back</button><button type="button" class="btn" id="snext">Next →</button><button type="button" class="skip-all" id="sskip">Skip to the whole picture</button></div>
    </div>
-   <div class="dg-bar" id="dgbar">
+   <div class="dg-bar" id="dgbar" hidden>
     <div class="phases" role="group" aria-label="Choose a phase">
      <button type="button" data-ph="1" aria-pressed="false">Day 30<small>listen and map</small></button>
      <button type="button" data-ph="2" aria-pressed="false">Day 60<small>co-design</small></button>
      <button type="button" data-ph="3" aria-pressed="false">Day 90<small>decide and share results</small></button>
     </div>
-    <button type="button" class="btn ghost" id="replay">▶ Walk through it step by step</button>
+    <button type="button" class="btn ghost" id="replay">↺ Start the walkthrough again</button>
    </div>
    <div class="dg-scroll">
    <svg class="dgsvg" viewBox="-40 -40 1150 670" role="img" aria-labelledby="dg-title dg-desc">
@@ -600,7 +603,7 @@ section.band + section,section.band + section.band{margin-top:0}
     </g>
    </svg>
    </div>
-   <div class="swipe">Swipe to see SAIL and the portfolio →, or tap "Walk through it step by step" to zoom in on each part.</div>
+   <div class="swipe">Swipe to see SAIL and the portfolio →, or tap "Start the walkthrough again" to zoom in on each part.</div>
    <div class="caps" id="caps" aria-live="polite"></div>
   </div>
   <div class="band band-gray cop-band">
@@ -810,14 +813,14 @@ section.band + section,section.band + section.band{margin-top:0}
  document.getElementById('sskip').addEventListener('click',()=>{story(steps.length);document.getElementById('replay').focus()});
  dg.querySelectorAll('.phases button').forEach(b=>b.addEventListener('click',()=>{zoomTo(VB0);show(+b.dataset.ph,true)}));
  document.getElementById('replay').addEventListener('click',()=>{story(1);document.getElementById('snext').focus()});
- story(steps.length);
+ story(1); zoomTo(steps[0].vb,true);
  // draw the whole picture in once, the first time it scrolls into view
  if('IntersectionObserver' in window&&!reduce){
   const drawIn=()=>{timers.forEach(clearTimeout);timers=[];
    els.forEach(el=>{el.style.transitionDelay='0s';el.classList.remove('shown')});
    const k={1:0,2:0,3:0};
    timers.push(setTimeout(()=>els.forEach(el=>{const p=+el.dataset.p;el.style.transitionDelay=((p-1)*.7+(k[p]++)*.03)+'s';el.classList.add('shown')}),40));};
-  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){if(cur===steps.length)drawIn();io.disconnect()}})},{threshold:.35});
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){if(cur===1)story(1);io.disconnect()}})},{threshold:.35});
   io.observe(dg);
  }
  const pdl=document.getElementById('pdl');
