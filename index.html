@@ -1259,7 +1259,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   let shown = -1, raf = 0, rt = 0, vh = innerHeight, vw = innerWidth, steps = 1, padT = 0;
   // how long the line holds near the top, as a share of the screen height; the last phrase holds a
   // moment before the line lets go and scrolls on with the copy a short gap below it
-  const runway = () => innerWidth <= 700 ? 0.5 : 0.4, HOLD = 0.2, FROM = 0.88, TOP = 0.1;
+  const runway = () => innerWidth <= 700 ? 0.6 : 0.55, HOLD = 0.2, FROM = 0.88, TOP = 0.1;
   // the words spread over the scroll from the line entering the screen to the end of the hold.
   // Screen height is read once per width, so a phone's address bar showing and hiding doesn't
   // shift anything mid-scroll.
