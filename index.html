@@ -6,7 +6,7 @@
 
 <!-- Primary SEO -->
 <title>L. Beebe, LLC · AI Enablement & Training for Non-Technical Teams</title>
-<meta name="description" content="Ligaya Beebe trains non-technical teams at SMBs to use AI in the work they already do. Hands-on AI enablement training, custom AI agent development, and AI program management. Based in Estero, FL.">
+<meta name="description" content="Ligaya Beebe trains non-technical teams at SMBs to use AI in the work they already do. Hands-on AI enablement training, course and curriculum builds, custom AI agent development, and AI program management. Based in Estero, FL.">
 <meta name="keywords" content="AI enablement, AI training, non-technical teams, SMB AI training, AI literacy, MindStudio, AI consultant, AI program management, Estero Florida">
 <meta name="author" content="Ligaya Beebe">
 <meta name="robots" content="index, follow">
@@ -65,7 +65,7 @@
         "@id": "https://lbeebe.com/#ligaya"
       },
       "primaryImageOfPage": "https://lbeebe.com/og-card.jpg",
-      "dateModified": "2026-10-20",
+      "dateModified": "2026-11-24",
       "inLanguage": "en-US"
     },
     {
@@ -166,7 +166,7 @@
       "@type": "ProfessionalService",
       "@id": "https://lbeebe.com/#business",
       "name": "L. Beebe, LLC",
-      "description": "AI enablement training, AI agent development, and AI program management for non-technical teams at SMBs and nonprofits.",
+      "description": "AI enablement training, course and curriculum builds, AI agent development, and AI program management for non-technical teams at SMBs and nonprofits.",
       "url": "https://lbeebe.com/",
       "image": "https://lbeebe.com/og-card.jpg",
       "founder": {
@@ -206,6 +206,14 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
+              "name": "Course and Curriculum Builds",
+              "description": "Courses and curricula built from a client's expertise and content, outcomes first with practice in every lesson, in the client's own platform (Articulate Rise, LearnWorlds, Canvas, HighLevel) or as teacher-ready files."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
               "name": "AI Agent Development",
               "description": "Lightweight AI workflows and agents (MindStudio, Claude, ChatGPT, Codex, NotebookLM) that fit how a team already works, delivered together with training on how to use them."
             }
@@ -237,7 +245,7 @@
               "@id": "https://lbeebe.com/#ligaya"
             },
             "dateCreated": "2025",
-            "description": "Peer-led AI learning series designed and facilitated end to end: 96% satisfaction across 91 registrants and a 4.8-star rating, with zero paid marketing."
+            "description": "Peer-led AI learning series designed and facilitated end to end: 96% satisfaction across 144 registrants and a 4.8-star rating, with zero paid marketing."
           }
         },
         {
@@ -320,7 +328,7 @@
 <meta name="theme-color" content="#ffd249">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@800&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@800&family=Public+Sans:wght@400;600&family=Gochi+Hand&display=swap" rel="stylesheet">
 <style>
 /* Layout: three colour fields (sun, blackwater, spoonbill) on white; value first, a quiet door for recruiters, one pinned action. */
 :root {
@@ -346,6 +354,7 @@
 
   --font-display: "Big Shoulders", "Arial Narrow", Impact, sans-serif;
   --font-text: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-hand: "Gochi Hand", "Comic Sans MS", cursive;
 
   --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
   --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
@@ -430,7 +439,7 @@ p { max-width: 62ch; text-wrap: pretty; }
 
 /* hero */
 .hero { background: var(--sun); padding: clamp(2.5rem, 5vw, 5rem) var(--margin) clamp(3rem, 6vw, 5.5rem); display: grid; grid-template-columns: minmax(0, 1fr) clamp(13rem, 19vw, 18rem); gap: clamp(2rem, 4vw, 4rem); align-items: end; }
-.hero h1 { font-size: clamp(3rem, 1rem + 8vw, 10rem); max-width: 13ch; }
+.hero h1 { font-size: clamp(3rem, 1rem + 6.4vw, 8.5rem); max-width: 14ch; }
 .hero-me img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 22%; }
 .hero-me figcaption { margin-top: .9rem; font-size: var(--step-small); color: var(--sun-ink); }
 .hero-me figcaption a { color: var(--ink); font-weight: 600; }
@@ -473,7 +482,7 @@ p { max-width: 62ch; text-wrap: pretty; }
 /* services */
 .services { padding: var(--section) var(--margin); }
 .services-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; align-items: end; margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
-.svc-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.svc-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
 .svc { background: var(--white-2); padding: clamp(1.5rem, 2.6vw, 2.25rem); display: flex; flex-direction: column; gap: 1rem; }
 .svc h3 { font-size: clamp(2.25rem, 1.4rem + 2.2vw, 3.5rem); }
 .svc .tags { margin-top: auto; padding-top: .5rem; font-size: var(--step-small); color: var(--ink-soft); }
@@ -544,10 +553,58 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 .foot a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--paper); text-decoration: none; }
 .foot a:hover { text-decoration: underline; }
 
+
+/* field notes: loose ink doodles in the same hand as the sketchbook marks */
+.hand { font-family: var(--font-hand); }
+.doodle { display: block; width: 100%; height: auto; overflow: visible; filter: url(#wobble); }
+.pen { fill: none; stroke: #333333; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.pen.thin { stroke-width: 2; }
+.pen.dash { stroke-width: 2.4; stroke-dasharray: 3 8; }
+.solid { fill: #333333; stroke: none; }
+.w-pink { fill: #fce3de; stroke: none; }
+.w-gulf { fill: var(--gulf); stroke: none; }
+.w-sun { fill: var(--sun); stroke: none; }
+.w-paper { fill: #fffbf6; stroke: none; }
+.w-green { fill: #c9efb4; stroke: none; }
+.w-pink, .w-gulf, .w-sun, .w-green { transform: translate(3px, 4px); }
+.doodle text { font-family: var(--font-hand); fill: #333333; }
+.graph { background-color: #fbfaf6; background-image: linear-gradient(rgba(10,10,10,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,.055) 1px, transparent 1px); background-size: 18px 18px; }
+
+/* services: four cards, each with a small doodle */
+.svc-art { width: min(100%, 15rem); margin-bottom: .25rem; }
+.svc .ticks { display: grid; gap: .35rem; }
+.svc .ticks li { position: relative; padding-left: 1.6rem; }
+.svc .ticks li::before { content: "\2713"; position: absolute; left: 0; top: -.15em; font-family: var(--font-hand); font-size: 1.35rem; color: var(--ink); }
+.svc .svc-cta { align-self: flex-start; }
+
+/* learning I've designed */
+.designed { padding: var(--section) var(--margin); background: var(--spoonbill-wash); }
+.designed-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; align-items: end; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.designed-head .lead { margin-top: 1.25rem; max-width: 40ch; }
+.des-owl { width: clamp(7.5rem, 13vw, 12rem); }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.card { background: var(--white); display: flex; flex-direction: column; }
+.card-art { aspect-ratio: 8 / 5; padding: clamp(.6rem, 1.2vw, 1rem); border-bottom: 2px solid var(--ink); }
+.card-art .doodle { width: 100%; height: 100%; }
+.card-body { padding: clamp(1.25rem, 2vw, 1.75rem); display: flex; flex-direction: column; gap: .8rem; flex: 1; }
+.card h3 { font-size: var(--step-lead); font-weight: 600; line-height: 1.2; }
+.card-label { font-family: var(--font-hand); font-size: 1.2rem; line-height: 1.3; color: var(--ink-soft); }
+.facts { display: grid; gap: .45rem; font-size: var(--step-small); line-height: 1.45; }
+.facts b { font-weight: 600; }
+.card .tlink { margin-top: auto; padding-top: .35rem; align-self: flex-start; display: inline-flex; align-items: center; min-height: 2.75rem; }
+
+/* builds: drawn thumbs and image previews */
+.row-thumb.graph { display: grid; place-items: center; padding: .35rem; }
+.preview .media img { width: 100%; height: 100%; object-fit: cover; object-position: 0 0; }
+.preview .media.graph { display: grid; place-items: center; padding: 1.5rem; }
+.work-demos { margin-top: .5rem; padding-left: 1rem; font-size: var(--step-small); color: var(--ink-soft); }
+.work-demos a { color: var(--ink); font-weight: 600; }
+
 @media (max-width: 1000px) {
   .nums { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .quote-lead { grid-row: auto; }
-  .quotes, .services-head, .svc-list, .picker, .about, .fit { grid-template-columns: minmax(0, 1fr); }
+  .quotes, .services-head, .picker, .about, .fit { grid-template-columns: minmax(0, 1fr); }
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .hero-me { margin-top: 2.25rem; display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: 1.1rem; align-items: center; max-width: 34rem; }
   .hero-me figcaption { margin-top: 0; }
@@ -559,7 +616,11 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 @media (max-width: 640px) {
   .bar { flex-wrap: wrap; row-gap: 0; }
   .bar ul { width: 100%; justify-content: space-between; gap: .5rem; }
-  .hero h1 { font-size: 13vw; }
+  .hero h1 { font-size: 11.5vw; }
+  .svc-list, .cards { grid-template-columns: minmax(0, 1fr); }
+  .designed-head { grid-template-columns: minmax(0, 1fr) 6.5rem; gap: 1rem; align-items: start; }
+  .des-owl { width: 6.5rem; }
+  .work-demos { padding-left: 0; }
   .row { grid-template-columns: 88px minmax(0, 1fr); padding-inline: 0; }
   .row .go { display: none; }
   .row-thumb { grid-row: 1 / 4; align-self: start; }
@@ -573,19 +634,30 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 
 <a class="skip" href="#main">Skip to content</a>
 
+<!-- shared field-notes pen: a wobble filter so every doodle looks hand drawn (per the owl spec sheet) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="wobble" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/>
+    </filter>
+  </defs>
+</svg>
+
+
 <nav class="bar" aria-label="Main">
   <a class="mark" href="#top">Ligaya Beebe</a>
   <ul>
     <li><a href="#start">First session</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#work">Work</a></li>
+    <li><a href="#designed">Work</a></li>
     <li><a class="tlink" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a call</a></li>
   </ul>
 </nav>
 
 <header class="hero" id="top">
   <div>
-    <h1 class="display">AI training for the rest of your team</h1>
+    <h1 class="display">AI training and course building for the rest of your team</h1>
     <p class="hero-sub lead"><strong>Your dev team gets it.<br>Now, <span class="ink-wrap ink-circle" id="hero-ink">everyone else.<svg class="ink" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M168 10 C 120 0, 40 2, 14 18 C -4 32, 10 54, 70 57 C 140 61, 196 50, 194 30 C 192 16, 172 8, 146 7"/></svg></span></strong> I work with help desk, operations, implementation and marketing teams, hands-on and built around the work they already do.</p>
     <div class="hero-actions">
       <a class="btn" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a free 30-minute call</a>
@@ -611,7 +683,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   <h2 class="sr-only" id="stats-h">Results</h2>
   <div class="nums">
     <div class="num"><strong class="display">27%</strong><p>fewer support requests after an onboarding redesign across eight countries.</p></div>
-    <div class="num"><strong class="display">96%</strong><p>satisfaction across the 2025 AI Architect Program: 91 registrants, a 4.8 rating, zero paid marketing.</p></div>
+    <div class="num"><strong class="display">96%</strong><p>satisfaction across the 2025 AI Architect Program: 144 registrants, a 4.8 rating, zero paid marketing.</p></div>
     <div class="num"><strong class="display">200+</strong><p>professionals trained as of October 2026, most of whom would never call themselves technical.</p></div>
     <div class="num"><strong class="display">$8M+</strong><p>in grant funding and renewals for State Department-funded programs in 12+ countries.</p></div>
   </div>
@@ -680,42 +752,182 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 
 <section class="services" id="services" aria-labelledby="svc-h">
   <div class="services-head">
-    <div><h2 class="h2 display" id="svc-h">Three ways to work together</h2></div>
+    <div><h2 class="h2 display" id="svc-h">Four ways to work together</h2></div>
     <p class="lead">Most engagements start with training and grow from there. As of fall 2026, I’m rebuilding an AI bootcamp for Clear Digital Labs’ marketing team after a five-session pilot.</p>
   </div>
   <ul class="svc-list">
-    <li class="svc"><h3 class="display">Train the team</h3><p>Custom workshops for non-technical teams, online or in person, as a cohort or 1:1. Everyone is hands on the keyboard from the first session. We start with your team’s actual work and leave real time to experiment, because curiosity is what keeps people using these tools after the workshop ends. Prefer self-paced? I can build the same training as an asynchronous course on whatever L&amp;D platform your team already uses.</p><p class="tags">Custom curriculum. Live or asynchronous, cohort and 1:1.</p></li>
-    <li class="svc"><h3 class="display">Build the agent</h3><p>Lightweight workflows and agents that fit how your team already works, delivered with the training to run them.</p><p class="tags">Certified AI agent builder (MindStudio Level 3). Claude, ChatGPT, Codex, NotebookLM.</p></li>
-    <li class="svc"><h3 class="display">Run the program</h3><p>A fractional lead for your AI adoption: curriculum, rollout, peer champions and measurement.</p><p class="tags">PMP. Nine years running federal programs.</p></li>
+    <li class="svc"><svg class="doodle svc-art" viewBox="0 0 240 120" aria-hidden="true" focusable="false">
+<rect class="w-sun" x="70" y="10" width="100" height="64"/><rect class="pen" x="70" y="10" width="100" height="64"/>
+<path class="pen thin" d="M84 64 l16 -14 l14 8 l20 -18 l20 6"/>
+<path class="pen" d="M100 74 l-12 32 M140 74 l12 32"/>
+<circle class="w-paper" cx="32" cy="70" r="11"/><circle class="pen" cx="32" cy="70" r="11"/><path class="pen" d="M12 112 q20 -32 40 0"/>
+<circle class="w-paper" cx="208" cy="70" r="11"/><circle class="pen" cx="208" cy="70" r="11"/><path class="pen" d="M188 112 q20 -32 40 0"/>
+</svg><h3 class="display">Train the team</h3><p>Custom workshops for non-technical teams, online or in person, as a cohort or 1:1. Everyone is hands on the keyboard from the first session. We start with your team’s actual work and leave real time to experiment, because curiosity is what keeps people using these tools after the workshop ends. Prefer self-paced? I can build the same training as an asynchronous course on whatever L&amp;D platform your team already uses.</p><p class="tags">Custom curriculum. Live or asynchronous, cohort and 1:1.</p></li>
+    <li class="svc"><svg class="doodle svc-art" viewBox="0 0 240 120" aria-hidden="true" focusable="false">
+<rect class="w-gulf" x="62" y="20" width="72" height="88" transform="rotate(-7 98 64)"/><rect class="pen" x="62" y="20" width="72" height="88" transform="rotate(-7 98 64)"/>
+<rect class="w-paper" x="80" y="12" width="72" height="92"/><rect class="pen" x="80" y="12" width="72" height="92"/>
+<rect class="pen thin" x="90" y="26" width="10" height="10"/><path class="pen thin" d="M106 31 h36"/><path class="pen" d="M91 30 l4 4 l7 -9"/>
+<rect class="pen thin" x="90" y="46" width="10" height="10"/><path class="pen thin" d="M106 51 h30"/><path class="pen" d="M91 50 l4 4 l7 -9"/>
+<rect class="pen thin" x="90" y="66" width="10" height="10"/><path class="pen thin" d="M106 71 h34"/><path class="pen" d="M91 70 l4 4 l7 -9"/>
+<rect class="pen thin" x="90" y="86" width="10" height="10"/><path class="pen thin" d="M106 91 h26"/>
+<path class="pen" d="M196 110 V30"/><path class="w-pink" d="M196 30 h34 l-9 10 l9 10 h-34 z"/><path class="pen thin" d="M196 30 h34 l-9 10 l9 10 h-34"/>
+</svg><h3 class="display">Build the course</h3><p>You have the expertise and the content. I turn it into a course people finish.</p><ul class="ticks"><li>Outcomes first</li><li>Practice in every lesson</li><li>Async that works without a live session</li><li>Built in your platform, so you own it when I’m done</li></ul><a class="tlink svc-cta" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Tell me about your course</a><p class="tags">Articulate Rise, LearnWorlds, Canvas, HighLevel and teacher-ready files.</p></li>
+    <li class="svc"><svg class="doodle svc-art" viewBox="0 0 240 120" aria-hidden="true" focusable="false">
+<path class="w-paper" d="M14 32 h38 l12 12 v50 h-50 z"/><path class="pen" d="M14 32 h38 l12 12 v50 h-50 z M52 32 v12 h12"/>
+<path class="pen thin" d="M22 58 h32 M22 68 h26 M22 78 h30"/>
+<path class="pen" d="M74 66 h22 M90 60 l6 6 l-6 6"/>
+<rect class="w-pink" x="106" y="38" width="56" height="58" rx="8"/><rect class="pen" x="106" y="38" width="56" height="58" rx="8"/>
+<circle class="solid" cx="123" cy="60" r="4"/><circle class="solid" cx="145" cy="60" r="4"/><path class="pen thin" d="M124 76 q10 8 20 0"/>
+<path class="pen" d="M134 38 v-12"/><circle class="pen thin" cx="134" cy="21" r="5"/>
+<path class="pen" d="M170 66 h22 M186 60 l6 6 l-6 6"/>
+<circle class="w-gulf" cx="216" cy="66" r="17"/><circle class="pen" cx="216" cy="66" r="17"/><path class="pen" d="M207 66 l6 7 l12 -14"/>
+</svg><h3 class="display">Build the agent</h3><p>Lightweight workflows and agents that fit how your team already works, delivered with the training to run them.</p><p class="tags">Certified AI agent builder (MindStudio Level 3). Claude, ChatGPT, Codex, NotebookLM.</p></li>
+    <li class="svc"><svg class="doodle svc-art" viewBox="0 0 240 120" aria-hidden="true" focusable="false">
+<path class="pen dash" d="M10 104 C50 104 56 72 98 74 S160 44 228 30"/>
+<path class="pen" d="M34 102 V70"/><path class="w-sun" d="M34 70 h24 l-7 8 l7 8 h-24 z"/><path class="pen thin" d="M34 70 h24 l-7 8 l7 8 h-24"/>
+<path class="pen" d="M108 72 V40"/><path class="w-pink" d="M108 40 h24 l-7 8 l7 8 h-24 z"/><path class="pen thin" d="M108 40 h24 l-7 8 l7 8 h-24"/>
+<path class="pen" d="M198 36 V6"/><path class="w-gulf" d="M198 6 h24 l-7 8 l7 8 h-24 z"/><path class="pen thin" d="M198 6 h24 l-7 8 l7 8 h-24"/>
+</svg><h3 class="display">Run the program</h3><p>A fractional lead for your AI adoption: curriculum, rollout, peer champions and measurement.</p><p class="tags">PMP. Nine years running federal programs.</p></li>
   </ul>
 </section>
 
 
 
+<section class="designed" id="designed" aria-labelledby="des-h">
+  <div class="designed-head">
+    <div><h2 class="h2 display" id="des-h">Learning I’ve designed</h2><p class="lead">I design learning for adults who have a job to do. Here’s what I built, what I decided, and why.</p></div>
+    <div class="des-art"><svg class="doodle des-owl" viewBox="30 48 140 142" role="img" aria-label="The owl, reading an open book"><path d='M62 172 C40 140 44 84 100 74 C156 84 160 140 138 172 Z' fill='#FFFBF6'/><path d='M66 150 C60 120 80 100 104 104 C130 108 140 132 134 160 C120 176 80 176 66 150 Z' fill='#FCE3DE' transform='translate(3,4)'/><path d='M62 172 C40 140 44 84 100 74 C156 84 160 140 138 172 Z' fill='none' stroke='#333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='3'/><path d='M138 116 C147 132 146 152 134 166' fill='none' stroke='#333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5'/><path d='M144 134 l-9 3 M143 148 l-9 3' fill='none' stroke='#333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/><g transform='translate(200,0) scale(-1,1)'><path d='M138 116 C147 132 146 152 134 166' fill='none' stroke='#333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5'/><path d='M144 134 l-9 3 M143 148 l-9 3' fill='none' stroke='#333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/></g><path d='M72 82 q-10 -5 -17 -17 M77 78 q-7 -7 -10 -17 M83 76 q-3 -6 -3 -12 M128 82 q10 -5 17 -17 M123 78 q7 -7 10 -17 M117 76 q3 -6 3 -12' fill='none' stroke='#333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/><circle cx='86' cy='102' r='15' fill='#FFFFFF'/><circle cx='114' cy='102' r='15' fill='#FFFFFF'/><circle cx='86' cy='102' r='15' fill='none' stroke='#333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/><circle cx='114' cy='102' r='15' fill='none' stroke='#333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/><circle cx='88' cy='106' r='5' fill='#333333'/><circle cx='116' cy='106' r='5' fill='#333333'/><circle cx='70' cy='122' r='5' fill='#F6A0A0' opacity='0.8'/><circle cx='130' cy='122' r='5' fill='#F6A0A0' opacity='0.8'/><path d='M95 114 L100 126 L105 114 Z' fill='#E8927C' stroke='#333333' stroke-width='2' stroke-linejoin='round'/><path d='M88 142 q4 4 8 0 M104 142 q4 4 8 0 M96 154 q4 4 8 0' fill='none' stroke='#333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/><path d='M86 172 l-5 9 M92 172 l0 10 M108 172 l0 10 M114 172 l5 9' fill='none' stroke='#333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='3'/><path d='M50 142 L50 180 C70 174 86 174 100 182 C114 174 130 174 150 180 L150 142 C130 136 114 136 100 144 C86 136 70 136 50 142 Z' fill='#E8927C' stroke='#333333' stroke-width='3' stroke-linejoin='round'/><path d='M100 142 C86 132 70 132 55 137 L55 172 C70 167 86 167 100 175 Z' fill='#FFFFFF' stroke='#333333' stroke-width='2.5' stroke-linejoin='round'/><path d='M100 142 C114 132 130 132 145 137 L145 172 C130 167 114 167 100 175 Z' fill='#FFFFFF' stroke='#333333' stroke-width='2.5' stroke-linejoin='round'/><path d='M63 146 q14 -4 28 1 M63 154 q14 -4 28 1 M63 162 q10 -3 20 0 M109 147 q14 -5 28 -1 M109 155 q14 -5 28 -1 M109 163 q10 -4 20 -1' fill='none' stroke='#2B9CA3' stroke-width='2.5' stroke-linecap='round'/><path d='M140 116 C156 120 166 138 162 156 C160 168 150 172 142 166 C147 154 148 138 140 126 Z' fill='#FFFBF6'/><path d='M140 116 C156 120 166 138 162 156 C160 168 150 172 142 166 C147 154 148 138 140 126 Z' fill='#FCE3DE' transform='translate(2,3)' opacity='0.9'/><path d='M140 116 C156 120 166 138 162 156 C160 168 150 172 142 166 C147 154 148 138 140 126 Z' fill='none' stroke='#333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='3'/><path d='M152 150 q4 6 2 12 M158 146 q3 5 2 10' fill='none' stroke='#333333' stroke-linecap='round' stroke-width='2'/><g transform='translate(200,0) scale(-1,1)'><path d='M140 116 C156 120 166 138 162 156 C160 168 150 172 142 166 C147 154 148 138 140 126 Z' fill='#FFFBF6'/><path d='M140 116 C156 120 166 138 162 156 C160 168 150 172 142 166 C147 154 148 138 140 126 Z' fill='#FCE3DE' transform='translate(2,3)' opacity='0.9'/><path d='M140 116 C156 120 166 138 162 156 C160 168 150 172 142 166 C147 154 148 138 140 126 Z' fill='none' stroke='#333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='3'/><path d='M152 150 q4 6 2 12 M158 146 q3 5 2 10' fill='none' stroke='#333333' stroke-linecap='round' stroke-width='2'/></g></svg></div>
+  </div>
+  <ul class="cards">
+    <li class="card">
+      <div class="card-art graph"><svg class="doodle" viewBox="0 0 320 200" role="img" aria-label="Sketch of a laptop showing course modules beside ten weekly dots, with the note 39 of 40 finished">
+<rect class="w-paper" x="30" y="24" width="150" height="98"/><rect class="pen" x="30" y="24" width="150" height="98"/>
+<rect class="w-gulf" x="40" y="34" width="130" height="78"/>
+<rect class="pen thin" x="50" y="44" width="10" height="10"/><path class="pen" d="M51 48 l4 4 l7 -9"/><path class="pen thin" d="M68 49 h80"/>
+<rect class="pen thin" x="50" y="62" width="10" height="10"/><path class="pen" d="M51 66 l4 4 l7 -9"/><path class="pen thin" d="M68 67 h64"/>
+<rect class="pen thin" x="50" y="80" width="10" height="10"/><path class="pen" d="M51 84 l4 4 l7 -9"/><path class="pen thin" d="M68 85 h72"/>
+<rect class="pen thin" x="50" y="98" width="10" height="8"/><path class="pen thin" d="M68 102 h52"/>
+<path class="w-paper" d="M16 122 h178 l-12 14 h-154 z"/><path class="pen" d="M16 122 h178 l-12 14 h-154 z"/>
+<text x="254" y="40" text-anchor="middle" font-size="16">10 weeks</text>
+<circle class="w-pink" cx="214" cy="62" r="6"/><circle class="pen thin" cx="214" cy="62" r="6"/><circle class="w-pink" cx="234" cy="62" r="6"/><circle class="pen thin" cx="234" cy="62" r="6"/><circle class="w-pink" cx="254" cy="62" r="6"/><circle class="pen thin" cx="254" cy="62" r="6"/><circle class="w-pink" cx="274" cy="62" r="6"/><circle class="pen thin" cx="274" cy="62" r="6"/><circle class="w-pink" cx="294" cy="62" r="6"/><circle class="pen thin" cx="294" cy="62" r="6"/><circle class="w-pink" cx="214" cy="86" r="6"/><circle class="pen thin" cx="214" cy="86" r="6"/><circle class="w-pink" cx="234" cy="86" r="6"/><circle class="pen thin" cx="234" cy="86" r="6"/><circle class="w-pink" cx="254" cy="86" r="6"/><circle class="pen thin" cx="254" cy="86" r="6"/><circle class="w-pink" cx="274" cy="86" r="6"/><circle class="pen thin" cx="274" cy="86" r="6"/><circle class="w-pink" cx="294" cy="86" r="6"/><circle class="pen thin" cx="294" cy="86" r="6"/>
+<text x="254" y="128" text-anchor="middle" font-size="19">39 of 40</text>
+<text x="254" y="148" text-anchor="middle" font-size="19">finished</text>
+<path class="pen thin" d="M214 156 q40 8 80 -2"/>
+</svg></div>
+      <div class="card-body"><h3>Developing Digital Citizenship</h3><p class="card-label">Canvas LMS · 10 weeks · 40 educators · 2021</p><ul class="facts"><li><b>What I designed:</b> a virtual exchange for English teachers, with one live hour and a self-contained async week</li><li><b>Why:</b> teachers who missed a session still finished</li><li><b>Result:</b> 39 of 40 completed, and the funder renewed the design twice</li></ul><a class="tlink" href="https://youtu.be/TyL4vql07Hw" target="_blank" rel="noopener">Watch the walkthrough</a></div>
+    </li>
+    <li class="card">
+      <div class="card-art graph"><svg class="doodle" viewBox="0 0 320 200" role="img" aria-label="Hand-drawn bar chart: build time per module fell from 6.87 hours to 4.48 hours">
+<text x="48" y="16" font-size="15">hours per module</text>
+<path class="pen" d="M40 30 V164 H296"/>
+<rect class="w-pink" x="80" y="54" width="64" height="110"/><rect class="pen" x="80" y="54" width="64" height="110"/>
+<rect class="w-gulf" x="190" y="92" width="64" height="72"/><rect class="pen" x="190" y="92" width="64" height="72"/>
+<text x="112" y="46" text-anchor="middle" font-size="21">6.87</text>
+<text x="222" y="84" text-anchor="middle" font-size="21">4.48</text>
+<path class="pen thin" d="M150 52 q30 -4 34 32 M178 78 l6 8 l6 -8"/>
+<text x="112" y="184" text-anchor="middle" font-size="15">old way</text>
+<text x="222" y="184" text-anchor="middle" font-size="15">AI first draft</text>
+</svg></div>
+      <div class="card-body"><h3>Instructor training in Articulate Rise</h3><p class="card-label">Rise · 14-module program · 2026</p><ul class="facts"><li><b>For:</b> instructors of adult learners</li><li><b>How I build:</b> Claude Code drafts each full module, then I make the design calls</li><li><b>Result:</b> build time per module dropped from 6.87 to 4.48 hours</li></ul></div>
+    </li>
+    <li class="card">
+      <div class="card-art graph"><svg class="doodle" viewBox="0 0 320 200" role="img" aria-label="Sketch of three comic panels becoming a lesson plan, with quiz shapes below">
+<rect class="w-paper" x="16" y="16" width="58" height="58"/><rect class="pen" x="16" y="16" width="58" height="58"/>
+<rect class="w-paper" x="80" y="16" width="58" height="58"/><rect class="pen" x="80" y="16" width="58" height="58"/>
+<rect class="w-paper" x="144" y="16" width="58" height="58"/><rect class="pen" x="144" y="16" width="58" height="58"/>
+<circle class="pen thin" cx="34" cy="58" r="7"/><circle class="pen thin" cx="56" cy="58" r="7"/><ellipse class="pen thin" cx="40" cy="32" rx="15" ry="9"/><path class="pen thin" d="M36 40 l-3 7 l8 -6"/>
+<circle class="pen thin" cx="98" cy="58" r="7"/><circle class="pen thin" cx="120" cy="58" r="7"/><ellipse class="pen thin" cx="118" cy="32" rx="15" ry="9"/><path class="pen thin" d="M122 40 l3 7 l-8 -6"/>
+<circle class="pen thin" cx="162" cy="58" r="7"/><circle class="pen thin" cx="184" cy="58" r="7"/><path class="pen" d="M164 34 l5 6 l9 -12"/>
+<path class="pen" d="M208 46 q34 -6 40 30 M242 70 l6 8 l5 -9"/>
+<path class="w-paper" d="M222 86 h60 l16 16 v84 h-76 z"/><path class="pen" d="M222 86 h60 l16 16 v84 h-76 z M282 86 v16 h16"/>
+<path class="pen thin" d="M232 128 h52 M232 140 h44 M232 152 h50 M232 164 h36"/>
+<path class="w-pink" d="M30 132 l14 -24 l14 24 z"/><path class="pen thin" d="M30 132 l14 -24 l14 24 z"/>
+<path class="w-gulf" d="M86 108 l13 13 l-13 13 l-13 -13 z"/><path class="pen thin" d="M86 108 l13 13 l-13 13 l-13 -13 z"/>
+<circle class="w-sun" cx="128" cy="121" r="12"/><circle class="pen thin" cx="128" cy="121" r="12"/>
+<rect class="w-pink" x="156" y="109" width="24" height="24"/><rect class="pen thin" x="156" y="109" width="24" height="24"/>
+</svg></div>
+      <div class="card-body"><h3>Consent curriculum for middle school</h3><p class="card-label">Lesson plans · slides · Kahoot · 2025</p><ul class="facts"><li><b>For:</b> teachers of grades 7 to 9</li><li><b>What I designed:</b> teacher-ready lessons built from a set of comics</li><li><b>Standards:</b> aligned to California’s health education standards</li></ul></div>
+    </li>
+    <li class="card">
+      <div class="card-art graph"><svg class="doodle" viewBox="0 0 320 200" role="img" aria-label="Sketch of five weekly steps climbing toward a portfolio folder">
+<rect class="w-sun" x="16" y="146" width="38" height="28"/><rect class="pen" x="16" y="146" width="38" height="28"/><text x="35" y="165" text-anchor="middle" font-size="14">wk 1</text><path class="pen dash" d="M35 144 q12 -18 30 -16"/><rect class="w-paper" x="60" y="126" width="38" height="28"/><rect class="pen" x="60" y="126" width="38" height="28"/><text x="79" y="145" text-anchor="middle" font-size="14">wk 2</text><path class="pen dash" d="M79 124 q12 -18 30 -16"/><rect class="w-sun" x="104" y="106" width="38" height="28"/><rect class="pen" x="104" y="106" width="38" height="28"/><text x="123" y="125" text-anchor="middle" font-size="14">wk 3</text><path class="pen dash" d="M123 104 q12 -18 30 -16"/><rect class="w-paper" x="148" y="86" width="38" height="28"/><rect class="pen" x="148" y="86" width="38" height="28"/><text x="167" y="105" text-anchor="middle" font-size="14">wk 4</text><path class="pen dash" d="M167 84 q12 -18 30 -16"/><rect class="w-sun" x="192" y="66" width="38" height="28"/><rect class="pen" x="192" y="66" width="38" height="28"/><text x="211" y="85" text-anchor="middle" font-size="14">wk 5</text>
+<path class="w-pink" d="M236 56 h24 l8 8 h40 v50 h-72 z"/><path class="pen" d="M236 56 h24 l8 8 h40 v50 h-72 z"/>
+<path class="pen thin" d="M246 76 h34 M246 86 h46 M246 96 h28"/>
+<text x="272" y="136" text-anchor="middle" font-size="17">portfolio</text>
+</svg></div>
+      <div class="card-body"><h3>AI bootcamp for digital marketers</h3><p class="card-label">LearnWorlds, then HighLevel · 5 weeks · 2026</p><ul class="facts"><li><b>What I designed:</b> async lessons that each stand on their own</li><li><b>Learners leave with:</b> a portfolio, because each week’s build becomes part of it</li></ul></div>
+    </li>
+    <li class="card">
+      <div class="card-art graph"><svg class="doodle" viewBox="0 0 320 200" role="img" aria-label="Sketch of six people around a table, with the notes 144 signed up and 96 percent satisfied">
+<ellipse class="w-sun" cx="110" cy="110" rx="70" ry="32"/><ellipse class="pen" cx="110" cy="110" rx="70" ry="32"/>
+<circle class="w-paper" cx="54" cy="62" r="12"/><circle class="pen" cx="54" cy="62" r="12"/><circle class="w-paper" cx="110" cy="50" r="12"/><circle class="pen" cx="110" cy="50" r="12"/><circle class="w-paper" cx="166" cy="62" r="12"/><circle class="pen" cx="166" cy="62" r="12"/><circle class="w-paper" cx="50" cy="156" r="12"/><circle class="pen" cx="50" cy="156" r="12"/><circle class="w-paper" cx="110" cy="170" r="12"/><circle class="pen" cx="110" cy="170" r="12"/><circle class="w-paper" cx="170" cy="156" r="12"/><circle class="pen" cx="170" cy="156" r="12"/>
+<text x="254" y="78" text-anchor="middle" font-size="44">144</text>
+<text x="254" y="100" text-anchor="middle" font-size="15">signed up</text>
+<text x="254" y="146" text-anchor="middle" font-size="24">96%</text>
+<text x="254" y="166" text-anchor="middle" font-size="15">satisfied</text>
+<path class="pen thin" d="M220 174 q34 8 68 -2"/>
+</svg></div>
+      <div class="card-body"><h3>AI Architect Program</h3><p class="card-label">Peer cohort · 2025 · 144 registrants</p><ul class="facts"><li><b>For:</b> job seekers learning to build with AI</li><li><b>Result:</b> 96% satisfaction</li></ul><a class="tlink" href="https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html" target="_blank" rel="noopener">Read the report</a></div>
+    </li>
+    <li class="card">
+      <div class="card-art graph"><svg class="doodle" viewBox="0 0 320 200" role="img" aria-label="Sketch map of the US and China joined by a dotted line, with a camp tent and a schoolhouse">
+<path class="w-gulf" d="M20 92 q8 -30 48 -30 q42 -6 58 18 q10 28 -24 40 q-40 14 -68 -2 q-18 -10 -14 -26 z"/><path class="pen" d="M20 92 q8 -30 48 -30 q42 -6 58 18 q10 28 -24 40 q-40 14 -68 -2 q-18 -10 -14 -26 z"/>
+<text x="66" y="100" text-anchor="middle" font-size="20">US</text>
+<path class="w-pink" d="M196 66 q30 -28 72 -12 q32 18 22 46 q-10 30 -52 30 q-36 0 -48 -26 q-8 -24 6 -38 z"/><path class="pen" d="M196 66 q30 -28 72 -12 q32 18 22 46 q-10 30 -52 30 q-36 0 -48 -26 q-8 -24 6 -38 z"/>
+<text x="244" y="96" text-anchor="middle" font-size="20">China</text>
+<path class="pen dash" d="M104 62 C136 10 178 10 206 52"/>
+<path class="pen" d="M198 46 l8 6 l1 -10"/>
+<path class="w-sun" d="M210 182 l20 -32 l20 32 z"/><path class="pen" d="M210 182 l20 -32 l20 32 z M230 182 v-14"/>
+<path class="w-paper" d="M46 182 v-22 l18 -14 l18 14 v22 z"/><path class="pen" d="M46 182 v-22 l18 -14 l18 14 v22 z M58 182 v-10 h12 v10 M64 146 v-12 l10 4 l-10 4"/>
+</svg></div>
+      <div class="card-body"><h3>Earlier work</h3><p class="card-label">China and the US · 2010 to 2016</p><ul class="facts"><li><b>Program design:</b> for a Tibetan education nonprofit, where every student in the pilot camps stayed in school</li><li><b>A 15-day faculty institute:</b> for a US school</li><li><b>Teacher training:</b> for new volunteers</li></ul></div>
+    </li>
+  </ul>
+</section>
+
 <section class="work" id="work" aria-labelledby="work-h">
   <div class="work-head">
-    <h2 class="h2 display" id="work-h">Learning by building</h2>
-    <p class="lead">Learning by doing now means learning by building. I tell every client the same thing: stay open to trying new tools, and give your people room to play with them. I follow my own advice. A couple of these are live products, and the rest started as experiments I ran to see what would happen. Each one taught me something I now bring into training.</p>
+    <h2 class="h2 display" id="work-h">Things I’ve built</h2>
+    <p class="lead">I build small tools to learn what AI can and can’t do, and most of them are about keeping your own voice when AI helps.</p>
   </div>
   <div>
     <ol class="ledger">
-      <li><a class="row is-on" data-p="aia" aria-describedby="cap-aia" href="https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/aiarchitect-poster.jpg" alt="" width="960" height="960"></span><span class="name">AI Architect Program</span><span class="kind">Peer-led AI training I designed and ran, 2025</span><span class="taught">A motivated group can run its own semi-structured peer learning, and building alongside others beats building alone.</span><span class="go">Report</span></a></li>
+      <li><a class="row is-on" data-p="iv" aria-describedby="cap-iv" href="https://interviewer.lbeebe.com/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/interviewer-poster.jpg" alt="" width="1200" height="750" loading="lazy"></span><span class="name">The Interviewer</span><span class="kind">Buffer Commit build, 2026</span><span class="taught">Interviews you for up to 10 to 15 minutes about what you built that week, then turns your own words into drafts saved to Buffer. It won’t make things up, and you finish the posts.</span><span class="go">Try it</span></a></li>
+      <li><a class="row" data-p="lf" aria-describedby="cap-lf" href="https://longform.lbeebe.com/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/longform-poster.jpg" alt="" width="1200" height="750" loading="lazy"></span><span class="name">Longform</span><span class="kind">Buffer Commit build, 2026</span><span class="taught">Plans a long-form piece around your Buffer queue and finds an open day to publish. Supporting posts come only from your draft, and only the ones you keep are saved.</span><span class="go">Try it</span></a></li>
+      <li><div class="row" data-p="ev" aria-describedby="cap-ev" tabindex="0"><span class="row-thumb graph"><svg class="doodle" viewBox="0 0 320 240" aria-hidden="true" focusable="false">
+<rect class="w-paper" x="30" y="20" width="160" height="200"/><rect class="pen" x="30" y="20" width="160" height="200"/>
+<path class="pen thin" d="M46 60 h120 M46 72 h96"/>
+<circle class="w-green" cx="58" cy="104" r="11"/><circle class="pen thin" cx="58" cy="104" r="11"/><path class="pen thin" d="M53 104 l4 4 l7 -8"/><path class="pen thin" d="M78 104 h90"/>
+<circle class="w-sun" cx="58" cy="140" r="11"/><circle class="pen thin" cx="58" cy="140" r="11"/><path class="pen thin" d="M58 134 v7"/><circle class="solid" cx="58" cy="145" r="1.6"/><path class="pen thin" d="M78 140 h76"/>
+<circle class="w-pink" cx="58" cy="176" r="11"/><circle class="pen thin" cx="58" cy="176" r="11"/><path class="pen thin" d="M53 171 l10 10 M63 171 l-10 10"/><path class="pen thin" d="M78 176 h84"/>
+<circle class="w-gulf" cx="244" cy="98" r="36"/><circle class="pen" cx="244" cy="98" r="36"/><path class="pen" d="M270 124 l30 30"/>
+<text x="244" y="96" text-anchor="middle" font-size="20">73%?</text>
+<text x="244" y="114" text-anchor="middle" font-size="12">source?</text>
+</svg></span><span class="name">Quality check for a nonprofit’s writing agent</span><span class="kind">Agent evaluation in MindStudio, 2026</span><span class="taught">A green, yellow and red checklist staff can run on every draft. The stress tests caught invented stats and the agent’s habit of slipping em dashes into headlines.</span></div></li>
       <li><a class="row" data-p="xc" aria-describedby="cap-xc" href="https://10xcolleges.co/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/10xcolleges-poster.jpg" alt="" width="492" height="1044"></span><span class="name">10xcolleges</span><span class="kind">Live AI admissions coach I built with a product agent, 2026</span><span class="taught">A product agent pointed at an open-source project built a full app, with frontend, backend and logins, in a few hours. Your team doesn’t have to start from a blank page.</span><span class="go">App</span></a></li>
-      <li><a class="row" data-p="md" aria-describedby="cap-md" href="https://1beebe.github.io/marble-descent/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/marble-descent-poster.jpg" alt="" width="540" height="960"></span><span class="name">Marble Descent</span><span class="kind">One phone game, built twice with Claude Code, 2026</span><span class="taught">A 70-word prompt beat a 400-word brief. Clearer asks usually win.</span><span class="go">Play</span></a></li>
-      <li><a class="row" data-p="im" aria-describedby="cap-im" href="https://youtu.be/rTMQIzzAZpE" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/imagemodels-poster.jpg" alt="" width="960" height="594"></span><span class="name">Compare Top Image Models</span><span class="kind">MindStudio agent, hackathon runner-up</span><span class="taught">Test tools side by side on your own prompt before your team commits to one.</span><span class="go">Video</span></a></li>
       <li><a class="row" data-p="qs" aria-describedby="cap-qs" href="https://github.com/1beebe/beebe-qualitative-skills" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/lakoff-poster.jpg" alt="" width="960" height="600"></span><span class="name">Beebe Qualitative Skills</span><span class="kind">Claude Code skills for my father’s research method, 2026</span><span class="taught">My first agent, Lakoff Lens, was aimed at James Beebe’s method from day one and wasn’t good enough yet. That was fine. Six months later, these skills run his method on his own archive.</span><span class="go">GitHub</span></a></li>
-      <li><a class="row" data-p="da" aria-describedby="cap-da" href="https://github.com/1beebe/document-archivist" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/archivist-poster.jpg" alt="" width="960" height="1200"></span><span class="name">Document Archivist</span><span class="kind">Scanned PDFs in, clean searchable text out</span><span class="taught">The pipeline that feeds those skills: it turns his paper archive into searchable text for the study I’m finishing. Your team’s first build won’t be the one that sticks, and that’s normal.</span><span class="go">GitHub</span></a></li>
+      <li><a class="row" data-p="sc" aria-describedby="cap-sc" href="https://slopcannon.lbeebe.com/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/slopcannon-poster.jpg" alt="" width="1200" height="750" loading="lazy"></span><span class="name">Slop Cannon</span><span class="kind">Just for fun, 2026</span><span class="taught">Type something mundane, pick a flavor of AI slop, and it fires B2B thought leadership into every open slot in your Buffer queue. There’s no AI in it, because slop is formulaic enough for a formula.</span><span class="go">Try it</span></a></li>
     </ol>
     <a class="tlink work-more" href="https://github.com/1beebe/ai-agent-portfolio" target="_blank" rel="noopener">More on GitHub</a>
+    <p class="work-demos">Watch the demos: <a href="https://youtu.be/T2Qh6Vj58Es" target="_blank" rel="noopener">The Interviewer</a>, <a href="https://www.youtube.com/watch?v=CaBGcP7nUK0" target="_blank" rel="noopener">Longform</a> and <a href="https://youtu.be/hYLTeFlus9c" target="_blank" rel="noopener">Slop Cannon</a>.</p>
   </div>
   <div class="preview" aria-hidden="true">
     <div class="preview-frame">
-      <figure data-p="aia" class="is-on"><div class="media"><video muted loop playsinline preload="none" poster="videos/aiarchitect-poster.jpg" data-src="videos/aiarchitect.mp4"></video></div><figcaption id="cap-aia">A free, semi-structured peer series I designed and facilitated end to end inside Never Search Alone, grown entirely by word of mouth.</figcaption></figure>
+      <figure data-p="iv" class="is-on"><div class="media"><img src="videos/interviewer-poster.jpg" alt="" width="1200" height="750" loading="lazy"></div><figcaption id="cap-iv">Every draft comes from something you said in the interview, so the posts still sound like you.</figcaption></figure>
+      <figure data-p="lf"><div class="media"><img src="videos/longform-poster.jpg" alt="" width="1200" height="750" loading="lazy"></div><figcaption id="cap-lf">It reads what’s already in your queue, so the launch day doesn’t compete with your own posts.</figcaption></figure>
+      <figure data-p="ev"><div class="media graph"><svg class="doodle" viewBox="0 0 320 240" role="img" aria-label="Sketch of a draft page with a green, yellow and red checklist, and a magnifying glass catching an invented statistic">
+<rect class="w-paper" x="30" y="20" width="160" height="200"/><rect class="pen" x="30" y="20" width="160" height="200"/>
+<path class="pen thin" d="M46 60 h120 M46 72 h96"/>
+<circle class="w-green" cx="58" cy="104" r="11"/><circle class="pen thin" cx="58" cy="104" r="11"/><path class="pen thin" d="M53 104 l4 4 l7 -8"/><path class="pen thin" d="M78 104 h90"/>
+<circle class="w-sun" cx="58" cy="140" r="11"/><circle class="pen thin" cx="58" cy="140" r="11"/><path class="pen thin" d="M58 134 v7"/><circle class="solid" cx="58" cy="145" r="1.6"/><path class="pen thin" d="M78 140 h76"/>
+<circle class="w-pink" cx="58" cy="176" r="11"/><circle class="pen thin" cx="58" cy="176" r="11"/><path class="pen thin" d="M53 171 l10 10 M63 171 l-10 10"/><path class="pen thin" d="M78 176 h84"/>
+<circle class="w-gulf" cx="244" cy="98" r="36"/><circle class="pen" cx="244" cy="98" r="36"/><path class="pen" d="M270 124 l30 30"/>
+<text x="244" y="96" text-anchor="middle" font-size="20">73%?</text>
+<text x="244" y="114" text-anchor="middle" font-size="12">source?</text>
+</svg></div><figcaption id="cap-ev">A sketch, not a screenshot: the findings belong to the client, so this card names no one.</figcaption></figure>
       <figure data-p="xc"><div class="media"><video muted loop playsinline preload="none" poster="videos/10xcolleges-poster.jpg" data-src="videos/10xcolleges.mp4"></video></div><figcaption id="cap-xc">Honest about odds, sources every fact, coaches essays without writing them, runs spoken mock interviews. I built the app on Yong Tian’s open-source counseling skills.</figcaption></figure>
-      <figure data-p="md"><div class="media"><video muted loop playsinline preload="none" poster="videos/marble-descent-poster.jpg" data-src="videos/marble-descent.mp4"></video></div><figcaption id="cap-md">A 400-word brief with four subagents against a 70-word prompt. The short prompt won: about 20 build steps instead of 132.</figcaption></figure>
-      <figure data-p="im"><div class="media"><video muted loop playsinline preload="none" poster="videos/imagemodels-poster.jpg" data-src="videos/imagemodels.mp4"></video></div><figcaption id="cap-im">Runs six image models in parallel on one prompt and lays the results side by side.</figcaption></figure>
-      <figure data-p="da"><div class="media"><video muted loop playsinline preload="none" poster="videos/archivist-poster.jpg" data-src="videos/archivist.mp4"></video></div><figcaption id="cap-da">Takes scanned PDFs, cleans up the text and files everything into a searchable archive.</figcaption></figure>
       <figure data-p="qs"><div class="media"><video muted loop playsinline preload="none" poster="videos/lakoff-poster.jpg" data-src="videos/lakoff.mp4"></video></div><figcaption id="cap-qs">Shown: Lakoff Lens, the first try. The skills find themes across interviews and archives, then map who frames a policy which way and the metaphors they use, quoting every source verbatim.</figcaption></figure>
+      <figure data-p="sc"><div class="media"><img src="videos/slopcannon-poster.jpg" alt="" width="1200" height="750" loading="lazy"></div><figcaption id="cap-sc">AI-powered, no AI inside. The zero under “AI models used” is the joke.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -754,7 +966,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 </main>
 
 <footer class="foot">
-  <p>© 2026 L.&nbsp;Beebe, LLC, Estero, Florida. Updated <time datetime="2026-10-20">October 20, 2026</time>.</p>
+  <p>© 2026 L.&nbsp;Beebe, LLC, Estero, Florida. Updated <time datetime="2026-11-24">November 24, 2026</time>.</p>
   <ul>
     <li><a href="/hire">For hiring managers</a></li>
     <li><a href="https://10xjobs.co/" target="_blank" rel="noopener">10xJobs</a></li>
@@ -820,6 +1032,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   const show = (key, play) => {
     rows.forEach(r => r.classList.toggle('is-on', r.dataset.p === key));
     figs.forEach(f => { const on = f.dataset.p === key, v = f.querySelector('video'); f.classList.toggle('is-on', on);
+      if (!v) return;
       if (on && play && !still.matches) { if (!v.src) v.src = v.dataset.src; v.playbackRate = 1.6; v.play().catch(() => {}); } else v.pause(); });
   };
   rows.forEach(r => { r.addEventListener('mouseenter', () => show(r.dataset.p, true)); r.addEventListener('focus', () => show(r.dataset.p, true)); });
