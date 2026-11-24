@@ -450,7 +450,9 @@ p { max-width: 62ch; text-wrap: pretty; }
 
 /* proof */
 .fit { background: var(--white); padding: clamp(3rem, 2rem + 4vw, 6rem) var(--margin); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.5rem, 4vw, 4rem); }
-.build-line { grid-column: 1 / -1; margin: 0 0 clamp(.5rem, 2vw, 2rem); font-size: clamp(2rem, 1.2rem + 3vw, 3.25rem); line-height: 1; }
+.build-pin { grid-column: 1 / -1; margin: 0 0 clamp(.5rem, 2vw, 2rem); }
+.build-pin.is-pinned .build-line { position: sticky; }
+.build-line { margin: 0; font-size: clamp(2rem, 1.2rem + 3vw, 3.25rem); line-height: 1; }
 .build-reel { display: none; }
 .build-line.is-reel { font-size: clamp(3rem, 1rem + 3.4vw, 5.5rem); white-space: nowrap; overflow: hidden; }
 @media (max-width: 1000px) { .build-line.is-reel { font-size: clamp(2rem, .75rem + 6vw, 3.25rem); } }
@@ -707,7 +709,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 <main id="main">
 
 <section class="fit" aria-labelledby="fit-h">
-  <p class="build-line display" id="build-line"><span class="build-static">I build courses, AI workflows, learning experiences, agents, AI workshops, communities of practice, evals, programs and relationships, with results you can measure.</span><span class="build-reel" aria-hidden="true">I build <span class="build-word">courses</span></span></p>
+  <div class="build-pin"><p class="build-line display" id="build-line"><span class="build-static">I build courses, AI workflows, learning experiences, agents, AI workshops, communities of practice, evals, programs and relationships, with results you can measure.</span><span class="build-reel" aria-hidden="true">I build <span class="build-word">courses</span></span></p></div>
   <h2 class="h2 display" id="fit-h">Who trains non-technical teams to use AI?</h2>
   <div>
     <p class="lead">L.&nbsp;Beebe, LLC is my AI training practice for small and mid-sized companies: I teach non-technical teams to apply tools like Claude and ChatGPT to the workflows they already run. I meet teams in whatever they already pay for, whether that’s ChatGPT Business, Claude, or Gemini. I do this through hands-on workshops, custom agent builds and fractional AI program leadership.</p>
@@ -1238,17 +1240,36 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 </script>
 <script>
 // "I build ___": with motion allowed, scrolling drives the last word. As the line travels up the
-// screen it steps through the list, and it lands on the final phrase as the line reaches the top.
+// screen it steps through the list; near the top it pins in place for a stretch of extra scroll so
+// each word gets room (more on phones, where one flick covers a lot), then lands on the final phrase
+// and moves on with the page.
 // Scrolling back up runs it in reverse. The font shrinks so the longest phrase fits, so nothing
 // wraps or jumps. Screen readers always get the full sentence; reduced motion sees it as plain text.
 (() => {
   const line = document.getElementById('build-line');
   if (!line) return;
-  const word = line.querySelector('.build-word');
+  const pin = line.parentElement, word = line.querySelector('.build-word');
   const words = ['courses', 'AI workflows', 'learning experiences', 'agents', 'AI workshops', 'communities of practice', 'evals', 'programs', 'relationships'];
   const all = words.concat('results you can measure'), lastI = all.length - 1;
   const mq = matchMedia('(prefers-reduced-motion: no-preference)');
-  let shown = -1, raf = 0, rt = 0;
+  let shown = -1, raf = 0, rt = 0, vh = innerHeight, vw = innerWidth, steps = 1;
+  // scroll per word as a share of the screen height; the last phrase holds a moment before release
+  const perWord = () => innerWidth <= 700 ? 0.22 : 0.16, HOLD = 0.2, FROM = 0.88, TOP = 0.1;
+  // the pin is as tall as the line plus whatever extra scroll the words need beyond the line's
+  // own trip up the screen. Screen height is read once per width, so a phone's address bar
+  // showing and hiding doesn't shift the page mid-scroll.
+  const layout = () => {
+    pin.classList.remove('is-pinned');
+    pin.style.removeProperty('height');
+    line.style.removeProperty('top');
+    if (!line.classList.contains('is-reel')) return;
+    vh = innerHeight; vw = innerWidth;
+    steps = perWord() * lastI * vh;
+    const run = Math.max(0, steps + HOLD * vh - (FROM - TOP) * vh);
+    pin.classList.add('is-pinned');
+    line.style.top = (TOP * vh).toFixed(1) + 'px';
+    pin.style.height = (line.offsetHeight + run).toFixed(1) + 'px';
+  };
   // size the line so the longest phrase fits at this width. If one line would need the text much
   // smaller (phones), "I build" sits on its own line and the phrase gets the full width below it.
   const fit = () => {
@@ -1265,12 +1286,8 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     m.remove();
     if (need > room) line.style.fontSize = (base * room / need * 0.98).toFixed(2) + 'px';
   };
-  // 0 when the line enters near the bottom of the screen, 1 when it reaches the top
-  const progress = () => {
-    const vh = innerHeight, top = line.getBoundingClientRect().top;
-    const from = vh * 0.88, to = vh * 0.1;
-    return Math.min(1, Math.max(0, (from - top) / (from - to)));
-  };
+  // how far the page has scrolled since the line came up past 88% of the screen
+  const scrolled = () => FROM * vh - pin.getBoundingClientRect().top;
   const show = i => {
     if (i === shown) return;
     const up = i > shown;
@@ -1285,21 +1302,25 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   const paint = () => {
     raf = 0;
     if (!line.classList.contains('is-reel')) return;
-    const p = progress();
-    show(p >= 1 ? lastI : Math.min(lastI - 1, Math.floor(p * lastI)));
+    const d = scrolled();
+    show(d >= steps ? lastI : Math.max(0, Math.min(lastI - 1, Math.floor(d / steps * lastI))));
   };
   const queue = () => { if (!raf) raf = requestAnimationFrame(paint); };
   const setup = () => {
     shown = -1;
-    if (!mq.matches) { line.classList.remove('is-reel'); fit(); return; }
+    if (!mq.matches) { line.classList.remove('is-reel'); fit(); layout(); return; }
     line.classList.add('is-reel');
     fit();
+    layout();
     paint();
   };
   mq.addEventListener ? mq.addEventListener('change', setup) : mq.addListener(setup);
   addEventListener('scroll', queue, { passive: true });
-  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { fit(); queue(); }, 150); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => {
+    if (innerWidth === vw && Math.abs(innerHeight - vh) < vh * 0.25) return;
+    fit(); layout(); queue();
+  }, 150); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { fit(); layout(); queue(); });
   setup();
 })();
 </script>
