@@ -454,8 +454,8 @@ p { max-width: 62ch; text-wrap: pretty; }
 .build-pin { margin: 0 0 calc(clamp(1.5rem, 4vw, 4rem) + clamp(.5rem, 2vw, 2rem)); }
 /* while the words change, the line holds near the top and the section below scrolls up under it */
 .build-pin.is-pinned { position: sticky; z-index: 2; }
-.build-pin.is-pinned::before { content: ""; position: absolute; z-index: -1; left: calc(-1 * var(--margin)); right: calc(-1 * var(--margin)); top: calc(-1 * var(--pin-top, 0px)); bottom: -.25em; background: var(--white); }
-.build-pin.is-pinned::after { content: ""; position: absolute; z-index: -1; left: calc(-1 * var(--margin)); right: calc(-1 * var(--margin)); top: calc(100% + .25em); height: 1.5rem; background: linear-gradient(var(--white), transparent); }
+.build-pin.is-pinned::before { content: ""; position: absolute; z-index: -1; left: calc(-1 * var(--margin)); right: calc(-1 * var(--margin)); top: calc(-1 * var(--pin-top, 0px)); bottom: -.4em; background: var(--white); }
+.build-pin.is-pinned::after { content: ""; position: absolute; z-index: -1; left: calc(-1 * var(--margin)); right: calc(-1 * var(--margin)); top: calc(100% + .4em); height: 3rem; background: linear-gradient(var(--white), transparent); }
 .build-line { margin: 0; font-size: clamp(2rem, 1.2rem + 3vw, 3.25rem); line-height: 1; }
 .build-reel { display: none; }
 .build-line.is-reel { font-size: clamp(3rem, 1rem + 3.4vw, 5.5rem); white-space: nowrap; overflow: hidden; }
