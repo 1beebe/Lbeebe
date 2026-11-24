@@ -709,7 +709,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 </nav>
 
 <div class="hero-run" id="hero-run">
-<header class="hero" id="top">
+<header class="hero">
   <div>
     <p class="hero-eyebrow">AI trainer and course builder</p>
     <h1 class="display">AI training for the rest of your team</h1>
@@ -1319,8 +1319,10 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     raf = 0;
     if (!scroll) return;
     const n = Math.min(lastI, Math.max(0, Math.floor((scrollY - s0) / per)));
+    // a jump (a nav link, back to top) skips the fade so the words don't flicker past
+    const near = Math.abs(n - i) <= 1;
     i = n;
-    show(n);
+    show(n, near);
   };
   const queue = () => { if (scroll && !raf) raf = requestAnimationFrame(paint); };
   const disarm = () => {
