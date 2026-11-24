@@ -1271,6 +1271,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   const line = document.getElementById('build-line');
   if (!line) return;
   const run = document.getElementById('hero-run');
+  const after = run && run.nextElementSibling;
   const hero = run && run.querySelector('.hero');
   const bar = document.querySelector('.bar');
   const word = line.querySelector('.build-word');
@@ -1329,7 +1330,8 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     scroll = false;
     if (!run) return;
     run.classList.remove('is-armed');
-    ['--run-h', '--pin-top', '--cover'].forEach(v => run.style.removeProperty(v));
+    ['--run-h', '--pin-top'].forEach(v => run.style.removeProperty(v));
+    if (after) after.style.removeProperty('--cover');
   };
   // pin the hero and lay out the scroll: one stretch per phrase, a short hold on the last one,
   // then one screen for the page to slide up and cover the hero
@@ -1359,7 +1361,8 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     const runH = Math.max(heroH, s0 + R - y0 + heroH + top + V);
     run.style.setProperty('--pin-top', top + 'px');
     run.style.setProperty('--run-h', runH + 'px');
-    run.style.setProperty('--cover', (heroH + top) + 'px');
+    // custom properties only reach descendants, and main is the run's sibling, so it gets its own
+    after.style.setProperty('--cover', (heroH + top) + 'px');
     run.classList.add('is-armed');
     scroll = true;
     paint();
