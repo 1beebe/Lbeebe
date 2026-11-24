@@ -1342,13 +1342,17 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     if (lineTop + top < barH) return false;
     per = Math.round(V * (innerWidth <= 700 ? 0.16 : 0.13));
     const R = lastI * per + Math.round(per * 0.6);
+    const y0 = run.getBoundingClientRect().top + scrollY;
+    // the words start moving with the first scroll; if the hero is taller than the screen, they
+    // are already moving in the short scroll before it pins
+    s0 = Math.max(0, Math.min(y0 - top, y0 - barH));
+    // the page starts rising from the bottom of the screen as the last phrase lands, and covers
+    // the hero completely just as the hero lets go
+    const runH = Math.max(heroH, s0 + R - y0 + heroH + top + V);
     run.style.setProperty('--pin-top', top + 'px');
-    run.style.setProperty('--run-h', (heroH + R + V) + 'px');
+    run.style.setProperty('--run-h', runH + 'px');
     run.style.setProperty('--cover', (heroH + top) + 'px');
     run.classList.add('is-armed');
-    // the words start moving with the first scroll; if the hero is taller than the screen, the
-    // scroll before it pins just adds to the hold on the last phrase
-    s0 = Math.max(0, Math.min(run.getBoundingClientRect().top + scrollY - top, run.getBoundingClientRect().top + scrollY - barH));
     scroll = true;
     paint();
     return true;
