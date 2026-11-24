@@ -1271,6 +1271,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   const line = document.getElementById('build-line');
   if (!line) return;
   const run = document.getElementById('hero-run');
+  const after = run && run.nextElementSibling;
   const hero = run && run.querySelector('.hero');
   const bar = document.querySelector('.bar');
   const word = line.querySelector('.build-word');
@@ -1329,7 +1330,8 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     scroll = false;
     if (!run) return;
     run.classList.remove('is-armed');
-    ['--run-h', '--pin-top', '--cover'].forEach(v => run.style.removeProperty(v));
+    ['--run-h', '--pin-top'].forEach(v => run.style.removeProperty(v));
+    if (after) after.style.removeProperty('--cover');
   };
   // pin the hero and lay out the scroll: one stretch per phrase, a short hold on the last one,
   // then one screen for the page to slide up and cover the hero
@@ -1343,17 +1345,24 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     const lineTop = line.getBoundingClientRect().top - hero.getBoundingClientRect().top;
     if (lineTop + top < barH) return false;
     per = Math.round(V * (innerWidth <= 700 ? 0.16 : 0.13));
-    const R = lastI * per + Math.round(per * 0.6);
+    // the bottom of the pinned screen is empty yellow (padding under the button, or the screen
+    // below a short hero); the page rises through that band unseen, so start it early enough that
+    // its edge reaches the hero's content just as the last phrase lands, with no extra hold
+    const hr = hero.getBoundingClientRect();
+    const contentBottom = Math.max(...[...hero.children].map(c => c.getBoundingClientRect().bottom - hr.top));
+    const dead = Math.max(0, V - (top + contentBottom));
+    const R = Math.max((lastI - 2) * per, lastI * per - dead);
     const y0 = run.getBoundingClientRect().top + scrollY;
     // the words start moving with the first scroll; if the hero is taller than the screen, they
     // are already moving in the short scroll before it pins
     s0 = Math.max(0, Math.min(y0 - top, y0 - barH));
-    // the page starts rising from the bottom of the screen as the last phrase lands, and covers
-    // the hero completely just as the hero lets go
+    // the page rises from the bottom of the screen, reaches the hero's content as the last phrase
+    // lands, and covers the hero completely just as the hero lets go
     const runH = Math.max(heroH, s0 + R - y0 + heroH + top + V);
     run.style.setProperty('--pin-top', top + 'px');
     run.style.setProperty('--run-h', runH + 'px');
-    run.style.setProperty('--cover', (heroH + top) + 'px');
+    // custom properties only reach descendants, and main is the run's sibling, so it gets its own
+    after.style.setProperty('--cover', (heroH + top) + 'px');
     run.classList.add('is-armed');
     scroll = true;
     paint();
