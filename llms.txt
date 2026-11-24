@@ -24,7 +24,7 @@ A good fit when a company's engineers already use AI and the rest of the staff d
 ## Results
 
 - 200+ professionals trained (as of October 2026)
-- 96% satisfaction and a 4.8/5 rating across the 2025 AI Architect Program (91 registrants, zero paid marketing)
+- 96% satisfaction and a 4.8/5 rating across the 2025 AI Architect Program (144 registrants, zero paid marketing)
 - $8M+ in grant funding and renewals secured across U.S. State Department-funded global education programs in 12+ countries (iEARN-USA)
 - 27% fewer support requests after an onboarding redesign spanning eight countries (live sessions, peer champions, knowledge base)
 - As of fall 2026, partnering with Clear Digital Labs on an AI bootcamp for their marketing team: a 5-session synchronous program built around agentic workflows
