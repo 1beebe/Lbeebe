@@ -466,6 +466,11 @@ p { max-width: 62ch; text-wrap: pretty; }
 .build-line.is-stacked .build-word { display: block; }
 .build-word { display: inline-block; }
 .build-word.is-final { background: var(--accent); padding: 0 .12em; }
+/* hero reel on scroll (armed by script): the hero pins while scrolling steps through the words,
+   then the page slides up over it, like the service cards. Off for reduced motion. */
+.hero-run.is-armed { height: var(--run-h); background: var(--sun); }
+.hero-run.is-armed .hero { position: sticky; top: var(--pin-top); }
+.hero-run.is-armed + main { position: relative; z-index: 2; background: var(--white); margin-top: calc(-1 * var(--cover)); box-shadow: 0 -1px 0 rgba(10, 10, 10, .08), 0 -1.25rem 2.5rem -1.75rem rgba(10, 10, 10, .45); }
 .fit .lead { max-width: 46ch; }
 .fit .lead + p { margin-top: 1.25rem; max-width: 60ch; }
 .stats { background: var(--gulf); color: var(--ink); padding: clamp(2rem, 4vw, 3.25rem) var(--margin); }
@@ -703,6 +708,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   </ul>
 </nav>
 
+<div class="hero-run" id="hero-run">
 <header class="hero" id="top">
   <div>
     <p class="hero-eyebrow">AI trainer and course builder</p>
@@ -718,6 +724,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     <figcaption>Ligaya Beebe, AI trainer, course builder and instructional designer. PMP, certified AI agent builder (MindStudio Level 3), nine years running international education programs. Estero, Florida, working everywhere.</figcaption>
   </figure>
 </header>
+</div>
 
 <main id="main">
 
@@ -1253,19 +1260,35 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 })();
 </script>
 <script>
-// "I build ___": with motion allowed, the last word of the hero's second line steps through the
-// list once, a beat after the page loads, and lands on the final phrase. It never replays and
-// never holds the page while it runs. The font shrinks so the longest phrase fits, so nothing
-// wraps or jumps. Screen readers always get the full sentence; reduced motion sees it as plain text.
+// "I build ___": the last word of the hero's second line steps through the list and lands on the
+// final phrase. With motion allowed, scrolling drives it: the hero pins in place while each stretch
+// of scroll moves to the next phrase (and back, scrolling up), then the rest of the page slides up
+// over the pinned hero, the way the service cards stack. If the pinned hero would hide the line
+// (a hero much taller than the screen), it falls back to stepping through once on a timer after
+// load. The font shrinks so the longest phrase fits, so nothing wraps or jumps. Screen readers
+// always get the full sentence; reduced motion sees it as plain text.
 (() => {
   const line = document.getElementById('build-line');
   if (!line) return;
+  const run = document.getElementById('hero-run');
+  const hero = run && run.querySelector('.hero');
+  const bar = document.querySelector('.bar');
   const word = line.querySelector('.build-word');
   const words = ['courses', 'AI workflows', 'learning experiences', 'agents', 'AI workshops', 'communities of practice', 'evals', 'programs', 'relationships'];
   const all = words.concat('results you can measure'), lastI = all.length - 1;
   const mq = matchMedia('(prefers-reduced-motion: no-preference)');
   const START = 900, STEP = 850;
-  let timer = 0, i = 0, rt = 0, vw = innerWidth;
+  let timer = 0, i = 0, rt = 0, vw = innerWidth, raf = 0, scroll = false;
+  let s0 = 0, per = 1;
+  // a stable screen height (ignores the phone address bar sliding in and out)
+  const screenH = () => {
+    const m = document.createElement('div');
+    m.style.cssText = 'position:fixed;top:0;height:100svh;width:0;visibility:hidden;';
+    document.body.appendChild(m);
+    const h = m.offsetHeight || innerHeight;
+    m.remove();
+    return h;
+  };
   // size the line so the longest phrase fits at this width. If one line would need the text much
   // smaller (phones), "I build" sits on its own line and the phrase gets the full width below it.
   const fit = () => {
@@ -1282,28 +1305,69 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     m.remove();
     if (need > room) line.style.fontSize = (base * room / need * 0.98).toFixed(2) + 'px';
   };
-  const show = n => {
+  const show = (n, animate = true) => {
+    if (word.textContent === all[n] && word.classList.contains('is-final') === (n === lastI)) return;
     word.textContent = all[n];
     word.classList.toggle('is-final', n === lastI);
-    if (word.animate) word.animate([
+    if (animate && word.animate) word.animate([
       { opacity: .15, transform: 'translateY(.3em)' },
       { opacity: 1, transform: 'none' }
     ], { duration: 180, easing: 'ease-out' });
   };
+  // scroll: which phrase this much scroll past the pin point has reached
+  const paint = () => {
+    raf = 0;
+    if (!scroll) return;
+    const n = Math.min(lastI, Math.max(0, Math.floor((scrollY - s0) / per)));
+    i = n;
+    show(n);
+  };
+  const queue = () => { if (scroll && !raf) raf = requestAnimationFrame(paint); };
+  const disarm = () => {
+    scroll = false;
+    if (!run) return;
+    run.classList.remove('is-armed');
+    ['--run-h', '--pin-top', '--cover'].forEach(v => run.style.removeProperty(v));
+  };
+  // pin the hero and lay out the scroll: one stretch per phrase, a short hold on the last one,
+  // then one screen for the page to slide up and cover the hero
+  const armScroll = () => {
+    if (!run || !hero) return false;
+    const V = screenH(), heroH = hero.offsetHeight;
+    const barH = bar && getComputedStyle(bar).position === 'sticky' ? bar.offsetHeight : 0;
+    // pin at the top under the bar if the hero fits; if it is taller, pin it by its bottom edge
+    const top = heroH + barH <= V ? barH : V - heroH;
+    // the line has to stay in view while it is pinned, or this mode is pointless
+    const lineTop = line.getBoundingClientRect().top - hero.getBoundingClientRect().top;
+    if (lineTop + top < barH) return false;
+    per = Math.round(V * (innerWidth <= 700 ? 0.16 : 0.13));
+    const R = lastI * per + Math.round(per * 0.6);
+    run.style.setProperty('--pin-top', top + 'px');
+    run.style.setProperty('--run-h', (heroH + R + V) + 'px');
+    run.style.setProperty('--cover', (heroH + top) + 'px');
+    run.classList.add('is-armed');
+    s0 = Math.max(0, run.getBoundingClientRect().top + scrollY - top);
+    scroll = true;
+    paint();
+    return true;
+  };
   const tick = () => { i += 1; show(i); if (i < lastI) timer = setTimeout(tick, STEP); };
   const setup = () => {
     clearTimeout(timer);
+    disarm();
     if (!mq.matches) { line.classList.remove('is-reel'); fit(); return; }
     line.classList.add('is-reel');
     fit();
-    // if it already finished, stay on the final phrase; otherwise start (or pick up) the cycle
-    if (i >= lastI) { show(lastI); return; }
+    if (armScroll()) return;
+    // timed fallback: if it already finished, stay on the final phrase; otherwise start (or pick up)
+    if (i >= lastI) { show(lastI, false); return; }
     word.textContent = all[i];
     timer = setTimeout(tick, i ? STEP : START);
   };
   mq.addEventListener ? mq.addEventListener('change', setup) : mq.addListener(setup);
-  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (innerWidth !== vw) { vw = innerWidth; fit(); } }, 150); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  addEventListener('scroll', queue, { passive: true });
+  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (innerWidth !== vw) { vw = innerWidth; setup(); } }, 150); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(setup);
   setup();
 })();
 </script>
