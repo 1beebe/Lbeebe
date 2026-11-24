@@ -12,7 +12,7 @@ Last updated: 2026-11-24
 - Business: L. Beebe, LLC (founder); co-founder of 10xJobs (https://10xjobs.co), an AI career coach for job seekers
 - Focus: AI enablement and training for non-technical teams (help desk, implementation, operations, marketing)
 - Location: Estero, FL, USA; works online across the U.S. and travels for in-person sessions
-- Credentials: PMP; MindStudio Level 3 AI Agent Developer; M.A. Social Sciences (University of Chicago); M.S. Special Education (St. John's University); B.A. Religion (Reed College); NYC Teaching Fellow
+- Credentials: PMP; MindStudio Level 3 AI Agent Developer; M.A. Social Sciences (University of Chicago); M.S. Education (St. John's University); B.A. Religion (Reed College); NYC Teaching Fellow
 - Tools she builds with: MindStudio, Claude and Claude Code, ChatGPT, Codex, NotebookLM
 - LinkedIn: https://www.linkedin.com/in/ligaya-beebe/
 - GitHub: https://github.com/1beebe
