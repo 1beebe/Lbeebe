@@ -1363,6 +1363,13 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     run.classList.add('is-armed');
     scroll = true;
     paint();
+    if (location.search.includes('dbg')) {
+      const d = document.createElement('div');
+      d.style.cssText = 'position:fixed;left:8px;bottom:8px;z-index:99;background:#000;color:#0f0;font:14px monospace;padding:6px;white-space:pre';
+      document.body.appendChild(d);
+      const up = () => { const m = document.querySelector('main').getBoundingClientRect().top; d.textContent = `y=${Math.round(scrollY)} s0=${s0} per=${per} lastI=${lastI} land=${s0+lastI*per} R=${R} enter=${s0+R} dead=${Math.round(dead)} top=${top} heroH=${heroH} V=${V} cb=${Math.round(contentBottom)} mainTop=${Math.round(m)} i=${i}`; };
+      addEventListener('scroll', up, { passive: true }); up();
+    }
     return true;
   };
   const tick = () => { i += 1; show(i); if (i < lastI) timer = setTimeout(tick, STEP); };
