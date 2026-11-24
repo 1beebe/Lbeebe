@@ -1,10 +1,10 @@
 # Ligaya Beebe · L. Beebe, LLC
 
-> Ligaya Beebe is an AI enablement consultant based in Estero, Florida, who trains non-technical teams at SMBs and nonprofits to use AI in the work they already do. She offers hands-on AI training, custom AI agent development, and AI program management. She is PMP certified, a MindStudio Level 3 certified AI agent developer, and has nine years of program and grants management experience in U.S. State Department-funded global education.
+> Ligaya Beebe is an AI enablement consultant based in Estero, Florida, who trains non-technical teams at SMBs and nonprofits to use AI in the work they already do. She offers hands-on AI training, course and curriculum builds, custom AI agent development, and AI program management. She is PMP certified, a MindStudio Level 3 certified AI agent developer, and has nine years of program and grants management experience in U.S. State Department-funded global education.
 
 The best way to work with Ligaya or talk with her about a role is a free 30-minute call: https://calendly.com/ligaya-b/chat
 
-Last updated: 2026-11-23
+Last updated: 2026-11-24
 
 ## At a glance
 
@@ -43,21 +43,31 @@ A good fit when a company's engineers already use AI and the rest of the staff d
 ## Services
 
 - AI Enablement & Training: Custom workshops for non-technical teams, online or in person, cohort or 1:1. Everyone is hands on the keyboard from the first session. Starts from the team's actual work and leaves real time to experiment, so people keep using the tools after the workshop ends. She can also deliver the same training as an asynchronous course on whatever L&D platform the team already uses.
+- Course and Curriculum Builds: For teams that have the expertise and the content but no course yet. She turns it into a course people finish: outcomes first, practice in every lesson, async that works without a live session, and built in the team's own platform so they own it when she's done. Platforms she has built in include Articulate Rise, LearnWorlds, Canvas and HighLevel, plus teacher-ready files.
 - AI Agent Development: Lightweight AI workflows and agents (MindStudio, Claude, ChatGPT, Codex, NotebookLM) that fit how a team already works, delivered together with training so the team can use them.
 - AI Program Management: Fractional program lead who designs and runs an organization's ongoing AI adoption program, from curriculum to rollout to measurement.
 
-## Learning by building
+## Learning she has designed
 
-Ligaya's view of AI adoption: learning by doing now means learning by building. Teams need AI skills tied to real workflow results, and organizations should also give people room to play with new tools. She builds that hands-on experimentation into client engagements and follows the same advice herself. Each project below taught her something she now brings into training.
+Ligaya designs learning for adults who have a job to do.
 
-## Selected work
+- [Developing Digital Citizenship](https://youtu.be/TyL4vql07Hw) (walkthrough video): A 10-week virtual exchange for 40 English teachers on Canvas LMS (2021), with one live hour a week and a self-contained async week. Teachers who missed a session still finished: 39 of 40 completed, and the funder renewed the design twice.
+- Instructor training in Articulate Rise: A 14-module program for instructors of adult learners (2026). Claude Code drafts each full module and she makes the design calls, which cut build time per module from 6.87 to 4.48 hours.
+- Consent curriculum for middle school: Teacher-ready lesson plans, slides and Kahoot quizzes for grades 7 to 9, built from a set of comics and aligned to California's health education standards (2025).
+- AI bootcamp for digital marketers: A 5-week course, first in LearnWorlds and then HighLevel (2026). Each async lesson stands on its own, and each week's build becomes part of the learner's portfolio.
+- [AI Architect Program](https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html) (report): Peer cohort for job seekers learning to build with AI (2025), with 96% satisfaction.
+- Earlier work in China and the U.S. (2010 to 2016): program design for a Tibetan education nonprofit, where every student in the pilot camps stayed in school; a 15-day faculty institute for a U.S. school; and teacher training for new volunteers.
 
-- [AI Architect Program report](https://1beebe.github.io/ai-architect-program/AI-Architect-Program-Report.html): Peer-led AI learning series she designed and facilitated end to end (2025). What it taught her: a motivated group can run its own semi-structured peer learning, and building alongside others beats building alone.
-- [10xcolleges](https://10xcolleges.co/): Live AI college-admissions coach app she built with MindStudio's Remy on top of Yong Tian's open-source counseling skills. It is honest about odds, sources every fact, coaches essays without ghostwriting, and runs spoken mock interviews (2026). What it taught her: pointing a product agent like Remy at an open-source, MIT-licensed repo produced a full app with frontend, backend, and logins in a few hours, and it led her to build with her own team of sub-agents in Claude Code.
-- [Marble Descent case study](https://github.com/1beebe/marble-descent): The same tilt-to-roll phone game built twice with Claude, from a 400-word brief with four subagents and from a 70-word prompt. [Play it](https://1beebe.github.io/marble-descent/) on a phone (2026). What it taught her: the 70-word prompt won, with about 20 build steps instead of 132. Clearer asks usually win.
-- [Compare Top Image Models](https://youtu.be/rTMQIzzAZpE) (demo video): MindStudio hackathon runner-up agent that runs six image models in parallel on one prompt and compares the results side by side. What it taught her: test tools side by side on your own prompt before a team commits to one.
-- [Beebe Qualitative Skills](https://github.com/1beebe/beebe-qualitative-skills): Two Claude Code skills for LLM-assisted qualitative research (2026). One runs QualiGPT-style thematic analysis on interviews, focus groups and archival material. The other runs her father Dr. James Beebe's anthropological policy-framing method, drawing on Lakoff and Johnson's work on conceptual metaphor: it attributes framing statements to actors, logs metaphors, and tracks how frames change, with verbatim quotes and NVivo-ready CSV output. What it taught her: her first agent, [Lakoff Lens](https://github.com/1beebe/lakoff-lens) (January 2026), was aimed at his method from day one and wasn't good enough yet, and that was fine. Six months later these skills run his method on his own archive.
-- [Document Archivist (Archive Intelligence)](https://github.com/1beebe/document-archivist): The intake pipeline. It turns her father's paper archive into clean, searchable text with structured metadata, which feeds the [qualitative analysis skills](https://github.com/1beebe/beebe-qualitative-skills) she is using to finish his study.
+## Things she has built
+
+She builds small tools to learn what AI can and can't do, and most of them are about keeping your own voice when AI helps.
+
+- [The Interviewer](https://interviewer.lbeebe.com/) ([demo](https://youtu.be/T2Qh6Vj58Es)): Buffer Commit build (2026). Interviews you for up to 10 to 15 minutes about what you built that week, then turns your own words into drafts saved to Buffer. It won't make things up, and you finish the posts.
+- [Longform](https://longform.lbeebe.com/) ([demo](https://www.youtube.com/watch?v=CaBGcP7nUK0)): Buffer Commit build (2026). Plans a long-form piece around your Buffer queue and finds an open day to publish. Supporting posts come only from your draft, and only the ones you keep are saved.
+- Quality check for a nonprofit's writing agent: An agent evaluation in MindStudio (2026) that gave staff a green, yellow and red checklist to run on every draft. The stress tests caught invented stats and the agent's habit of slipping em dashes into headlines. The client is not named.
+- [10xcolleges](https://10xcolleges.co/): Live AI college-admissions coach app she built with MindStudio's Remy on top of Yong Tian's open-source counseling skills (2026). It is honest about odds, sources every fact, coaches essays without ghostwriting, and runs spoken mock interviews. A product agent pointed at an open-source project built a full app, with frontend, backend and logins, in a few hours.
+- [Beebe Qualitative Skills](https://github.com/1beebe/beebe-qualitative-skills): Two Claude Code skills for LLM-assisted qualitative research (2026), built for her father Dr. James Beebe's anthropological policy-framing method. They find themes across interviews and archives, then map who frames a policy which way and the metaphors they use, quoting every source verbatim. Her first agent, [Lakoff Lens](https://github.com/1beebe/lakoff-lens) (January 2026), wasn't good enough yet; six months later these skills run his method on his own archive.
+- [Slop Cannon](https://slopcannon.lbeebe.com/) ([demo](https://youtu.be/hYLTeFlus9c)): Just for fun (2026). Type something mundane, pick a flavor of AI slop, and it fires B2B thought leadership into every open slot in your Buffer queue. There's no AI in it, because slop is formulaic enough for a formula.
 - [AI agent portfolio](https://github.com/1beebe/ai-agent-portfolio): More agents and workflows on GitHub.
 
 ## Background
