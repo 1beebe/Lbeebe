@@ -458,8 +458,7 @@ p { max-width: 62ch; text-wrap: pretty; }
 .build-line.is-reel .build-reel { display: block; height: 1em; }
 .build-line.is-stacked .build-reel { height: 2em; }
 .build-line.is-stacked .build-word { display: block; }
-.build-word { display: inline-block; transition: opacity 160ms ease, transform 220ms var(--ease-out); }
-.build-word.is-swap { opacity: 0; transform: translateY(.35em); }
+.build-word { display: inline-block; }
 .build-word.is-final { color: var(--accent); }
 .fit .lead { max-width: 46ch; }
 .fit .lead + p { margin-top: 1.25rem; max-width: 60ch; }
@@ -1238,17 +1237,18 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 })();
 </script>
 <script>
-// "I build ___": with motion allowed, the last word cycles once and lands on the final phrase.
-// The font shrinks so the longest phrase fits, so nothing wraps or jumps on phones.
-// Screen readers always get the full sentence; reduced motion sees it as plain text.
+// "I build ___": with motion allowed, scrolling drives the last word. As the line travels up the
+// screen it steps through the list, and it lands on the final phrase as the line reaches the top.
+// Scrolling back up runs it in reverse. The font shrinks so the longest phrase fits, so nothing
+// wraps or jumps. Screen readers always get the full sentence; reduced motion sees it as plain text.
 (() => {
   const line = document.getElementById('build-line');
   if (!line) return;
   const word = line.querySelector('.build-word');
   const words = ['courses', 'AI workflows', 'learning experiences', 'agents', 'AI workshops', 'communities of practice', 'evals', 'programs', 'relationships'];
-  const last = 'results you can measure';
+  const all = words.concat('results you can measure'), lastI = all.length - 1;
   const mq = matchMedia('(prefers-reduced-motion: no-preference)');
-  let timer = 0, played = false, io = null, rt = 0;
+  let shown = -1, raf = 0, rt = 0;
   // size the line so the longest phrase fits at this width. If one line would need the text much
   // smaller (phones), "I build" sits on its own line and the phrase gets the full width below it.
   const fit = () => {
@@ -1258,47 +1258,47 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     const m = document.createElement('span');
     m.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;';
     line.appendChild(m);
-    const widest = pre => Math.max(...words.concat(last).map(w => { m.textContent = pre + w; return m.offsetWidth; }));
+    const widest = pre => Math.max(...all.map(w => { m.textContent = pre + w; return m.offsetWidth; }));
     const room = line.clientWidth, base = parseFloat(getComputedStyle(line).fontSize);
     let need = widest('I build ');
     if (room / need < 0.8) { line.classList.add('is-stacked'); need = widest(''); }
     m.remove();
     if (need > room) line.style.fontSize = (base * room / need * 0.98).toFixed(2) + 'px';
   };
-  const set = (text, final) => {
-    word.classList.add('is-swap');
-    setTimeout(() => {
-      word.textContent = text;
-      word.classList.toggle('is-final', !!final);
-      word.classList.remove('is-swap');
-    }, 170);
+  // 0 when the line enters near the bottom of the screen, 1 when it reaches the top
+  const progress = () => {
+    const vh = innerHeight, top = line.getBoundingClientRect().top;
+    const from = vh * 0.88, to = vh * 0.1;
+    return Math.min(1, Math.max(0, (from - top) / (from - to)));
   };
-  const play = () => {
-    played = true;
-    let i = 0;
-    const tick = () => {
-      i += 1;
-      if (i < words.length) { set(words[i]); timer = setTimeout(tick, 820); }
-      else set(last, true);
-    };
-    timer = setTimeout(tick, 900);
+  const show = i => {
+    if (i === shown) return;
+    const up = i > shown;
+    shown = i;
+    word.textContent = all[i];
+    word.classList.toggle('is-final', i === lastI);
+    if (word.animate) word.animate([
+      { opacity: .15, transform: `translateY(${up ? '.3em' : '-.3em'})` },
+      { opacity: 1, transform: 'none' }
+    ], { duration: 180, easing: 'ease-out' });
   };
+  const paint = () => {
+    raf = 0;
+    if (!line.classList.contains('is-reel')) return;
+    const p = progress();
+    show(p >= 1 ? lastI : Math.min(lastI - 1, Math.floor(p * lastI)));
+  };
+  const queue = () => { if (!raf) raf = requestAnimationFrame(paint); };
   const setup = () => {
-    clearTimeout(timer);
-    if (io) { io.disconnect(); io = null; }
+    shown = -1;
     if (!mq.matches) { line.classList.remove('is-reel'); fit(); return; }
     line.classList.add('is-reel');
     fit();
-    if (played) { word.textContent = last; word.classList.add('is-final'); return; }
-    word.textContent = words[0];
-    if (!('IntersectionObserver' in window)) { play(); return; }
-    io = new IntersectionObserver(entries => {
-      if (entries.some(en => en.isIntersecting)) { io.disconnect(); io = null; play(); }
-    }, { threshold: 0.9 });
-    io.observe(line);
+    paint();
   };
   mq.addEventListener ? mq.addEventListener('change', setup) : mq.addListener(setup);
-  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit, 150); });
+  addEventListener('scroll', queue, { passive: true });
+  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { fit(); queue(); }, 150); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   setup();
 })();
