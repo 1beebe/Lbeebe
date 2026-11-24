@@ -417,9 +417,6 @@ p { max-width: 62ch; text-wrap: pretty; }
 .ink-circle > .ink { left: -7%; top: -16%; width: 114%; height: 132%; }
 .hero-sub .ink-circle { margin-left: .18em; }
 .ink-under > .ink { left: -2%; width: 104%; bottom: -.16em; height: .24em; }
-.teams button { position: relative; }
-.teams .ink { left: -12px; top: -12px; width: calc(100% + 24px); height: calc(100% + 24px); }
-.teams .ink path { stroke-width: 2.5; }
 @media (prefers-reduced-motion: reduce) { .ink.drawn path { transition: none; } }
 
 /* nav */
@@ -449,9 +446,13 @@ p { max-width: 62ch; text-wrap: pretty; }
 .hero-actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; align-items: center; }
 
 /* proof */
-.fit { background: var(--white); padding: clamp(3rem, 2rem + 4vw, 6rem) var(--margin); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.5rem, 4vw, 4rem); }
-.build-pin { grid-column: 1 / -1; margin: 0 0 clamp(.5rem, 2vw, 2rem); }
-.build-pin.is-pinned .build-line { position: sticky; }
+.fit { background: var(--white); padding: clamp(3rem, 2rem + 4vw, 6rem) var(--margin); }
+.fit-body { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.5rem, 4vw, 4rem); }
+.build-pin { margin: 0 0 calc(clamp(1.5rem, 4vw, 4rem) + clamp(.5rem, 2vw, 2rem)); }
+/* while the words change, the line holds near the top and the section below scrolls up under it */
+.build-pin.is-pinned { position: sticky; z-index: 2; }
+.build-pin.is-pinned::before { content: ""; position: absolute; z-index: -1; left: calc(-1 * var(--margin)); right: calc(-1 * var(--margin)); top: calc(-1 * var(--pin-top, 0px)); bottom: -.4em; background: var(--white); }
+.build-pin.is-pinned::after { content: ""; position: absolute; z-index: -1; left: calc(-1 * var(--margin)); right: calc(-1 * var(--margin)); top: calc(100% + .4em); height: 3rem; background: linear-gradient(var(--white), transparent); }
 .build-line { margin: 0; font-size: clamp(2rem, 1.2rem + 3vw, 3.25rem); line-height: 1; }
 .build-reel { display: none; }
 .build-line.is-reel { font-size: clamp(3rem, 1rem + 3.4vw, 5.5rem); white-space: nowrap; overflow: hidden; }
@@ -504,9 +505,15 @@ p { max-width: 62ch; text-wrap: pretty; }
 .picker { background: var(--spoonbill); padding: var(--section) var(--margin); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); }
 .picker-intro { margin-top: 1.25rem; }
 .teams { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .9rem; }
-.teams button { font: inherit; font-weight: 600; border: 0; min-height: 2.9rem; padding: .6rem 1.1rem; background: var(--spoonbill-2); color: var(--ink); transition: background-color 180ms ease, color 180ms ease; }
+.teams button { display: inline-flex; align-items: center; gap: .5rem; font: inherit; font-weight: 600; border: 0; min-height: 2.9rem; padding: .5rem 1.1rem .5rem .8rem; background: var(--spoonbill-2); color: var(--ink); transition: background-color 180ms ease, color 180ms ease; }
 .teams button:hover { background: var(--spoonbill-3); }
 .teams button[aria-selected="true"] { background: var(--ink); color: var(--spoonbill); }
+/* a small hand-drawn icon for each team; the chosen team's icon draws itself in */
+.teams .team-ico { flex: none; display: block; width: 1.9rem; height: 1.9rem; }
+.team-ico .tp { fill: none; stroke: currentColor; stroke-width: 5.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.teams button[aria-selected="true"] .team-ico .tp { animation: team-draw 700ms cubic-bezier(.65, 0, .35, 1) both; }
+@keyframes team-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .teams button[aria-selected="true"] .team-ico .tp { animation: none; } }
 .picker-note { margin-top: 1.5rem; font-size: var(--step-small); color: var(--spoonbill-ink); }
 .exchange-step + .exchange-step { margin-top: 1.75rem; }
 .exchange-step > p:first-child { font-weight: 600; }
@@ -597,7 +604,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 
 /* services: stacking cards on wide screens (armed by script; the grid above is the fallback) */
 .svc-n { display: none; }
-.svc-stack.is-armed { --top: 6.5rem; --run: 75svh; height: calc(var(--stage-h) + (var(--n) - 1) * var(--run)); }
+.svc-stack.is-armed { --top: 6.5rem; --run: 75svh; height: calc(var(--stage-h) + (var(--n) - 1) * var(--run)); margin-bottom: calc(-1 * var(--tuck, 0px)); }
 .svc-stack.is-armed .svc-stage { position: sticky; top: var(--top); height: var(--stage-h); overflow: hidden; margin-top: -1.5rem; padding-top: 1.5rem; -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 7rem), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 7rem), transparent); }
 .svc-stack.is-armed .svc-list { display: block; position: relative; height: 100%; }
 .svc-stack.is-armed .svc { position: absolute; left: 0; right: 0; top: 0; display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 0 clamp(2rem, 4vw, 4.5rem); align-content: start; clip-path: inset(-4rem -4rem var(--clip, -4rem) -4rem); padding: clamp(2rem, 3vw, 2.75rem); transform-origin: 50% 0; transform: translateY(var(--y, 0px)) scale(var(--s, 1)); box-shadow: 0 -1px 0 rgba(10, 10, 10, .08), 0 -1.25rem 2.5rem -1.75rem rgba(10, 10, 10, .45); will-change: transform; }
@@ -641,7 +648,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 @media (max-width: 1000px) {
   .nums { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .quote-lead { grid-row: auto; }
-  .quotes, .services-head, .picker, .about, .fit { grid-template-columns: minmax(0, 1fr); }
+  .quotes, .services-head, .picker, .about, .fit-body { grid-template-columns: minmax(0, 1fr); }
   .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .hero-me { margin-top: 2.25rem; display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: 1.1rem; align-items: center; max-width: 34rem; }
@@ -710,10 +717,12 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 
 <section class="fit" aria-labelledby="fit-h">
   <div class="build-pin"><p class="build-line display" id="build-line"><span class="build-static">I build courses, AI workflows, learning experiences, agents, AI workshops, communities of practice, evals, programs and relationships, with results you can measure.</span><span class="build-reel" aria-hidden="true">I build <span class="build-word">courses</span></span></p></div>
+  <div class="fit-body">
   <h2 class="h2 display" id="fit-h">Who trains non-technical teams to use AI?</h2>
   <div>
     <p class="lead">L.&nbsp;Beebe, LLC is my AI training practice for small and mid-sized companies: I teach non-technical teams to apply tools like Claude and ChatGPT to the workflows they already run. I meet teams in whatever they already pay for, whether that’s ChatGPT Business, Claude, or Gemini. I do this through hands-on workshops, custom agent builds and fractional AI program leadership.</p>
     <p>I’m a good fit if your engineers already use AI and the rest of the company doesn’t. I train help desk, operations, implementation and marketing teams hands-on, then build the small workflows or agents they’ll keep using. If you need production software built, hire an engineer. If you bought licenses and can’t tell whether anyone uses them, that’s exactly where I start.</p>
+  </div>
   </div>
 </section>
 
@@ -732,11 +741,11 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     <h2 class="h2 display" id="pick-h">Which team is stuck?</h2>
     <p class="picker-intro lead">Pick one to see how I’d start.</p>
     <div class="teams" role="tablist" aria-label="Teams">
-      <button role="tab" id="t-help" aria-selected="true" aria-controls="p-help">Help desk<svg class="ink" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M168 10 C 120 0, 40 2, 14 18 C -4 32, 10 54, 70 57 C 140 61, 196 50, 194 30 C 192 16, 172 8, 146 7"/></svg></button>
-      <button role="tab" id="t-impl" aria-selected="false" aria-controls="p-impl" tabindex="-1">Implementation<svg class="ink" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M168 10 C 120 0, 40 2, 14 18 C -4 32, 10 54, 70 57 C 140 61, 196 50, 194 30 C 192 16, 172 8, 146 7"/></svg></button>
-      <button role="tab" id="t-ops" aria-selected="false" aria-controls="p-ops" tabindex="-1">Operations<svg class="ink" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M168 10 C 120 0, 40 2, 14 18 C -4 32, 10 54, 70 57 C 140 61, 196 50, 194 30 C 192 16, 172 8, 146 7"/></svg></button>
-      <button role="tab" id="t-mkt" aria-selected="false" aria-controls="p-mkt" tabindex="-1">Marketing<svg class="ink" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M168 10 C 120 0, 40 2, 14 18 C -4 32, 10 54, 70 57 C 140 61, 196 50, 194 30 C 192 16, 172 8, 146 7"/></svg></button>
-      <button role="tab" id="t-lead" aria-selected="false" aria-controls="p-lead" tabindex="-1">Leadership<svg class="ink" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M168 10 C 120 0, 40 2, 14 18 C -4 32, 10 54, 70 57 C 140 61, 196 50, 194 30 C 192 16, 172 8, 146 7"/></svg></button>
+      <button role="tab" id="t-help" aria-selected="true" aria-controls="p-help"><svg class="doodle team-ico" viewBox="0 0 80 80" aria-hidden="true" focusable="false"><path pathLength="1" class="tp" d="M16 46 V38 C16 22 28 12 40 12 C52 12 64 22 64 38 V46"/><rect pathLength="1" class="tp" x="10" y="40" width="12" height="20" rx="4"/><rect pathLength="1" class="tp" x="58" y="40" width="12" height="20" rx="4"/><path pathLength="1" class="tp" d="M64 60 C64 68 56 71 46 71"/><circle pathLength="1" class="tp" cx="42" cy="71" r="3"/></svg><span>Help desk</span></button>
+      <button role="tab" id="t-impl" aria-selected="false" aria-controls="p-impl" tabindex="-1"><svg class="doodle team-ico" viewBox="0 0 80 80" aria-hidden="true" focusable="false"><path pathLength="1" class="tp" d="M56 12 C44 8 34 18 38 28 L14 52 C9 57 16 66 21 61 L45 37 C55 41 66 34 64 22 L56 28 L50 22 Z"/><circle pathLength="1" class="tp" cx="18" cy="57" r="1.5"/></svg><span>Implementation</span></button>
+      <button role="tab" id="t-ops" aria-selected="false" aria-controls="p-ops" tabindex="-1"><svg class="doodle team-ico" viewBox="0 0 80 80" aria-hidden="true" focusable="false"><rect pathLength="1" class="tp" x="18" y="14" width="44" height="56" rx="3"/><rect pathLength="1" class="tp" x="30" y="8" width="20" height="10" rx="2"/><path pathLength="1" class="tp" d="M26 33 l5 5 l9 -10 M46 34 H56"/><path pathLength="1" class="tp" d="M26 51 l5 5 l9 -10 M46 52 H56"/></svg><span>Operations</span></button>
+      <button role="tab" id="t-mkt" aria-selected="false" aria-controls="p-mkt" tabindex="-1"><svg class="doodle team-ico" viewBox="0 0 80 80" aria-hidden="true" focusable="false"><path pathLength="1" class="tp" d="M12 34 H24 L54 18 V62 L24 46 H12 Z"/><path pathLength="1" class="tp" d="M20 46 L24 62 H30 L29 46"/><path pathLength="1" class="tp" d="M62 30 C67 34 67 46 62 50 M68 22 C77 30 77 50 68 58"/></svg><span>Marketing</span></button>
+      <button role="tab" id="t-lead" aria-selected="false" aria-controls="p-lead" tabindex="-1"><svg class="doodle team-ico" viewBox="0 0 80 80" aria-hidden="true" focusable="false"><path pathLength="1" class="tp" d="M30 70 V12"/><path pathLength="1" class="tp" d="M30 14 C42 8 50 20 62 14 V36 C50 42 42 30 30 36"/><path pathLength="1" class="tp" d="M8 70 C26 61 54 61 72 70"/></svg><span>Leadership</span></button>
     </div>
     <p class="picker-note">Illustrative examples of how a first session might go.</p>
   </div>
@@ -1046,33 +1055,23 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 // team picker
 (() => {
   const tabs = [...document.querySelectorAll('.teams [role=tab]')];
-  let seen = !('IntersectionObserver' in window);
-  // redraw each tab's loop at the tab's own size, so it clears the corners at every width (the ink box is the tab plus 12px a side)
-  const loop = t => { const W = t.offsetWidth + 24, H = t.offsetHeight + 24, h = H / 2, svg = t.querySelector('.ink');
-    if (!t.offsetWidth) return;
-    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-    svg.querySelector('path').setAttribute('d', `M${W - 26} 4 C ${W - 70} 0, 70 1, 24 4 C 7 5, 2 10, 3 ${h} C 3 ${H - 8}, 6 ${H - 3}, 28 ${H - 3} C 80 ${H - 1}, ${W - 80} ${H - 1}, ${W - 24} ${H - 4} C ${W - 6} ${H - 5}, ${W - 2} ${H - 10}, ${W - 3} ${h} C ${W - 2} 6, ${W - 6} 2, ${W - 36} 2`); };
-  tabs.forEach(loop);
-  if ('ResizeObserver' in window) { const ro = new ResizeObserver(es => es.forEach(e => loop(e.target))); tabs.forEach(t => ro.observe(t)); }
   const pick = (tab, focus) => {
-    tabs.forEach(t => { const on = t === tab; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; document.getElementById(t.getAttribute('aria-controls')).hidden = !on; t.querySelector('.ink').classList.toggle('drawn', on && seen); });
+    tabs.forEach(t => { const on = t === tab; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; document.getElementById(t.getAttribute('aria-controls')).hidden = !on; });
     if (focus) tab.focus();
   };
-  document.addEventListener('picker-seen', () => { seen = true; pick(tabs.find(t => t.getAttribute('aria-selected') === 'true')); });
   tabs.forEach((t, i) => {
-    t.addEventListener('click', () => { seen = true; pick(t); });
-    t.addEventListener('keydown', e => { const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (d) { e.preventDefault(); seen = true; pick(tabs[(i + d + tabs.length) % tabs.length], true); } });
+    t.addEventListener('click', () => pick(t));
+    t.addEventListener('keydown', e => { const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (d) { e.preventDefault(); pick(tabs[(i + d + tabs.length) % tabs.length], true); } });
   });
 })();
 
-// ink marks: hero circle on load, picker circle once the picker is in view, close underline on arrival
+// ink marks: hero circle on load, close underline on arrival
 (() => {
   const draw = el => el && el.querySelector('.ink').classList.add('drawn');
   setTimeout(() => draw(document.getElementById('hero-ink')), 450);
-  if (!('IntersectionObserver' in window)) { draw(document.getElementById('close-ink')); document.querySelectorAll('.teams [aria-selected="true"]').forEach(draw); return; }
-  const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; io.unobserve(e.target);
-    if (e.target.classList.contains('teams')) { document.dispatchEvent(new Event('picker-seen')); } else draw(e.target); }), { rootMargin: '0px 0px -25% 0px' });
-  io.observe(document.querySelector('.teams')); io.observe(document.getElementById('close-ink'));
+  if (!('IntersectionObserver' in window)) { draw(document.getElementById('close-ink')); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; io.unobserve(e.target); draw(e.target); }), { rootMargin: '0px 0px -25% 0px' });
+  io.observe(document.getElementById('close-ink'));
 })();
 
 // work preview: plays only on hover or focus, never on its own; a clip with data-rate plays at that speed, the rest at 1.6x
@@ -1208,7 +1207,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   const queue = () => { if (!raf) raf = requestAnimationFrame(paint); };
   const arm = () => {
     sk.classList.remove('is-armed');
-    ['--n', '--stage-h'].forEach(v => sk.style.removeProperty(v));
+    ['--n', '--stage-h', '--tuck'].forEach(v => sk.style.removeProperty(v));
     cards.forEach(c => ['--y', '--s', '--dim', '--clip'].forEach(v => c.style.removeProperty(v)));
     if (!mq.matches) return;
     sk.classList.add('is-armed');
@@ -1217,7 +1216,11 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     if (tallest > room) { sk.classList.remove('is-armed'); return; }
     const deck = Math.max(...H.map((v, c) => c * 1.5 * r + v));
     sk.style.setProperty('--n', n);
-    sk.style.setProperty('--stage-h', Math.min(innerHeight - 6.5 * r, deck + 10 * r) + 'px');
+    const stageH = Math.min(innerHeight - 6.5 * r, deck + 10 * r);
+    sk.style.setProperty('--stage-h', stageH + 'px');
+    // the stage keeps empty room under the deck for the next card to wait in; once the last card
+    // has landed that room is just white space, so the next section tucks up into most of it
+    sk.style.setProperty('--tuck', Math.max(0, Math.min(5 * r, stageH - deck - 2 * r)) + 'px');
     paint();
   };
   // keyboard: tabbing into a card scrolls to the point where that card sits on top
@@ -1240,35 +1243,38 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 </script>
 <script>
 // "I build ___": with motion allowed, scrolling drives the last word. As the line travels up the
-// screen it steps through the list; near the top it pins in place for a stretch of extra scroll so
-// each word gets room (more on phones, where one flick covers a lot), then lands on the final phrase
-// and moves on with the page.
+// screen it steps through the list; near the top it holds in place while the rest of its section
+// scrolls up underneath, so the words get room without any empty scrolling. It lands on the final
+// phrase just before the section runs out, then moves on with the page.
 // Scrolling back up runs it in reverse. The font shrinks so the longest phrase fits, so nothing
 // wraps or jumps. Screen readers always get the full sentence; reduced motion sees it as plain text.
 (() => {
   const line = document.getElementById('build-line');
   if (!line) return;
-  const pin = line.parentElement, word = line.querySelector('.build-word');
+  const pin = line.parentElement, sec = pin.parentElement, word = line.querySelector('.build-word');
   const words = ['courses', 'AI workflows', 'learning experiences', 'agents', 'AI workshops', 'communities of practice', 'evals', 'programs', 'relationships'];
   const all = words.concat('results you can measure'), lastI = all.length - 1;
   const mq = matchMedia('(prefers-reduced-motion: no-preference)');
-  let shown = -1, raf = 0, rt = 0, vh = innerHeight, vw = innerWidth, steps = 1;
+  let shown = -1, raf = 0, rt = 0, vh = innerHeight, vw = innerWidth, steps = 1, padT = 0;
   // scroll per word as a share of the screen height; the last phrase holds a moment before release
   const perWord = () => innerWidth <= 700 ? 0.22 : 0.16, HOLD = 0.2, FROM = 0.88, TOP = 0.1;
-  // the pin is as tall as the line plus whatever extra scroll the words need beyond the line's
-  // own trip up the screen. Screen height is read once per width, so a phone's address bar
-  // showing and hiding doesn't shift the page mid-scroll.
+  // the words spread over the scroll from the line entering the screen to the moment the section
+  // below has scrolled up under it, capped at the per-word pace above. Screen height is read once
+  // per width, so a phone's address bar showing and hiding doesn't shift anything mid-scroll.
   const layout = () => {
     pin.classList.remove('is-pinned');
-    pin.style.removeProperty('height');
-    line.style.removeProperty('top');
+    pin.style.removeProperty('top');
+    pin.style.removeProperty('--pin-top');
     if (!line.classList.contains('is-reel')) return;
     vh = innerHeight; vw = innerWidth;
-    steps = perWord() * lastI * vh;
-    const run = Math.max(0, steps + HOLD * vh - (FROM - TOP) * vh);
+    const top = TOP * vh, cs = getComputedStyle(sec);
+    padT = parseFloat(cs.paddingTop);
+    const room = sec.offsetHeight - padT - parseFloat(cs.paddingBottom) - pin.offsetHeight - parseFloat(getComputedStyle(pin).marginBottom);
+    const available = (FROM - TOP) * vh + room;
+    steps = Math.max(0.3 * vh, Math.min(perWord() * lastI * vh, available - HOLD * vh));
     pin.classList.add('is-pinned');
-    line.style.top = (TOP * vh).toFixed(1) + 'px';
-    pin.style.height = (line.offsetHeight + run).toFixed(1) + 'px';
+    pin.style.top = top.toFixed(1) + 'px';
+    pin.style.setProperty('--pin-top', top.toFixed(1) + 'px');
   };
   // size the line so the longest phrase fits at this width. If one line would need the text much
   // smaller (phones), "I build" sits on its own line and the phrase gets the full width below it.
@@ -1286,8 +1292,9 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     m.remove();
     if (need > room) line.style.fontSize = (base * room / need * 0.98).toFixed(2) + 'px';
   };
-  // how far the page has scrolled since the line came up past 88% of the screen
-  const scrolled = () => FROM * vh - pin.getBoundingClientRect().top;
+  // how far the page has scrolled since the line came up past 88% of the screen (measured from
+  // the section, since the line itself stops moving once it holds)
+  const scrolled = () => FROM * vh - (sec.getBoundingClientRect().top + padT);
   const show = i => {
     if (i === shown) return;
     const up = i > shown;
