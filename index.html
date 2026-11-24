@@ -453,8 +453,11 @@ p { max-width: 62ch; text-wrap: pretty; }
 .build-line { grid-column: 1 / -1; margin: 0 0 clamp(.5rem, 2vw, 2rem); font-size: clamp(2rem, 1.2rem + 3vw, 3.25rem); line-height: 1; }
 .build-reel { display: none; }
 .build-line.is-reel { font-size: clamp(3rem, 1rem + 3.4vw, 5.5rem); white-space: nowrap; overflow: hidden; }
+@media (max-width: 1000px) { .build-line.is-reel { font-size: clamp(2rem, .75rem + 6vw, 3.25rem); } }
 .build-line.is-reel .build-static { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .build-line.is-reel .build-reel { display: block; height: 1em; }
+.build-line.is-stacked .build-reel { height: 2em; }
+.build-line.is-stacked .build-word { display: block; }
 .build-word { display: inline-block; transition: opacity 160ms ease, transform 220ms var(--ease-out); }
 .build-word.is-swap { opacity: 0; transform: translateY(.35em); }
 .build-word.is-final { color: var(--accent); }
@@ -1235,16 +1238,33 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 })();
 </script>
 <script>
-// "I build ___": on wide screens with motion allowed, the last word cycles once and lands on the final phrase.
-// Screen readers always get the full sentence; phones and reduced motion see it as plain text.
+// "I build ___": with motion allowed, the last word cycles once and lands on the final phrase.
+// The font shrinks so the longest phrase fits, so nothing wraps or jumps on phones.
+// Screen readers always get the full sentence; reduced motion sees it as plain text.
 (() => {
   const line = document.getElementById('build-line');
   if (!line) return;
   const word = line.querySelector('.build-word');
   const words = ['courses', 'AI workflows', 'learning experiences', 'agents', 'AI workshops', 'communities of practice', 'evals', 'programs', 'relationships'];
   const last = 'results you can measure';
-  const mq = matchMedia('(min-width: 1001px) and (prefers-reduced-motion: no-preference)');
-  let timer = 0, played = false, io = null;
+  const mq = matchMedia('(prefers-reduced-motion: no-preference)');
+  let timer = 0, played = false, io = null, rt = 0;
+  // size the line so the longest phrase fits at this width. If one line would need the text much
+  // smaller (phones), "I build" sits on its own line and the phrase gets the full width below it.
+  const fit = () => {
+    line.style.removeProperty('font-size');
+    line.classList.remove('is-stacked');
+    if (!line.classList.contains('is-reel')) return;
+    const m = document.createElement('span');
+    m.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;';
+    line.appendChild(m);
+    const widest = pre => Math.max(...words.concat(last).map(w => { m.textContent = pre + w; return m.offsetWidth; }));
+    const room = line.clientWidth, base = parseFloat(getComputedStyle(line).fontSize);
+    let need = widest('I build ');
+    if (room / need < 0.8) { line.classList.add('is-stacked'); need = widest(''); }
+    m.remove();
+    if (need > room) line.style.fontSize = (base * room / need * 0.98).toFixed(2) + 'px';
+  };
   const set = (text, final) => {
     word.classList.add('is-swap');
     setTimeout(() => {
@@ -1266,8 +1286,9 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   const setup = () => {
     clearTimeout(timer);
     if (io) { io.disconnect(); io = null; }
-    if (!mq.matches) { line.classList.remove('is-reel'); return; }
+    if (!mq.matches) { line.classList.remove('is-reel'); fit(); return; }
     line.classList.add('is-reel');
+    fit();
     if (played) { word.textContent = last; word.classList.add('is-final'); return; }
     word.textContent = words[0];
     if (!('IntersectionObserver' in window)) { play(); return; }
@@ -1277,6 +1298,8 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     io.observe(line);
   };
   mq.addEventListener ? mq.addEventListener('change', setup) : mq.addListener(setup);
+  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit, 150); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   setup();
 })();
 </script>
