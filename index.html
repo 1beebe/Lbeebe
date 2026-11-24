@@ -597,7 +597,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 
 /* services: stacking cards on wide screens (armed by script; the grid above is the fallback) */
 .svc-n { display: none; }
-.svc-stack.is-armed { --top: 6.5rem; --run: 75svh; height: calc(var(--stage-h) + (var(--n) - 1) * var(--run)); }
+.svc-stack.is-armed { --top: 6.5rem; --run: 75svh; height: calc(var(--stage-h) + (var(--n) - 1) * var(--run)); margin-bottom: calc(-1 * var(--tuck, 0px)); }
 .svc-stack.is-armed .svc-stage { position: sticky; top: var(--top); height: var(--stage-h); overflow: hidden; margin-top: -1.5rem; padding-top: 1.5rem; -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 7rem), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 7rem), transparent); }
 .svc-stack.is-armed .svc-list { display: block; position: relative; height: 100%; }
 .svc-stack.is-armed .svc { position: absolute; left: 0; right: 0; top: 0; display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 0 clamp(2rem, 4vw, 4.5rem); align-content: start; clip-path: inset(-4rem -4rem var(--clip, -4rem) -4rem); padding: clamp(2rem, 3vw, 2.75rem); transform-origin: 50% 0; transform: translateY(var(--y, 0px)) scale(var(--s, 1)); box-shadow: 0 -1px 0 rgba(10, 10, 10, .08), 0 -1.25rem 2.5rem -1.75rem rgba(10, 10, 10, .45); will-change: transform; }
@@ -1208,7 +1208,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   const queue = () => { if (!raf) raf = requestAnimationFrame(paint); };
   const arm = () => {
     sk.classList.remove('is-armed');
-    ['--n', '--stage-h'].forEach(v => sk.style.removeProperty(v));
+    ['--n', '--stage-h', '--tuck'].forEach(v => sk.style.removeProperty(v));
     cards.forEach(c => ['--y', '--s', '--dim', '--clip'].forEach(v => c.style.removeProperty(v)));
     if (!mq.matches) return;
     sk.classList.add('is-armed');
@@ -1217,7 +1217,11 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     if (tallest > room) { sk.classList.remove('is-armed'); return; }
     const deck = Math.max(...H.map((v, c) => c * 1.5 * r + v));
     sk.style.setProperty('--n', n);
-    sk.style.setProperty('--stage-h', Math.min(innerHeight - 6.5 * r, deck + 10 * r) + 'px');
+    const stageH = Math.min(innerHeight - 6.5 * r, deck + 10 * r);
+    sk.style.setProperty('--stage-h', stageH + 'px');
+    // the stage keeps empty room under the deck for the next card to wait in; once the last card
+    // has landed that room is just white space, so the next section tucks up into most of it
+    sk.style.setProperty('--tuck', Math.max(0, Math.min(5 * r, stageH - deck - 2 * r)) + 'px');
     paint();
   };
   // keyboard: tabbing into a card scrolls to the point where that card sits on top
