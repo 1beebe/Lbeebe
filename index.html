@@ -449,9 +449,13 @@ p { max-width: 62ch; text-wrap: pretty; }
 .hero-actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; align-items: center; }
 
 /* proof */
-.fit { background: var(--white); padding: clamp(3rem, 2rem + 4vw, 6rem) var(--margin); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.5rem, 4vw, 4rem); }
-.build-pin { grid-column: 1 / -1; margin: 0 0 clamp(.5rem, 2vw, 2rem); }
-.build-pin.is-pinned .build-line { position: sticky; }
+.fit { background: var(--white); padding: clamp(3rem, 2rem + 4vw, 6rem) var(--margin); }
+.fit-body { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.5rem, 4vw, 4rem); }
+.build-pin { margin: 0 0 calc(clamp(1.5rem, 4vw, 4rem) + clamp(.5rem, 2vw, 2rem)); }
+/* while the words change, the line holds near the top and the section below scrolls up under it */
+.build-pin.is-pinned { position: sticky; z-index: 2; }
+.build-pin.is-pinned::before { content: ""; position: absolute; z-index: -1; left: calc(-1 * var(--margin)); right: calc(-1 * var(--margin)); top: calc(-1 * var(--pin-top, 0px)); bottom: -.25em; background: var(--white); }
+.build-pin.is-pinned::after { content: ""; position: absolute; z-index: -1; left: calc(-1 * var(--margin)); right: calc(-1 * var(--margin)); top: calc(100% + .25em); height: 1.5rem; background: linear-gradient(var(--white), transparent); }
 .build-line { margin: 0; font-size: clamp(2rem, 1.2rem + 3vw, 3.25rem); line-height: 1; }
 .build-reel { display: none; }
 .build-line.is-reel { font-size: clamp(3rem, 1rem + 3.4vw, 5.5rem); white-space: nowrap; overflow: hidden; }
@@ -641,7 +645,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 @media (max-width: 1000px) {
   .nums { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .quote-lead { grid-row: auto; }
-  .quotes, .services-head, .picker, .about, .fit { grid-template-columns: minmax(0, 1fr); }
+  .quotes, .services-head, .picker, .about, .fit-body { grid-template-columns: minmax(0, 1fr); }
   .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .hero-me { margin-top: 2.25rem; display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: 1.1rem; align-items: center; max-width: 34rem; }
@@ -710,10 +714,12 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 
 <section class="fit" aria-labelledby="fit-h">
   <div class="build-pin"><p class="build-line display" id="build-line"><span class="build-static">I build courses, AI workflows, learning experiences, agents, AI workshops, communities of practice, evals, programs and relationships, with results you can measure.</span><span class="build-reel" aria-hidden="true">I build <span class="build-word">courses</span></span></p></div>
+  <div class="fit-body">
   <h2 class="h2 display" id="fit-h">Who trains non-technical teams to use AI?</h2>
   <div>
     <p class="lead">L.&nbsp;Beebe, LLC is my AI training practice for small and mid-sized companies: I teach non-technical teams to apply tools like Claude and ChatGPT to the workflows they already run. I meet teams in whatever they already pay for, whether that’s ChatGPT Business, Claude, or Gemini. I do this through hands-on workshops, custom agent builds and fractional AI program leadership.</p>
     <p>I’m a good fit if your engineers already use AI and the rest of the company doesn’t. I train help desk, operations, implementation and marketing teams hands-on, then build the small workflows or agents they’ll keep using. If you need production software built, hire an engineer. If you bought licenses and can’t tell whether anyone uses them, that’s exactly where I start.</p>
+  </div>
   </div>
 </section>
 
@@ -1244,35 +1250,38 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 </script>
 <script>
 // "I build ___": with motion allowed, scrolling drives the last word. As the line travels up the
-// screen it steps through the list; near the top it pins in place for a stretch of extra scroll so
-// each word gets room (more on phones, where one flick covers a lot), then lands on the final phrase
-// and moves on with the page.
+// screen it steps through the list; near the top it holds in place while the rest of its section
+// scrolls up underneath, so the words get room without any empty scrolling. It lands on the final
+// phrase just before the section runs out, then moves on with the page.
 // Scrolling back up runs it in reverse. The font shrinks so the longest phrase fits, so nothing
 // wraps or jumps. Screen readers always get the full sentence; reduced motion sees it as plain text.
 (() => {
   const line = document.getElementById('build-line');
   if (!line) return;
-  const pin = line.parentElement, word = line.querySelector('.build-word');
+  const pin = line.parentElement, sec = pin.parentElement, word = line.querySelector('.build-word');
   const words = ['courses', 'AI workflows', 'learning experiences', 'agents', 'AI workshops', 'communities of practice', 'evals', 'programs', 'relationships'];
   const all = words.concat('results you can measure'), lastI = all.length - 1;
   const mq = matchMedia('(prefers-reduced-motion: no-preference)');
-  let shown = -1, raf = 0, rt = 0, vh = innerHeight, vw = innerWidth, steps = 1;
+  let shown = -1, raf = 0, rt = 0, vh = innerHeight, vw = innerWidth, steps = 1, padT = 0;
   // scroll per word as a share of the screen height; the last phrase holds a moment before release
   const perWord = () => innerWidth <= 700 ? 0.22 : 0.16, HOLD = 0.2, FROM = 0.88, TOP = 0.1;
-  // the pin is as tall as the line plus whatever extra scroll the words need beyond the line's
-  // own trip up the screen. Screen height is read once per width, so a phone's address bar
-  // showing and hiding doesn't shift the page mid-scroll.
+  // the words spread over the scroll from the line entering the screen to the moment the section
+  // below has scrolled up under it, capped at the per-word pace above. Screen height is read once
+  // per width, so a phone's address bar showing and hiding doesn't shift anything mid-scroll.
   const layout = () => {
     pin.classList.remove('is-pinned');
-    pin.style.removeProperty('height');
-    line.style.removeProperty('top');
+    pin.style.removeProperty('top');
+    pin.style.removeProperty('--pin-top');
     if (!line.classList.contains('is-reel')) return;
     vh = innerHeight; vw = innerWidth;
-    steps = perWord() * lastI * vh;
-    const run = Math.max(0, steps + HOLD * vh - (FROM - TOP) * vh);
+    const top = TOP * vh, cs = getComputedStyle(sec);
+    padT = parseFloat(cs.paddingTop);
+    const room = sec.offsetHeight - padT - parseFloat(cs.paddingBottom) - pin.offsetHeight - parseFloat(getComputedStyle(pin).marginBottom);
+    const available = (FROM - TOP) * vh + room;
+    steps = Math.max(0.3 * vh, Math.min(perWord() * lastI * vh, available - HOLD * vh));
     pin.classList.add('is-pinned');
-    line.style.top = (TOP * vh).toFixed(1) + 'px';
-    pin.style.height = (line.offsetHeight + run).toFixed(1) + 'px';
+    pin.style.top = top.toFixed(1) + 'px';
+    pin.style.setProperty('--pin-top', top.toFixed(1) + 'px');
   };
   // size the line so the longest phrase fits at this width. If one line would need the text much
   // smaller (phones), "I build" sits on its own line and the phrase gets the full width below it.
@@ -1290,8 +1299,9 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     m.remove();
     if (need > room) line.style.fontSize = (base * room / need * 0.98).toFixed(2) + 'px';
   };
-  // how far the page has scrolled since the line came up past 88% of the screen
-  const scrolled = () => FROM * vh - pin.getBoundingClientRect().top;
+  // how far the page has scrolled since the line came up past 88% of the screen (measured from
+  // the section, since the line itself stops moving once it holds)
+  const scrolled = () => FROM * vh - (sec.getBoundingClientRect().top + padT);
   const show = i => {
     if (i === shown) return;
     const up = i > shown;
