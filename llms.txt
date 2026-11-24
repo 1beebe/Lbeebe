@@ -49,7 +49,7 @@ A good fit when a company's engineers already use AI and the rest of the staff d
 
 ## Learning she has designed
 
-Ligaya designs learning for adults who have a job to do.
+Ligaya designs learning for adults who have a job to do. The full portfolio, with four case studies and earlier work, is at https://lbeebe.com/portfolio/
 
 - [Developing Digital Citizenship](https://youtu.be/TyL4vql07Hw) (walkthrough video): A 10-week virtual exchange for 40 English teachers on Canvas LMS (2021), with one live hour a week and a self-contained async week. Teachers who missed a session still finished: 39 of 40 completed, and the funder renewed the design twice.
 - Instructor training in Articulate Rise: A 14-module program for instructors of adult learners (2026). Claude Code drafts each full module and she makes the design calls, which cut build time per module from 6.87 to 4.48 hours.
