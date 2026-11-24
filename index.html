@@ -448,11 +448,12 @@ p { max-width: 62ch; text-wrap: pretty; }
 /* proof */
 .fit { background: var(--white); padding: clamp(3rem, 2rem + 4vw, 6rem) var(--margin); }
 .fit-body { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.5rem, 4vw, 4rem); }
-.build-pin { margin: 0 0 calc(clamp(1.5rem, 4vw, 4rem) + clamp(.5rem, 2vw, 2rem)); }
+.build-run { margin: 0 0 calc(clamp(1.5rem, 4vw, 4rem) + clamp(.5rem, 2vw, 2rem)); }
+/* while the words change the line holds near the top; the copy below waits a short gap under it, never behind it */
+.build-run.is-armed { margin-bottom: clamp(4rem, 12svh, 8rem); }
 /* while the words change, the line holds near the top and the section below scrolls up under it */
 .build-pin.is-pinned { position: sticky; z-index: 2; }
 .build-pin.is-pinned::before { content: ""; position: absolute; z-index: -1; left: calc(-1 * var(--margin)); right: calc(-1 * var(--margin)); top: calc(-1 * var(--pin-top, 0px)); bottom: -.4em; background: var(--white); }
-.build-pin.is-pinned::after { content: ""; position: absolute; z-index: -1; left: calc(-1 * var(--margin)); right: calc(-1 * var(--margin)); top: calc(100% + .4em); height: 3rem; background: linear-gradient(var(--white), transparent); }
 .build-line { margin: 0; font-size: clamp(2rem, 1.2rem + 3vw, 3.25rem); line-height: 1; }
 .build-reel { display: none; }
 .build-line.is-reel { font-size: clamp(3rem, 1rem + 3.4vw, 5.5rem); white-space: nowrap; overflow: hidden; }
@@ -716,7 +717,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 <main id="main">
 
 <section class="fit" aria-labelledby="fit-h">
-  <div class="build-pin"><p class="build-line display" id="build-line"><span class="build-static">I build courses, AI workflows, learning experiences, agents, AI workshops, communities of practice, evals, programs and relationships, with results you can measure.</span><span class="build-reel" aria-hidden="true">I build <span class="build-word">courses</span></span></p></div>
+  <div class="build-run"><div class="build-pin"><p class="build-line display" id="build-line"><span class="build-static">I build courses, AI workflows, learning experiences, agents, AI workshops, communities of practice, evals, programs and relationships, with results you can measure.</span><span class="build-reel" aria-hidden="true">I build <span class="build-word">courses</span></span></p></div></div>
   <div class="fit-body">
   <h2 class="h2 display" id="fit-h">Who trains non-technical teams to use AI?</h2>
   <div>
@@ -1243,35 +1244,39 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 </script>
 <script>
 // "I build ___": with motion allowed, scrolling drives the last word. As the line travels up the
-// screen it steps through the list; near the top it holds in place while the rest of its section
-// scrolls up underneath, so the words get room without any empty scrolling. It lands on the final
-// phrase just before the section runs out, then moves on with the page.
+// screen it steps through the list; near the top it holds in place for a short stretch while the
+// copy below rises toward it, stopping a gap short so nothing reads under the changing words. It
+// lands on the final phrase, holds a moment, then moves on with the page.
 // Scrolling back up runs it in reverse. The font shrinks so the longest phrase fits, so nothing
 // wraps or jumps. Screen readers always get the full sentence; reduced motion sees it as plain text.
 (() => {
   const line = document.getElementById('build-line');
   if (!line) return;
-  const pin = line.parentElement, sec = pin.parentElement, word = line.querySelector('.build-word');
+  const pin = line.parentElement, run = pin.parentElement, sec = run.parentElement, word = line.querySelector('.build-word');
   const words = ['courses', 'AI workflows', 'learning experiences', 'agents', 'AI workshops', 'communities of practice', 'evals', 'programs', 'relationships'];
   const all = words.concat('results you can measure'), lastI = all.length - 1;
   const mq = matchMedia('(prefers-reduced-motion: no-preference)');
   let shown = -1, raf = 0, rt = 0, vh = innerHeight, vw = innerWidth, steps = 1, padT = 0;
-  // scroll per word as a share of the screen height; the last phrase holds a moment before release
-  const perWord = () => innerWidth <= 700 ? 0.22 : 0.16, HOLD = 0.2, FROM = 0.88, TOP = 0.1;
-  // the words spread over the scroll from the line entering the screen to the moment the section
-  // below has scrolled up under it, capped at the per-word pace above. Screen height is read once
-  // per width, so a phone's address bar showing and hiding doesn't shift anything mid-scroll.
+  // how long the line holds near the top, as a share of the screen height; the last phrase holds a
+  // moment before the line lets go and scrolls on with the copy a short gap below it
+  const runway = () => innerWidth <= 700 ? 0.6 : 0.55, HOLD = 0.2, FROM = 0.88, TOP = 0.1;
+  // the words spread over the scroll from the line entering the screen to the end of the hold.
+  // Screen height is read once per width, so a phone's address bar showing and hiding doesn't
+  // shift anything mid-scroll.
   const layout = () => {
     pin.classList.remove('is-pinned');
     pin.style.removeProperty('top');
     pin.style.removeProperty('--pin-top');
+    run.classList.remove('is-armed');
+    run.style.removeProperty('height');
     if (!line.classList.contains('is-reel')) return;
     vh = innerHeight; vw = innerWidth;
     const top = TOP * vh, cs = getComputedStyle(sec);
     padT = parseFloat(cs.paddingTop);
-    const room = sec.offsetHeight - padT - parseFloat(cs.paddingBottom) - pin.offsetHeight - parseFloat(getComputedStyle(pin).marginBottom);
-    const available = (FROM - TOP) * vh + room;
-    steps = Math.max(0.3 * vh, Math.min(perWord() * lastI * vh, available - HOLD * vh));
+    const hold = runway() * vh;
+    steps = (FROM - TOP) * vh + hold - HOLD * vh;
+    run.classList.add('is-armed');
+    run.style.height = (pin.offsetHeight + hold).toFixed(1) + 'px';
     pin.classList.add('is-pinned');
     pin.style.top = top.toFixed(1) + 'px';
     pin.style.setProperty('--pin-top', top.toFixed(1) + 'px');
@@ -1293,7 +1298,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     if (need > room) line.style.fontSize = (base * room / need * 0.98).toFixed(2) + 'px';
   };
   // how far the page has scrolled since the line came up past 88% of the screen (measured from
-  // the section, since the line itself stops moving once it holds)
+  // the section, since the line itself stops moving while it holds)
   const scrolled = () => FROM * vh - (sec.getBoundingClientRect().top + padT);
   const show = i => {
     if (i === shown) return;
