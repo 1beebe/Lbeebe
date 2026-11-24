@@ -599,8 +599,12 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 .row-thumb.graph { display: grid; place-items: center; padding: .35rem; }
 .preview .media img { width: 100%; height: 100%; object-fit: cover; object-position: 0 0; }
 .preview .media.graph { display: grid; place-items: center; padding: 1.5rem; }
-.work-demos { margin-top: .5rem; padding-left: 1rem; font-size: var(--step-small); color: var(--ink-soft); }
-.work-demos a { color: var(--ink); font-weight: 600; }
+.row-demo { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.75rem; margin: -.55rem 0 .2rem calc(1rem + 120px + 1.25rem); font-size: var(--step-small); font-weight: 600; color: var(--ink); text-decoration: none; }
+.row-demo svg { flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; transition: transform 160ms ease; }
+.row-demo svg path { fill: var(--sun); }
+.row-demo:hover { text-decoration: underline; text-underline-offset: .2em; }
+.row-demo:hover svg { transform: rotate(-8deg) scale(1.08); }
+@media (prefers-reduced-motion: reduce) { .row-demo svg { transition: none; } .row-demo:hover svg { transform: none; } }
 
 @media (max-width: 1000px) {
   .nums { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -622,7 +626,7 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   .svc-list, .cards { grid-template-columns: minmax(0, 1fr); }
   .designed-head { grid-template-columns: minmax(0, 1fr) 6.5rem; gap: 1rem; align-items: start; }
   .des-owl { width: 6.5rem; }
-  .work-demos { padding-left: 0; }
+  .row-demo { margin-left: calc(88px + 1.25rem); }
   .row { grid-template-columns: 88px minmax(0, 1fr); padding-inline: 0; }
   .row .go { display: none; }
   .row-thumb { grid-row: 1 / 4; align-self: start; }
@@ -894,8 +898,8 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
   </div>
   <div>
     <ol class="ledger">
-      <li><a class="row is-on" data-p="iv" aria-describedby="cap-iv" href="https://interviewer.lbeebe.com/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/interviewer-poster.jpg" alt="" width="1200" height="750" loading="lazy"></span><span class="name">The Interviewer</span><span class="kind">Buffer Commit build, 2026</span><span class="taught">Interviews you for up to 10 to 15 minutes about what you built that week, then turns your own words into drafts saved to Buffer. It won’t make things up, and you finish the posts.</span><span class="go">Try it</span></a></li>
-      <li><a class="row" data-p="lf" aria-describedby="cap-lf" href="https://longform.lbeebe.com/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/longform-poster.jpg" alt="" width="1200" height="750" loading="lazy"></span><span class="name">Longform</span><span class="kind">Buffer Commit build, 2026</span><span class="taught">Plans a long-form piece around your Buffer queue and finds an open day to publish. Supporting posts come only from your draft, and only the ones you keep are saved.</span><span class="go">Try it</span></a></li>
+      <li><a class="row is-on" data-p="iv" aria-describedby="cap-iv" href="https://interviewer.lbeebe.com/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/interviewer-poster.jpg" alt="" width="1200" height="750" loading="lazy"></span><span class="name">The Interviewer</span><span class="kind">Buffer Commit build, 2026</span><span class="taught">Interviews you for up to 10 to 15 minutes about what you built that week, then turns your own words into drafts saved to Buffer. It won’t make things up, and you finish the posts.</span><span class="go">Try it</span></a><a class="row-demo" href="https://youtu.be/T2Qh6Vj58Es" target="_blank" rel="noopener" aria-label="Watch the The Interviewer demo on YouTube"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="M8 6.4 L14 10 L8 13.6 Z"/></svg>Watch the demo</a></li>
+      <li><a class="row" data-p="lf" aria-describedby="cap-lf" href="https://longform.lbeebe.com/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/longform-poster.jpg" alt="" width="1200" height="750" loading="lazy"></span><span class="name">Longform</span><span class="kind">Buffer Commit build, 2026</span><span class="taught">Plans a long-form piece around your Buffer queue and finds an open day to publish. Supporting posts come only from your draft, and only the ones you keep are saved.</span><span class="go">Try it</span></a><a class="row-demo" href="https://www.youtube.com/watch?v=CaBGcP7nUK0" target="_blank" rel="noopener" aria-label="Watch the Longform demo on YouTube"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="M8 6.4 L14 10 L8 13.6 Z"/></svg>Watch the demo</a></li>
       <li><div class="row" data-p="ev" aria-describedby="cap-ev" tabindex="0"><span class="row-thumb graph"><svg class="doodle" viewBox="0 0 320 240" aria-hidden="true" focusable="false">
 <rect class="w-paper" x="30" y="20" width="160" height="200"/><rect class="pen" x="30" y="20" width="160" height="200"/>
 <path class="pen thin" d="M46 60 h120 M46 72 h96"/>
@@ -908,10 +912,9 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
 </svg></span><span class="name">Quality check for a nonprofit’s writing agent</span><span class="kind">Agent evaluation in MindStudio, 2026</span><span class="taught">A green, yellow and red checklist staff can run on every draft. The stress tests caught invented stats and the agent’s habit of slipping em dashes into headlines.</span></div></li>
       <li><a class="row" data-p="xc" aria-describedby="cap-xc" href="https://10xcolleges.co/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/10xcolleges-poster.jpg" alt="" width="492" height="1044"></span><span class="name">10xcolleges</span><span class="kind">Live AI admissions coach I built with a product agent, 2026</span><span class="taught">A product agent pointed at an open-source project built a full app, with frontend, backend and logins, in a few hours. Your team doesn’t have to start from a blank page.</span><span class="go">App</span></a></li>
       <li><a class="row" data-p="qs" aria-describedby="cap-qs" href="https://github.com/1beebe/beebe-qualitative-skills" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/lakoff-poster.jpg" alt="" width="960" height="600"></span><span class="name">Beebe Qualitative Skills</span><span class="kind">Claude Code skills for my father’s research method, 2026</span><span class="taught">My first agent, Lakoff Lens, was aimed at James Beebe’s method from day one and wasn’t good enough yet. That was fine. Six months later, these skills run his method on his own archive.</span><span class="go">GitHub</span></a></li>
-      <li><a class="row" data-p="sc" aria-describedby="cap-sc" href="https://slopcannon.lbeebe.com/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/slopcannon-poster.jpg" alt="" width="1200" height="750" loading="lazy"></span><span class="name">Slop Cannon</span><span class="kind">Just for fun, 2026</span><span class="taught">Type something mundane, pick a flavor of AI slop, and it fires B2B thought leadership into every open slot in your Buffer queue. There’s no AI in it, because slop is formulaic enough for a formula.</span><span class="go">Try it</span></a></li>
+      <li><a class="row" data-p="sc" aria-describedby="cap-sc" href="https://slopcannon.lbeebe.com/" target="_blank" rel="noopener"><span class="row-thumb"><img src="videos/slopcannon-poster.jpg" alt="" width="1200" height="750" loading="lazy"></span><span class="name">Slop Cannon</span><span class="kind">Just for fun, 2026</span><span class="taught">Type something mundane, pick a flavor of AI slop, and it fires B2B thought leadership into every open slot in your Buffer queue. There’s no AI in it, because slop is formulaic enough for a formula.</span><span class="go">Try it</span></a><a class="row-demo" href="https://youtu.be/hYLTeFlus9c" target="_blank" rel="noopener" aria-label="Watch the Slop Cannon demo on YouTube"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="M8 6.4 L14 10 L8 13.6 Z"/></svg>Watch the demo</a></li>
     </ol>
     <a class="tlink work-more" href="https://github.com/1beebe/ai-agent-portfolio" target="_blank" rel="noopener">More on GitHub</a>
-    <p class="work-demos">Watch the demos: <a href="https://youtu.be/T2Qh6Vj58Es" target="_blank" rel="noopener">The Interviewer</a>, <a href="https://www.youtube.com/watch?v=CaBGcP7nUK0" target="_blank" rel="noopener">Longform</a> and <a href="https://youtu.be/hYLTeFlus9c" target="_blank" rel="noopener">Slop Cannon</a>.</p>
   </div>
   <div class="preview" aria-hidden="true">
     <div class="preview-frame">
