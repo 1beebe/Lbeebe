@@ -1346,7 +1346,9 @@ mark { background: var(--sun); color: var(--ink); padding: 0 .12em; box-decorati
     run.style.setProperty('--run-h', (heroH + R + V) + 'px');
     run.style.setProperty('--cover', (heroH + top) + 'px');
     run.classList.add('is-armed');
-    s0 = Math.max(0, run.getBoundingClientRect().top + scrollY - top);
+    // the words start moving with the first scroll; if the hero is taller than the screen, the
+    // scroll before it pins just adds to the hold on the last phrase
+    s0 = Math.max(0, Math.min(run.getBoundingClientRect().top + scrollY - top, run.getBoundingClientRect().top + scrollY - barH));
     scroll = true;
     paint();
     return true;
