@@ -417,7 +417,6 @@ p { max-width: 62ch; text-wrap: pretty; }
 .ink-circle > .ink { left: -7%; top: -16%; width: 114%; height: 132%; }
 .hero-sub .ink-circle { margin-left: .18em; }
 .ink-under > .ink { left: -2%; width: 104%; bottom: -.16em; height: .24em; }
-.teams button { position: relative; }
 @media (prefers-reduced-motion: reduce) { .ink.drawn path { transition: none; } }
 
 /* nav */
@@ -510,7 +509,7 @@ p { max-width: 62ch; text-wrap: pretty; }
 .teams button:hover { background: var(--spoonbill-3); }
 .teams button[aria-selected="true"] { background: var(--ink); color: var(--spoonbill); }
 /* a small hand-drawn icon for each team; the chosen team's icon draws itself in */
-.team-ico { flex: none; width: 1.75rem; height: 1.75rem; }
+.teams .team-ico { flex: none; display: block; width: 1.75rem; height: 1.75rem; }
 .team-ico .tp { fill: none; stroke: currentColor; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
 .teams button[aria-selected="true"] .team-ico .tp { animation: team-draw 700ms cubic-bezier(.65, 0, .35, 1) both; }
 @keyframes team-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
