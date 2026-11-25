@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How should a 10-person company start using AI agents? · Ligaya Beebe</title>
+<meta name="description" content="Pick one repeated task, write down how it&#x27;s done, and keep a person on anything that&#x27;s hard to undo.">
+<meta name="author" content="L. Beebe, LLC">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://lbeebe.com/blog/how-should-a-10-person-company-start-using-ai-agents/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://lbeebe.com/blog/how-should-a-10-person-company-start-using-ai-agents/">
+<meta property="og:title" content="How should a 10-person company start using AI agents?">
+<meta property="og:description" content="Pick one repeated task, write down how it&#x27;s done, and keep a person on anything that&#x27;s hard to undo.">
+<meta property="og:image" content="https://lbeebe.com/og-card.jpg?v=2026-11-16">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="L. Beebe, LLC">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-30">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How should a 10-person company start using AI agents?">
+<meta name="twitter:description" content="Pick one repeated task, write down how it&#x27;s done, and keep a person on anything that&#x27;s hard to undo.">
+<meta name="twitter:image" content="https://lbeebe.com/og-card.jpg?v=2026-11-16">
+<meta name="theme-color" content="#ffd249">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@800&family=Public+Sans:wght@400;600&family=Gochi+Hand&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://lbeebe.com/blog/how-should-a-10-person-company-start-using-ai-agents/#post",
+      "headline": "How should a 10-person company start using AI agents?",
+      "description": "Pick one repeated task, write down how it's done, and keep a person on anything that's hard to undo.",
+      "url": "https://lbeebe.com/blog/how-should-a-10-person-company-start-using-ai-agents/",
+      "mainEntityOfPage": "https://lbeebe.com/blog/how-should-a-10-person-company-start-using-ai-agents/",
+      "datePublished": "2026-11-30",
+      "dateModified": "2026-11-30",
+      "inLanguage": "en-US",
+      "image": "https://lbeebe.com/og-card.jpg?v=2026-11-16",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://lbeebe.com/#business",
+        "name": "L. Beebe, LLC",
+        "url": "https://lbeebe.com/"
+      },
+      "editor": {
+        "@type": "Person",
+        "@id": "https://lbeebe.com/#ligaya",
+        "name": "Ligaya Beebe",
+        "url": "https://lbeebe.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://lbeebe.com/#business",
+        "name": "L. Beebe, LLC",
+        "url": "https://lbeebe.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://lbeebe.com/LB_Logo.jpg"
+        }
+      },
+      "publishingPrinciples": "https://lbeebe.com/editorial-standards/",
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://lbeebe.com/blog/#blog",
+        "url": "https://lbeebe.com/blog/"
+      },
+      "citation": [
+        "https://help.openai.com/en/articles/11752874-chatgpt-agent",
+        "https://help.openai.com/en/articles/20001280-using-cloud-browser-in-chatgpt",
+        "https://learn.chatgpt.com/training/walkthroughs/getting-started",
+        "https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/",
+        "https://www.anthropic.com/engineering/building-effective-agents",
+        "https://www.microsoft.com/en-us/worklab/work-trend-index/ai-at-work-is-here-now-comes-the-hard-part",
+        "https://www.uschamber.com/assets/documents/Empowering-Small-Business-Report-2025.pdf"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://lbeebe.com/blog/how-should-a-10-person-company-start-using-ai-agents/#faq",
+      "url": "https://lbeebe.com/blog/how-should-a-10-person-company-start-using-ai-agents/",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do we need a developer to build our first agent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Often not for a first one. OpenAI's getting-started guide for ChatGPT Work walks through connecting apps like Gmail and Slack from the Plugins menu and describing a task in plain language. A developer becomes useful when the agent needs to reach systems without a ready-made connection."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between an agent and an automation tool that follows fixed rules?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Anthropic describes workflows as systems that follow steps laid out in advance, and agents as systems where the AI decides its own steps and tool use. OpenAI's guide says agents fit work where rule-based approaches fall short, and that a deterministic solution may be enough otherwise."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which task should we avoid giving an agent first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Anything that moves money or can't be undone. OpenAI's guide names canceling orders, authorizing large refunds, and making payments as high-risk actions that should keep human oversight until you trust the agent."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is our company data used to train OpenAI's models if we use ChatGPT Business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "OpenAI's ChatGPT Business privacy page says it won't train on your workspace's data and that Business data is excluded from training by default. Even so, connect only the apps a task needs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do we know if our first agent is worth keeping?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Time the task before you start, run the agent side by side with the person who owns the task for a set trial period, and compare. If it isn't saving time or the fixes aren't shrinking, change the instructions or pick a different task."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+/* Shared tokens and base styles, copied from index.html and portfolio/index.html. Keep in sync. */
+:root {
+  color-scheme: light;
+  --sun: #ffd249;
+  --white: #ffffff;
+  --white-2: #f2f1ee;
+  --spoonbill: #ffc0d6;
+  --spoonbill-2: #ffaac8;
+  --spoonbill-3: #ff97bd;
+  --spoonbill-wash: #fff3f8;
+  --spoonbill-ink: #4a2a36;
+  --sun-ink: #5e4a0a;
+  --blackwater: #15130f;
+  --blackwater-2: #26231d;
+  --ink: #0a0a0a;
+  --ink-soft: #46423a;
+  --paper: #f2f2f2;
+  --paper-soft: #bdb6a6;
+  --gulf: #a4f0ec;
+  --accent: #ef3d8a;
+  --accent-ink: #0a0a0a;
+
+  --font-display: "Big Shoulders", "Arial Narrow", Impact, sans-serif;
+  --font-text: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-hand: "Gochi Hand", "Comic Sans MS", cursive;
+
+  --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2.5rem, 1.2rem + 4.4vw, 5.25rem);
+  --step-display: clamp(3rem, 1rem + 7.6vw, 9rem);
+
+  --margin: clamp(1.25rem, 3vw, 3rem);
+  --section: clamp(4.5rem, 2.5rem + 6vw, 8.5rem);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--white); color: var(--ink); font-family: var(--font-text); font-size: var(--step-body); line-height: 1.5; text-rendering: optimizeLegibility; }
+/* Pink square cursor, only on devices with a precise pointer (touch screens keep their defaults).
+   Over links and buttons it flips to an ink square with a pink edge, so clickable things still read as clickable. */
+@media (pointer: fine) {
+  html, body {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Crect x='1' y='1' width='14' height='14' fill='%23ef3d8a' stroke='%230a0a0a' stroke-width='2'/%3E%3C/svg%3E") 2 2, auto;
+  }
+  a, button, [role="tab"], summary, label[for] {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Crect x='1.5' y='1.5' width='17' height='17' fill='%230a0a0a' stroke='%23ef3d8a' stroke-width='3'/%3E%3C/svg%3E") 2 2, pointer;
+  }
+}
+img, video, svg { display: block; max-width: 100%; height: auto; }
+h1, h2, h3, p, ul, ol, figure, blockquote { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 0.07em; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.foot :focus-visible { outline-color: var(--sun); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: var(--margin); top: -4rem; background: var(--ink); color: var(--sun); padding: .6rem 1rem; z-index: 20; }
+.skip:focus { top: .75rem; }
+p { max-width: 62ch; text-wrap: pretty; }
+
+.display { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.005em; line-height: 0.9; text-wrap: balance; }
+.lead { font-size: var(--step-lead); line-height: 1.38; }
+.small { font-size: var(--step-small); }
+
+.btn { display: inline-flex; align-items: center; min-height: 3.25rem; padding: .85rem 1.4rem; background: var(--accent); color: var(--accent-ink); font-weight: 600; text-decoration: none; transition: transform 140ms var(--ease-out), background-color 180ms ease, color 180ms ease; }
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn:active { transform: translateY(2px) scale(.98); }
+.btn-dark { background: var(--ink); color: var(--sun); }
+.btn-dark:hover { background: var(--accent); color: var(--accent-ink); }
+.tlink { font-weight: 600; }
+.tlink:hover { text-decoration-thickness: .14em; }
+
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .5rem var(--margin); background: var(--sun); font-size: var(--step-small); }
+.bar .mark { display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 600; text-decoration: none; font-size: var(--step-body); }
+.bar ul { display: flex; gap: clamp(1rem, 2.4vw, 2rem); align-items: center; }
+.bar ul a { display: inline-flex; align-items: center; min-height: 2.75rem; text-decoration: none; font-weight: 600; }
+.bar ul a:hover { text-decoration: underline; }
+@media (min-width: 641px) {
+  html { scroll-padding-top: 4.5rem; }
+  .bar { position: sticky; top: 0; z-index: 20; box-shadow: 0 1px 0 rgba(10, 10, 10, .1); }
+  .bar ul a.bar-book { padding: 0 1.1rem; background: var(--accent); color: var(--accent-ink); text-decoration: none; transition: background-color 180ms ease, color 180ms ease; }
+  .bar ul a.bar-book:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+}
+.foot { background: var(--blackwater); color: var(--paper-soft); padding: 2rem var(--margin) 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem 2rem; font-size: var(--step-small); }
+.foot ul { display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin-top: -.75rem; }
+.foot a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--paper); text-decoration: none; }
+.foot a:hover { text-decoration: underline; }
+
+.page-hero { background: var(--sun); padding: clamp(3rem, 2rem + 5vw, 6.5rem) var(--margin) clamp(2.5rem, 4vw, 4rem); }
+.page-hero h1 { font-size: var(--step-display); max-width: 14ch; }
+.page-kicker { font-family: var(--font-hand); font-size: 1.35rem; margin-bottom: .75rem; color: var(--sun-ink); }
+.page-hero .lead { margin-top: 1.25rem; max-width: 42ch; }
+.page-hero .lead + .lead { margin-top: 1rem; }
+.page-main { padding: clamp(2.5rem, 4vw, 4.5rem) var(--margin) var(--section); }
+
+.empty { margin-top: .25rem; max-width: 40rem; padding: clamp(1.5rem, 3vw, 2.25rem); background: var(--white-2); }
+.empty p { color: var(--ink-soft); }
+.blog-links { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; align-items: center; }
+.blog-links .tlink { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.cta { margin-top: 2.75rem; }
+.cta p { margin-bottom: 1rem; }
+
+.prose { max-width: 62ch; }
+.prose .effective { font-size: var(--step-small); color: var(--ink-soft); margin-bottom: 1.25rem; }
+.prose h2 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.005em; line-height: 0.95; font-size: clamp(1.75rem, 1.1rem + 1.8vw, 2.75rem); margin-top: 2.5rem; margin-bottom: .85rem; max-width: 22ch; text-wrap: balance; }
+.prose p + p { margin-top: 1rem; }
+.prose a { font-weight: 600; }
+
+@media (max-width: 640px) {
+  .bar { flex-wrap: wrap; row-gap: 0; }
+  .bar ul { width: 100%; justify-content: space-between; gap: .5rem; }
+  .page-hero h1 { font-size: 14vw; }
+}
+
+
+/* Post pages */
+.post-hero h1 { font-size: var(--step-head); max-width: 20ch; }
+.post-hero .page-kicker a { color: inherit; }
+.byline { margin-top: 1.25rem; font-size: var(--step-small); font-weight: 600; }
+.post { max-width: 46rem; }
+.post > * + * { margin-top: 1rem; }
+.post h2 { margin-top: 2.75rem; }
+.post .made { background: var(--white-2); padding: 1rem 1.25rem; font-size: var(--step-small); color: var(--ink-soft); border-left: 4px solid var(--accent); }
+.post .made a { color: var(--ink); }
+.post .answer { font-size: var(--step-lead); line-height: 1.4; margin-top: 2rem; }
+.post .tldr { background: var(--sun); padding: 1.25rem 1.5rem 1.5rem; margin-top: 2rem; }
+.post .tldr .tldr-h { margin: 0 0 .6rem; font-family: var(--font-display); text-transform: uppercase; font-size: 1.75rem; line-height: 1; }
+.post ul, .post ol { padding-left: 1.4rem; max-width: 62ch; }
+.post ul { list-style: disc; }
+.post ol { list-style: decimal; }
+.post li + li { margin-top: .5rem; }
+.post table { width: 100%; border-collapse: collapse; font-size: var(--step-small); margin-top: 1.25rem; }
+.post th, .post td { text-align: left; vertical-align: top; padding: .65rem .75rem; border-bottom: 1px solid var(--paper-soft); }
+.post thead th { background: var(--ink); color: var(--paper); font-weight: 600; }
+.post tbody tr:nth-child(even) { background: var(--white-2); }
+.post .table-wrap { overflow-x: auto; }
+.post aside.cta { background: var(--spoonbill-wash); border: 2px solid var(--spoonbill-3); padding: 1.25rem 1.5rem; margin-top: 2.5rem; }
+.post aside.cta p { margin: 0; }
+.post .faq h3 { font-size: var(--step-body); font-weight: 600; margin-top: 1.5rem; }
+.post .faq h3 + p { margin-top: .35rem; }
+.post .more { margin-top: 3rem; font-size: var(--step-small); }
+@media print { .bar, .foot, .skip { display: none; } .post-hero { padding: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="bar" aria-label="Main">
+  <a class="mark" href="/">Ligaya Beebe</a>
+  <ul>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/blog/" aria-current="page">Blog</a></li>
+    <li><a class="tlink bar-book" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a call</a></li>
+  </ul>
+</nav>
+
+<header class="page-hero post-hero" id="top">
+  <p class="page-kicker"><a href="/blog/">Blog</a></p>
+  <h1 class="display">How should a 10-person company start using AI agents?</h1>
+  <p class="lead">Pick one repeated task, write down how it&#x27;s done, and keep a person on anything that&#x27;s hard to undo.</p>
+  <p class="byline">Edited by Ligaya Beebe · <time datetime="2026-11-30">November 30, 2026</time></p>
+</header>
+
+<main id="main" class="page-main">
+<article class="prose post">
+<p class="made"><strong>How this post was made:</strong> a site bot drafted this from OpenAI&#x27;s practical guide to building agents and ChatGPT help pages, Anthropic&#x27;s engineering post on building effective agents, the U.S. Chamber of Commerce&#x27;s 2025 small business technology report, and Microsoft and LinkedIn&#x27;s 2024 Work Trend Index, then ran revision passes. Ligaya Beebe reviewed and approved it before it went live. <a href="/editorial-standards/">Nothing on this blog publishes itself.</a></p>
+
+<p class="answer"><strong>The short answer:</strong> pick one task your team already does every week, write down how it gets done today, and let an agent take that one task while a person approves anything that leaves the building. Skip the platform shopping and the five-agent plan. OpenAI's <a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/">agent guide</a> says to start small and validate with real users, and Anthropic's <a href="https://www.anthropic.com/engineering/building-effective-agents">engineering team</a> recommends the simplest solution possible, adding complexity only when it's needed.</p>
+
+<div class="tldr">
+<p class="tldr-h"><strong>TL;DR</strong></p>
+<ul>
+<li>An agent is AI software that works through a multi-step task for you and picks its own tools along the way.</li>
+<li>Your first agent should handle one repeated task, built from instructions you already have or can write in an afternoon.</li>
+<li>Keep a person on every step that's hard to undo: sending, paying, deleting, booking.</li>
+<li>Time the task before you start. If the agent isn't saving time after a few weeks, fix it or switch it off.</li>
+</ul>
+</div>
+
+<h2>What counts as an AI agent for a small team?</h2>
+<p>OpenAI's <a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/">practical guide to building agents</a> puts it in one line: "Agents are systems that independently accomplish tasks on your behalf." The guide says an agent uses an AI model to run the steps of a task, knows when the task is done, and can hand control back to you when it gets stuck. It also uses tools, like a browser or your email, to look things up and take action.</p>
+<p>The same guide is clear about what doesn't count. A simple chatbot that answers one question at a time isn't an agent, because it isn't running the workflow. There's a longer version of that distinction in <a href="/blog/what-is-an-ai-agent/">What is an AI agent, and how is it different from a ChatGPT chat?</a></p>
+<p>For a 10-person company, the practical version is simpler. An agent is the thing you hand a recurring chore to, with written instructions, access to the two or three apps it needs, and a rule about when to stop and ask.</p>
+
+<h2>Is a 10-person company too small for agents?</h2>
+<p>No, and your team is probably already using AI in some form. In the U.S. Chamber of Commerce's <a href="https://www.uschamber.com/assets/documents/Empowering-Small-Business-Report-2025.pdf">2025 small business technology report</a>, 58% of small businesses said they use generative AI, up from 40% in 2024 and 23% in 2023. That survey covered 3,870 U.S. businesses with fewer than 250 employees, collected in June 2025.</p>
+<p>A lot of that use happens on personal accounts. Microsoft and LinkedIn's <a href="https://www.microsoft.com/en-us/worklab/work-trend-index/ai-at-work-is-here-now-comes-the-hard-part">2024 Work Trend Index</a> found that 78% of people who use AI at work bring their own tools, and the share was 80% at small and medium-sized companies. For a small team, the useful question is how to start on purpose.</p>
+<p>Being small helps here. You have fewer systems to connect, and the person who knows how the work gets done is usually one desk away.</p>
+
+<h2>Which task should your first agent take on?</h2>
+<p>OpenAI's guide suggests looking for work that has resisted ordinary automation: tasks that need judgment, tasks with rules that keep changing, and tasks that mean reading messy text like emails or documents. Anthropic adds a useful brake. In its <a href="https://www.anthropic.com/engineering/building-effective-agents">post on building effective agents</a>, it says many jobs don't need an agent at all, and a single well-prompted request with the right reference material is often enough.</p>
+<p>With both of those in mind, here's a way to sort your first candidates.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Candidate task</th><th>Good first pick?</th><th>Where a person signs off</th></tr></thead>
+<tbody>
+<tr><td>Sort the shared inbox each morning and summarize what needs a reply</td><td>Yes. Repeated, text-heavy, low risk.</td><td>Someone reads the summary before acting on it.</td></tr>
+<tr><td>Draft replies to common customer questions from your FAQ or help docs</td><td>Yes. You already have the source material.</td><td>Every draft is reviewed before it's sent.</td></tr>
+<tr><td>Turn meeting notes into a follow-up email and a task list</td><td>Yes. Small, frequent, easy to check.</td><td>The meeting owner sends the email.</td></tr>
+<tr><td>Pull invoice details into your accounting records</td><td>Maybe, after a trial. OpenAI lists invoice reconciliation as an <a href="https://help.openai.com/en/articles/20001280-using-cloud-browser-in-chatgpt">example cloud browser task</a>.</td><td>A person checks entries before they're final.</td></tr>
+<tr><td>Issue refunds, pay bills, or cancel orders</td><td>Not yet. These are the high-risk actions OpenAI's guide says should keep human oversight.</td><td>A person does it, or approves each one.</td></tr>
+</tbody>
+</table></div>
+<p>The best first task is a little boring. You want something that happens often enough to matter and is easy to check when it goes wrong.</p>
+
+<h2>How do you set up your first agent?</h2>
+<ol class="steps">
+<li><strong>Time the task as it is today.</strong> A rough number is fine, like "about 45 minutes every Monday." This is your baseline.</li>
+<li><strong>Write the steps down as if you were training a new hire.</strong> OpenAI's guide recommends building agent instructions from documents you already have, like operating procedures, support scripts, or policies.</li>
+<li><strong>Use a tool you already pay for.</strong> If your team is on ChatGPT Business, OpenAI's <a href="https://learn.chatgpt.com/training/walkthroughs/getting-started">getting-started walkthrough for ChatGPT Work</a> explains when to pick Work over Chat: when a task needs information from other apps, several steps, or a finished result you can review.</li>
+<li><strong>Connect only the apps the task needs.</strong> OpenAI's own <a href="https://help.openai.com/en/articles/11752874-chatgpt-agent">safety tips for agent mode</a> say to enable only the apps needed for the current task and to avoid vague prompts like "Check my email and handle everything."</li>
+<li><strong>Run it side by side for two weeks.</strong> The person who owns the task keeps doing it and compares their result with the agent's.</li>
+<li><strong>Decide: keep it, fix it, or stop it.</strong> If it's close, tighten the instructions. If it isn't, pick a different task. That's still useful information.</li>
+</ol>
+<p>OpenAI's guide also recommends getting the most out of a single agent before adding more. Each new tool you give one agent expands what it can do without the overhead of coordinating several.</p>
+
+<h2>Where should a person stay in the loop?</h2>
+<p>Anywhere a mistake is expensive or hard to reverse. OpenAI's guide names two triggers for handing control back to a person. The first is when the agent keeps failing at something. The second is a high-risk action, with examples like canceling orders, authorizing large refunds, or making payments.</p>
+<p>Some of this is built in. OpenAI says ChatGPT is <a href="https://help.openai.com/en/articles/20001280-using-cloud-browser-in-chatgpt">designed to ask for confirmation</a> before actions that are hard to reverse or create a financial, legal, or account commitment, such as confirming a booking or making a payment. The same page lets you choose whether ChatGPT asks before visiting new websites, and OpenAI marks the "Always allow" setting as not recommended.</p>
+<p>Anthropic gives the reason in plain terms. Because agents act on their own, they cost more to run and their errors can compound, so it recommends testing them carefully with guardrails in place. For a small team, a guardrail can be as simple as "drafts go to a folder, a human hits send."</p>
+
+<h2>How do you know if it's working?</h2>
+<p>Go back to your baseline. Is the task taking less of a person's time than it did? Are the fixes getting smaller each week? Is the person who owns the task actually using the agent, or quietly doing it the old way?</p>
+<p>That last question matters more than it sounds. The Work Trend Index found that only 39% of people who use AI at work had gotten AI training from their company. A short, hands-on walkthrough of the one agent you built, done with the people who'll use it, goes a long way.</p>
+<p>If your team already has ChatGPT seats and you want to see who's using them, start with <a href="/blog/how-to-tell-if-anyone-is-using-chatgpt-licenses/">We bought ChatGPT licenses. How do we tell if anyone is using them?</a></p>
+
+<aside class="cta">
+<p>Not sure which task to start with? Ligaya Beebe trains non-technical teams on the AI tools they already pay for and builds small agents alongside the training. <a href="/#services">See how she works</a>, or <a href="https://calendly.com/ligaya-b/chat">book a free 30-minute call</a> to talk it through.</p>
+</aside>
+
+
+<section class="faq" aria-labelledby="faq-h">
+<h2 id="faq-h">FAQ</h2>
+<h3>Do we need a developer to build our first agent?</h3>
+<p>Often not for a first one. OpenAI&#x27;s getting-started guide for ChatGPT Work walks through connecting apps like Gmail and Slack from the Plugins menu and describing a task in plain language. A developer becomes useful when the agent needs to reach systems without a ready-made connection.</p>
+<h3>What&#x27;s the difference between an agent and an automation tool that follows fixed rules?</h3>
+<p>Anthropic describes workflows as systems that follow steps laid out in advance, and agents as systems where the AI decides its own steps and tool use. OpenAI&#x27;s guide says agents fit work where rule-based approaches fall short, and that a deterministic solution may be enough otherwise.</p>
+<h3>Which task should we avoid giving an agent first?</h3>
+<p>Anything that moves money or can&#x27;t be undone. OpenAI&#x27;s guide names canceling orders, authorizing large refunds, and making payments as high-risk actions that should keep human oversight until you trust the agent.</p>
+<h3>Is our company data used to train OpenAI&#x27;s models if we use ChatGPT Business?</h3>
+<p>OpenAI&#x27;s ChatGPT Business privacy page says it won&#x27;t train on your workspace&#x27;s data and that Business data is excluded from training by default. Even so, connect only the apps a task needs.</p>
+<h3>How do we know if our first agent is worth keeping?</h3>
+<p>Time the task before you start, run the agent side by side with the person who owns the task for a set trial period, and compare. If it isn&#x27;t saving time or the fixes aren&#x27;t shrinking, change the instructions or pick a different task.</p>
+</section>
+
+<p class="more"><a class="tlink" href="/blog/">More from the blog</a> · <a class="tlink" href="/editorial-standards/">Editorial standards</a></p>
+</article>
+</main>
+
+<footer class="foot">
+  <p>© 2026 L.&nbsp;Beebe, LLC, Estero, Florida. Updated <time datetime="2026-11-30">November 30, 2026</time>.</p>
+  <ul>
+    <li><a href="/hire">For hiring managers</a></li>
+    <li><a href="/portfolio/">Portfolio</a></li>
+    <li><a href="/editorial-standards/">Editorial standards</a></li>
+    <li><a href="/llms.txt">For AI agents</a></li>
+    <li><a href="#top">Back to top</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>

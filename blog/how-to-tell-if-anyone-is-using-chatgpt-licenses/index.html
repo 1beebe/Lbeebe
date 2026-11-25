@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We bought ChatGPT licenses. How do we tell if anyone is using them? · Ligaya Beebe</title>
+<meta name="description" content="The admin dashboard shows who&#x27;s using their seat. Your team can tell you whether it&#x27;s helping.">
+<meta name="author" content="L. Beebe, LLC">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://lbeebe.com/blog/how-to-tell-if-anyone-is-using-chatgpt-licenses/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://lbeebe.com/blog/how-to-tell-if-anyone-is-using-chatgpt-licenses/">
+<meta property="og:title" content="We bought ChatGPT licenses. How do we tell if anyone is using them?">
+<meta property="og:description" content="The admin dashboard shows who&#x27;s using their seat. Your team can tell you whether it&#x27;s helping.">
+<meta property="og:image" content="https://lbeebe.com/og-card.jpg?v=2026-11-16">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="L. Beebe, LLC">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-30">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="We bought ChatGPT licenses. How do we tell if anyone is using them?">
+<meta name="twitter:description" content="The admin dashboard shows who&#x27;s using their seat. Your team can tell you whether it&#x27;s helping.">
+<meta name="twitter:image" content="https://lbeebe.com/og-card.jpg?v=2026-11-16">
+<meta name="theme-color" content="#ffd249">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@800&family=Public+Sans:wght@400;600&family=Gochi+Hand&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://lbeebe.com/blog/how-to-tell-if-anyone-is-using-chatgpt-licenses/#post",
+      "headline": "We bought ChatGPT licenses. How do we tell if anyone is using them?",
+      "description": "The admin dashboard shows who's using their seat. Your team can tell you whether it's helping.",
+      "url": "https://lbeebe.com/blog/how-to-tell-if-anyone-is-using-chatgpt-licenses/",
+      "mainEntityOfPage": "https://lbeebe.com/blog/how-to-tell-if-anyone-is-using-chatgpt-licenses/",
+      "datePublished": "2026-11-30",
+      "dateModified": "2026-11-30",
+      "inLanguage": "en-US",
+      "image": "https://lbeebe.com/og-card.jpg?v=2026-11-16",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://lbeebe.com/#business",
+        "name": "L. Beebe, LLC",
+        "url": "https://lbeebe.com/"
+      },
+      "editor": {
+        "@type": "Person",
+        "@id": "https://lbeebe.com/#ligaya",
+        "name": "Ligaya Beebe",
+        "url": "https://lbeebe.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://lbeebe.com/#business",
+        "name": "L. Beebe, LLC",
+        "url": "https://lbeebe.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://lbeebe.com/LB_Logo.jpg"
+        }
+      },
+      "publishingPrinciples": "https://lbeebe.com/editorial-standards/",
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://lbeebe.com/blog/#blog",
+        "url": "https://lbeebe.com/blog/"
+      },
+      "citation": [
+        "https://help.openai.com/en/articles/10875114-workspace-analytics-for-chatgpt-enterprise-and-edu",
+        "https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes",
+        "https://help.openai.com/en/articles/12289294-managing-your-tenant-in-admin-console",
+        "https://help.openai.com/en/articles/8542115-chatgpt-business-general-faq",
+        "https://help.openai.com/en/articles/8542216-managing-members-seat-types-and-roles-in-chatgpt-business",
+        "https://help.openai.com/en/articles/8798634-managing-data-sharing-and-privacy-in-chatgpt-business",
+        "https://www.microsoft.com/en-us/worklab/work-trend-index/ai-at-work-is-here-now-comes-the-hard-part"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://lbeebe.com/blog/how-to-tell-if-anyone-is-using-chatgpt-licenses/#faq",
+      "url": "https://lbeebe.com/blog/how-to-tell-if-anyone-is-using-chatgpt-licenses/",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I see what each person asked ChatGPT?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not through usage analytics. OpenAI's ChatGPT Business privacy page says analytics and spend controls are separate from chat transcript access, and each person keeps their own chat history unless they share a specific chat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who can see ChatGPT Business usage analytics?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Workspace Owners, Admins, and Analytics Viewers, according to OpenAI's roles and seats page. Members can't. The Analytics Viewer role lets someone see analytics without full admin permissions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How up to date are the usage numbers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "OpenAI's Admin Console guide says ChatGPT usage analytics cover up to the previous 12 months and can take up to 48 hours to refresh."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Our credits used shows zero. Does that mean nobody uses ChatGPT?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. OpenAI's Business FAQ says seats use their included allowance before drawing on workspace credits, so credit usage isn't a measure of all activity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "We have ChatGPT Team, not Business. Does this apply to us?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. OpenAI's Business FAQ says ChatGPT Team was renamed ChatGPT Business on August 29, 2025, and existing Team workspaces became Business workspaces."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+/* Shared tokens and base styles, copied from index.html and portfolio/index.html. Keep in sync. */
+:root {
+  color-scheme: light;
+  --sun: #ffd249;
+  --white: #ffffff;
+  --white-2: #f2f1ee;
+  --spoonbill: #ffc0d6;
+  --spoonbill-2: #ffaac8;
+  --spoonbill-3: #ff97bd;
+  --spoonbill-wash: #fff3f8;
+  --spoonbill-ink: #4a2a36;
+  --sun-ink: #5e4a0a;
+  --blackwater: #15130f;
+  --blackwater-2: #26231d;
+  --ink: #0a0a0a;
+  --ink-soft: #46423a;
+  --paper: #f2f2f2;
+  --paper-soft: #bdb6a6;
+  --gulf: #a4f0ec;
+  --accent: #ef3d8a;
+  --accent-ink: #0a0a0a;
+
+  --font-display: "Big Shoulders", "Arial Narrow", Impact, sans-serif;
+  --font-text: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-hand: "Gochi Hand", "Comic Sans MS", cursive;
+
+  --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2.5rem, 1.2rem + 4.4vw, 5.25rem);
+  --step-display: clamp(3rem, 1rem + 7.6vw, 9rem);
+
+  --margin: clamp(1.25rem, 3vw, 3rem);
+  --section: clamp(4.5rem, 2.5rem + 6vw, 8.5rem);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--white); color: var(--ink); font-family: var(--font-text); font-size: var(--step-body); line-height: 1.5; text-rendering: optimizeLegibility; }
+/* Pink square cursor, only on devices with a precise pointer (touch screens keep their defaults).
+   Over links and buttons it flips to an ink square with a pink edge, so clickable things still read as clickable. */
+@media (pointer: fine) {
+  html, body {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Crect x='1' y='1' width='14' height='14' fill='%23ef3d8a' stroke='%230a0a0a' stroke-width='2'/%3E%3C/svg%3E") 2 2, auto;
+  }
+  a, button, [role="tab"], summary, label[for] {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Crect x='1.5' y='1.5' width='17' height='17' fill='%230a0a0a' stroke='%23ef3d8a' stroke-width='3'/%3E%3C/svg%3E") 2 2, pointer;
+  }
+}
+img, video, svg { display: block; max-width: 100%; height: auto; }
+h1, h2, h3, p, ul, ol, figure, blockquote { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 0.07em; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.foot :focus-visible { outline-color: var(--sun); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: var(--margin); top: -4rem; background: var(--ink); color: var(--sun); padding: .6rem 1rem; z-index: 20; }
+.skip:focus { top: .75rem; }
+p { max-width: 62ch; text-wrap: pretty; }
+
+.display { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.005em; line-height: 0.9; text-wrap: balance; }
+.lead { font-size: var(--step-lead); line-height: 1.38; }
+.small { font-size: var(--step-small); }
+
+.btn { display: inline-flex; align-items: center; min-height: 3.25rem; padding: .85rem 1.4rem; background: var(--accent); color: var(--accent-ink); font-weight: 600; text-decoration: none; transition: transform 140ms var(--ease-out), background-color 180ms ease, color 180ms ease; }
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn:active { transform: translateY(2px) scale(.98); }
+.btn-dark { background: var(--ink); color: var(--sun); }
+.btn-dark:hover { background: var(--accent); color: var(--accent-ink); }
+.tlink { font-weight: 600; }
+.tlink:hover { text-decoration-thickness: .14em; }
+
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .5rem var(--margin); background: var(--sun); font-size: var(--step-small); }
+.bar .mark { display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 600; text-decoration: none; font-size: var(--step-body); }
+.bar ul { display: flex; gap: clamp(1rem, 2.4vw, 2rem); align-items: center; }
+.bar ul a { display: inline-flex; align-items: center; min-height: 2.75rem; text-decoration: none; font-weight: 600; }
+.bar ul a:hover { text-decoration: underline; }
+@media (min-width: 641px) {
+  html { scroll-padding-top: 4.5rem; }
+  .bar { position: sticky; top: 0; z-index: 20; box-shadow: 0 1px 0 rgba(10, 10, 10, .1); }
+  .bar ul a.bar-book { padding: 0 1.1rem; background: var(--accent); color: var(--accent-ink); text-decoration: none; transition: background-color 180ms ease, color 180ms ease; }
+  .bar ul a.bar-book:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+}
+.foot { background: var(--blackwater); color: var(--paper-soft); padding: 2rem var(--margin) 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem 2rem; font-size: var(--step-small); }
+.foot ul { display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin-top: -.75rem; }
+.foot a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--paper); text-decoration: none; }
+.foot a:hover { text-decoration: underline; }
+
+.page-hero { background: var(--sun); padding: clamp(3rem, 2rem + 5vw, 6.5rem) var(--margin) clamp(2.5rem, 4vw, 4rem); }
+.page-hero h1 { font-size: var(--step-display); max-width: 14ch; }
+.page-kicker { font-family: var(--font-hand); font-size: 1.35rem; margin-bottom: .75rem; color: var(--sun-ink); }
+.page-hero .lead { margin-top: 1.25rem; max-width: 42ch; }
+.page-hero .lead + .lead { margin-top: 1rem; }
+.page-main { padding: clamp(2.5rem, 4vw, 4.5rem) var(--margin) var(--section); }
+
+.empty { margin-top: .25rem; max-width: 40rem; padding: clamp(1.5rem, 3vw, 2.25rem); background: var(--white-2); }
+.empty p { color: var(--ink-soft); }
+.blog-links { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; align-items: center; }
+.blog-links .tlink { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.cta { margin-top: 2.75rem; }
+.cta p { margin-bottom: 1rem; }
+
+.prose { max-width: 62ch; }
+.prose .effective { font-size: var(--step-small); color: var(--ink-soft); margin-bottom: 1.25rem; }
+.prose h2 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.005em; line-height: 0.95; font-size: clamp(1.75rem, 1.1rem + 1.8vw, 2.75rem); margin-top: 2.5rem; margin-bottom: .85rem; max-width: 22ch; text-wrap: balance; }
+.prose p + p { margin-top: 1rem; }
+.prose a { font-weight: 600; }
+
+@media (max-width: 640px) {
+  .bar { flex-wrap: wrap; row-gap: 0; }
+  .bar ul { width: 100%; justify-content: space-between; gap: .5rem; }
+  .page-hero h1 { font-size: 14vw; }
+}
+
+
+/* Post pages */
+.post-hero h1 { font-size: var(--step-head); max-width: 20ch; }
+.post-hero .page-kicker a { color: inherit; }
+.byline { margin-top: 1.25rem; font-size: var(--step-small); font-weight: 600; }
+.post { max-width: 46rem; }
+.post > * + * { margin-top: 1rem; }
+.post h2 { margin-top: 2.75rem; }
+.post .made { background: var(--white-2); padding: 1rem 1.25rem; font-size: var(--step-small); color: var(--ink-soft); border-left: 4px solid var(--accent); }
+.post .made a { color: var(--ink); }
+.post .answer { font-size: var(--step-lead); line-height: 1.4; margin-top: 2rem; }
+.post .tldr { background: var(--sun); padding: 1.25rem 1.5rem 1.5rem; margin-top: 2rem; }
+.post .tldr .tldr-h { margin: 0 0 .6rem; font-family: var(--font-display); text-transform: uppercase; font-size: 1.75rem; line-height: 1; }
+.post ul, .post ol { padding-left: 1.4rem; max-width: 62ch; }
+.post ul { list-style: disc; }
+.post ol { list-style: decimal; }
+.post li + li { margin-top: .5rem; }
+.post table { width: 100%; border-collapse: collapse; font-size: var(--step-small); margin-top: 1.25rem; }
+.post th, .post td { text-align: left; vertical-align: top; padding: .65rem .75rem; border-bottom: 1px solid var(--paper-soft); }
+.post thead th { background: var(--ink); color: var(--paper); font-weight: 600; }
+.post tbody tr:nth-child(even) { background: var(--white-2); }
+.post .table-wrap { overflow-x: auto; }
+.post aside.cta { background: var(--spoonbill-wash); border: 2px solid var(--spoonbill-3); padding: 1.25rem 1.5rem; margin-top: 2.5rem; }
+.post aside.cta p { margin: 0; }
+.post .faq h3 { font-size: var(--step-body); font-weight: 600; margin-top: 1.5rem; }
+.post .faq h3 + p { margin-top: .35rem; }
+.post .more { margin-top: 3rem; font-size: var(--step-small); }
+@media print { .bar, .foot, .skip { display: none; } .post-hero { padding: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="bar" aria-label="Main">
+  <a class="mark" href="/">Ligaya Beebe</a>
+  <ul>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/blog/" aria-current="page">Blog</a></li>
+    <li><a class="tlink bar-book" href="https://calendly.com/ligaya-b/chat" target="_blank" rel="noopener">Book a call</a></li>
+  </ul>
+</nav>
+
+<header class="page-hero post-hero" id="top">
+  <p class="page-kicker"><a href="/blog/">Blog</a></p>
+  <h1 class="display">We bought ChatGPT licenses. How do we tell if anyone is using them?</h1>
+  <p class="lead">The admin dashboard shows who&#x27;s using their seat. Your team can tell you whether it&#x27;s helping.</p>
+  <p class="byline">Edited by Ligaya Beebe · <time datetime="2026-11-30">November 30, 2026</time></p>
+</header>
+
+<main id="main" class="page-main">
+<article class="prose post">
+<p class="made"><strong>How this post was made:</strong> a site bot drafted this from OpenAI&#x27;s ChatGPT Business and Enterprise help center pages and release notes, plus Microsoft and LinkedIn&#x27;s 2024 Work Trend Index, then ran revision passes. Ligaya Beebe reviewed and approved it before it went live. <a href="/editorial-standards/">Nothing on this blog publishes itself.</a></p>
+
+<p class="answer"><strong>The short answer:</strong> on ChatGPT Business, a workspace Owner, Admin, or Analytics Viewer can open Workspace analytics in the Admin Console and see active users, total messages, credits spent, and a usage table for each member. That tells you whether people are using their seats. It can't tell you whether ChatGPT is helping, and it won't show anyone's chats. For that part, ask your team.</p>
+
+<div class="tldr">
+<p class="tldr-h"><strong>TL;DR</strong></p>
+<ul>
+<li>Usage numbers live in the Admin Console. Only Owners, Admins, and Analytics Viewers can see them.</li>
+<li>Look at the member-level table first. It shows who has sent messages in the date range you pick.</li>
+<li>The dashboard can undercount. People may use personal accounts, and numbers can lag by up to 48 hours.</li>
+<li>Admins can't read anyone's chats through analytics. To learn whether it's helping, run a short check-in.</li>
+</ul>
+</div>
+
+<h2>Where do you find ChatGPT usage numbers?</h2>
+<p>In the Admin Console for your workspace. In April 2026, OpenAI <a href="https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes">replaced User analytics with Workspace analytics</a> for ChatGPT Business. According to the release notes, it shows active users, total messages sent, and total credits spent, plus a member-level table with each person's seat type, credits spent, and messages sent.</p>
+<p>Here's the path, based on OpenAI's help center as of this writing. Menus do move, so check the linked pages if yours looks different.</p>
+<ol class="steps">
+<li><strong>Sign in with the right role.</strong> OpenAI's <a href="https://help.openai.com/en/articles/8542216-managing-members-seat-types-and-roles-in-chatgpt-business">roles and seats page</a> lists Owners, Admins, and Analytics Viewers as the roles that can view workspace analytics. Regular Members can't.</li>
+<li><strong>Open the Admin Console and pick your workspace.</strong> OpenAI's <a href="https://help.openai.com/en/articles/12289294-managing-your-tenant-in-admin-console">Admin Console guide</a> says to select the ChatGPT workspace, then open the section you need, such as Analytics.</li>
+<li><strong>Choose a date range.</strong> The release notes list preset windows of 7 days, 1 month, 6 months, and 12 months, or a custom range. One month is a good first look.</li>
+<li><strong>Read the member table.</strong> Search or filter for each person. Note who has sent messages in the range and who hasn't.</li>
+<li><strong>Write your baseline down.</strong> Seats you pay for, people who used ChatGPT this month, and the date you checked. You'll compare against it later.</li>
+</ol>
+<p>If you'd like your ops lead to see these numbers without giving them full admin rights, the Analytics Viewer role exists for exactly that. OpenAI describes it as having limited permissions for viewing workspace information and analytics.</p>
+
+<h2>Which numbers actually tell you something?</h2>
+<p>Business and Enterprise plans show slightly different things. OpenAI's <a href="https://help.openai.com/en/articles/10875114-workspace-analytics-for-chatgpt-enterprise-and-edu">Enterprise and Edu analytics page</a> defines a few terms that are useful even if you're on Business, because they're good ways to think about adoption.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Number</th><th>Plan</th><th>What it tells you</th><th>What it doesn't</th></tr></thead>
+<tbody>
+<tr><td>Active users</td><td>Business and Enterprise</td><td>How many people sent messages in the range you picked</td><td>Whether those messages were for real work</td></tr>
+<tr><td>Messages per member</td><td>Business (member table)</td><td>Who uses it a lot and who barely touches it</td><td>Whether heavy use means good use</td></tr>
+<tr><td>Credits spent</td><td>Business</td><td>Usage that drew on your workspace credit pool</td><td>All usage. Seats use their included allowance first.</td></tr>
+<tr><td>Seats activated</td><td>Enterprise</td><td>Enabled users who have sent at least one message</td><td>Whether they came back</td></tr>
+<tr><td>Weekly active users (WAU)</td><td>Enterprise</td><td>Users who sent at least one message in the last full Sunday to Saturday week</td><td>How deeply they use it</td></tr>
+</tbody>
+</table></div>
+<p>For a small team, the most honest single question is: how many of the people we pay for used ChatGPT in the last month? Then look at the names. Ten seats is few enough that you can talk to each person.</p>
+<p>Enterprise workspaces get more. The same page describes Benchmarks that compare your activation rate, WAU per activated user, and messages per WAU against an industry median, and CSV exports of usage by user.</p>
+
+<h2>Can admins read what people type into ChatGPT?</h2>
+<p>No, not through analytics. OpenAI's <a href="https://help.openai.com/en/articles/8798634-managing-data-sharing-and-privacy-in-chatgpt-business">Business privacy page</a> says usage analytics and spend controls are separate from chat transcript access. Each person keeps their own chat history unless they choose to share a specific chat or GPT.</p>
+<p>The same page says OpenAI won't train on your workspace's data, and that Business data is excluded from training by default. That's worth telling your team out loud. People are more likely to use a work account when they know what their manager can and can't see.</p>
+
+<h2>Why might the dashboard show less use than you expect?</h2>
+<p>A few reasons, all documented.</p>
+<ul>
+<li><strong>Personal accounts.</strong> The <a href="https://www.microsoft.com/en-us/worklab/work-trend-index/ai-at-work-is-here-now-comes-the-hard-part">2024 Work Trend Index</a> from Microsoft and LinkedIn found that 78% of people who use AI at work bring their own tools, and 80% at small and medium-sized companies. Someone might be using ChatGPT every day on a personal login your dashboard never sees.</li>
+<li><strong>Quiet use.</strong> The same report found that 52% of people who use AI at work are reluctant to admit using it for their most important tasks.</li>
+<li><strong>Lag.</strong> OpenAI's Admin Console guide says ChatGPT usage analytics cover up to the previous 12 months and can take up to 48 hours to refresh.</li>
+<li><strong>Credits aren't usage.</strong> OpenAI's <a href="https://help.openai.com/en/articles/8542115-chatgpt-business-general-faq">Business FAQ</a> says zero workspace credit usage doesn't necessarily mean no one used ChatGPT, because seats use their included allowance before drawing on credits.</li>
+</ul>
+<p>So treat a low number as a reason to start asking. Talk to people before you cut seats.</p>
+
+<h2>How do you find out if it's actually helping?</h2>
+<p>Ask. The dashboard counts activity. Only the people doing the work can tell you whether it saved them time.</p>
+<p>Enterprise and Edu workspaces have built-in optional impact surveys. OpenAI notes that their results are directional and self-reported, and are "not a causal ROI measurement." That caveat applies to any survey you run yourself, too. On Business, a short check-in works fine:</p>
+<ol class="steps">
+<li>What's one task you used ChatGPT for in the last two weeks?</li>
+<li>Roughly how much time did it save, or cost, you?</li>
+<li>What's one task you wish it could help with but haven't figured out?</li>
+</ol>
+<p>Answers to the third question are your training plan. They're also a good list of candidates for a first agent, covered in <a href="/blog/how-should-a-10-person-company-start-using-ai-agents/">How should a 10-person company start using AI agents?</a></p>
+
+<h2>What should you do about seats nobody uses?</h2>
+<p>Try training before you cut. The Work Trend Index found that only 39% of people who use AI at work had gotten AI training from their company. An unused seat often belongs to someone who never got shown what to do with it.</p>
+<p>If you do reduce seats, OpenAI's Business FAQ says reductions take effect at the start of the next billing cycle, and owners can schedule them ahead of time. Reassigning a seat you've already paid for to someone else doesn't add a charge.</p>
+
+<aside class="cta">
+<p>Bought the licenses and not sure what's next? Ligaya Beebe trains help desk, operations, implementation, and marketing teams on the AI tools they already pay for, hands on the keyboard from the first session. <a href="/#services">See her services</a>, or <a href="https://calendly.com/ligaya-b/chat">book a free 30-minute call</a>.</p>
+</aside>
+
+
+<section class="faq" aria-labelledby="faq-h">
+<h2 id="faq-h">FAQ</h2>
+<h3>Can I see what each person asked ChatGPT?</h3>
+<p>Not through usage analytics. OpenAI&#x27;s ChatGPT Business privacy page says analytics and spend controls are separate from chat transcript access, and each person keeps their own chat history unless they share a specific chat.</p>
+<h3>Who can see ChatGPT Business usage analytics?</h3>
+<p>Workspace Owners, Admins, and Analytics Viewers, according to OpenAI&#x27;s roles and seats page. Members can&#x27;t. The Analytics Viewer role lets someone see analytics without full admin permissions.</p>
+<h3>How up to date are the usage numbers?</h3>
+<p>OpenAI&#x27;s Admin Console guide says ChatGPT usage analytics cover up to the previous 12 months and can take up to 48 hours to refresh.</p>
+<h3>Our credits used shows zero. Does that mean nobody uses ChatGPT?</h3>
+<p>Not necessarily. OpenAI&#x27;s Business FAQ says seats use their included allowance before drawing on workspace credits, so credit usage isn&#x27;t a measure of all activity.</p>
+<h3>We have ChatGPT Team, not Business. Does this apply to us?</h3>
+<p>Yes. OpenAI&#x27;s Business FAQ says ChatGPT Team was renamed ChatGPT Business on August 29, 2025, and existing Team workspaces became Business workspaces.</p>
+</section>
+
+<p class="more"><a class="tlink" href="/blog/">More from the blog</a> · <a class="tlink" href="/editorial-standards/">Editorial standards</a></p>
+</article>
+</main>
+
+<footer class="foot">
+  <p>© 2026 L.&nbsp;Beebe, LLC, Estero, Florida. Updated <time datetime="2026-11-30">November 30, 2026</time>.</p>
+  <ul>
+    <li><a href="/hire">For hiring managers</a></li>
+    <li><a href="/portfolio/">Portfolio</a></li>
+    <li><a href="/editorial-standards/">Editorial standards</a></li>
+    <li><a href="/llms.txt">For AI agents</a></li>
+    <li><a href="#top">Back to top</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>

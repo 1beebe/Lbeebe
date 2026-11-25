@@ -88,7 +88,10 @@ Hiring managers: see https://lbeebe.com/hire, book a 30-minute intro at https://
 
 Ligaya writes for SMB owners and ops leads with practical questions about AI: how to go from having the tools to using them confidently and knowing the return.
 
-- [Blog](https://lbeebe.com/blog/): First posts coming soon.
+- [Blog](https://lbeebe.com/blog/): All posts. Each one is drafted by a site bot and reviewed and approved by Ligaya Beebe before it goes live.
+- [How should a 10-person company start using AI agents?](https://lbeebe.com/blog/how-should-a-10-person-company-start-using-ai-agents/): Pick one repeated task, write down how it's done, and keep a person on anything that's hard to undo.
+- [We bought ChatGPT licenses. How do we tell if anyone is using them?](https://lbeebe.com/blog/how-to-tell-if-anyone-is-using-chatgpt-licenses/): The admin dashboard shows who's using their seat. Your team can tell you whether it's helping.
+- [What is an AI agent, and how is it different from a ChatGPT chat?](https://lbeebe.com/blog/what-is-an-ai-agent/): A chat answers your message and waits. An agent takes a goal and works through the steps until it's done or needs you.
 - [Editorial standards](https://lbeebe.com/editorial-standards/): How the blog is made. Ligaya Beebe is the named editor; nothing publishes itself.
 
 ## Contact

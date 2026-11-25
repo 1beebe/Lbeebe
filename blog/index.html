@@ -41,7 +41,12 @@
       "inLanguage": "en-US",
       "isPartOf": { "@id": "https://lbeebe.com/#website" },
       "publisher": { "@id": "https://lbeebe.com/#business" },
-      "author": { "@id": "https://lbeebe.com/#ligaya" }
+      "author": { "@id": "https://lbeebe.com/#ligaya" },
+      "blogPost": [
+        { "@id": "https://lbeebe.com/blog/how-should-a-10-person-company-start-using-ai-agents/#post" },
+        { "@id": "https://lbeebe.com/blog/how-to-tell-if-anyone-is-using-chatgpt-licenses/#post" },
+        { "@id": "https://lbeebe.com/blog/what-is-an-ai-agent/#post" }
+      ]
     },
     {
       "@type": "WebPage",
@@ -164,6 +169,12 @@ p { max-width: 62ch; text-wrap: pretty; }
 
 .empty { margin-top: .25rem; max-width: 40rem; padding: clamp(1.5rem, 3vw, 2.25rem); background: var(--white-2); }
 .empty p { color: var(--ink-soft); }
+.post-list { display: grid; gap: 1.25rem; max-width: 46rem; }
+.post-list a { display: block; padding: clamp(1.25rem, 2.5vw, 1.75rem); background: var(--white-2); text-decoration: none; border-left: 4px solid transparent; transition: border-color 180ms ease, background-color 180ms ease; }
+.post-list a:hover { border-left-color: var(--accent); background: var(--spoonbill-wash); }
+.post-list h3 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; line-height: 0.95; font-size: clamp(1.5rem, 1rem + 1.4vw, 2.25rem); text-wrap: balance; }
+.post-list p { margin-top: .6rem; color: var(--ink-soft); }
+.post-list .post-meta { font-size: var(--step-small); font-weight: 600; color: var(--ink); }
 .blog-links { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; align-items: center; }
 .blog-links .tlink { display: inline-flex; align-items: center; min-height: 2.75rem; }
 .cta { margin-top: 2.75rem; }
@@ -204,9 +215,31 @@ p { max-width: 62ch; text-wrap: pretty; }
 </header>
 
 <main id="main" class="page-main">
-  <section class="empty" aria-labelledby="posts-h">
+  <section class="posts" aria-labelledby="posts-h">
     <h2 class="sr-only" id="posts-h">Posts</h2>
-    <p>First posts coming soon.</p>
+    <ul class="post-list">
+      <li>
+        <a href="/blog/how-should-a-10-person-company-start-using-ai-agents/">
+          <h3>How should a 10-person company start using AI agents?</h3>
+          <p>Pick one repeated task, write down how it&#x27;s done, and keep a person on anything that&#x27;s hard to undo.</p>
+          <p class="post-meta">Edited by Ligaya Beebe · <time datetime="2026-11-30">November 30, 2026</time></p>
+        </a>
+      </li>
+      <li>
+        <a href="/blog/how-to-tell-if-anyone-is-using-chatgpt-licenses/">
+          <h3>We bought ChatGPT licenses. How do we tell if anyone is using them?</h3>
+          <p>The admin dashboard shows who&#x27;s using their seat. Your team can tell you whether it&#x27;s helping.</p>
+          <p class="post-meta">Edited by Ligaya Beebe · <time datetime="2026-11-30">November 30, 2026</time></p>
+        </a>
+      </li>
+      <li>
+        <a href="/blog/what-is-an-ai-agent/">
+          <h3>What is an AI agent, and how is it different from a ChatGPT chat?</h3>
+          <p>A chat answers your message and waits. An agent takes a goal and works through the steps until it&#x27;s done or needs you.</p>
+          <p class="post-meta">Edited by Ligaya Beebe · <time datetime="2026-11-30">November 30, 2026</time></p>
+        </a>
+      </li>
+    </ul>
   </section>
 
   <p class="blog-links">
