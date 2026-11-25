@@ -14,7 +14,8 @@
 <meta property="og:url" content="https://lbeebe.com/blog/how-should-a-10-person-company-start-using-ai-agents/">
 <meta property="og:title" content="How should a 10-person company start using AI agents?">
 <meta property="og:description" content="Pick one repeated task, write down how it&#x27;s done, and keep a person on anything that&#x27;s hard to undo.">
-<meta property="og:image" content="https://lbeebe.com/og-card.jpg?v=2026-11-16">
+<meta property="og:image" content="https://lbeebe.com/blog/how-should-a-10-person-company-start-using-ai-agents/og.png">
+<meta property="og:image:alt" content="How should a 10-person company start using AI agents?">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="L. Beebe, LLC">
@@ -23,7 +24,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="How should a 10-person company start using AI agents?">
 <meta name="twitter:description" content="Pick one repeated task, write down how it&#x27;s done, and keep a person on anything that&#x27;s hard to undo.">
-<meta name="twitter:image" content="https://lbeebe.com/og-card.jpg?v=2026-11-16">
+<meta name="twitter:image" content="https://lbeebe.com/blog/how-should-a-10-person-company-start-using-ai-agents/og.png">
+<meta name="twitter:image:alt" content="How should a 10-person company start using AI agents?">
 <meta name="theme-color" content="#ffd249">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +44,13 @@
       "datePublished": "2026-11-30",
       "dateModified": "2026-11-30",
       "inLanguage": "en-US",
-      "image": "https://lbeebe.com/og-card.jpg?v=2026-11-16",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://lbeebe.com/blog/how-should-a-10-person-company-start-using-ai-agents/og.png",
+        "width": 1200,
+        "height": 630,
+        "caption": "How should a 10-person company start using AI agents?"
+      },
       "author": {
         "@type": "Organization",
         "@id": "https://lbeebe.com/#business",
@@ -232,6 +240,12 @@ p { max-width: 62ch; text-wrap: pretty; }
 
 .empty { margin-top: .25rem; max-width: 40rem; padding: clamp(1.5rem, 3vw, 2.25rem); background: var(--white-2); }
 .empty p { color: var(--ink-soft); }
+.post-list { display: grid; gap: 1.25rem; max-width: 46rem; }
+.post-list a { display: block; padding: clamp(1.25rem, 2.5vw, 1.75rem); background: var(--white-2); text-decoration: none; border-left: 4px solid transparent; transition: border-color 180ms ease, background-color 180ms ease; }
+.post-list a:hover { border-left-color: var(--accent); background: var(--spoonbill-wash); }
+.post-list h3 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; line-height: 0.95; font-size: clamp(1.5rem, 1rem + 1.4vw, 2.25rem); text-wrap: balance; }
+.post-list p { margin-top: .6rem; color: var(--ink-soft); }
+.post-list .post-meta { font-size: var(--step-small); font-weight: 600; color: var(--ink); }
 .blog-links { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; align-items: center; }
 .blog-links .tlink { display: inline-flex; align-items: center; min-height: 2.75rem; }
 .cta { margin-top: 2.75rem; }
@@ -257,6 +271,8 @@ p { max-width: 62ch; text-wrap: pretty; }
 .post { max-width: 46rem; }
 .post > * + * { margin-top: 1rem; }
 .post h2 { margin-top: 2.75rem; }
+.post .card { margin: 0 0 2rem; max-width: 46rem; }
+.post .card img { width: 100%; height: auto; border: 2px solid var(--ink); }
 .post .made { background: var(--white-2); padding: 1rem 1.25rem; font-size: var(--step-small); color: var(--ink-soft); border-left: 4px solid var(--accent); }
 .post .made a { color: var(--ink); }
 .post .answer { font-size: var(--step-lead); line-height: 1.4; margin-top: 2rem; }
@@ -302,6 +318,7 @@ p { max-width: 62ch; text-wrap: pretty; }
 
 <main id="main" class="page-main">
 <article class="prose post">
+<figure class="card"><img src="/blog/how-should-a-10-person-company-start-using-ai-agents/og.png" width="1200" height="630" alt="How should a 10-person company start using AI agents?"></figure>
 <p class="made"><strong>How this post was made:</strong> a site bot drafted this from OpenAI&#x27;s practical guide to building agents and ChatGPT help pages, Anthropic&#x27;s engineering post on building effective agents, the U.S. Chamber of Commerce&#x27;s 2025 small business technology report, and Microsoft and LinkedIn&#x27;s 2024 Work Trend Index, then ran revision passes. Ligaya Beebe reviewed and approved it before it went live. <a href="/editorial-standards/">Nothing on this blog publishes itself.</a></p>
 
 <p class="answer"><strong>The short answer:</strong> pick one task your team already does every week, write down how it gets done today, and let an agent take that one task while a person approves anything that leaves the building. Skip the platform shopping and the five-agent plan. OpenAI's <a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/">agent guide</a> says to start small and validate with real users, and Anthropic's <a href="https://www.anthropic.com/engineering/building-effective-agents">engineering team</a> recommends the simplest solution possible, adding complexity only when it's needed.</p>

@@ -14,7 +14,8 @@
 <meta property="og:url" content="https://lbeebe.com/blog/what-is-an-ai-agent/">
 <meta property="og:title" content="What is an AI agent, and how is it different from a ChatGPT chat?">
 <meta property="og:description" content="A chat answers your message and waits. An agent takes a goal and works through the steps until it&#x27;s done or needs you.">
-<meta property="og:image" content="https://lbeebe.com/og-card.jpg?v=2026-11-16">
+<meta property="og:image" content="https://lbeebe.com/blog/what-is-an-ai-agent/og.png">
+<meta property="og:image:alt" content="What is an AI agent, and how is it different from a ChatGPT chat?">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="L. Beebe, LLC">
@@ -23,7 +24,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="What is an AI agent, and how is it different from a ChatGPT chat?">
 <meta name="twitter:description" content="A chat answers your message and waits. An agent takes a goal and works through the steps until it&#x27;s done or needs you.">
-<meta name="twitter:image" content="https://lbeebe.com/og-card.jpg?v=2026-11-16">
+<meta name="twitter:image" content="https://lbeebe.com/blog/what-is-an-ai-agent/og.png">
+<meta name="twitter:image:alt" content="What is an AI agent, and how is it different from a ChatGPT chat?">
 <meta name="theme-color" content="#ffd249">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +44,13 @@
       "datePublished": "2026-11-30",
       "dateModified": "2026-11-30",
       "inLanguage": "en-US",
-      "image": "https://lbeebe.com/og-card.jpg?v=2026-11-16",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://lbeebe.com/blog/what-is-an-ai-agent/og.png",
+        "width": 1200,
+        "height": 630,
+        "caption": "What is an AI agent, and how is it different from a ChatGPT chat?"
+      },
       "author": {
         "@type": "Organization",
         "@id": "https://lbeebe.com/#business",
@@ -230,6 +238,12 @@ p { max-width: 62ch; text-wrap: pretty; }
 
 .empty { margin-top: .25rem; max-width: 40rem; padding: clamp(1.5rem, 3vw, 2.25rem); background: var(--white-2); }
 .empty p { color: var(--ink-soft); }
+.post-list { display: grid; gap: 1.25rem; max-width: 46rem; }
+.post-list a { display: block; padding: clamp(1.25rem, 2.5vw, 1.75rem); background: var(--white-2); text-decoration: none; border-left: 4px solid transparent; transition: border-color 180ms ease, background-color 180ms ease; }
+.post-list a:hover { border-left-color: var(--accent); background: var(--spoonbill-wash); }
+.post-list h3 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; line-height: 0.95; font-size: clamp(1.5rem, 1rem + 1.4vw, 2.25rem); text-wrap: balance; }
+.post-list p { margin-top: .6rem; color: var(--ink-soft); }
+.post-list .post-meta { font-size: var(--step-small); font-weight: 600; color: var(--ink); }
 .blog-links { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; align-items: center; }
 .blog-links .tlink { display: inline-flex; align-items: center; min-height: 2.75rem; }
 .cta { margin-top: 2.75rem; }
@@ -255,6 +269,8 @@ p { max-width: 62ch; text-wrap: pretty; }
 .post { max-width: 46rem; }
 .post > * + * { margin-top: 1rem; }
 .post h2 { margin-top: 2.75rem; }
+.post .card { margin: 0 0 2rem; max-width: 46rem; }
+.post .card img { width: 100%; height: auto; border: 2px solid var(--ink); }
 .post .made { background: var(--white-2); padding: 1rem 1.25rem; font-size: var(--step-small); color: var(--ink-soft); border-left: 4px solid var(--accent); }
 .post .made a { color: var(--ink); }
 .post .answer { font-size: var(--step-lead); line-height: 1.4; margin-top: 2rem; }
@@ -300,6 +316,7 @@ p { max-width: 62ch; text-wrap: pretty; }
 
 <main id="main" class="page-main">
 <article class="prose post">
+<figure class="card"><img src="/blog/what-is-an-ai-agent/og.png" width="1200" height="630" alt="What is an AI agent, and how is it different from a ChatGPT chat?"></figure>
 <p class="made"><strong>How this post was made:</strong> a site bot drafted this from OpenAI&#x27;s practical guide to building agents, OpenAI&#x27;s ChatGPT Work guide and help pages, and Anthropic&#x27;s engineering post on building effective agents, then ran revision passes. Ligaya Beebe reviewed and approved it before it went live. <a href="/editorial-standards/">Nothing on this blog publishes itself.</a></p>
 
 <p class="answer"><strong>The short answer:</strong> OpenAI defines agents as "systems that independently accomplish tasks on your behalf." In a ChatGPT chat, you send a message, it replies, and it waits for you. An agent takes a goal, works out the steps, uses tools like a browser or your connected apps, checks how it's doing, and comes back when the job is finished or it needs you. OpenAI's own guide says a simple chatbot that doesn't run the workflow isn't an agent.</p>
