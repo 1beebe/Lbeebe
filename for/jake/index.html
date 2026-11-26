@@ -429,21 +429,21 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 
 .mapsplit {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr);
-  gap: clamp(1.5rem, 3vw, 3.25rem);
+  grid-template-columns: auto minmax(16rem, 1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
   align-items: center;
   margin-top: clamp(1.75rem, 3vw, 2.75rem);
 }
-.map { position: relative; background: var(--gulf); }
-.map svg { width: 100%; height: auto; }
-.band { fill: none; stroke: var(--sun); stroke-width: 34; stroke-linecap: round; stroke-linejoin: round; }
+.map { position: relative; background: var(--gulf); width: max-content; max-width: 100%; }
+.map svg { display: block; height: 420px; width: auto; max-width: 100%; aspect-ratio: 640 / 700; }
+.band { fill: none; stroke: var(--sun); stroke-width: 26; stroke-linecap: round; stroke-linejoin: round; }
 .hop { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 2 7; stroke-linecap: round; }
 .pins { position: absolute; inset: 0; }
 .pins li {
   position: absolute;
   left: var(--x);
   top: var(--y);
-  font-size: .95rem;
+  font-size: .84rem;
   font-weight: 600;
   line-height: 1.15;
 }
@@ -456,11 +456,11 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   background: var(--ink);
   border: 1.5px solid var(--ink);
 }
-.pins .lab { position: absolute; left: 14px; top: -0.55rem; white-space: nowrap; }
-.pins .fm .lab { left: 46px; top: -1.85rem; }
-.pins .estero .lab { left: 22px; top: 1rem; }
-.pins .naples .lab { left: auto; right: 16px; top: .35rem; }
-.pins .miami .lab { left: auto; right: 16px; top: -1.2rem; }
+.pins .lab { position: absolute; left: 12px; top: -0.5rem; white-space: nowrap; }
+.pins .fm .lab { left: 12px; top: -1.15rem; }
+.pins .estero .lab { left: 12px; top: .55rem; }
+.pins .naples .lab { left: auto; right: 12px; top: -.15rem; }
+.pins .miami .lab { left: auto; right: 14px; top: -.65rem; }
 .pins .home .dot { background: var(--sun); width: 14px; height: 14px; left: -7px; top: -7px; }
 .pins .occasional .dot { background: var(--gulf); border-style: dashed; }
 .mapcopy { display: grid; gap: .85rem; align-content: center; }
@@ -591,6 +591,9 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   .frame { width: 9rem; }
   .strip { grid-template-columns: 1fr 1fr; }
   .split, .mapsplit, .dx { grid-template-columns: 1fr; }
+  .mapsplit { justify-items: center; }
+  .mapcopy { justify-self: stretch; }
+  .map svg { height: 320px; }
   .ba { min-height: 0; flex-direction: column; }
   .from { flex-basis: auto; border-right: 0; border-bottom: 2px solid var(--ink); }
   .day { grid-template-columns: 1fr 1fr; }
@@ -826,25 +829,25 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 
     <div class="mapsplit">
       <figure class="map">
-        <svg viewBox="0 0 640 860" role="img" aria-labelledby="mapTitle">
-          <title id="mapTitle">Florida peninsula. A sun band marks the Gulf coast from Naples to Tampa. Miami is a dotted occasional link on the Atlantic.</title>
-          <rect width="640" height="860" fill="#a4f0ec"/>
+        <svg viewBox="0 0 640 700" role="img" aria-labelledby="mapTitle">
+          <title id="mapTitle">Central and south Florida, cut flat just north of Tampa Bay and running down to the Keys. A sun band marks the Gulf coast from Naples to Tampa. Miami is a dotted occasional link on the Atlantic.</title>
+          <rect width="640" height="700" fill="#a4f0ec"/>
           <defs>
             <clipPath id="landclip">
-              <path d="M85.7 50.7 L99.1 78.0 L113.1 125.2 L110.7 185.3 L100.6 226.5 L90.0 256.1 L82.6 277.9 L84.5 308.0 L96.9 327.3 L116.9 330.4 L130.2 307.1 L141.3 301.5 L148.1 319.9 L139.9 344.2 L121.2 359.8 L101.3 368.8 L116.6 400.3 L131.9 434.3 L141.9 465.0 L156.0 485.5 L171.9 504.5 L188.7 522.6 L205.4 535.2 L209.4 543.6 L204.3 550.6 L220.9 565.9 L233.2 584.8 L238.6 606.5 L249.1 631.9 L269.0 657.8 L297.9 683.4 L329.6 709.3 L357.4 734.4 L382.1 756.8 L416.6 772.6 L449.2 768.6 L475.7 744.6 L490.0 715.9 L497.4 674.9 L500.7 622.3 L508.7 565.7 L507.4 500.9 L494.5 430.0 L472.0 364.9 L448.9 304.1 L428.9 246.5 L419.9 186.9 L402.3 133.5 L371.2 89.2 L327.8 56.5 L270.0 39.1 L199.6 36.7 L113.9 42.8 Z"/>
+              <path d="M92.1 57.2 L89.5 62.8 L80.1 82.7 L77.1 94.5 L75.9 116.4 L77.9 127.1 L86.2 143.0 L90.1 150.3 L96.0 160.3 L102.6 161.4 L120.3 155.4 L126.2 149.2 L129.7 133.3 L127.1 124.3 L114.2 108.4 L114.2 102.2 L127.1 96.2 L135.0 96.8 L150.3 104.8 L155.9 112.0 L160.7 130.0 L158.7 140.1 L146.9 158.0 L139.0 167.0 L122.5 181.0 L114.2 184.9 L101.3 184.9 L102.6 189.9 L120.3 207.9 L129.2 218.5 L143.3 238.5 L149.9 248.6 L159.3 264.5 L164.0 272.9 L171.0 286.9 L179.6 288.6 L203.1 280.6 L213.1 275.5 L224.8 265.6 L229.4 267.3 L234.2 283.2 L233.2 292.2 L224.9 308.1 L217.7 316.5 L200.0 330.5 L198.4 336.7 L210.1 344.6 L219.0 348.0 L239.0 352.0 L247.6 357.0 L258.2 371.0 L262.5 378.3 L267.2 390.3 L271.2 398.7 L280.6 416.6 L292.2 427.3 L323.9 447.2 L340.5 460.1 L367.5 486.0 L378.4 500.6 L390.2 526.5 L395.8 536.6 L404.0 546.6 L413.0 548.5 L436.5 545.6 L450.7 545.6 L477.8 548.5 L491.0 547.1 L511.0 539.2 L515.0 540.3 L509.1 552.3 L501.5 560.1 L480.3 576.1 L463.8 585.6 L426.1 603.5 L404.0 611.9 L362.8 623.9 L337.0 629.2 L286.4 636.2 L274.9 639.9 L284.3 645.8 L300.8 645.6 L350.2 638.6 L375.0 633.8 L413.8 623.8 L435.7 615.4 L474.5 595.5 L492.0 585.4 L515.5 569.4 L526.1 558.5 L540.2 535.6 L546.8 522.7 L556.2 499.8 L560.9 487.1 L567.9 465.2 L571.2 456.2 L575.9 446.3 L577.9 433.6 L580.3 398.8 L582.2 377.7 L587.0 337.8 L588.9 315.4 L591.3 275.5 L586.7 254.5 L567.8 219.6 L558.3 201.4 L543.0 171.5 L533.0 153.3 L513.0 118.4 L504.1 99.3 L492.4 66.4 L489.1 57.2 Z"/>
             </clipPath>
           </defs>
-          <path fill="#ffffff" stroke="#0a0a0a" stroke-width="2.5" stroke-linejoin="round" d="M85.7 50.7 L99.1 78.0 L113.1 125.2 L110.7 185.3 L100.6 226.5 L90.0 256.1 L82.6 277.9 L84.5 308.0 L96.9 327.3 L116.9 330.4 L130.2 307.1 L141.3 301.5 L148.1 319.9 L139.9 344.2 L121.2 359.8 L101.3 368.8 L116.6 400.3 L131.9 434.3 L141.9 465.0 L156.0 485.5 L171.9 504.5 L188.7 522.6 L205.4 535.2 L209.4 543.6 L204.3 550.6 L220.9 565.9 L233.2 584.8 L238.6 606.5 L249.1 631.9 L269.0 657.8 L297.9 683.4 L329.6 709.3 L357.4 734.4 L382.1 756.8 L416.6 772.6 L449.2 768.6 L475.7 744.6 L490.0 715.9 L497.4 674.9 L500.7 622.3 L508.7 565.7 L507.4 500.9 L494.5 430.0 L472.0 364.9 L448.9 304.1 L428.9 246.5 L419.9 186.9 L402.3 133.5 L371.2 89.2 L327.8 56.5 L270.0 39.1 L199.6 36.7 L113.9 42.8 Z"/>
-          <path class="band" clip-path="url(#landclip)" d="M101.3 368.8 L116.6 400.3 L131.9 434.3 L141.9 465.0 L156.0 485.5 L171.9 504.5 L188.7 522.6 L205.4 535.2 L220.9 565.9 L233.2 584.8 L238.6 606.5 L249.1 631.9"/>
-          <ellipse cx="394.6" cy="468.5" rx="44" ry="40" fill="#a4f0ec" stroke="#0a0a0a" stroke-width="2"/>
-          <path class="hop" d="M250 640 C 340 730, 430 760, 478 682"/>
+          <path fill="#ffffff" stroke="#0a0a0a" stroke-width="2.5" stroke-linejoin="round" d="M92.1 57.2 L89.5 62.8 L80.1 82.7 L77.1 94.5 L75.9 116.4 L77.9 127.1 L86.2 143.0 L90.1 150.3 L96.0 160.3 L102.6 161.4 L120.3 155.4 L126.2 149.2 L129.7 133.3 L127.1 124.3 L114.2 108.4 L114.2 102.2 L127.1 96.2 L135.0 96.8 L150.3 104.8 L155.9 112.0 L160.7 130.0 L158.7 140.1 L146.9 158.0 L139.0 167.0 L122.5 181.0 L114.2 184.9 L101.3 184.9 L102.6 189.9 L120.3 207.9 L129.2 218.5 L143.3 238.5 L149.9 248.6 L159.3 264.5 L164.0 272.9 L171.0 286.9 L179.6 288.6 L203.1 280.6 L213.1 275.5 L224.8 265.6 L229.4 267.3 L234.2 283.2 L233.2 292.2 L224.9 308.1 L217.7 316.5 L200.0 330.5 L198.4 336.7 L210.1 344.6 L219.0 348.0 L239.0 352.0 L247.6 357.0 L258.2 371.0 L262.5 378.3 L267.2 390.3 L271.2 398.7 L280.6 416.6 L292.2 427.3 L323.9 447.2 L340.5 460.1 L367.5 486.0 L378.4 500.6 L390.2 526.5 L395.8 536.6 L404.0 546.6 L413.0 548.5 L436.5 545.6 L450.7 545.6 L477.8 548.5 L491.0 547.1 L511.0 539.2 L515.0 540.3 L509.1 552.3 L501.5 560.1 L480.3 576.1 L463.8 585.6 L426.1 603.5 L404.0 611.9 L362.8 623.9 L337.0 629.2 L286.4 636.2 L274.9 639.9 L284.3 645.8 L300.8 645.6 L350.2 638.6 L375.0 633.8 L413.8 623.8 L435.7 615.4 L474.5 595.5 L492.0 585.4 L515.5 569.4 L526.1 558.5 L540.2 535.6 L546.8 522.7 L556.2 499.8 L560.9 487.1 L567.9 465.2 L571.2 456.2 L575.9 446.3 L577.9 433.6 L580.3 398.8 L582.2 377.7 L587.0 337.8 L588.9 315.4 L591.3 275.5 L586.7 254.5 L567.8 219.6 L558.3 201.4 L543.0 171.5 L533.0 153.3 L513.0 118.4 L504.1 99.3 L492.4 66.4 L489.1 57.2 Z"/>
+          <path class="band" clip-path="url(#landclip)" d="M97.7 184.9 L125.2 212.9 L147.3 244.1 L162.0 269.0 L173.0 290.8 L191.4 326.6 L217.1 346.9 L244.7 356.2 L261.2 378.0 L268.6 396.7 L281.4 421.7"/>
+          <ellipse cx="448.6" cy="265.9" rx="47.8" ry="28" fill="#a4f0ec" stroke="#0a0a0a" stroke-width="2"/>
+          <path class="hop" d="M290.6 420.1 C 378.8 459.0, 489.1 482.4, 540.5 452.8"/>
         </svg>
         <ul class="pins">
-          <li class="tampa" style="--x:21.2%; --y:33.7%"><span class="dot" aria-hidden="true"></span><span class="lab">Tampa</span></li>
-          <li class="fm" style="--x:35.6%; --y:60.4%"><span class="dot" aria-hidden="true"></span><span class="lab">Fort Myers</span></li>
-          <li class="estero home" style="--x:37.0%; --y:64.4%"><span class="dot" aria-hidden="true"></span><span class="lab">Estero</span></li>
-          <li class="naples" style="--x:37.3%; --y:70.5%"><span class="dot" aria-hidden="true"></span><span class="lab">Naples</span></li>
-          <li class="miami occasional" style="--x:76.5%; --y:78.0%"><span class="dot" aria-hidden="true"></span><span class="lab">Miami</span></li>
+          <li class="tampa" style="--x:23.0%; --y:15.5%"><span class="dot" aria-hidden="true"></span><span class="lab">Tampa</span></li>
+          <li class="fm" style="--x:40.0%; --y:44.7%"><span class="dot" aria-hidden="true"></span><span class="lab">Fort Myers</span></li>
+          <li class="estero home" style="--x:41.7%; --y:49.1%"><span class="dot" aria-hidden="true"></span><span class="lab">Estero</span></li>
+          <li class="naples" style="--x:42.0%; --y:55.8%"><span class="dot" aria-hidden="true"></span><span class="lab">Naples</span></li>
+          <li class="miami occasional" style="--x:88.2%; --y:64.0%"><span class="dot" aria-hidden="true"></span><span class="lab">Miami</span></li>
         </ul>
       </figure>
       <div class="mapcopy">
