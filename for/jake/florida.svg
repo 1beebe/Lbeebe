@@ -65,6 +65,7 @@
 <path d="M152.8 45.8 L153.5 17.8 L199.5 18.1 L192.1 29.3 L188.8 43.3 L178.8 42.9 L177.5 38.5 L171.5 38.3 L169.4 47.0 L152.8 45.8 Z"/>
 <path d="M451.1 116.7 L461.0 107.3 L460.9 104.0 L488.1 102.9 L484.6 110.6 L478.1 114.6 L474.1 121.8 L471.1 121.4 L469.8 124.1 L463.9 125.4 L454.9 123.6 L451.1 116.7 Z"/>
 </g>
+<path fill="#efe3a4" stroke="none" d="M489.5 418.0 L502.0 417.8 L509.4 438.7 L504.5 464.7 L492.1 471.9 L479.4 459.1 L481.0 442.1 L486.1 427.1 Z"/>
 <g fill="#efe3a4" stroke="#d9cbb6" stroke-width="0.8" stroke-linejoin="round">
 <path d="M474.2 422.6 L482.9 422.6 L483.1 413.8 L544.3 412.7 L544.6 439.1 L500.4 439.8 L500.5 429.2 L497.4 426.2 L500.1 423.7 L498.8 421.0 L490.1 425.3 L492.8 438.0 L488.9 440.0 L481.7 438.2 L472.2 422.6 L474.2 422.6 Z"/>
 <path d="M448.0 378.6 L482.5 378.5 L482.7 396.2 L500.2 396.1 L500.4 413.6 L483.1 413.8 L482.9 422.6 L472.2 422.6 L457.3 392.0 L448.0 378.6 Z"/>
@@ -92,13 +93,10 @@
 <text x="682" y="532" font-size="20" font-weight="600">Miami</text>
 <text x="682" y="552" font-size="16" font-weight="600">occasional</text>
 <g font-size="16" font-weight="600">
-<text x="28" y="348">Thu Jan 8, 2027</text>
-<text x="28" y="370">AI Agents for SMBs</text>
-<text x="28" y="392">SWFL HI AI Innovation Hub</text>
-<circle cx="36" cy="422" r="5.5" fill="#1b3a2a"/>
-<text x="50" y="428">Core</text>
-<circle cx="118" cy="422" r="5.2" fill="#f4efe4" stroke="#1b3a2a" stroke-width="1.6"/>
-<text x="132" y="428">Occasional</text>
+<circle cx="36" cy="400" r="5.5" fill="#1b3a2a"/>
+<text x="50" y="406">Core</text>
+<circle cx="118" cy="400" r="5.2" fill="#f4efe4" stroke="#1b3a2a" stroke-width="1.6"/>
+<text x="132" y="406">Occasional</text>
 </g>
 </g>
 </svg>
