@@ -379,7 +379,7 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 .cards .pct { font-size: .55em; }
 .cards p { margin-top: .35rem; font-weight: 600; font-size: 1.02rem; max-width: 28ch; }
 .boot { margin-top: 1.1rem; font-weight: 600; }
-.mapfig { max-width: 560px; width: 100%; }
+.mapfig { width: 100%; max-width: none; min-width: 0; }
 .mapfig img { width: 100%; height: auto; }
 .mapcopy .where { font-weight: 600; }
 
@@ -532,9 +532,10 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 
 .mapsplit {
   display: grid;
-  grid-template-columns: auto minmax(16rem, 1fr);
-  gap: clamp(1.5rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(520px, 600px) minmax(0, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.75rem);
   align-items: center;
+  width: 100%;
   margin-top: clamp(1.75rem, 3vw, 2.75rem);
 }
 .map { position: relative; background: var(--gulf); width: max-content; max-width: 100%; }
@@ -566,8 +567,8 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 .pins .miami .lab { left: auto; right: 14px; top: -.65rem; }
 .pins .home .dot { background: var(--sun); width: 14px; height: 14px; left: -7px; top: -7px; }
 .pins .occasional .dot { background: var(--gulf); border-style: dashed; }
-.mapcopy { display: grid; gap: .85rem; align-content: center; }
-.mapcopy p { font-size: 1.08rem; max-width: 36ch; }
+.mapcopy { display: grid; gap: .85rem; align-content: center; width: 100%; }
+.mapcopy p { font-size: 1.08rem; max-width: none; }
 .flag {
   display: inline-block;
   margin-right: .4rem;
@@ -695,15 +696,18 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 .foot :focus-visible { outline-color: var(--sun); }
 .foot p { color: var(--paper); }
 
+@media (max-width: 900px) {
+  .mapsplit { grid-template-columns: minmax(0, 1fr); justify-items: stretch; }
+  .mapfig { width: 100%; max-width: none; }
+}
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; align-items: start; }
   .shot { width: 100%; }
   .frame { width: 9rem; }
   .strip { grid-template-columns: 1fr 1fr; }
-  .split, .mapsplit, .dx, .chips, .cards, .xform { grid-template-columns: 1fr; }
+  .split, .dx, .chips, .cards, .xform { grid-template-columns: 1fr; }
   .xform { justify-items: start; }
   .arr { transform: rotate(90deg); margin: .2rem 0 .2rem .4rem; }
-  .mapsplit { justify-items: center; }
   .mapcopy { justify-self: stretch; }
   .map svg { height: 320px; }
   .ba { min-height: 0; flex-direction: column; }
