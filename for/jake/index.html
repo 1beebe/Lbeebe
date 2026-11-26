@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>For Jake Ottiger · I'll help you see what actually works</title>
-<meta name="description" content="Ligaya Beebe for Jake Ottiger at OpenWorks. A partner who tries things with real owners, measures, and reports back. Southwest Florida.">
+<meta name="description" content="Ligaya Beebe for Jake Ottiger at OpenWorks. A partner who tries things with real owners, measures, reports back, and improves. Southwest Florida.">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="author" content="Ligaya Beebe">
 <meta name="theme-color" content="#ffd249">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lbeebe.com/for/jake/">
 <meta property="og:title" content="I'll help you see what actually works">
-<meta property="og:description" content="Ligaya Beebe for Jake Ottiger at OpenWorks. Tries things with real owners, measures, and reports back. Southwest Florida.">
+<meta property="og:description" content="Ligaya Beebe for Jake Ottiger at OpenWorks. Tries things with real owners, measures, reports back, and improves. Southwest Florida.">
 <meta property="og:image" content="https://lbeebe.com/og-card.jpg?v=2026-11-16">
 <meta property="og:image:alt" content="Ligaya Beebe, lbeebe.com">
 <meta property="og:site_name" content="L. Beebe, LLC">
@@ -171,11 +171,26 @@ p { max-width: 62ch; text-wrap: pretty; }
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem 1.5rem;
+  align-items: start;
   border-top: 2px solid var(--ink);
-  padding-top: 1rem;
+  /* Room for the "about" qualifier, which sits above its number and out of the line. */
+  padding-top: 2.25rem;
 }
-.strip b { display: block; font-size: clamp(2rem, 1rem + 2.2vw, 3rem); line-height: .9; white-space: nowrap; }
-.strip b .quiet { font-family: var(--font-text); font-size: .38em; font-weight: 600; letter-spacing: .04em; text-transform: none; display: block; margin-bottom: .12rem; line-height: 1; }
+.strip b { position: relative; display: block; font-size: clamp(2rem, 1rem + 2.2vw, 3rem); line-height: .9; white-space: nowrap; }
+.strip b .quiet {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + .45rem);
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: .38em;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: none;
+  display: block;
+  line-height: 1;
+  white-space: nowrap;
+}
 .strip b [data-count] { font-size: 1em; display: inline; margin: 0; font-weight: 800; }
 .strip .mid { display: inline; font-size: .5em; letter-spacing: 0; margin: 0 .12em; }
 .strip span { display: block; margin-top: .3rem; font-weight: 600; font-size: var(--step-small); }
@@ -606,41 +621,40 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   line-height: 1.35;
 }
 
-/* loop */
+/* loop: try, measure, report back, improve, clockwise from the top */
 .loopwrap { padding-bottom: clamp(2rem, 4vw, 3rem); }
 .cycle {
   position: relative;
-  width: min(100%, 44rem);
-  aspect-ratio: 1.45 / 1;
+  width: min(100%, 48rem);
+  height: 32rem;
   margin: .5rem auto 0;
 }
 .ring {
   position: absolute;
   left: 50%;
-  top: 52%;
-  width: 46%;
+  top: 50%;
+  width: 15rem;
   transform: translate(-50%, -50%);
 }
-.clab.try {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  text-align: center;
-}
-.clab.measure {
-  position: absolute;
-  left: 73%;
-  top: 50%;
-  transform: translateY(-40%);
-}
+.clab.try,
 .clab.back {
   position: absolute;
-  right: 73%;
-  top: 50%;
-  transform: translateY(-40%);
-  text-align: right;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18rem;
+  text-align: center;
 }
+.clab.try { top: 0; }
+.clab.back { bottom: 0; }
+.clab.measure,
+.clab.improve {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14rem;
+}
+.clab.measure { left: calc(50% + 8.5rem); }
+.clab.improve { right: calc(50% + 8.5rem); text-align: right; }
 .clab b {
   display: block;
   font-family: var(--font-display);
@@ -651,8 +665,9 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   letter-spacing: -0.01em;
 }
 .clab span { display: block; margin-top: .35rem; font-weight: 600; font-size: 1.05rem; max-width: 16ch; }
-.cycle .try span { margin-left: auto; margin-right: auto; }
-.cycle .back span { margin-left: auto; }
+.cycle .try span,
+.cycle .back span { margin-left: auto; margin-right: auto; }
+.cycle .improve span { margin-left: auto; }
 .ring .chev { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 .ring .loop {
   fill: none;
@@ -716,10 +731,10 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   .ba { min-height: 0; flex-direction: column; }
   .from { flex-basis: auto; border-right: 0; border-bottom: 2px solid var(--ink); }
   .day { grid-template-columns: 1fr 1fr; }
-  .cycle { aspect-ratio: auto; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 1.1rem; }
+  .cycle { height: auto; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 1.1rem; }
   .ring { position: static; transform: none; width: min(16rem, 78%); }
-  .clab.try, .clab.measure, .clab.back { position: static; transform: none; text-align: center; }
-  .clab span, .cycle .back span, .cycle .try span { margin-left: auto; margin-right: auto; }
+  .clab.try, .clab.measure, .clab.back, .clab.improve { position: static; transform: none; text-align: center; width: auto; max-width: 22rem; left: auto; right: auto; top: auto; bottom: auto; }
+  .clab span, .cycle .back span, .cycle .try span, .cycle .improve span { margin-left: auto; margin-right: auto; }
   .daily { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 420px) {
@@ -836,7 +851,7 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 
     <ul class="chips">
       <li><span class="eyebrow case">Case study 2</span>I built and deployed <a href="https://interviewer.lbeebe.com/" target="_blank" rel="noopener">The Interviewer</a>, an AI voice and text interview app, with a pre-deploy eval suite of five scripted personas.</li>
-      <li><span class="eyebrow case">Case study 3</span>I built Claude Code and MindStudio workflow tools, including a document-archiving agent.</li>
+      <li><span class="eyebrow case">Case study 3</span>I built an archive agent to digitize my late father's unfinished study. Phone scans get renamed, filed, OCR-cleaned and catalogued automatically. Filing it by hand would take about 100 hours, at 5 to 10 min per document.<small><a href="https://github.com/1beebe/document-archivist" target="_blank" rel="noopener">github.com/1beebe/document-archivist</a></small></li>
       <li><span class="eyebrow case">Case study 4</span>I run a voice guide workshop where people build their own email assistant.<small>Participants connect their email, review the outbound drafts it writes, and build an email voice guide. Then I help them set that guide up first as a project, then as a skill, so every draft sounds like them.</small></li>
       <li><span class="eyebrow case">Case study 5</span>Once it has a voice, I put it to work.<small>I give an assistant my voice guide, then have it write for me on a schedule or as an agent that drafts when something comes in. I still review before anything goes out.</small>
         <ul>
@@ -958,22 +973,25 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 
 <section class="loopwrap" id="loop" data-shot="loop" aria-labelledby="loop-h">
   <div class="inner">
-    <h2 class="sr-only" id="loop-h">Try, measure, report back</h2>
+    <h2 class="sr-only" id="loop-h">Try, measure, report back, improve</h2>
     <div class="cycle" data-anim>
       <svg class="ring" viewBox="0 0 320 320" aria-hidden="true" focusable="false">
         <circle class="loop" cx="160" cy="160" r="100" pathLength="1"/>
         <g class="chev">
           <g transform="translate(239,81) rotate(45)"><path d="M-8 -5.5 L6 0 L-8 5.5"/></g>
-          <g transform="translate(160,274) rotate(180)"><path d="M-8 -5.5 L6 0 L-8 5.5"/></g>
+          <g transform="translate(239,239) rotate(135)"><path d="M-8 -5.5 L6 0 L-8 5.5"/></g>
+          <g transform="translate(81,239) rotate(225)"><path d="M-8 -5.5 L6 0 L-8 5.5"/></g>
           <g transform="translate(81,81) rotate(-45)"><path d="M-8 -5.5 L6 0 L-8 5.5"/></g>
         </g>
         <circle class="knob on" cx="160" cy="60" r="9"/>
         <circle class="knob" cx="260" cy="160" r="9"/>
+        <circle class="knob" cx="160" cy="260" r="9"/>
         <circle class="knob" cx="60" cy="160" r="9"/>
       </svg>
       <p class="clab try"><b>Try</b><span>One real task with an owner</span></p>
       <p class="clab measure"><b>Measure</b><span>Time saved, confidence, usage</span></p>
       <p class="clab back"><b>Report back</b><span>What stuck, written up for you</span></p>
+      <p class="clab improve"><b>Improve</b><span>The next try, from what I learned</span></p>
     </div>
   </div>
 </section>
