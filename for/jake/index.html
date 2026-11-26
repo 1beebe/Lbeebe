@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>For Jake Ottiger · I'll help you see what actually sticks</title>
+<title>For Jake Ottiger · I'll help you see what actually works</title>
 <meta name="description" content="Ligaya Beebe for Jake Ottiger at OpenWorks. A partner who tries things with real owners, measures, and reports back. Southwest Florida.">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="author" content="Ligaya Beebe">
@@ -13,13 +13,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lbeebe.com/for/jake/">
-<meta property="og:title" content="I'll help you see what actually sticks">
+<meta property="og:title" content="I'll help you see what actually works">
 <meta property="og:description" content="Ligaya Beebe for Jake Ottiger at OpenWorks. Tries things with real owners, measures, and reports back. Southwest Florida.">
 <meta property="og:image" content="https://lbeebe.com/og-card.jpg?v=2026-11-16">
 <meta property="og:image:alt" content="Ligaya Beebe, lbeebe.com">
 <meta property="og:site_name" content="L. Beebe, LLC">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="I'll help you see what actually sticks">
+<meta name="twitter:title" content="I'll help you see what actually works">
 <meta name="twitter:description" content="Ligaya Beebe for Jake Ottiger at OpenWorks. Southwest Florida.">
 <meta name="twitter:image" content="https://lbeebe.com/og-card.jpg?v=2026-11-16">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,6 +100,8 @@ p { max-width: 62ch; text-wrap: pretty; }
   text-transform: uppercase;
   margin: 0 0 .7rem;
 }
+.case { display: block; margin: clamp(1.4rem, 2.5vw, 2rem) 0 .55rem; font-size: .82rem; }
+.chips .case { margin: 0 0 .45rem; }
 
 .sun { background: var(--sun); }
 .bar {
@@ -282,7 +284,7 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 .chips {
   margin-top: clamp(1.35rem, 2.5vw, 2rem);
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem 1.5rem;
 }
 .chips li {
@@ -301,6 +303,15 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   line-height: 1.35;
   max-width: 36ch;
 }
+.chips li ul { margin: .45rem 0 0; display: grid; gap: .3rem; }
+.chips li li {
+  border-top: 0;
+  padding: 0 0 0 1em;
+  font-size: .92rem;
+  line-height: 1.35;
+  position: relative;
+}
+.chips li li::before { content: "•"; position: absolute; left: 0; }
 .xform {
   margin-top: clamp(1.6rem, 3vw, 2.5rem);
   display: grid;
@@ -364,7 +375,6 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   font-size: var(--step-lead);
   max-width: none;
 }
-.early { margin-top: 1.15rem; max-width: 62ch; font-weight: 600; font-size: 1.05rem; line-height: 1.4; }
 #comm-h { max-width: 18ch; font-size: clamp(2.05rem, 1.05rem + 2.1vw, 3rem); }
 .cards {
   margin-top: clamp(1.4rem, 2.5vw, 2.1rem);
@@ -568,17 +578,10 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 .pins .home .dot { background: var(--sun); width: 14px; height: 14px; left: -7px; top: -7px; }
 .pins .occasional .dot { background: var(--gulf); border-style: dashed; }
 .mapcopy { display: grid; gap: .85rem; align-content: center; width: 100%; }
-.mapcopy p { font-size: 1.08rem; max-width: none; }
-.flag {
-  display: inline-block;
-  margin-right: .4rem;
-  padding: .16rem .4rem .12rem;
-  background: var(--spoonbill);
-  font-size: .9rem;
-  font-weight: 600;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-}
+.mapcopy p, .mapcopy li { font-size: 1.08rem; font-weight: 600; line-height: 1.4; max-width: none; }
+.mapcopy ul { display: grid; gap: .85rem; }
+.mapcopy li { position: relative; padding-left: 1.05em; }
+.mapcopy li::before { content: "•"; position: absolute; left: 0; }
 
 /* plan */
 .plan { background: var(--spoonbill-wash); }
@@ -744,8 +747,8 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   </nav>
   <header class="hero">
     <div>
-      <h1 class="display">I'll help you see what actually <span class="sticks">sticks</span>.</h1>
-      <p class="sub">OpenWorks has to get owners outside the tech hubs from first hesitation to a skill they keep using on their own. I already do that work, and I measure it.</p>
+      <h1 class="display">I'll help you see what actually <span class="sticks">works</span>.</h1>
+      <p class="sub">OpenWorks has to help owners outside the tech hubs go from first hesitation to something they can keep using on their own. I already do that, and I check whether it worked.</p>
     </div>
     <figure class="shot">
       <span class="frame"><img src="/portrait.jpg" width="896" height="1152" alt="Ligaya Beebe, smiling, in a black blazer over a cream top"></span>
@@ -757,8 +760,8 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   </div>
   <div class="stripwrap">
     <ul class="strip" aria-label="Proof at a glance">
-      <li><b class="display"><span class="quiet">about</span><span data-count="100">100</span></b><span>hours</span><span class="fine">of archive filing automated, at 5 to 10 min per document</span></li>
-      <li><b class="display">70% to 92%</b><span>confidence at work</span></li>
+      <li><b class="display"><span class="quiet">about</span><span data-count="100">100</span></b><span>hours</span><span class="fine">of archive filing I don't have to do by hand, at 5 to 10 min per document</span></li>
+      <li><b class="display">70% to 92%</b><span>confidence using AI at work</span></li>
       <li><b class="display">8 of 8</b><span>partners adopted</span></li>
       <li><b class="display">144</b><span>registrants</span></li>
     </ul>
@@ -770,8 +773,9 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 <section id="capable" data-shot="capable" aria-labelledby="tech-h">
   <div class="inner">
     <h2 class="display" id="tech-h">Technically capable</h2>
-    <p class="caption">I build working systems, then teach people to run them.</p>
+    <p class="caption">I build the workflow, then I teach people to run it themselves.</p>
 
+    <p class="eyebrow case">Case study 1</p>
     <div class="xform">
       <figure class="page">
         <svg viewBox="0 0 120 150" aria-hidden="true" focusable="false">
@@ -797,7 +801,7 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
       </div>
     </div>
 
-    <p class="context">My late father, Dr. James Beebe, left an unfinished study in boxes. I built a workflow that turns a piece of paper into a navigable spreadsheet of metadata, plus the PDF and the cleaned OCR text, all filed in the same place under the same naming convention. Filing the full archive by hand would take about 100 hours. The bigger savings come next, in the <a href="https://github.com/1beebe/beebe-qualitative-skills" target="_blank" rel="noopener">qualitative coding</a> pass on the data, so I can focus on the analysis.</p>
+    <p class="context">My late father, Dr. James Beebe, left an unfinished study in boxes. I built a workflow that turns a piece of paper into a navigable spreadsheet of metadata, plus the PDF and the cleaned OCR text, all filed in the same place under the same naming convention. Filing the full archive by hand would take about 100 hours. That means I can spend my time on the <a href="https://github.com/1beebe/beebe-qualitative-skills" target="_blank" rel="noopener">qualitative coding</a> and the analysis.</p>
     <p class="repolink"><a href="https://github.com/1beebe/document-archivist" target="_blank" rel="noopener">github.com/1beebe/document-archivist</a></p>
 
     <div class="flow slim">
@@ -828,23 +832,28 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
         </li>
       </ol>
     </div>
-    <p class="pipenote">MindStudio says Unknown instead of guessing.</p>
+    <p class="pipenote">I had MindStudio say Unknown instead of guessing.</p>
 
     <ul class="chips">
-      <li>Built and deployed <a href="https://interviewer.lbeebe.com/" target="_blank" rel="noopener">The Interviewer</a>, an AI voice and text interview app, with a pre-deploy eval suite of five scripted personas.</li>
-      <li>Built Claude Code and MindStudio workflow tools, including a document-archiving agent.</li>
-      <li>When something breaks, I fix the design behind it.<small>An AI kept inventing song lyrics, so I swapped in a verified list.</small></li>
+      <li><span class="eyebrow case">Case study 2</span>I built and deployed <a href="https://interviewer.lbeebe.com/" target="_blank" rel="noopener">The Interviewer</a>, an AI voice and text interview app, with a pre-deploy eval suite of five scripted personas.</li>
+      <li><span class="eyebrow case">Case study 3</span>I built Claude Code and MindStudio workflow tools, including a document-archiving agent.</li>
+      <li><span class="eyebrow case">Case study 4</span>I run a voice guide workshop where people build their own email assistant.<small>Participants connect their email, review the outbound drafts it writes, and build an email voice guide. Then I help them set that guide up first as a project, then as a skill, so every draft sounds like them.</small></li>
+      <li><span class="eyebrow case">Case study 5</span>Once it has a voice, I put it to work.<small>I give an assistant my voice guide, then have it write for me on a schedule or as an agent that drafts when something comes in. I still review before anything goes out.</small>
+        <ul>
+          <li>For a pro-bono client, I'm helping a solo operator build up his content engine.</li>
+          <li><a href="/blog/">My own blog</a> on lbeebe.com, which I just launched, runs this way.</li>
+        </ul>
+      </li>
     </ul>
-    <p class="meetline">Meets teams in what they already pay for: ChatGPT Business, Claude, or Gemini.</p>
-    <p class="early"><span class="flag">Early</span> Just getting started: a pro-bono answer engine optimization (AEO) project for Upshift, helping a solo operator get found through blog content.</p>
+    <p class="meetline">I meet teams in whatever they already pay for: ChatGPT Business, Claude, or Gemini.</p>
   </div>
 </section>
 
 <section class="proof" id="practical" data-shot="practical" aria-labelledby="collab-h">
   <div class="inner">
     <h2 class="display" id="collab-h">Collaborative and practical</h2>
-    <p class="caption">A little theory. Mostly hands-on.</p>
-    <p class="context">Designed and delivered AI literacy training for a 30-person team, with hands-on practice on their own work.</p>
+    <p class="caption">I start with a little theory, then we get hands-on.</p>
+    <p class="context">I designed and delivered AI literacy training for a 30-person team, with hands-on practice on their own work.</p>
 
     <div class="split top">
       <div data-anim>
@@ -886,7 +895,7 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
       </div>
     </div>
 
-    <p class="why">In a bootcamp, people don't know what a project is, or they haven't connected ChatGPT to their work. A little support, and the gains are large.</p>
+    <p class="why">In a bootcamp, people don't know what a project is, or they haven't connected ChatGPT to their work. With a little support, they see big gains.</p>
   </div>
 </section>
 
@@ -914,7 +923,7 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
         <p class="display"><span data-count="8">8</span><span class="mid">of</span><span data-count="8">8</span></p>
         <p>partner organizations adopted it</p>
         <p>about 30% fewer support requests</p>
-        <p>Listened first, then trained peer champions.</p>
+        <p>I listened first, then trained peer champions.</p>
       </article>
     </div>
     <div class="mapsplit">
@@ -923,9 +932,11 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
       </figure>
       <div class="mapcopy">
         <p class="eyebrow">Southwest Florida</p>
-        <p class="where">I live in Estero. I'd work in person from Naples to Tampa, starting with owner-run service businesses in Lee County.</p>
-        <p class="where">I'm a regular at AI Fridays, the HI AI community at the Collaboratory in Fort Myers, where people are already curious about AI. On Thu Jan 8, 2027, I'm leading AI Agents for SMBs at the SWFL HI AI Innovation Hub.</p>
-        <p class="where">Through my church community and the parents at my kids' schools, I already know local business owners.</p>
+        <ul>
+          <li>I live in Estero. I'd work in person from Naples to Tampa, starting with owner-run service businesses in Lee County.</li>
+          <li>I'm a regular at AI Fridays, the HI AI community at the Collaboratory in Fort Myers. On Thursday, January 8, 2027, I'm leading AI Agents for SMBs at the SWFL HI AI Innovation Hub.</li>
+          <li>Through my church community and the parents at my kids' schools, I already know local business owners.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -935,7 +946,7 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   <div class="inner">
     <p class="eyebrow">A plan</p>
     <h2 class="display" id="plan-h">A first community day</h2>
-    <p class="caption">Lee County. Pool, landscaping, HVAC, marine.</p>
+    <p class="caption">Lee County service businesses: pool, landscaping, HVAC, and marine.</p>
     <ol class="day">
       <li>A little theory<span>How AI works, in plain words.</span></li>
       <li>One real task<span>1:1 on something from their own week.</span></li>
@@ -962,7 +973,7 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
       </svg>
       <p class="clab try"><b>Try</b><span>One real task with an owner</span></p>
       <p class="clab measure"><b>Measure</b><span>Time saved, confidence, usage</span></p>
-      <p class="clab back"><b>Report back</b><span>What stuck, sent to you</span></p>
+      <p class="clab back"><b>Report back</b><span>What stuck, written up for you</span></p>
     </div>
   </div>
 </section>
