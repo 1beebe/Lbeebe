@@ -292,7 +292,22 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   max-width: 28ch;
   align-self: center;
 }
-.daily { margin-top: 1.35rem; font-size: 1.05rem; font-weight: 600; max-width: 46ch; }
+.daily {
+  margin-top: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem 2rem;
+  padding: .95rem 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  font-size: 1.05rem;
+  font-weight: 600;
+  max-width: none;
+}
+.daily p { max-width: none; }
+.daily ul { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; }
+.daily li { font-weight: 600; }
 
 /* proof */
 .proof { background: var(--gulf); }
@@ -405,7 +420,7 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   letter-spacing: .07em;
   text-transform: uppercase;
 }
-.nums { margin-top: .7rem; display: flex; flex-wrap: wrap; gap: 1.25rem 2.75rem; align-items: flex-end; }
+.nums { margin-top: .7rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.25rem 2rem; align-items: flex-end; width: 100%; }
 .nums .display { font-size: clamp(3.4rem, 1.6rem + 3.6vw, 5.4rem); white-space: nowrap; }
 .nums .mid { font-size: .42em; letter-spacing: 0; margin: 0 .28em; }
 .nums .pct { font-size: .55em; }
@@ -414,14 +429,14 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 
 .mapsplit {
   display: grid;
-  grid-template-columns: minmax(16rem, 24rem) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr);
   gap: clamp(1.5rem, 3vw, 3.25rem);
   align-items: center;
   margin-top: clamp(1.75rem, 3vw, 2.75rem);
 }
 .map { position: relative; background: var(--gulf); }
 .map svg { width: 100%; height: auto; }
-.band { fill: none; stroke: var(--sun); stroke-width: 54; stroke-linecap: round; stroke-linejoin: round; }
+.band { fill: none; stroke: var(--sun); stroke-width: 34; stroke-linecap: round; stroke-linejoin: round; }
 .hop { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 2 7; stroke-linecap: round; }
 .pins { position: absolute; inset: 0; }
 .pins li {
@@ -441,11 +456,11 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   background: var(--ink);
   border: 1.5px solid var(--ink);
 }
-.pins .lab { position: absolute; left: 12px; top: -0.55rem; white-space: nowrap; }
-.pins .fm .lab { top: -1.35rem; }
-.pins .estero .lab { top: .55rem; }
-.pins .naples .lab { left: auto; right: 12px; top: .7rem; }
-.pins .miami .lab { left: auto; right: 14px; top: -1.15rem; }
+.pins .lab { position: absolute; left: 14px; top: -0.55rem; white-space: nowrap; }
+.pins .fm .lab { left: 46px; top: -1.85rem; }
+.pins .estero .lab { left: 22px; top: 1rem; }
+.pins .naples .lab { left: auto; right: 16px; top: .35rem; }
+.pins .miami .lab { left: auto; right: 16px; top: -1.2rem; }
 .pins .home .dot { background: var(--sun); width: 14px; height: 14px; left: -7px; top: -7px; }
 .pins .occasional .dot { background: var(--gulf); border-style: dashed; }
 .mapcopy { display: grid; gap: .85rem; align-content: center; }
@@ -480,20 +495,38 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 /* loop */
 .loopwrap { padding-bottom: clamp(2rem, 4vw, 3rem); }
 .cycle {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(14rem, 20rem) minmax(0, 1fr);
-  grid-template-areas:
-    ". try ."
-    "back ring measure";
-  gap: .75rem 1rem;
-  align-items: center;
-  max-width: 58rem;
-  margin: .25rem auto 0;
+  position: relative;
+  width: min(100%, 44rem);
+  aspect-ratio: 1.45 / 1;
+  margin: .5rem auto 0;
 }
-.cycle .ring { grid-area: ring; }
-.cycle .try { grid-area: try; text-align: center; justify-self: center; }
-.cycle .measure { grid-area: measure; }
-.cycle .back { grid-area: back; text-align: right; justify-self: end; }
+.ring {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 46%;
+  transform: translate(-50%, -50%);
+}
+.clab.try {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.clab.measure {
+  position: absolute;
+  left: 73%;
+  top: 50%;
+  transform: translateY(-40%);
+}
+.clab.back {
+  position: absolute;
+  right: 73%;
+  top: 50%;
+  transform: translateY(-40%);
+  text-align: right;
+}
 .clab b {
   display: block;
   font-family: var(--font-display);
@@ -503,10 +536,10 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   line-height: .9;
   letter-spacing: -0.01em;
 }
-.clab span { display: block; margin-top: .35rem; font-weight: 600; font-size: 1.05rem; max-width: 18ch; }
-.cycle .try span, .cycle .back span { margin-left: auto; margin-right: auto; }
-.cycle .back span { margin-right: 0; }
-.ring { width: 100%; }
+.clab span { display: block; margin-top: .35rem; font-weight: 600; font-size: 1.05rem; max-width: 16ch; }
+.cycle .try span { margin-left: auto; margin-right: auto; }
+.cycle .back span { margin-left: auto; }
+.ring .chev { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 .ring .loop {
   fill: none;
   stroke: var(--ink);
@@ -561,14 +594,11 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   .ba { min-height: 0; flex-direction: column; }
   .from { flex-basis: auto; border-right: 0; border-bottom: 2px solid var(--ink); }
   .day { grid-template-columns: 1fr 1fr; }
-  .cycle {
-    grid-template-columns: 1fr;
-    grid-template-areas: "ring" "try" "measure" "back";
-    justify-items: center;
-    text-align: center;
-  }
-  .cycle .back, .cycle .measure, .cycle .try { text-align: center; justify-self: center; }
-  .cycle .back span, .cycle .try span { margin-right: auto; }
+  .cycle { aspect-ratio: auto; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 1.1rem; }
+  .ring { position: static; transform: none; width: min(16rem, 78%); }
+  .clab.try, .clab.measure, .clab.back { position: static; transform: none; text-align: center; }
+  .clab span, .cycle .back span, .cycle .try span { margin-left: auto; margin-right: auto; }
+  .daily { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 420px) {
   .hero h1 { font-size: 2.7rem; margin-bottom: 1.25rem; }
@@ -682,7 +712,14 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
       </p>
       <p class="meet">Meets teams in what they already pay for: ChatGPT Business, Claude, or Gemini.</p>
     </div>
-    <p class="daily">Builds daily in MindStudio, Claude Code, and Codex.</p>
+    <div class="daily">
+      <p>Builds daily in</p>
+      <ul>
+        <li>MindStudio</li>
+        <li>Claude Code</li>
+        <li>Codex</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -789,25 +826,25 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 
     <div class="mapsplit">
       <figure class="map">
-        <svg viewBox="0 0 720 980" role="img" aria-labelledby="mapTitle">
+        <svg viewBox="0 0 640 860" role="img" aria-labelledby="mapTitle">
           <title id="mapTitle">Florida peninsula. A sun band marks the Gulf coast from Naples to Tampa. Miami is a dotted occasional link on the Atlantic.</title>
-          <rect width="720" height="980" fill="#a4f0ec"/>
+          <rect width="640" height="860" fill="#a4f0ec"/>
           <defs>
             <clipPath id="landclip">
-              <path d="M85.6 54.5 L107.1 91.6 L123.7 156.4 L118.7 212.0 L107.1 258.4 L105.5 289.9 L113.7 314.0 L140.2 326.9 L151.8 304.7 L163.4 295.4 L176.6 314.0 L163.4 341.8 L140.2 364.0 L127.0 388.1 L148.5 419.6 L166.7 456.6 L179.9 484.4 L196.4 504.8 L213.0 523.4 L234.5 541.9 L249.4 554.9 L229.5 567.8 L259.3 582.7 L269.2 604.9 L274.2 630.8 L287.4 662.3 L317.2 684.6 L342.0 712.4 L375.1 758.7 L404.8 805.0 L471.0 819.8 L520.6 777.2 L540.5 740.2 L552.1 697.5 L553.7 647.5 L560.3 591.9 L566.9 527.1 L548.7 443.7 L523.9 378.8 L482.6 286.2 L477.6 212.0 L454.5 156.4 L416.4 91.6 L383.3 49.0 L292.4 41.6 L193.1 45.3 Z"/>
+              <path d="M85.7 50.7 L99.1 78.0 L113.1 125.2 L110.7 185.3 L100.6 226.5 L90.0 256.1 L82.6 277.9 L84.5 308.0 L96.9 327.3 L116.9 330.4 L130.2 307.1 L141.3 301.5 L148.1 319.9 L139.9 344.2 L121.2 359.8 L101.3 368.8 L116.6 400.3 L131.9 434.3 L141.9 465.0 L156.0 485.5 L171.9 504.5 L188.7 522.6 L205.4 535.2 L209.4 543.6 L204.3 550.6 L220.9 565.9 L233.2 584.8 L238.6 606.5 L249.1 631.9 L269.0 657.8 L297.9 683.4 L329.6 709.3 L357.4 734.4 L382.1 756.8 L416.6 772.6 L449.2 768.6 L475.7 744.6 L490.0 715.9 L497.4 674.9 L500.7 622.3 L508.7 565.7 L507.4 500.9 L494.5 430.0 L472.0 364.9 L448.9 304.1 L428.9 246.5 L419.9 186.9 L402.3 133.5 L371.2 89.2 L327.8 56.5 L270.0 39.1 L199.6 36.7 L113.9 42.8 Z"/>
             </clipPath>
           </defs>
-          <path fill="#ffffff" stroke="#0a0a0a" stroke-width="2.5" stroke-linejoin="round" d="M85.6 54.5 L107.1 91.6 L123.7 156.4 L118.7 212.0 L107.1 258.4 L105.5 289.9 L113.7 314.0 L140.2 326.9 L151.8 304.7 L163.4 295.4 L176.6 314.0 L163.4 341.8 L140.2 364.0 L127.0 388.1 L148.5 419.6 L166.7 456.6 L179.9 484.4 L196.4 504.8 L213.0 523.4 L234.5 541.9 L249.4 554.9 L229.5 567.8 L259.3 582.7 L269.2 604.9 L274.2 630.8 L287.4 662.3 L317.2 684.6 L342.0 712.4 L375.1 758.7 L404.8 805.0 L471.0 819.8 L520.6 777.2 L540.5 740.2 L552.1 697.5 L553.7 647.5 L560.3 591.9 L566.9 527.1 L548.7 443.7 L523.9 378.8 L482.6 286.2 L477.6 212.0 L454.5 156.4 L416.4 91.6 L383.3 49.0 L292.4 41.6 L193.1 45.3 Z"/>
-          <path class="band" clip-path="url(#landclip)" d="M105.5 289.9 L113.7 314.0 L140.2 326.9 L151.8 304.7 L163.4 295.4 L176.6 314.0 L163.4 341.8 L140.2 364.0 L127.0 388.1 L148.5 419.6 L166.7 456.6 L179.9 484.4 L196.4 504.8 L213.0 523.4 L234.5 541.9 L249.4 554.9 L229.5 567.8 L259.3 582.7 L269.2 604.9 L274.2 630.8"/>
-          <ellipse cx="441.2" cy="484.4" rx="46" ry="44" fill="#a4f0ec" stroke="#0a0a0a" stroke-width="2"/>
-          <path class="hop" d="M286 640 C 390 720, 470 750, 528 708"/>
+          <path fill="#ffffff" stroke="#0a0a0a" stroke-width="2.5" stroke-linejoin="round" d="M85.7 50.7 L99.1 78.0 L113.1 125.2 L110.7 185.3 L100.6 226.5 L90.0 256.1 L82.6 277.9 L84.5 308.0 L96.9 327.3 L116.9 330.4 L130.2 307.1 L141.3 301.5 L148.1 319.9 L139.9 344.2 L121.2 359.8 L101.3 368.8 L116.6 400.3 L131.9 434.3 L141.9 465.0 L156.0 485.5 L171.9 504.5 L188.7 522.6 L205.4 535.2 L209.4 543.6 L204.3 550.6 L220.9 565.9 L233.2 584.8 L238.6 606.5 L249.1 631.9 L269.0 657.8 L297.9 683.4 L329.6 709.3 L357.4 734.4 L382.1 756.8 L416.6 772.6 L449.2 768.6 L475.7 744.6 L490.0 715.9 L497.4 674.9 L500.7 622.3 L508.7 565.7 L507.4 500.9 L494.5 430.0 L472.0 364.9 L448.9 304.1 L428.9 246.5 L419.9 186.9 L402.3 133.5 L371.2 89.2 L327.8 56.5 L270.0 39.1 L199.6 36.7 L113.9 42.8 Z"/>
+          <path class="band" clip-path="url(#landclip)" d="M101.3 368.8 L116.6 400.3 L131.9 434.3 L141.9 465.0 L156.0 485.5 L171.9 504.5 L188.7 522.6 L205.4 535.2 L220.9 565.9 L233.2 584.8 L238.6 606.5 L249.1 631.9"/>
+          <ellipse cx="394.6" cy="468.5" rx="44" ry="40" fill="#a4f0ec" stroke="#0a0a0a" stroke-width="2"/>
+          <path class="hop" d="M250 640 C 340 730, 430 760, 478 682"/>
         </svg>
         <ul class="pins">
-          <li class="tampa" style="--x:23.2%; --y:30.1%"><span class="dot" aria-hidden="true"></span><span class="lab">Tampa</span></li>
-          <li class="fm" style="--x:36.7%; --y:54.9%"><span class="dot" aria-hidden="true"></span><span class="lab">Fort Myers</span></li>
-          <li class="estero home" style="--x:38.1%; --y:58.7%"><span class="dot" aria-hidden="true"></span><span class="lab">Estero</span></li>
-          <li class="naples" style="--x:38.3%; --y:64.4%"><span class="dot" aria-hidden="true"></span><span class="lab">Naples</span></li>
-          <li class="miami occasional" style="--x:75.3%; --y:71.4%"><span class="dot" aria-hidden="true"></span><span class="lab">Miami</span></li>
+          <li class="tampa" style="--x:21.2%; --y:33.7%"><span class="dot" aria-hidden="true"></span><span class="lab">Tampa</span></li>
+          <li class="fm" style="--x:35.6%; --y:60.4%"><span class="dot" aria-hidden="true"></span><span class="lab">Fort Myers</span></li>
+          <li class="estero home" style="--x:37.0%; --y:64.4%"><span class="dot" aria-hidden="true"></span><span class="lab">Estero</span></li>
+          <li class="naples" style="--x:37.3%; --y:70.5%"><span class="dot" aria-hidden="true"></span><span class="lab">Naples</span></li>
+          <li class="miami occasional" style="--x:76.5%; --y:78.0%"><span class="dot" aria-hidden="true"></span><span class="lab">Miami</span></li>
         </ul>
       </figure>
       <div class="mapcopy">
@@ -838,14 +875,18 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   <div class="inner">
     <h2 class="sr-only" id="loop-h">Try, measure, report back</h2>
     <div class="cycle" data-anim>
-      <p class="clab try"><b>Try</b><span>One real task with an owner</span></p>
       <svg class="ring" viewBox="0 0 320 320" aria-hidden="true" focusable="false">
-        <circle class="loop" cx="160" cy="160" r="108" pathLength="1"/>
-        <path d="M176 58 l10 8 l-10 8" fill="none" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle class="knob on" cx="160" cy="52" r="9"/>
-        <circle class="knob" cx="253" cy="214" r="9"/>
-        <circle class="knob" cx="67" cy="214" r="9"/>
+        <circle class="loop" cx="160" cy="160" r="100" pathLength="1"/>
+        <g class="chev">
+          <g transform="translate(239,81) rotate(45)"><path d="M-8 -5.5 L6 0 L-8 5.5"/></g>
+          <g transform="translate(160,274) rotate(180)"><path d="M-8 -5.5 L6 0 L-8 5.5"/></g>
+          <g transform="translate(81,81) rotate(-45)"><path d="M-8 -5.5 L6 0 L-8 5.5"/></g>
+        </g>
+        <circle class="knob on" cx="160" cy="60" r="9"/>
+        <circle class="knob" cx="260" cy="160" r="9"/>
+        <circle class="knob" cx="60" cy="160" r="9"/>
       </svg>
+      <p class="clab try"><b>Try</b><span>One real task with an owner</span></p>
       <p class="clab measure"><b>Measure</b><span>Time saved, confidence, usage</span></p>
       <p class="clab back"><b>Report back</b><span>What stuck, sent to you</span></p>
     </div>
