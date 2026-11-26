@@ -100,6 +100,8 @@ p { max-width: 62ch; text-wrap: pretty; }
   text-transform: uppercase;
   margin: 0 0 .7rem;
 }
+.case { display: block; margin: clamp(1.4rem, 2.5vw, 2rem) 0 .55rem; font-size: .82rem; }
+.chips .case { margin: 0 0 .45rem; }
 
 .sun { background: var(--sun); }
 .bar {
@@ -775,6 +777,7 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
     <h2 class="display" id="tech-h">Technically capable</h2>
     <p class="caption">I build the workflow, then I teach people to run it themselves.</p>
 
+    <p class="eyebrow case">Case study 1</p>
     <div class="xform">
       <figure class="page">
         <svg viewBox="0 0 120 150" aria-hidden="true" focusable="false">
@@ -834,9 +837,9 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
     <p class="pipenote">I had MindStudio say Unknown instead of guessing.</p>
 
     <ul class="chips">
-      <li>I built and deployed <a href="https://interviewer.lbeebe.com/" target="_blank" rel="noopener">The Interviewer</a>, an AI voice and text interview app, with a pre-deploy eval suite of five scripted personas.</li>
-      <li>I built Claude Code and MindStudio workflow tools, including a document-archiving agent.</li>
-      <li>When something breaks, I fix the design behind it.<small>An AI kept inventing song lyrics, so I swapped in a verified list.</small></li>
+      <li><span class="eyebrow case">Case study 2</span>I built and deployed <a href="https://interviewer.lbeebe.com/" target="_blank" rel="noopener">The Interviewer</a>, an AI voice and text interview app, with a pre-deploy eval suite of five scripted personas.</li>
+      <li><span class="eyebrow case">Case study 3</span>I built Claude Code and MindStudio workflow tools, including a document-archiving agent.</li>
+      <li><span class="eyebrow case">Case study 4</span>When something breaks, I fix the design behind it.<small>An AI kept inventing song lyrics, so I swapped in a verified list.</small></li>
     </ul>
     <p class="meetline">I meet teams in whatever they already pay for: ChatGPT Business, Claude, or Gemini.</p>
     <p class="early"><span class="flag">Early</span> I'm just getting started on a pro-bono answer engine optimization (AEO) project for Upshift, helping a solo operator get found through blog content.</p>
