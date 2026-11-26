@@ -276,9 +276,28 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 .flow small { display: block; margin-top: .15rem; font-size: 1rem; line-height: 1.35; font-weight: 600; max-width: 36ch; }
 
 .note { margin-top: 1.25rem; font-size: 1.05rem; max-width: 52ch; }
-.links { margin-top: .7rem; display: flex; flex-wrap: wrap; gap: .25rem 1.4rem; }
-.links a { font-weight: 600; min-height: 2.75rem; display: inline-flex; align-items: center; }
-.links a:hover { color: var(--accent); }
+.chips {
+  margin-top: clamp(1.35rem, 2.5vw, 2rem);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+}
+.chips li {
+  border-top: 3px solid var(--ink);
+  padding-top: .75rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+.chips a:hover { color: var(--accent); }
+.chips small {
+  display: block;
+  margin-top: .4rem;
+  font-size: .92rem;
+  font-weight: 600;
+  line-height: 1.35;
+  max-width: 32ch;
+}
 
 .support { align-items: end; }
 .stat { display: flex; flex-direction: column; align-items: flex-start; }
@@ -590,7 +609,7 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
   .shot { width: 100%; }
   .frame { width: 9rem; }
   .strip { grid-template-columns: 1fr 1fr; }
-  .split, .mapsplit, .dx { grid-template-columns: 1fr; }
+  .split, .mapsplit, .dx, .chips { grid-template-columns: 1fr; }
   .mapsplit { justify-items: center; }
   .mapcopy { justify-self: stretch; }
   .map svg { height: 320px; }
@@ -654,7 +673,7 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
 <section id="capable" data-shot="capable" aria-labelledby="tech-h">
   <div class="inner">
     <h2 class="display" id="tech-h">Technically capable</h2>
-    <p class="caption">Phone scan to analysis, on one sheet.</p>
+    <p class="caption">I build working systems, then teach people to run them.</p>
     <p class="context">My late father, Dr. James Beebe, left an unfinished study in boxes. I built a workflow so I could finish it, using his policy-framing method.</p>
 
     <div class="split top">
@@ -697,16 +716,17 @@ h2 { font-size: var(--step-head); max-width: 16ch; }
           </li>
           <li>
             <span class="bubble" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="14" height="18"/><path d="M8 13 l2.5 2.5 L16 9"/></svg></span>
-            <span><b>Claude Code</b><small>Skills analyze the sheet</small></span>
+            <span><b>Claude Code</b><small><a href="https://github.com/1beebe/beebe-qualitative-skills" target="_blank" rel="noopener">Skills</a> analyze the sheet</small></span>
           </li>
         </ol>
       </div>
     </div>
 
-    <p class="links">
-      <a href="https://github.com/1beebe/document-archivist" target="_blank" rel="noopener">Archive Intelligence</a>
-      <a href="https://github.com/1beebe/beebe-qualitative-skills" target="_blank" rel="noopener">Policy-framing skills</a>
-    </p>
+    <ul class="chips">
+      <li>Ships real tools: <a href="https://github.com/1beebe/document-archivist" target="_blank" rel="noopener">Archive Intelligence</a>, <a href="https://interviewer.lbeebe.com/" target="_blank" rel="noopener">The Interviewer</a>, <a href="https://lbeebe.com/">lbeebe.com</a>.</li>
+      <li>Connects the tools people already have: ChatGPT, Claude, Gemini, MindStudio, Google Workspace.</li>
+      <li>When something breaks, I fix the design behind it.<small>An AI kept inventing song lyrics, so I swapped in a verified list.</small></li>
+    </ul>
 
     <div class="split support">
       <p class="stat">
