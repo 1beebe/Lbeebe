@@ -35,10 +35,11 @@ if (matchMedia('(prefers-reduced-motion: no-preference)').matches) document.docu
   --white: #ffffff;
   --white-2: #f2f1ee;
   --spoonbill: #ffc0d6;
+  --spoonbill-wash: #fff3f8;
   --sun-ink: #5e4a0a;
   --blackwater: #15130f;
   --ink: #0a0a0a;
-  --ink-soft: #46423a;
+  --ink-soft: #3a362f;
   --paper: #f2f2f2;
   --paper-soft: #bdb6a6;
   --gulf: #a4f0ec;
@@ -46,13 +47,14 @@ if (matchMedia('(prefers-reduced-motion: no-preference)').matches) document.docu
   --accent-ink: #0a0a0a;
   --font-display: "Big Shoulders", "Arial Narrow", Impact, sans-serif;
   --font-text: "Public Sans", "Helvetica Neue", Arial, sans-serif;
-  --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
-  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
-  --step-lead: clamp(1.2rem, 1.05rem + 0.5vw, 1.45rem);
-  --step-head: clamp(2.15rem, 1.1rem + 2.6vw, 3.5rem);
+  --step-small: 1rem;
+  --step-body: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
+  --step-lead: clamp(1.2rem, 1.05rem + 0.45vw, 1.45rem);
+  --step-head: clamp(2.2rem, 1.15rem + 2.4vw, 3.35rem);
   --margin: clamp(1.25rem, 3vw, 3rem);
-  --section: clamp(3.75rem, 2rem + 4.5vw, 6.25rem);
+  --section: clamp(4rem, 2.2rem + 4.2vw, 6.25rem);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --measure: 76rem;
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; overflow-x: clip; scroll-behavior: smooth; }
@@ -87,160 +89,230 @@ p { max-width: 62ch; text-wrap: pretty; }
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: -0.01em;
-  line-height: 0.86;
+  line-height: 0.88;
   text-wrap: balance;
 }
-.inner { max-width: 72rem; margin: 0 auto; }
+.inner { max-width: var(--measure); margin: 0 auto; }
+.eyebrow {
+  font-size: var(--step-small);
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  margin: 0 0 .7rem;
+}
 
 .sun { background: var(--sun); }
 .bar {
   display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-  padding: .55rem var(--margin);
+  max-width: calc(var(--measure) + 2 * var(--margin));
+  margin: 0 auto;
+  padding: .6rem var(--margin);
   font-size: var(--step-small); font-weight: 600;
 }
 .bar a { display: inline-flex; align-items: center; min-height: 2.75rem; text-decoration: none; font-size: var(--step-body); }
 .bar a:hover { text-decoration: underline; }
-.forwho { color: var(--sun-ink); text-align: right; line-height: 1.25; font-weight: 600; }
+.forwho { text-align: right; line-height: 1.3; font-weight: 600; }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(7.5rem, 12.5rem);
-  gap: clamp(1.5rem, 3vw, 3rem);
-  align-items: end;
-  padding: clamp(1.25rem, 2.5vw, 2.25rem) var(--margin) clamp(2.25rem, 4vw, 3.5rem);
-  max-width: calc(72rem + 2 * var(--margin));
+  grid-template-columns: minmax(0, 1.35fr) minmax(13.5rem, 17.5rem);
+  gap: clamp(1.75rem, 3vw, 3.5rem);
+  align-items: center;
+  max-width: calc(var(--measure) + 2 * var(--margin));
   margin: 0 auto;
+  padding: clamp(1.5rem, 3vw, 2.75rem) var(--margin) clamp(1.75rem, 3vw, 2.5rem);
 }
-.eyebrow {
-  font-size: var(--step-small);
-  font-weight: 600;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--sun-ink);
-  margin-bottom: .85rem;
+.hero h1 {
+  font-size: clamp(3.2rem, 1.15rem + 6.4vw, 6.6rem);
+  max-width: 11ch;
+  margin-bottom: 1.7rem;
 }
-.hero h1 { font-size: clamp(3.15rem, 1.1rem + 7.2vw, 7.15rem); max-width: 10.5ch; }
 .sticks {
   background: var(--accent);
-  padding: 0 .06em .02em;
+  padding: .02em .07em .05em;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
-.hero .sub { margin-top: 1.2rem; max-width: 34ch; font-size: var(--step-lead); line-height: 1.35; }
-.portrait { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 22%; }
-.who { margin-top: 1.35rem; font-size: var(--step-small); font-weight: 600; max-width: 36ch; }
+.hero .sub { max-width: 34ch; font-size: var(--step-lead); line-height: 1.4; }
+.shot { width: 100%; margin: .4rem 0 0; }
+.frame { position: relative; display: block; }
+.frame::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 14px -14px -14px 14px;
+  background: var(--spoonbill);
+}
+.shot img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 22%;
+  border: 2px solid var(--ink);
+}
+.shot figcaption {
+  margin-top: 1.45rem;
+  font-size: var(--step-small);
+  font-weight: 600;
+  max-width: 16rem;
+}
+
+.stripwrap {
+  max-width: calc(var(--measure) + 2 * var(--margin));
+  margin: 0 auto;
+  padding: 0 var(--margin) clamp(1.4rem, 2.5vw, 2rem);
+}
+.strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+  border-top: 2px solid var(--ink);
+  padding-top: 1rem;
+}
+.strip b { display: block; font-size: clamp(2rem, 1rem + 2.2vw, 3rem); line-height: .9; }
+.strip .quiet { font-family: var(--font-text); font-size: .42em; letter-spacing: .04em; display: block; margin-bottom: .15rem; }
+.strip span { display: block; margin-top: .3rem; font-weight: 600; font-size: var(--step-small); }
 
 section { padding: var(--section) var(--margin); }
-h2 { font-size: var(--step-head); max-width: 18ch; }
-.caption { margin-top: .7rem; font-size: var(--step-lead); line-height: 1.35; max-width: 28ch; }
+h2 { font-size: var(--step-head); max-width: 16ch; }
+.caption { margin-top: .75rem; font-size: var(--step-lead); line-height: 1.35; max-width: 34ch; }
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.75rem, 3.5vw, 4rem);
+  align-items: center;
+  margin-top: clamp(1.75rem, 3vw, 2.75rem);
+}
+.split.top { align-items: start; }
 
 /* before / after */
 .ba {
-  margin-top: clamp(1.6rem, 3vw, 2.4rem);
   display: flex;
   align-items: stretch;
-  max-width: 46rem;
+  min-height: 16rem;
   border: 2px solid var(--ink);
+  height: 100%;
 }
-.from, .time { padding: clamp(1rem, 2vw, 1.35rem) clamp(1.1rem, 2vw, 1.5rem); }
+.from, .time { padding: clamp(1.1rem, 2vw, 1.5rem); }
 .from {
-  flex: 0 0 38%;
+  flex: 0 0 42%;
   background: var(--white-2);
   border-right: 2px solid var(--ink);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: .35rem;
+  gap: .4rem;
 }
-.from .eyebrow { margin: 0; color: var(--ink-soft); }
-.from strong { font-size: clamp(1.7rem, 1rem + 1.6vw, 2.5rem); line-height: .95; font-weight: 600; }
-.pile { display: grid; gap: 5px; margin-top: .45rem; }
-.pile i { display: block; height: 7px; background: var(--ink); opacity: .28; }
-.pile i:nth-child(1) { width: 72%; }
+.from strong { font-size: clamp(1.7rem, 1rem + 1.4vw, 2.4rem); line-height: .95; font-weight: 600; }
+.pile { display: grid; gap: 6px; margin-top: .55rem; }
+.pile i { display: block; height: 8px; background: var(--ink); opacity: .35; }
+.pile i:nth-child(1) { width: 70%; }
 .pile i:nth-child(2) { width: 92%; }
-.pile i:nth-child(3) { width: 58%; }
+.pile i:nth-child(3) { width: 56%; }
 .time {
   flex: 1;
   background: var(--sun);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: .15rem;
+  justify-content: flex-end;
+  gap: .2rem;
 }
-.time .eyebrow { margin: 0; color: var(--ink); line-height: 1; }
-.time .display { font-size: clamp(5.5rem, 3rem + 6vw, 8.5rem); line-height: 1; }
-.time .unit { display: block; margin-top: .2rem; font-weight: 600; font-size: var(--step-lead); }
+.time .display { font-size: clamp(5.5rem, 2.5rem + 5vw, 8rem); line-height: .85; }
+.time .unit { font-weight: 600; font-size: var(--step-lead); }
 
 /* pipeline */
-.pipe {
-  margin-top: clamp(1.75rem, 3vw, 2.5rem);
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: .75rem;
-}
-.pipe li {
-  min-width: 0;
-  padding-top: .8rem;
-  border-top: 2px solid var(--ink);
-  position: relative;
-}
-.pipe li::before {
-  content: "";
+.flow { position: relative; }
+.rail {
   position: absolute;
-  left: 0; top: -6px;
-  width: 10px; height: 10px;
+  left: 22px;
+  top: 28px;
+  bottom: 28px;
+  width: 2px;
   background: var(--ink);
 }
-.pipe b { display: block; font-size: 1.02rem; line-height: 1.2; }
-.pipe .hot b { background: var(--spoonbill); display: inline; padding: .05rem .28rem .08rem; }
-.pipe small { display: block; margin-top: .28rem; color: var(--ink-soft); font-size: .82rem; line-height: 1.3; }
-.unknown {
-  margin-top: 1rem;
-  max-width: 44rem;
-  background: var(--spoonbill);
-  padding: .8rem .95rem;
-  font-weight: 600;
+.bead {
+  position: absolute;
+  z-index: 2;
+  left: 15px;
+  top: calc(100% - 40px);
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border: 2px solid var(--ink);
 }
-.note { margin-top: 1.15rem; max-width: 46ch; }
-.links { margin-top: .65rem; display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
+.arm .in .bead { animation: drop 1.5s var(--ease) both; }
+@keyframes drop { from { top: 20px; } to { top: calc(100% - 40px); } }
+.flow ol { display: grid; }
+.flow li {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: .9rem;
+  align-items: center;
+  padding: .4rem 0;
+  position: relative;
+  z-index: 1;
+}
+.bubble {
+  width: 46px;
+  height: 46px;
+  border: 2px solid var(--ink);
+  background: var(--white);
+  display: grid;
+  place-items: center;
+}
+.bubble svg { width: 26px; height: 26px; }
+.bubble svg path, .bubble svg rect, .bubble svg line {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bubble.hot { background: var(--spoonbill); }
+.flow b { display: block; font-size: 1.05rem; line-height: 1.2; }
+.flow small { display: block; margin-top: .15rem; font-size: 1rem; line-height: 1.35; font-weight: 600; max-width: 36ch; }
+
+.note { margin-top: 1.25rem; font-size: 1.05rem; max-width: 52ch; }
+.links { margin-top: .7rem; display: flex; flex-wrap: wrap; gap: .25rem 1.4rem; }
 .links a { font-weight: 600; min-height: 2.75rem; display: inline-flex; align-items: center; }
 .links a:hover { color: var(--accent); }
 
-.support {
-  margin-top: clamp(2rem, 4vw, 3rem);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem 3.5rem;
-  align-items: flex-start;
-}
-.stat { display: flex; flex-direction: column; align-items: flex-start; max-width: 26rem; }
-.support .display { font-size: clamp(3.6rem, 2rem + 4vw, 5.4rem); }
-.stat .lbl { margin-top: .3rem; font-weight: 600; max-width: 34ch; }
+.support { align-items: end; }
+.stat { display: flex; flex-direction: column; align-items: flex-start; }
+.support .display { font-size: clamp(4rem, 2rem + 4vw, 6rem); }
+.stat .lbl { margin-top: .4rem; font-weight: 600; font-size: 1.05rem; max-width: 36ch; line-height: 1.4; }
 .stat a { font-weight: 600; }
-.daily { margin-top: 1.1rem; color: var(--ink-soft); font-size: var(--step-small); max-width: 42ch; }
+.meet {
+  font-size: var(--step-lead);
+  font-weight: 600;
+  line-height: 1.35;
+  max-width: 28ch;
+  align-self: center;
+}
+.daily { margin-top: 1.35rem; font-size: 1.05rem; font-weight: 600; max-width: 46ch; }
 
 /* proof */
 .proof { background: var(--gulf); }
-.shift { margin-top: clamp(1.6rem, 3vw, 2.4rem); }
-.pair { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .35rem 1.15rem; }
+.pair { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .4rem 1.1rem; }
 .num { display: grid; justify-items: start; }
 .when {
   font-size: var(--step-small);
   font-weight: 600;
-  letter-spacing: .08em;
+  letter-spacing: .07em;
   text-transform: uppercase;
 }
-.pair .display { font-size: clamp(5.25rem, 2.5rem + 7vw, 8.75rem); }
+.pair .display { font-size: clamp(4.6rem, 2rem + 6vw, 7.6rem); }
 .arrow {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.2rem, 1.5vw + 1rem, 3.5rem);
+  font-size: clamp(2rem, 1.2vw + 1rem, 3.2rem);
   line-height: 1;
-  padding-bottom: .35rem;
+  padding-bottom: .3rem;
 }
-.meters { margin-top: .85rem; display: grid; gap: .4rem; max-width: 34rem; }
-.meter { height: .85rem; background: rgba(10, 10, 10, .16); }
+.meters { margin-top: .9rem; display: grid; gap: .45rem; max-width: 28rem; }
+.meter { height: 1rem; background: rgba(10, 10, 10, .16); }
 .meter span {
   display: block; height: 100%; width: var(--p);
   background: var(--ink);
@@ -248,176 +320,216 @@ h2 { font-size: var(--step-head); max-width: 18ch; }
 }
 .arm .in .meter span { animation: grow .9s var(--ease) both; }
 @keyframes grow { from { transform: scaleX(0); } to { transform: none; } }
-.shift .what { margin-top: .75rem; font-weight: 600; font-size: var(--step-lead); }
-
-.setting { margin-top: 1.35rem; display: flex; flex-wrap: wrap; gap: 1rem 2.75rem; align-items: baseline; }
-.setting .stat { flex-direction: row; align-items: baseline; gap: .65rem; max-width: none; }
-.setting .display { font-size: clamp(3.4rem, 2rem + 3.5vw, 5.25rem); }
-.setting .lbl { margin: 0; max-width: 18ch; }
-.method { margin-top: .7rem; font-weight: 600; }
+.what { margin-top: .75rem; font-weight: 600; font-size: var(--step-lead); }
+.setting { margin-top: 1.4rem; display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; align-items: baseline; }
+.setting .stat { flex-direction: row; align-items: baseline; gap: .65rem; }
+.setting .display { font-size: clamp(3.2rem, 1.6rem + 3vw, 4.8rem); }
+.setting .lbl { margin: 0; max-width: 16ch; font-size: 1.05rem; }
+.method { margin-top: .75rem; font-weight: 600; font-size: 1.05rem; }
 
 .quote {
-  margin-top: clamp(1.5rem, 3vw, 2.2rem);
   background: var(--white);
-  padding: clamp(1.15rem, 2vw, 1.6rem);
-  max-width: 44rem;
+  padding: clamp(1.35rem, 2vw, 1.9rem);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
 }
-.quote blockquote { font-size: var(--step-lead); line-height: 1.35; max-width: 38ch; }
-.quote figcaption { margin-top: .8rem; font-size: var(--step-small); color: var(--ink-soft); }
+.quote blockquote { font-size: var(--step-lead); line-height: 1.4; max-width: 36ch; }
+.quote figcaption { font-size: 1rem; font-weight: 600; }
 
-.adopt {
-  margin-top: clamp(2.4rem, 5vw, 3.75rem);
-  display: grid;
-  grid-template-columns: minmax(13rem, 22rem) minmax(0, 1fr);
-  gap: clamp(1.25rem, 3vw, 2.75rem);
-  align-items: center;
-}
-.adopt .display { font-size: clamp(4rem, 2rem + 5.5vw, 7rem); }
-.adopt .line { margin-top: .3rem; font-weight: 600; max-width: 24ch; }
+.adopt .display { font-size: clamp(3.8rem, 1.8rem + 4.5vw, 6.2rem); }
+.adopt .line { margin-top: .3rem; font-weight: 600; font-size: 1.05rem; max-width: 26ch; }
 .about {
   display: block;
-  margin-top: 1rem;
+  margin-top: 1.1rem;
   font-size: var(--step-small);
   font-weight: 600;
-  letter-spacing: .08em;
+  letter-spacing: .07em;
   text-transform: uppercase;
 }
-.portal { width: 100%; max-width: 36rem; justify-self: end; }
+.portal { width: 100%; }
 .portal .draw { fill: none; stroke: var(--ink); stroke-width: 2.25; stroke-linecap: round; }
 .arm .in .portal .draw { stroke-dasharray: 1; animation: draw 1.05s var(--ease) both; }
 @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-.portal text { font-family: var(--font-text); font-weight: 600; font-size: 20px; fill: var(--ink); }
+.portal text { font-family: var(--font-text); font-weight: 600; font-size: 22px; fill: var(--ink); }
 
 .dx {
-  margin-top: clamp(2rem, 4vw, 3rem);
+  margin-top: clamp(1.75rem, 3vw, 2.75rem);
   background: var(--white);
-  padding: clamp(1.2rem, 2.2vw, 1.8rem);
+  padding: clamp(1.3rem, 2vw, 1.9rem);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(1rem, 2.5vw, 2rem);
+  grid-template-columns: minmax(0, 1.2fr) auto;
+  gap: clamp(1.25rem, 3vw, 3rem);
   align-items: center;
 }
 .stamp {
   display: inline-block;
-  margin-bottom: .45rem;
-  padding: .18rem .45rem .12rem;
+  margin-bottom: .5rem;
+  padding: .22rem .5rem .16rem;
   background: var(--sun);
   font-size: var(--step-small);
   font-weight: 600;
-  letter-spacing: .08em;
+  letter-spacing: .07em;
   text-transform: uppercase;
 }
-.dx .display { font-size: clamp(3.6rem, 2rem + 4.5vw, 6rem); }
-.dx .line { margin-top: .35rem; max-width: 28ch; font-weight: 600; }
-.dots { display: grid; grid-template-columns: repeat(8, 16px); gap: 5px; }
-.dots i { width: 16px; height: 16px; border: 1.5px solid var(--ink); background: transparent; }
+.dx .display { font-size: clamp(3.6rem, 1.8rem + 4vw, 5.8rem); }
+.dx .line { margin-top: .4rem; max-width: 32ch; font-weight: 600; font-size: 1.05rem; }
+.dots { display: grid; grid-template-columns: repeat(8, 18px); gap: 6px; }
+.dots i { width: 18px; height: 18px; border: 1.5px solid var(--ink); background: transparent; }
 .dots i.z { background: var(--ink); }
-.arm .in .dots i.z { animation: ink .4s both; animation-delay: calc(var(--d) * 22ms); }
+.arm .in .dots i.z { animation: ink .4s both; animation-delay: calc(var(--d) * 18ms); }
 @keyframes ink { from { background: transparent; } to { background: var(--ink); } }
-.legend { display: flex; align-items: center; gap: .45rem; margin-top: .65rem; font-size: var(--step-small); font-weight: 600; }
-.swatch { width: 14px; height: 14px; background: var(--ink); border: 1.5px solid var(--ink); }
+.legend { display: flex; align-items: center; gap: .5rem; margin-top: .7rem; font-size: 1rem; font-weight: 600; }
+.swatch { width: 16px; height: 16px; background: var(--ink); border: 1.5px solid var(--ink); flex: none; }
 
 .why {
-  margin-top: clamp(1.4rem, 2.5vw, 1.9rem);
-  max-width: 46ch;
-  font-size: var(--step-small);
-  padding-left: .85rem;
+  margin-top: clamp(1.5rem, 2.5vw, 2rem);
+  max-width: 58ch;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  padding-left: 1rem;
   border-left: 3px solid var(--ink);
 }
 
 /* community */
 .arch {
-  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
   background: var(--sun);
-  padding: clamp(1.2rem, 2.2vw, 1.7rem) clamp(1.2rem, 2.2vw, 1.85rem);
+  padding: clamp(1.25rem, 2vw, 1.75rem) clamp(1.25rem, 2vw, 2rem);
 }
 .arch .free {
   font-size: var(--step-small);
   font-weight: 600;
-  letter-spacing: .08em;
+  letter-spacing: .07em;
   text-transform: uppercase;
 }
-.nums { margin-top: .85rem; display: flex; flex-wrap: wrap; gap: 1.35rem 2.6rem; align-items: flex-end; }
-.nums .stat { max-width: 16rem; }
-.nums .eyebrow { margin: 0 0 .15rem; color: var(--ink); }
-.nums .display { font-size: clamp(3.5rem, 2rem + 4vw, 5.8rem); white-space: nowrap; }
-.nums .mid { font-size: .38em; letter-spacing: 0; margin: 0 .28em; }
+.nums { margin-top: .7rem; display: flex; flex-wrap: wrap; gap: 1.25rem 2.75rem; align-items: flex-end; }
+.nums .display { font-size: clamp(3.4rem, 1.6rem + 3.6vw, 5.4rem); white-space: nowrap; }
+.nums .mid { font-size: .42em; letter-spacing: 0; margin: 0 .28em; }
 .nums .pct { font-size: .55em; }
-.nums .lbl { margin-top: .15rem; }
-.beside { margin-top: 1.1rem; max-width: 40ch; }
+.nums .lbl { margin-top: .2rem; font-weight: 600; }
+.beside { margin-top: 1.15rem; font-size: 1.05rem; max-width: 48ch; }
 
-.mapfig { margin-top: clamp(1.6rem, 3vw, 2.4rem); max-width: 40rem; }
+.mapsplit {
+  display: grid;
+  grid-template-columns: minmax(16rem, 24rem) minmax(0, 1fr);
+  gap: clamp(1.5rem, 3vw, 3.25rem);
+  align-items: center;
+  margin-top: clamp(1.75rem, 3vw, 2.75rem);
+}
 .map { position: relative; background: var(--gulf); }
-.coast { fill: var(--white); stroke: var(--ink); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
-.arm .in .coast { stroke-dasharray: 1; animation: draw 1.3s var(--ease) both; }
+.map svg { width: 100%; height: auto; }
+.band { fill: none; stroke: var(--sun); stroke-width: 54; stroke-linecap: round; stroke-linejoin: round; }
+.hop { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 2 7; stroke-linecap: round; }
 .pins { position: absolute; inset: 0; }
 .pins li {
   position: absolute;
-  left: var(--x); top: var(--y);
-  font-size: .92rem;
+  left: var(--x);
+  top: var(--y);
+  font-size: .95rem;
   font-weight: 600;
   line-height: 1.15;
-  max-width: 8.5rem;
-  white-space: nowrap;
 }
-.pins .hub {
-  white-space: normal;
-  max-width: 10.5rem;
-  background: var(--spoonbill);
-  padding: .4rem .5rem .45rem;
-  transform: none;
-  line-height: 1.2;
-}
-.pins .hub b { display: block; margin-top: .2rem; }
-.leader { fill: none; stroke: var(--ink); stroke-width: 1.75; stroke-linecap: round; }
 .pins .dot {
   position: absolute;
-  top: .15rem;
-  width: 11px; height: 11px;
+  left: -6px;
+  top: -6px;
+  width: 12px;
+  height: 12px;
   background: var(--ink);
   border: 1.5px solid var(--ink);
 }
-.pins .right { transform: translate(14px, -40%); }
-.pins .right .dot { left: -18px; }
-.pins .left { transform: translate(calc(-100% - 26px), -15%); text-align: right; }
-.pins .left .dot { right: -30px; left: auto; top: .2rem; }
-.pins .home .dot { background: var(--sun); width: 13px; height: 13px; }
+.pins .lab { position: absolute; left: 12px; top: -0.55rem; white-space: nowrap; }
+.pins .fm .lab { top: -1.35rem; }
+.pins .estero .lab { top: .55rem; }
+.pins .naples .lab { left: auto; right: 12px; top: .7rem; }
+.pins .miami .lab { left: auto; right: 14px; top: -1.15rem; }
+.pins .home .dot { background: var(--sun); width: 14px; height: 14px; left: -7px; top: -7px; }
 .pins .occasional .dot { background: var(--gulf); border-style: dashed; }
-.pins small { display: block; font-weight: 600; color: var(--ink-soft); font-size: .78rem; }
+.mapcopy { display: grid; gap: .85rem; align-content: center; }
+.mapcopy p { font-size: 1.08rem; max-width: 36ch; }
 .flag {
   display: inline-block;
-  margin-top: .25rem;
-  padding: .12rem .35rem .1rem;
+  margin-right: .4rem;
+  padding: .16rem .4rem .12rem;
   background: var(--spoonbill);
-  font-size: .72rem;
-  letter-spacing: .04em;
+  font-size: .9rem;
+  font-weight: 600;
+  letter-spacing: .05em;
   text-transform: uppercase;
-  line-height: 1.2;
 }
-.mapfig figcaption { margin-top: .85rem; max-width: 46ch; }
-.mapfig figcaption p + p { margin-top: .35rem; }
 
-.loopwrap { padding-top: clamp(2.4rem, 4vw, 3.5rem); padding-bottom: clamp(1.4rem, 2.5vw, 2rem); }
-.loopblock { width: fit-content; max-width: 100%; }
-.loop {
-  display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .7rem;
+/* plan */
+.plan { background: var(--spoonbill-wash); }
+.day {
+  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem 1.25rem;
+}
+.day li {
+  border-top: 3px solid var(--ink);
+  padding-top: .8rem;
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  max-width: 16ch;
+}
+
+/* loop */
+.loopwrap { padding-bottom: clamp(2rem, 4vw, 3rem); }
+.cycle {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(14rem, 20rem) minmax(0, 1fr);
+  grid-template-areas:
+    ". try ."
+    "back ring measure";
+  gap: .75rem 1rem;
+  align-items: center;
+  max-width: 58rem;
+  margin: .25rem auto 0;
+}
+.cycle .ring { grid-area: ring; }
+.cycle .try { grid-area: try; text-align: center; justify-self: center; }
+.cycle .measure { grid-area: measure; }
+.cycle .back { grid-area: back; text-align: right; justify-self: end; }
+.clab b {
+  display: block;
   font-family: var(--font-display);
   font-weight: 800;
   text-transform: uppercase;
-  font-size: clamp(1.9rem, 1rem + 2.2vw, 3rem);
+  font-size: clamp(1.8rem, 1rem + 1.6vw, 2.6rem);
+  line-height: .9;
   letter-spacing: -0.01em;
-  line-height: 1;
 }
-.return { display: block; width: 100%; height: auto; margin-top: .15rem; }
-.return path { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-.arm .in .return path { stroke-dasharray: 1; animation: draw .9s var(--ease) both; }
+.clab span { display: block; margin-top: .35rem; font-weight: 600; font-size: 1.05rem; max-width: 18ch; }
+.cycle .try span, .cycle .back span { margin-left: auto; margin-right: auto; }
+.cycle .back span { margin-right: 0; }
+.ring { width: 100%; }
+.ring .loop {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.5;
+}
+.arm .in .ring .loop { stroke-dasharray: 1; animation: draw 1.2s var(--ease) both; }
+.ring .knob { fill: var(--white); stroke: var(--ink); stroke-width: 2.5; }
+.ring .knob.on { fill: var(--sun); }
+.introwrap {
+  max-width: calc(var(--measure) + 2 * var(--margin));
+  margin: 0 auto;
+  padding: .25rem var(--margin) 1.35rem;
+}
+.intro { font-size: 1.2rem; line-height: 1.45; max-width: 62ch; }
+.context { margin-top: .9rem; font-size: 1.08rem; line-height: 1.45; max-width: 46ch; }
 
 .close {
   background: var(--accent);
-  padding: clamp(2.4rem, 5vw, 4.25rem) var(--margin) clamp(2.75rem, 5vw, 4.5rem);
+  padding: clamp(2.6rem, 5vw, 4.5rem) var(--margin) clamp(2.8rem, 5vw, 4.6rem);
 }
-.close h2 { font-size: clamp(2.9rem, 1.1rem + 5.6vw, 6.4rem); max-width: 13ch; }
-.ask { margin-top: 1.45rem; display: flex; flex-wrap: wrap; gap: .7rem 1.4rem; align-items: center; }
+.close h2 { font-size: clamp(2.9rem, 1.1rem + 5.4vw, 6.2rem); max-width: 14ch; }
+.ask { margin-top: 1.6rem; display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; align-items: center; }
 .btn {
   display: inline-flex; align-items: center; min-height: 3.25rem;
   padding: .85rem 1.3rem;
@@ -430,46 +542,55 @@ h2 { font-size: var(--step-head); max-width: 18ch; }
 
 .foot {
   background: var(--blackwater);
-  color: var(--paper-soft);
-  padding: 1.4rem var(--margin) calc(1.6rem + env(safe-area-inset-bottom, 0px));
+  color: var(--paper);
+  padding: 1.35rem var(--margin) calc(1.5rem + env(safe-area-inset-bottom, 0px));
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: .4rem 1.5rem;
-  font-size: var(--step-small);
+  font-size: 1rem;
 }
 .foot ul { display: flex; flex-wrap: wrap; gap: 0 1.35rem; }
 .foot a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--paper); text-decoration: none; font-weight: 600; }
 .foot a:hover { text-decoration: underline; }
 .foot :focus-visible { outline-color: var(--sun); }
+.foot p { color: var(--paper); }
 
 @media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; }
-  .portrait { width: 5.25rem; margin-top: 1.15rem; }
-  .ba { flex-direction: column; }
+  .hero { grid-template-columns: 1fr; align-items: start; }
+  .shot { width: 100%; }
+  .frame { width: 9rem; }
+  .strip { grid-template-columns: 1fr 1fr; }
+  .split, .mapsplit, .dx { grid-template-columns: 1fr; }
+  .ba { min-height: 0; flex-direction: column; }
   .from { flex-basis: auto; border-right: 0; border-bottom: 2px solid var(--ink); }
-  .pipe { grid-template-columns: 1fr; gap: 0; }
-  .pipe li { border-top: 0; border-left: 2px solid var(--ink); padding: 0 0 1rem 1rem; margin-left: 4px; }
-  .pipe li::before { left: -7px; top: .15rem; }
-  .adopt, .dx { grid-template-columns: 1fr; }
-  .portal { justify-self: start; }
-  .pins li { font-size: .78rem; }
-  .pins .hub { max-width: 8.2rem; }
+  .day { grid-template-columns: 1fr 1fr; }
+  .cycle {
+    grid-template-columns: 1fr;
+    grid-template-areas: "ring" "try" "measure" "back";
+    justify-items: center;
+    text-align: center;
+  }
+  .cycle .back, .cycle .measure, .cycle .try { text-align: center; justify-self: center; }
+  .cycle .back span, .cycle .try span { margin-right: auto; }
+  .quote { height: auto; }
 }
 @media (max-width: 420px) {
-  .hero h1 { font-size: 2.6rem; }
+  .hero h1 { font-size: 2.7rem; margin-bottom: 1.25rem; }
+  .day { grid-template-columns: 1fr; }
+  .day li { border-top: 0; border-left: 3px solid var(--ink); padding: .15rem 0 .15rem .9rem; max-width: none; }
   .nums .display { white-space: normal; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .arm .in .bead,
   .arm .in .meter span,
   .arm .in .portal .draw,
   .arm .in .dots i.z,
-  .arm .in .coast,
-  .arm .in .return path { animation: none; }
+  .arm .in .ring .loop { animation: none; }
 }
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<div class="sun">
+<div class="sun" id="hero" data-shot="hero">
   <nav class="bar" aria-label="Site">
     <a href="https://lbeebe.com/">Ligaya Beebe</a>
     <span class="forwho">For Jake Ottiger<br>OpenWorks</span>
@@ -478,118 +599,153 @@ h2 { font-size: var(--step-head); max-width: 18ch; }
     <div>
       <h1 class="display">I'll help you see what actually <span class="sticks">sticks</span>.</h1>
       <p class="sub">A pilot needs a partner who tries things with real owners, measures, and reports back.</p>
-      <p class="who">Ligaya Beebe · L. Beebe, LLC · Estero, Florida</p>
     </div>
-    <img class="portrait" src="/portrait.jpg" width="896" height="1152" alt="Ligaya Beebe, smiling, in a black blazer over a cream top">
+    <figure class="shot">
+      <span class="frame"><img src="/portrait.jpg" width="896" height="1152" alt="Ligaya Beebe, smiling, in a black blazer over a cream top"></span>
+      <figcaption>Ligaya Beebe · L. Beebe, LLC · Estero, Florida</figcaption>
+    </figure>
   </header>
+  <div class="introwrap">
+    <p class="intro">I taught in New York City public schools, then spent 9 years running U.S. Department of State exchange programs at iEARN-USA. I live in Estero now, and I teach non-technical teams to use AI in the work they already do. I want to help OpenWorks learn what works with Southwest Florida owners.</p>
+  </div>
+  <div class="stripwrap">
+    <ul class="strip" aria-label="Proof at a glance">
+      <li><b class="display"><span class="quiet">under</span>2 min</b><span>per document</span></li>
+      <li><b class="display">70% to 92%</b><span>confidence at work</span></li>
+      <li><b class="display">8 of 8</b><span>partners adopted</span></li>
+      <li><b class="display">144</b><span>registrants</span></li>
+    </ul>
+  </div>
 </div>
 
 <main id="main">
 
-<section aria-labelledby="tech-h">
+<section id="capable" data-shot="capable" aria-labelledby="tech-h">
   <div class="inner">
     <h2 class="display" id="tech-h">Technically capable</h2>
     <p class="caption">Phone scan to analysis, on one sheet.</p>
+    <p class="context">My late father, Dr. James Beebe, left an unfinished study in boxes. I built a workflow so I could finish it, using his policy-framing method.</p>
 
-    <div class="ba" data-anim>
-      <p class="from">
-        <span class="eyebrow">From</span>
-        <strong>Fully manual</strong>
-        <span class="pile" aria-hidden="true"><i></i><i></i><i></i></span>
-      </p>
-      <p class="time">
-        <span class="eyebrow">Under</span>
-        <span class="display"><span data-count="2">2</span></span>
-        <span class="unit">minutes per document</span>
-      </p>
+    <div class="split top">
+      <div class="ba" data-anim>
+        <p class="from">
+          <span class="eyebrow">From</span>
+          <strong>Fully manual</strong>
+          <span class="pile" aria-hidden="true"><i></i><i></i><i></i></span>
+        </p>
+        <p class="time">
+          <span class="eyebrow">Under</span>
+          <span class="display"><span data-count="2">2</span></span>
+          <span class="unit">minutes per document</span>
+        </p>
+      </div>
+
+      <div class="flow" data-anim>
+        <span class="rail" aria-hidden="true"></span>
+        <span class="bead" aria-hidden="true"></span>
+        <ol aria-label="Archive Intelligence pipeline">
+          <li>
+            <span class="bubble" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="10" y1="18" x2="14" y2="18"/></svg></span>
+            <span><b>Phone scan</b></span>
+          </li>
+          <li>
+            <span class="bubble" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="1.5"/><path d="M3 6.5 L12 13 L21 6.5"/></svg></span>
+            <span><b>Email</b></span>
+          </li>
+          <li>
+            <span class="bubble" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 8 h6 l2-3 h10 v14 h-18 z"/></svg></span>
+            <span><b>Drive</b><small>Apps Script files it</small></span>
+          </li>
+          <li>
+            <span class="bubble hot" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5 L14.2 9 L21 11.2 L14.2 13.4 L12 20.5 L9.8 13.4 L3 11.2 L9.8 9 Z"/></svg></span>
+            <span><b>MindStudio</b><small>Gemini cleans the OCR, pulls metadata, and says Unknown instead of guessing.</small></span>
+          </li>
+          <li>
+            <span class="bubble" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20"/><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="13" x2="20" y2="13"/><line x1="11" y1="8" x2="11" y2="22"/></svg></span>
+            <span><b>One Sheet</b></span>
+          </li>
+          <li>
+            <span class="bubble" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="14" height="18"/><path d="M8 13 l2.5 2.5 L16 9"/></svg></span>
+            <span><b>Claude Code</b><small>Skills analyze the sheet</small></span>
+          </li>
+        </ol>
+      </div>
     </div>
 
-    <ol class="pipe" aria-label="Archive Intelligence pipeline">
-      <li><b>Phone scan</b></li>
-      <li><b>Email</b></li>
-      <li><b>Drive</b><small>Apps Script files it</small></li>
-      <li class="hot"><b>MindStudio</b></li>
-      <li><b>One Sheet</b></li>
-      <li><b>Claude Code</b><small>Skills analyze it</small></li>
-    </ol>
-    <p class="unknown">MindStudio, on Gemini, cleans the OCR, pulls metadata, and says Unknown instead of guessing.</p>
-    <p class="note">Built to finish my late father Dr. James Beebe's unfinished study, using his policy-framing method.</p>
     <p class="links">
       <a href="https://github.com/1beebe/document-archivist" target="_blank" rel="noopener">Archive Intelligence</a>
       <a href="https://github.com/1beebe/beebe-qualitative-skills" target="_blank" rel="noopener">Policy-framing skills</a>
     </p>
 
-    <div class="support">
+    <div class="split support">
       <p class="stat">
         <span class="display" data-count="5">5</span>
         <span class="lbl">scripted personas in the pre-deploy eval suite for <a href="https://interviewer.lbeebe.com/" target="_blank" rel="noopener">The Interviewer</a>, a voice and text interview app, with a scoring rubric.</span>
       </p>
-      <p class="stat">
-        <span class="display">Level 3</span>
-        <span class="lbl">MindStudio AI Agent Developer</span>
-      </p>
+      <p class="meet">Meets teams in what they already pay for: ChatGPT Business, Claude, or Gemini.</p>
     </div>
     <p class="daily">Builds daily in MindStudio, Claude Code, and Codex.</p>
   </div>
 </section>
 
-<section class="proof" aria-labelledby="collab-h">
+<section class="proof" id="practical" data-shot="practical" aria-labelledby="collab-h">
   <div class="inner">
     <h2 class="display" id="collab-h">Collaborative and practical</h2>
     <p class="caption">A telecom team. Literacy first, then the tools.</p>
+    <p class="context">A 30-person telecom team, mostly non-technical. The COO asked for a tool tutorial. I started with how AI works.</p>
 
-    <div class="shift" data-anim>
-      <div class="pair">
-        <p class="num"><span class="when">Pre</span><span class="display"><span data-count="70">70</span>%</span></p>
-        <span class="arrow" aria-hidden="true">→</span>
-        <p class="num"><span class="when">Post</span><span class="display"><span data-count="92">92</span>%</span></p>
+    <div class="split top">
+      <div data-anim>
+        <div class="pair">
+          <p class="num"><span class="when">Pre</span><span class="display"><span data-count="70">70</span>%</span></p>
+          <span class="arrow" aria-hidden="true">→</span>
+          <p class="num"><span class="when">Post</span><span class="display"><span data-count="92">92</span>%</span></p>
+        </div>
+        <div class="meters" aria-hidden="true">
+          <div class="meter" style="--p: 70%"><span></span></div>
+          <div class="meter" style="--p: 92%"><span></span></div>
+        </div>
+        <p class="what">confidence using AI at work</p>
+        <div class="setting">
+          <p class="stat"><span class="display" data-count="30">30</span><span class="lbl">people, mostly non-technical</span></p>
+          <p class="stat"><span class="display" data-count="4">4</span><span class="lbl">sessions</span></p>
+        </div>
+        <p class="method">Literacy first, then the tools.</p>
       </div>
-      <div class="meters" aria-hidden="true">
-        <div class="meter" style="--p: 70%"><span></span></div>
-        <div class="meter" style="--p: 92%"><span></span></div>
-      </div>
-      <p class="what">confidence using AI at work</p>
+      <figure class="quote">
+        <blockquote>“A week ago, very few people used AI. Now AI is being talked about in the kitchen, on our company chat and in general conversations.”</blockquote>
+        <figcaption>Sam Sklaroff, CEO, Axxess Networks</figcaption>
+      </figure>
     </div>
 
-    <div class="setting">
-      <p class="stat"><span class="display" data-count="30">30</span><span class="lbl">people, mostly non-technical</span></p>
-      <p class="stat"><span class="display" data-count="4">4</span><span class="lbl">sessions</span></p>
-    </div>
-    <p class="method">AI literacy before the tools.</p>
-
-    <figure class="quote">
-      <blockquote>“A week ago, very few people used AI. Now AI is being talked about in the kitchen, on our company chat and in general conversations.”</blockquote>
-      <figcaption>Sam Sklaroff, CEO, Axxess Networks</figcaption>
-    </figure>
-
-    <div class="adopt" data-anim>
+    <div class="split adopt" data-anim>
       <div>
         <p class="display"><span data-count="8">8</span> of <span data-count="8">8</span></p>
         <p class="line">international implementing partners adopted the portal</p>
         <p class="about">about</p>
         <p class="display"><span data-count="30">30</span>%</p>
         <p class="line">fewer support requests</p>
-        <p class="note">U.S. Department of State YES program.</p>
+        <p class="context">Eight partner organizations abroad, on the U.S. Department of State YES program, each with its own way of working. I listened first, then trained peer champions.</p>
       </div>
-      <svg class="portal" viewBox="0 0 640 300" aria-hidden="true" focusable="false">
-        <line class="draw" pathLength="1" x1="78" y1="40" x2="268" y2="148"/>
-        <line class="draw" pathLength="1" x1="56" y1="112" x2="268" y2="152"/>
-        <line class="draw" pathLength="1" x1="56" y1="188" x2="268" y2="160"/>
-        <line class="draw" pathLength="1" x1="78" y1="260" x2="268" y2="168"/>
-        <line class="draw" pathLength="1" x1="562" y1="40" x2="372" y2="148"/>
-        <line class="draw" pathLength="1" x1="584" y1="112" x2="372" y2="152"/>
-        <line class="draw" pathLength="1" x1="584" y1="188" x2="372" y2="160"/>
-        <line class="draw" pathLength="1" x1="562" y1="260" x2="372" y2="168"/>
-        <circle cx="78" cy="40" r="15" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
-        <circle cx="56" cy="112" r="15" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
-        <circle cx="56" cy="188" r="15" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
-        <circle cx="78" cy="260" r="15" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
-        <circle cx="562" cy="40" r="15" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
-        <circle cx="584" cy="112" r="15" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
-        <circle cx="584" cy="188" r="15" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
-        <circle cx="562" cy="260" r="15" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
-        <rect x="248" y="108" width="144" height="80" fill="#ffd249" stroke="#0a0a0a" stroke-width="2.5"/>
-        <text x="320" y="155" text-anchor="middle">YES portal</text>
+      <svg class="portal" viewBox="0 0 640 280" aria-hidden="true" focusable="false">
+        <line class="draw" pathLength="1" x1="70" y1="36" x2="270" y2="140"/>
+        <line class="draw" pathLength="1" x1="48" y1="104" x2="270" y2="146"/>
+        <line class="draw" pathLength="1" x1="48" y1="176" x2="270" y2="154"/>
+        <line class="draw" pathLength="1" x1="70" y1="244" x2="270" y2="162"/>
+        <line class="draw" pathLength="1" x1="570" y1="36" x2="370" y2="140"/>
+        <line class="draw" pathLength="1" x1="592" y1="104" x2="370" y2="146"/>
+        <line class="draw" pathLength="1" x1="592" y1="176" x2="370" y2="154"/>
+        <line class="draw" pathLength="1" x1="570" y1="244" x2="370" y2="162"/>
+        <circle cx="70" cy="36" r="16" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
+        <circle cx="48" cy="104" r="16" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
+        <circle cx="48" cy="176" r="16" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
+        <circle cx="70" cy="244" r="16" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
+        <circle cx="570" cy="36" r="16" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
+        <circle cx="592" cy="104" r="16" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
+        <circle cx="592" cy="176" r="16" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
+        <circle cx="570" cy="244" r="16" fill="#fff" stroke="#0a0a0a" stroke-width="2.5"/>
+        <rect x="246" y="100" width="148" height="84" fill="#ffd249" stroke="#0a0a0a" stroke-width="2.5"/>
+        <text x="320" y="149" text-anchor="middle">YES portal</text>
       </svg>
     </div>
 
@@ -597,7 +753,7 @@ h2 { font-size: var(--step-head); max-width: 18ch; }
       <div>
         <p class="stamp">Diagnosis</p>
         <p class="display"><span data-count="24">24</span> of <span data-count="48">48</span></p>
-        <p class="line">users at 10xJobs had zero usage before an onboarding fix.</p>
+        <p class="line">Half the users at 10xJobs never got started. I found out why and onboarded them 1:1.</p>
         <p class="legend"><span class="swatch" aria-hidden="true"></span> Zero usage</p>
       </div>
       <div class="dots" aria-hidden="true">
@@ -610,14 +766,15 @@ h2 { font-size: var(--step-head); max-width: 18ch; }
       </div>
     </div>
 
-    <p class="why">People outside tech are just scratching the surface. A PM friend at an “AI-native” company kept everything in one long chat and burned through her company’s usage, so product basics and AI literacy both matter.</p>
+    <p class="why">In a bootcamp, people don't know what a project is, or they haven't connected ChatGPT to their work. A little support, and the gains are large.</p>
   </div>
 </section>
 
-<section aria-labelledby="comm-h">
+<section id="community" data-shot="community" aria-labelledby="comm-h">
   <div class="inner">
     <h2 class="display" id="comm-h">Community-oriented</h2>
     <p class="caption">I build learning programs for groups.</p>
+    <p class="context">The AI Architect Program is free. People register, and a group comes back each week.</p>
 
     <div class="arch" data-anim>
       <p class="free">AI Architect Program, free</p>
@@ -633,43 +790,72 @@ h2 { font-size: var(--step-head); max-width: 18ch; }
     </div>
     <p class="beside">Vibecoding meets weekly. People demo their own builds. I also run paid team bootcamps.</p>
 
-    <figure class="mapfig">
-      <div class="map" data-anim>
-        <svg viewBox="0 0 640 780" aria-hidden="true" focusable="false">
-          <path class="coast" pathLength="1" d="M65.1 38.4 L68.8 69.6 L74.3 73.8 L89.2 86.3 L107.7 75.9 L130.0 80.0 L144.8 100.8 L130.0 132.0 L107.7 157.0 L92.9 177.8 L115.1 215.3 L133.7 256.9 L144.8 288.1 L167.0 308.9 L189.3 323.5 L213.4 340.1 L231.9 356.8 L231.9 371.3 L219.0 385.9 L241.2 402.5 L252.3 427.5 L257.9 456.6 L270.9 492.0 L296.8 517.0 L333.9 548.2 L371.0 589.8 L398.8 631.4 L435.9 652.2 L491.5 621.0 L534.1 579.4 L565.7 535.7 L571.2 475.4 L578.6 402.5 L584.2 319.3 L574.9 236.1 L547.1 152.8 L491.5 69.6 L463.7 38.4 Z"/>
-          <path class="leader" d="M247 352 L372 250"/>
+    <div class="mapsplit">
+      <figure class="map">
+        <svg viewBox="0 0 720 980" role="img" aria-labelledby="mapTitle">
+          <title id="mapTitle">Florida peninsula. A sun band marks the Gulf coast from Naples to Tampa. Miami is a dotted occasional link on the Atlantic.</title>
+          <rect width="720" height="980" fill="#a4f0ec"/>
+          <defs>
+            <clipPath id="landclip">
+              <path d="M85.6 54.5 L107.1 91.6 L123.7 156.4 L118.7 212.0 L107.1 258.4 L105.5 289.9 L113.7 314.0 L140.2 326.9 L151.8 304.7 L163.4 295.4 L176.6 314.0 L163.4 341.8 L140.2 364.0 L127.0 388.1 L148.5 419.6 L166.7 456.6 L179.9 484.4 L196.4 504.8 L213.0 523.4 L234.5 541.9 L249.4 554.9 L229.5 567.8 L259.3 582.7 L269.2 604.9 L274.2 630.8 L287.4 662.3 L317.2 684.6 L342.0 712.4 L375.1 758.7 L404.8 805.0 L471.0 819.8 L520.6 777.2 L540.5 740.2 L552.1 697.5 L553.7 647.5 L560.3 591.9 L566.9 527.1 L548.7 443.7 L523.9 378.8 L482.6 286.2 L477.6 212.0 L454.5 156.4 L416.4 91.6 L383.3 49.0 L292.4 41.6 L193.1 45.3 Z"/>
+            </clipPath>
+          </defs>
+          <path fill="#ffffff" stroke="#0a0a0a" stroke-width="2.5" stroke-linejoin="round" d="M85.6 54.5 L107.1 91.6 L123.7 156.4 L118.7 212.0 L107.1 258.4 L105.5 289.9 L113.7 314.0 L140.2 326.9 L151.8 304.7 L163.4 295.4 L176.6 314.0 L163.4 341.8 L140.2 364.0 L127.0 388.1 L148.5 419.6 L166.7 456.6 L179.9 484.4 L196.4 504.8 L213.0 523.4 L234.5 541.9 L249.4 554.9 L229.5 567.8 L259.3 582.7 L269.2 604.9 L274.2 630.8 L287.4 662.3 L317.2 684.6 L342.0 712.4 L375.1 758.7 L404.8 805.0 L471.0 819.8 L520.6 777.2 L540.5 740.2 L552.1 697.5 L553.7 647.5 L560.3 591.9 L566.9 527.1 L548.7 443.7 L523.9 378.8 L482.6 286.2 L477.6 212.0 L454.5 156.4 L416.4 91.6 L383.3 49.0 L292.4 41.6 L193.1 45.3 Z"/>
+          <path class="band" clip-path="url(#landclip)" d="M105.5 289.9 L113.7 314.0 L140.2 326.9 L151.8 304.7 L163.4 295.4 L176.6 314.0 L163.4 341.8 L140.2 364.0 L127.0 388.1 L148.5 419.6 L166.7 456.6 L179.9 484.4 L196.4 504.8 L213.0 523.4 L234.5 541.9 L249.4 554.9 L229.5 567.8 L259.3 582.7 L269.2 604.9 L274.2 630.8"/>
+          <ellipse cx="441.2" cy="484.4" rx="46" ry="44" fill="#a4f0ec" stroke="#0a0a0a" stroke-width="2"/>
+          <path class="hop" d="M286 640 C 390 720, 470 750, 528 708"/>
         </svg>
         <ul class="pins">
-          <li class="right" style="--x:21.5%; --y:10.3%"><span class="dot" aria-hidden="true"></span>Tampa</li>
-          <li class="left" style="--x:38.6%; --y:45.2%"><span class="dot" aria-hidden="true"></span>Fort Myers<small>AI Fridays</small></li>
-          <li class="right home" style="--x:40.3%; --y:50.5%"><span class="dot" aria-hidden="true"></span>Estero<small>home</small></li>
-          <li class="left" style="--x:40.6%; --y:58.5%"><span class="dot" aria-hidden="true"></span>Naples</li>
-          <li class="hub" style="--x:58%; --y:30%"><span class="flag">Upcoming</span><b>Thu Jan 8, 2027</b><small>AI Agents for SMBs</small></li>
-          <li class="left occasional" style="--x:84%; --y:67%"><span class="dot" aria-hidden="true"></span>Miami<small>occasional</small></li>
+          <li class="tampa" style="--x:23.2%; --y:30.1%"><span class="dot" aria-hidden="true"></span><span class="lab">Tampa</span></li>
+          <li class="fm" style="--x:36.7%; --y:54.9%"><span class="dot" aria-hidden="true"></span><span class="lab">Fort Myers</span></li>
+          <li class="estero home" style="--x:38.1%; --y:58.7%"><span class="dot" aria-hidden="true"></span><span class="lab">Estero</span></li>
+          <li class="naples" style="--x:38.3%; --y:64.4%"><span class="dot" aria-hidden="true"></span><span class="lab">Naples</span></li>
+          <li class="miami occasional" style="--x:75.3%; --y:71.4%"><span class="dot" aria-hidden="true"></span><span class="lab">Miami</span></li>
         </ul>
-      </div>
-      <figcaption>
-        <p>Naples, Fort Myers, Tampa. I live in Estero. Miami is occasional.</p>
+      </figure>
+      <div class="mapcopy">
+        <p>Naples, Fort Myers, and Tampa are the core. I live in Estero.</p>
+        <p>Miami is an occasional link.</p>
         <p>AI Fridays at the Collaboratory, Fort Myers. I attend.</p>
-        <p><strong>Upcoming, Thu Jan 8, 2027:</strong> AI Agents for SMBs, at the SWFL HI AI Innovation Hub.</p>
-      </figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="loopwrap" aria-label="How a pilot runs">
-  <div class="inner">
-    <div class="loopblock" data-anim>
-    <p class="loop"><span>Try</span><span aria-hidden="true">→</span><span>Measure</span><span aria-hidden="true">→</span><span>Report back</span></p>
-    <svg class="return" viewBox="0 0 480 46" aria-hidden="true" focusable="false">
-      <path pathLength="1" d="M458 8 C 468 34, 300 40, 150 40 C 40 40, 22 28, 26 14 M40 26 L18 12 L42 6"/>
-    </svg>
+        <p><span class="flag">Upcoming</span> Thu Jan 8, 2027. AI Agents for SMBs, at the SWFL HI AI Innovation Hub.</p>
+      </div>
     </div>
-    <p class="sr-only">Try, then measure, then report back, and try again.</p>
   </div>
 </section>
 
-<section class="close">
+<section class="plan" id="plan" data-shot="plan" aria-labelledby="plan-h">
+  <div class="inner">
+    <p class="eyebrow">A plan</p>
+    <h2 class="display" id="plan-h">A first community day</h2>
+    <p class="caption">Lee County service businesses. Pool, landscaping, HVAC, marine.</p>
+    <ol class="day">
+      <li>Group kickoff</li>
+      <li>1:1 on one real task</li>
+      <li>A one-page card to keep</li>
+      <li>A 2-week check-in</li>
+    </ol>
+  </div>
+</section>
+
+<section class="loopwrap" id="loop" data-shot="loop" aria-labelledby="loop-h">
+  <div class="inner">
+    <h2 class="sr-only" id="loop-h">Try, measure, report back</h2>
+    <div class="cycle" data-anim>
+      <p class="clab try"><b>Try</b><span>One real task with an owner</span></p>
+      <svg class="ring" viewBox="0 0 320 320" aria-hidden="true" focusable="false">
+        <circle class="loop" cx="160" cy="160" r="108" pathLength="1"/>
+        <path d="M176 58 l10 8 l-10 8" fill="none" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle class="knob on" cx="160" cy="52" r="9"/>
+        <circle class="knob" cx="253" cy="214" r="9"/>
+        <circle class="knob" cx="67" cy="214" r="9"/>
+      </svg>
+      <p class="clab measure"><b>Measure</b><span>Time saved, confidence, usage</span></p>
+      <p class="clab back"><b>Report back</b><span>What stuck, sent to you</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="close" id="ask" data-shot="ask">
   <div class="inner">
     <h2 class="display">Put me on the ground in Southwest Florida.</h2>
     <div class="ask">
@@ -725,7 +911,7 @@ h2 { font-size: var(--step-head); max-width: 18ch; }
       play(entry.target);
       obs.unobserve(entry.target);
     });
-  }, { threshold: 0.22, rootMargin: '0px 0px -6% 0px' });
+  }, { threshold: 0.2, rootMargin: '0px 0px -4% 0px' });
   nodes.forEach(function (el) { obs.observe(el); });
 })();
 </script>
