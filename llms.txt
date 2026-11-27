@@ -92,6 +92,7 @@ Ligaya writes for SMB owners and ops leads with practical questions about AI: ho
 - [How should a 10-person company start using AI agents?](https://lbeebe.com/blog/how-should-a-10-person-company-start-using-ai-agents/): Pick one repeated task, write down how it's done, and keep a person on anything that's hard to undo.
 - [We bought ChatGPT licenses. How do we tell if anyone is using them?](https://lbeebe.com/blog/how-to-tell-if-anyone-is-using-chatgpt-licenses/): The admin dashboard shows who's using their seat. Your team can tell you whether it's helping.
 - [What is an AI agent, and how is it different from a ChatGPT chat?](https://lbeebe.com/blog/what-is-an-ai-agent/): A chat answers your message and waits. An agent takes a goal and works through the steps until it's done or needs you.
+- [OpenAI's OpenWorks vs. Anthropic's Claude SMB Trainer program: what's different, and what it means for a small team](https://lbeebe.com/blog/openai-openworks-vs-claude-smb-trainer-program/): Both bring free, hands-on AI help to small businesses. OpenAI pays local experts to work one-on-one; Anthropic trains community groups to run its workshop.
 - [Editorial standards](https://lbeebe.com/editorial-standards/): How the blog is made. Ligaya Beebe is the named editor; nothing publishes itself.
 
 ## Contact
