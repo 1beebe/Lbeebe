@@ -7,3 +7,6 @@
 **/.DS_Store
 wrangler.jsonc
 .wrangler
+
+# Worker source, not a public asset
+src
